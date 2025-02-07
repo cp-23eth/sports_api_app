@@ -15,8 +15,8 @@ dependencies:
 dev_dependencies:
   flutter_lints: ^4.0.0
 
-# flutter:
+flutter:
 #   used-material-design: true
 
-assets:
-  - lib/src/assets/images/
+  assets:
+    - lib/src/assets/images/
