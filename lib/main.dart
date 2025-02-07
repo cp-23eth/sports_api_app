@@ -39,11 +39,11 @@ class SportsApiApp extends StatelessWidget {
               SportsListProvider(repository: context.read<SportsRepository>()),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'SportsApiApp',
         routes: {
-          // '/': (context) => const /* Ajouter ici le screen principale */(),
+          '/': (context) => const HomeScreenNba(),
         },
       ),
     );

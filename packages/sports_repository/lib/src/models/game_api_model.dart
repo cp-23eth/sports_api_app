@@ -10,10 +10,10 @@ class GameApiModel {
     required this.awayTeamId,
     required this.homeTeam,
     required this.homeTeamId,
-    required this.awayTeamScore,
-    required this.homeTeamScore,
-    required this.stadiumId,
-    required this.refereeId,
+    this.awayTeamScore = 0,
+    this.homeTeamScore = 0,
+    this.stadiumId = 0,
+    this.refereeId = 0,
   });
 
   factory GameApiModel.fromJson(Map<String, dynamic> json) {

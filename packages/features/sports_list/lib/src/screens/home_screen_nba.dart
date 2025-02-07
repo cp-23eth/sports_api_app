@@ -1,6 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreenNba extends StatefulWidget {
@@ -11,6 +12,7 @@ class HomeScreenNba extends StatefulWidget {
 }
 
 class _HomeScreenNbaState extends State<HomeScreenNba> {
+  final logger = Logger();
 
   @override
   void initState() {
@@ -37,7 +39,7 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          HomeMatchList(),
+          Text('salut'),
         ],
       ),
     );
@@ -45,6 +47,6 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return _showSports();
   }
 }

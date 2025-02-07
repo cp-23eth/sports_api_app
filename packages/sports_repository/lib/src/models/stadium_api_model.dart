@@ -13,7 +13,7 @@ class StadiumApiModel {
 
   factory StadiumApiModel.fromJson(Map<String, dynamic> json) {
     return StadiumApiModel(
-      stadiumId: json['stadiumId'],
+      stadiumId: json['stadiumID'],
       active: json['active'],
       name: json['name'],
       address: json['address'],
