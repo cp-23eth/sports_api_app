@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:sports_repository/sports_repository.dart';
 
-class GameRemoteStorage implements SportsStorge {
+class GameRemoteStorage implements SportsStorage {
   static const url =
       "https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=baec8b74561642bb974d3b5bc0091f65";
 
