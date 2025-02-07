@@ -20,16 +20,16 @@ class SportsListState extends Equatable {
       status: SportsListStatus.initial,
       teams: List<Team>.empty(),
       players: List<Player>.empty(),
-      stadiums: List<Team>.empty(),
-      games: List<Player>.empty(),
+      stadiums: List<Stadium>.empty(),
+      games: List<Game>.empty(),
     );
   }
 
   final SportsListStatus status;
   final List<Team> teams;
   final List<Player> players;
-  final List<Team> stadiums;
-  final List<Player> games;
+  final List<Stadium> stadiums;
+  final List<Game> games;
 
   @override
   List<Object> get props => [status, teams, players, stadiums, games];
@@ -41,8 +41,8 @@ class SportsListState extends Equatable {
     SportsListStatus? status,
     List<Team>? teams,
     List<Player>? players,
-    List<Team>? stadiums,
-    List<Player>? games,
+    List<Stadium>? stadiums,
+    List<Game>? games,
   }) {
     return SportsListState(
       status: status ?? this.status,
