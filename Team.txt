@@ -1,6 +1,6 @@
 Class Team
 
-	int TeamId
+	int teamId
 	bool active
 	String key 					(ex "WAS")
 	String city

@@ -53,38 +53,4 @@ class Game extends Equatable {
 
   @override
   bool? get stringify => true;
-
-  Game copyWith({
-    int? gameId,
-    int? season,
-    String? status,
-    bool? isClosed,
-    DateTime? dateTime,
-    DateTime? dateTimeUtc,
-    String? awayTeam,
-    int? awayTeamId,
-    String? homeTeam,
-    int? homeTeamId,
-    int? awayTeamScore,
-    int? homeTeamScore,
-    int? stadiumId,
-    int? refereeId,
-  }) {
-    return Game(
-      gameId: gameId ?? this.gameId,
-      season: season ?? this.season,
-      status: status ?? this.status,
-      isClosed: isClosed ?? this.isClosed,
-      dateTime: dateTime ?? this.dateTime,
-      dateTimeUtc: dateTimeUtc ?? this.dateTimeUtc,
-      awayTeam: awayTeam ?? this.awayTeam,
-      awayTeamId: awayTeamId ?? this.awayTeamId,
-      homeTeam: homeTeam ?? this.homeTeam,
-      homeTeamId: homeTeamId ?? this.homeTeamId,
-      awayTeamScore: awayTeamScore ?? this.awayTeamScore,
-      homeTeamScore: homeTeamScore ?? this.homeTeamScore,
-      stadiumId: stadiumId ?? this.stadiumId,
-      refereeId: refereeId ?? this.refereeId,
-    );
-  }
 }
