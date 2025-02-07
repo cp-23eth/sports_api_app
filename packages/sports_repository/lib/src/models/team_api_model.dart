@@ -10,14 +10,49 @@ class TeamApiModel {
   });
 
   factory TeamApiModel.fromJson(Map<String, dynamic> json) {
+    final teamId = json['TeamID'];
+    if (teamId == null) {
+      throw ArgumentError('teamId is required');
+    }
+
+    final active = json['Active'];
+    if (active == null) {
+      throw ArgumentError('active is required');
+    }
+
+    final key = json['Key'];
+    if (key == null) {
+      throw ArgumentError('key is required');
+    }
+
+    final city = json['City'];
+    if (city == null) {
+      throw ArgumentError('city is required');
+    }
+
+    final name = json['Name'];
+    if (name == null) {
+      throw ArgumentError('name is required');
+    }
+
+    final headCoach = json['HeadCoach'];
+    if (headCoach == null) {
+      throw ArgumentError('headCoach is required');
+    }
+
+    final wikipediaLogoUrl = json['WikipediaLogoUrl'];
+    if (wikipediaLogoUrl == null) {
+      throw ArgumentError('wikipediaLogoUrl is required');
+    }
+
     return TeamApiModel(
-      teamId: json['teamId'],
-      active: json['active'],
-      key: json['key'],
-      city: json['city'],
-      name: json['name'],
-      headCoach: json['headCoach'],
-      wikipediaLogoUrl: json['wikipediaLogoUrl'],
+      teamId: teamId,
+      active: active,
+      key: key,
+      city: city,
+      name: name,
+      headCoach: headCoach,
+      wikipediaLogoUrl: wikipediaLogoUrl,
     );
   }
 
