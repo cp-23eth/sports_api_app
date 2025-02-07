@@ -25,7 +25,7 @@ class Player extends Equatable {
   final String position;
   final String firstName;
   final String lastName;
-  final DateTime birthDate;
+  final String birthDate;
   final String birthCity;
   final String birthCountry;
   final String height;

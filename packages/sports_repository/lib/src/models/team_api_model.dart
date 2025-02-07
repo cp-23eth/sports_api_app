@@ -11,13 +11,13 @@ class TeamApiModel {
 
   factory TeamApiModel.fromJson(Map<String, dynamic> json) {
     return TeamApiModel(
-      teamId: json['teamId'],
-      active: json['active'],
-      key: json['key'],
-      city: json['city'],
-      name: json['name'],
-      headCoach: json['headCoach'],
-      wikipediaLogoUrl: json['wikipediaLogoUrl'],
+      teamId: json['TeamID'],
+      active: json['Active'],
+      key: json['Key'],
+      city: json['City'],
+      name: json['Name'],
+      headCoach: json['HeadCoach'],
+      wikipediaLogoUrl: json['WikipediaLogoUrl'],
     );
   }
 

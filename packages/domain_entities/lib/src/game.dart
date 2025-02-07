@@ -22,8 +22,8 @@ class Game extends Equatable {
   final int season;
   final String status;
   final bool isClosed;
-  final DateTime dateTime;
-  final DateTime dateTimeUtc;
+  final String dateTime;
+  final String dateTimeUtc;
   final String awayTeam;
   final int awayTeamId;
   final String homeTeam;

@@ -17,19 +17,19 @@ class PlayerApiModel {
 
   factory PlayerApiModel.fromJson(Map<String, dynamic> json) {
     return PlayerApiModel(
-      playerId: json['playerId'],
-      status: json['status'],
-      teamId: json['teamId'],
-      team: json['team'],
-      jersey: json['jersey'],
-      position: json['position'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      birthDate: /*DateTime.parse(json['birthDate'])*/ json['birthDate'],
-      birthCity: json['birthCity'],
-      birthCountry: json['birthCountry'],
-      height: json['height'],
-      weight: json['weight'],
+      playerId: json['PlayerID'],
+      status: json['Status'],
+      teamId: json['TeamId'],
+      team: json['Team'],
+      jersey: json['Jersey'],
+      position: json['Position'],
+      firstName: json['FirstName'],
+      lastName: json['LastName'],
+      birthDate: /*DateTime.parse(json['birthDate'])*/ json['BirthDate'],
+      birthCity: json['BirthCity'],
+      birthCountry: json['BirthCountry'],
+      height: json['Height'],
+      weight: json['Weight'],
     );
   }
 
@@ -41,7 +41,7 @@ class PlayerApiModel {
   final String position;
   final String firstName;
   final String lastName;
-  final DateTime birthDate;
+  final String birthDate;
   final String birthCity;
   final String birthCountry;
   final String height;
