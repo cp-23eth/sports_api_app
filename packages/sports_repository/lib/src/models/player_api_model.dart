@@ -1,5 +1,5 @@
-class PlayerRemoteRtdbModel {
-  const PlayerRemoteRtdbModel({
+class PlayerApiModel {
+  const PlayerApiModel({
     required this.playerId,
     required this.status,
     required this.teamId,
@@ -15,8 +15,8 @@ class PlayerRemoteRtdbModel {
     required this.weight,
   });
 
-  factory PlayerRemoteRtdbModel.fromJson(Map<String, dynamic> json){
-    return PlayerRemoteRtdbModel(
+  factory PlayerApiModel.fromJson(Map<String, dynamic> json) {
+    return PlayerApiModel(
       playerId: json['playerId'],
       status: json['status'],
       teamId: json['teamId'],
