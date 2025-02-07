@@ -1,4 +1,4 @@
-// export 'src/equipes.dart';
+export 'src/team.dart';
 export 'src/game.dart';
-// export 'src/stadiums.dart';
-// export 'src/referees.dart';
+export 'src/stadium.dart';
+export 'src/player.dart';
