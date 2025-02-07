@@ -1,4 +1,4 @@
-export 'sports_storge.dart';
+export 'sports_storage.dart';
 
 export 'game_remote_storage.dart';
 export 'player_remote_storage.dart';
