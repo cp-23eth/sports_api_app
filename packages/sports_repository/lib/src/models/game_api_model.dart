@@ -10,10 +10,10 @@ class GameApiModel {
     required this.awayTeamId,
     required this.homeTeam,
     required this.homeTeamId,
-    this.awayTeamScore = 0,
-    this.homeTeamScore = 0,
-    this.stadiumId = 0,
-    this.refereeId = 0,
+    required this.awayTeamScore,
+    required this.homeTeamScore,
+    required this.stadiumId,
+    required this.refereeId,
   });
 
   factory GameApiModel.fromJson(Map<String, dynamic> json) {
@@ -98,10 +98,10 @@ class GameApiModel {
       awayTeamId: awayTeamId,
       homeTeam: homeTeam,
       homeTeamId: homeTeamId,
-      awayTeamScore: awayTeamScore,
-      homeTeamScore: homeTeamScore,
-      stadiumId: stadiumId,
-      refereeId: refereeId,
+      awayTeamScore: awayTeamScore == null ? 0 : awayTeamScore,
+      homeTeamScore: homeTeamScore == null ? 0 : homeTeamScore,
+      stadiumId: stadiumId == null ? 0 : stadiumId,
+      refereeId: refereeId == null ? 0 : refereeId,
     );
   }
 
