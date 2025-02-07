@@ -1,0 +1,15 @@
+Class Player
+
+	int playerId
+	bool status
+	int teamId
+	String team
+	int jersey
+	String position
+	String firstName
+	String lastName
+	DateTime birthDate
+	String birthCity
+	String birthCountry
+	double height
+	double weight
