@@ -1,0 +1,9 @@
+Class Team
+
+	int TeamId
+	bool active
+	String key 					(ex "WAS")
+	String city
+	String name
+	String headCoach
+	String wikipediaLogoUrl
