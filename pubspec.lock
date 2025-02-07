@@ -50,7 +50,7 @@ packages:
     source: hosted
     version: "1.19.0"
   component_library:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: "packages/component_library"
       relative: true
@@ -153,6 +153,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -186,7 +194,7 @@ packages:
     source: hosted
     version: "4.0.0"
   logger:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: logger
       sha256: be4b23575aac7ebf01f225a241eb7f6b5641eeaf43c6a8613510fc2f8cf187d1
@@ -335,14 +343,14 @@ packages:
     source: hosted
     version: "1.10.0"
   sports_list:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: "packages/features/sports_list"
       relative: true
     source: path
     version: "0.0.0"
   sports_repository:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: "packages/sports_repository"
       relative: true
