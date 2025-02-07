@@ -18,7 +18,7 @@ class Player extends Equatable {
   });
 
   final int playerId;
-  final bool status;
+  final String status;
   final int teamId;
   final String team;
   final int jersey;
@@ -28,8 +28,8 @@ class Player extends Equatable {
   final String birthDate;
   final String birthCity;
   final String birthCountry;
-  final String height;
-  final String weight;
+  final int height;
+  final int weight;
 
   @override
   List<Object?> get props => [
