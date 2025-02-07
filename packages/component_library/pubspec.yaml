@@ -17,3 +17,6 @@ dev_dependencies:
 
 # flutter:
 #   used-material-design: true
+
+assets:
+  - lib/src/assets/images/
