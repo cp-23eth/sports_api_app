@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Game game = Game(
-      dateTime: DateTime.parse('2024-10-22T19:30:00'),
+      dateTime: '2024-10-22T19:30:00',
       homeTeam: 'BOS',
       awayTeam: 'NY',
       homeTeamScore: 156,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       isClosed: true,
       awayTeamId: 1,
       homeTeamId: 2,
-      dateTimeUtc: DateTime.parse('2024-10-22T23:30:00'),
+      dateTimeUtc: '2024-10-22T23:30:00',
     );
     bool finish = false;
 

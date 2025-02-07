@@ -12,7 +12,7 @@ class CalenderMatchList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DateTime now = DateTime.now();
-    final DateTime gameDate = game.dateTime;
+    final DateTime gameDate = DateTime.parse(game.dateTime);
 
     final String formattedDate = DateFormat.yMd().format(gameDate);
     final String formattedHour = DateFormat.Hm().format(gameDate);
@@ -21,11 +21,11 @@ class CalenderMatchList extends StatelessWidget {
     Color containerColor;
 
     if (DateFormat.yMd().format(gameDate) == DateFormat.yMd().format(now)) {
-      containerColor = Color(0xFF9100B6);
+      containerColor = const Color(0xFF9100B6);
     } else if (gameDate.isAfter(now)) {
-      containerColor = Color(0xFFC8102E);
+      containerColor = const Color(0xFFC8102E);
     } else if (gameDate.isBefore(now)) {
-      containerColor = Color(0xFF1D428A);
+      containerColor = const Color(0xFF1D428A);
     } else {
       containerColor = const Color(0xFFC8102E); // Default color
     }
