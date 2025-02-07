@@ -7,13 +7,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  equatable: ^2.0.7
 
-  # component_library:
-  #   path: ../../component_library
-  # domain_entities:
-  #   path: ../../domain_entities
-  # manga_repository:
-  #   path: ../../manga_repository
+  component_library:
+    path: ../../component_library
+  domain_entities:
+    path: ../../domain_entities
+  sports_repository:
+    path: ../../sports_repository
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0
