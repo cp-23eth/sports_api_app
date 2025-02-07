@@ -1,0 +1,22 @@
+name: sports_list
+publish_to: none
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # component_library:
+  #   path: ../../component_library
+  # domain_entities:
+  #   path: ../../domain_entities
+  # manga_repository:
+  #   path: ../../manga_repository
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

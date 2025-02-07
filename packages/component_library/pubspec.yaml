@@ -1,0 +1,17 @@
+name: component_library
+publish_to: none
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # domain_entities:
+  #   path: ../domain_entities
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+# flutter:
+#   used-material-design: true
