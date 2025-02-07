@@ -7,8 +7,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # domain_entities:
-  #   path: ../domain_entities
+  domain_entities:
+    path: ../domain_entities
+  flutter_svg: ^2.0.17
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_lints: ^4.0.0
