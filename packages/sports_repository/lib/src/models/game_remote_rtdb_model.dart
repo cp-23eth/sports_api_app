@@ -1,5 +1,5 @@
-class MatchsRemoteRtdbModel {
-  const MatchsRemoteRtdbModel({
+class GameRemoteRtdbModel {
+  const GameRemoteRtdbModel({
     required this.gameId,
     required this.season,
     required this.status,
@@ -16,8 +16,8 @@ class MatchsRemoteRtdbModel {
     required this.refereeId,
   });
 
-  factory MatchsRemoteRtdbModel.fromJson(Map<String, dynamic> json){
-    return MatchsRemoteRtdbModel(
+  factory GameRemoteRtdbModel.fromJson(Map<String, dynamic> json){
+    return GameRemoteRtdbModel(
       gameId: json['gameId'],
       season: json['season'],
       status: json['status'],

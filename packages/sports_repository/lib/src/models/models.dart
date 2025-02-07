@@ -1,1 +1,1 @@
-export 'matchs_remote_rtdb_model.dart';
+export 'game_remote_rtdb_model.dart';
