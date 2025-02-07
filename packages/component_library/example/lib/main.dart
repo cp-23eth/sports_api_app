@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'Widget/List/Calender',
+      initialStory: 'Widget/Header',
       stories: [
         Story(
           name: 'Widget/List/Home',
@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
           name: 'Widget/List/Calender',
           builder: (context) => const CalenderMatchList(),
         ),
+        Story(
+          name: 'Widget/List/Team',
+          builder: (context) => const TeamList(),
+        ),
+        Story(name: 'Widget/Header', builder: (context) => const Header()),
       ],
     );
   }
