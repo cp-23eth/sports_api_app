@@ -1,5 +1,5 @@
-class TeamRemoteRtdbModel {
-  const TeamRemoteRtdbModel({
+class TeamApiModel {
+  const TeamApiModel({
     required this.teamId,
     required this.active,
     required this.key,
@@ -9,8 +9,8 @@ class TeamRemoteRtdbModel {
     required this.wikipediaLogoUrl,
   });
 
-  factory TeamRemoteRtdbModel.fromJson(Map<String, dynamic> json){
-    return TeamRemoteRtdbModel(
+  factory TeamApiModel.fromJson(Map<String, dynamic> json) {
+    return TeamApiModel(
       teamId: json['teamId'],
       active: json['active'],
       key: json['key'],

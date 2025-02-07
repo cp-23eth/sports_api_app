@@ -1,7 +1,7 @@
 import 'package:domain_entities/domain_entities.dart';
-import 'package:sports_repository/src/models/team_remote_rtdb_model.dart';
+import 'package:sports_repository/src/models/team_api_model.dart';
 
-extension TeamRemoteRtdbModelToDomain on TeamRemoteRtdbModel{
+extension TeamApiModelToDomain on TeamApiModel {
   Team toDomainEntity() {
     return Team(
       teamId: teamId,

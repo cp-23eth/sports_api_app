@@ -1,5 +1,5 @@
-class GameRemoteRtdbModel {
-  const GameRemoteRtdbModel({
+class GameApiModel {
+  const GameApiModel({
     required this.gameId,
     required this.season,
     required this.status,
@@ -16,8 +16,8 @@ class GameRemoteRtdbModel {
     required this.refereeId,
   });
 
-  factory GameRemoteRtdbModel.fromJson(Map<String, dynamic> json){
-    return GameRemoteRtdbModel(
+  factory GameApiModel.fromJson(Map<String, dynamic> json) {
+    return GameApiModel(
       gameId: json['gameId'],
       season: json['season'],
       status: json['status'],

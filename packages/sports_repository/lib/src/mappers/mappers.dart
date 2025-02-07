@@ -1,4 +1,4 @@
-export 'game_remote_rtdb_model_to_domain.dart';
-export 'player_remote_rtdb_model_to_domain.dart';
-export 'team_remote_rtdb_model_to_domain.dart';
-export 'stadium_remote_rtdb_model_to_domain.dart';
+export 'game_api_model_to_domain.dart';
+export 'player_api_model_to_domain.dart';
+export 'team_api_model_to_domain.dart';
+export 'stadium_api_model_to_domain.dart';

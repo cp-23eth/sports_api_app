@@ -1,5 +1,5 @@
-class StadiumRemoteRtdbModel {
-  const StadiumRemoteRtdbModel({
+class StadiumApiModel {
+  const StadiumApiModel({
     required this.stadiumId,
     required this.active,
     required this.name,
@@ -11,8 +11,8 @@ class StadiumRemoteRtdbModel {
     required this.capacity,
   });
 
-  factory StadiumRemoteRtdbModel.fromJson(Map<String, dynamic> json){
-    return StadiumRemoteRtdbModel(
+  factory StadiumApiModel.fromJson(Map<String, dynamic> json) {
+    return StadiumApiModel(
       stadiumId: json['stadiumId'],
       active: json['active'],
       name: json['name'],
