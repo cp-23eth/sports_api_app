@@ -16,20 +16,85 @@ class PlayerApiModel {
   });
 
   factory PlayerApiModel.fromJson(Map<String, dynamic> json) {
+    final playerId = json['PlayerID'];
+    if (playerId == null) {
+      throw ArgumentError('playerId is required');
+    }
+
+    final status = json['Status'];
+    if (status == null) {
+      throw ArgumentError('status is required');
+    }
+
+    final teamId = json['TeamId'];
+    if (teamId == null) {
+      throw ArgumentError('teamId is required');
+    }
+
+    final team = json['Team'];
+    if (team == null) {
+      throw ArgumentError('team is required');
+    }
+
+    final jersey = json['Jersey'];
+    if (jersey == null) {
+      throw ArgumentError('jersey is required');
+    }
+
+    final position = json['Position'];
+    if (position == null) {
+      throw ArgumentError('position is required');
+    }
+
+    final firstName = json['FirstName'];
+    if (firstName == null) {
+      throw ArgumentError('firstName is required');
+    }
+
+    final lastName = json['LastName'];
+    if (lastName == null) {
+      throw ArgumentError('lastName is required');
+    }
+
+    final birthDate = json['BirthDate'];
+    if (birthDate == null) {
+      throw ArgumentError('birthDate is required');
+    }
+
+    final birthCity = json['BirthCity'];
+    if (birthCity == null) {
+      throw ArgumentError('birthCity is required');
+    }
+
+    final birthCountry = json['BirthCountry'];
+    if (birthCountry == null) {
+      throw ArgumentError('birthCountry is required');
+    }
+
+    final height = json['Height'];
+    if (height == null) {
+      throw ArgumentError('height is required');
+    }
+
+    final weight = json['Weight'];
+    if (weight == null) {
+      throw ArgumentError('weight is required');
+    }
+
     return PlayerApiModel(
-      playerId: json['PlayerID'],
-      status: json['Status'],
-      teamId: json['TeamId'],
-      team: json['Team'],
-      jersey: json['Jersey'],
-      position: json['Position'],
-      firstName: json['FirstName'],
-      lastName: json['LastName'],
-      birthDate: /*DateTime.parse(json['birthDate'])*/ json['BirthDate'],
-      birthCity: json['BirthCity'],
-      birthCountry: json['BirthCountry'],
-      height: json['Height'],
-      weight: json['Weight'],
+      playerId: playerId,
+      status: status,
+      teamId: teamId,
+      team: team,
+      jersey: jersey,
+      position: position,
+      firstName: firstName,
+      lastName: lastName,
+      birthDate: birthDate,
+      birthCity: birthCity,
+      birthCountry: birthCountry,
+      height: height,
+      weight: weight,
     );
   }
 
