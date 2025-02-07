@@ -13,7 +13,7 @@ class SportsListProvider with ChangeNotifier {
 
   SportsListState get state => _state;
 
-  Future<void> fetchAndSetTomes() async {
+  Future<void> fetchAndSetSports() async {
     _state = _state.copyWith(status: SportsListStatus.loading);
     notifyListeners();
 
