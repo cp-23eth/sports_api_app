@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:sports_repository/sports_repository.dart';
 

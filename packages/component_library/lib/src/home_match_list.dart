@@ -1,18 +1,27 @@
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class HomeMatchList extends StatelessWidget {
-  const HomeMatchList({super.key});
+  const HomeMatchList({required this.finish, required this.game, super.key});
+
+  final bool finish;
+  final Game game;
 
   @override
   Widget build(BuildContext context) {
+    final DateTime dateTime = DateTime.parse('${game.dateTime}');
+    final String formattedHour = DateFormat.Hm().format(dateTime);
+    final String formattedDate = DateFormat.yMd().format(dateTime);
+
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
           Radius.circular(20.0),
         ),
-        color: Color(0xFFC8102E),
+        color: finish ? const Color(0xFFC8102E) : const Color(0xFF1D428A),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -32,7 +41,7 @@ class HomeMatchList extends StatelessWidget {
                       width: 58.0,
                     ),
                     Text(
-                      'Chicago Bulls',
+                      game.homeTeam,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13.0,
@@ -47,7 +56,7 @@ class HomeMatchList extends StatelessWidget {
                       height: 48.0,
                     ),
                     Text(
-                      '0 - 0',
+                      '${game.homeTeamScore} - ${game.awayTeamScore}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14.0,
@@ -59,7 +68,7 @@ class HomeMatchList extends StatelessWidget {
                       height: 8.0,
                     ),
                     Text(
-                      '18:00',
+                      formattedHour,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 10.0,
@@ -67,7 +76,7 @@ class HomeMatchList extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '22.02.2025',
+                      formattedDate,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 9.0,
@@ -84,7 +93,7 @@ class HomeMatchList extends StatelessWidget {
                       width: 58.0,
                     ),
                     Text(
-                      'Boston Celtics',
+                      game.awayTeam,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13.0,
