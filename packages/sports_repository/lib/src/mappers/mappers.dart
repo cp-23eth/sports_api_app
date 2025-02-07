@@ -1,0 +1,1 @@
+export 'matchs_remote_rtdb_model_to_domain.dart';
