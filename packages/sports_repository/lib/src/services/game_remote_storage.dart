@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:sports_repository/sports_repository.dart';
 
-class GameRemoteStorage implements SportsStorage {
+class GameRemoteStorage implements SportsGameStorage {
   static const url =
       "https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=baec8b74561642bb974d3b5bc0091f65";
 
@@ -27,7 +27,7 @@ class GameRemoteStorage implements SportsStorage {
     try {
       final parsedUrl = Uri.parse(url);
 
-      final response = await http.get(parsedUrl);
+      final response = await _client.get(parsedUrl);
       final statusCode = response.statusCode;
 
       if (statusCode != 200) {
