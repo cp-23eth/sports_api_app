@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Matchs extends Equatable {
-  const Matchs({
+class Game extends Equatable {
+  const Game({
     required this.gameId,
     required this.season,
     required this.status,
@@ -34,12 +34,27 @@ class Matchs extends Equatable {
   final int refereeId;
 
   @override
-  List<Object?> get props => [gameId, season, status, isClosed, dateTime, dateTimeUtc, awayTeam, awayTeamId, homeTeam, homeTeamId, awayTeamScore, homeTeamScore, stadiumId, refereeId];
-  
+  List<Object?> get props => [
+        gameId,
+        season,
+        status,
+        isClosed,
+        dateTime,
+        dateTimeUtc,
+        awayTeam,
+        awayTeamId,
+        homeTeam,
+        homeTeamId,
+        awayTeamScore,
+        homeTeamScore,
+        stadiumId,
+        refereeId
+      ];
+
   @override
   bool? get stringify => true;
 
-  Matchs copyWith({
+  Game copyWith({
     int? gameId,
     int? season,
     String? status,
@@ -55,7 +70,7 @@ class Matchs extends Equatable {
     int? stadiumId,
     int? refereeId,
   }) {
-    return Matchs(
+    return Game(
       gameId: gameId ?? this.gameId,
       season: season ?? this.season,
       status: status ?? this.status,
