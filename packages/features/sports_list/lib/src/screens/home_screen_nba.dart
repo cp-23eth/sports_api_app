@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:component_library/component_library.dart';
@@ -32,7 +33,7 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
   Widget _showSports() {
     final state = context.watch<SportsListProvider>().state;
     state.games.sort((a, b) =>
-        DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime)));
+        DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
 
     if (state.status == SportsListStatus.loading) {
       return const Center(child: CircularProgressIndicator());
@@ -127,13 +128,45 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 5,
                 ),
-                itemCount: 20,
+                itemCount: 6,
                 itemBuilder: (context, index) {
-                  return HomeMatchList(
-                    teams: state.teams,
-                    game: state.games[index],
-                    finish: state.games[index].status == 'Final' ? true : false,
-                  );
+                  final date = DateTime.now();
+                  final comingGames = state.games
+                      .where(
+                          (game) => DateTime.parse(game.dateTime).isAfter(date))
+                      .toList();
+                  final finishGames = state.games
+                      .where((game) =>
+                          DateTime.parse(game.dateTime).isBefore(date))
+                      .toList();
+                  comingGames.sort((a, b) => DateTime.parse(a.dateTime)
+                      .compareTo(DateTime.parse(b.dateTime)));
+
+                  if (index == 0) {
+                    return HomeMatchList(
+                      teams: state.teams,
+                      game: comingGames[2],
+                      finish: false,
+                    );
+                  } else if (index == 1) {
+                    return HomeMatchList(
+                      teams: state.teams,
+                      game: comingGames[1],
+                      finish: false,
+                    );
+                  } else if (index == 2) {
+                    return HomeMatchList(
+                      teams: state.teams,
+                      game: comingGames[0],
+                      finish: false,
+                    );
+                  } else if (index > 2 && index < 6) {
+                    return HomeMatchList(
+                      teams: state.teams,
+                      game: finishGames[index - 3],
+                      finish: true,
+                    );
+                  }
                 },
               ),
             ),
