@@ -6,6 +6,7 @@ class HomeScreenNba extends StatefulWidget {
   const HomeScreenNba({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenNbaState createState() => _HomeScreenNbaState();
 }
 
@@ -30,6 +31,8 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
 
   Widget _showSports() {
     final state = context.watch<SportsListProvider>().state;
+    state.games.sort((a, b) =>
+        DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime)));
 
     if (state.status == SportsListStatus.loading) {
       return const Center(child: CircularProgressIndicator());
@@ -46,20 +49,35 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
           splashFactory: NoSplash.splashFactory,
         ),
         child: BottomNavigationBar(
-          backgroundColor: const Color(0xFF0B132B),
+          backgroundColor: const Color(0xFF1C5D99),
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month),
+              icon: SizedBox(
+                height: 15,
+                child: Center(
+                  child: Icon(Icons.calendar_month),
+                ),
+              ),
               label: '',
               backgroundColor: Color(0xFF1C5D99),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: SizedBox(
+                height: 15,
+                child: Center(
+                  child: Icon(Icons.home),
+                ),
+              ),
               label: '',
               backgroundColor: Color(0xFF1C5D99),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.group),
+              icon: SizedBox(
+                height: 15,
+                child: Center(
+                  child: Icon(Icons.group),
+                ),
+              ),
               label: '',
               backgroundColor: Color(0xFF1C5D99),
             ),
@@ -83,37 +101,42 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
           mainAxisSize: MainAxisSize.max,
           children: [
             const Header(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SecondaryTitle(text: 'Demain'),
-                CalenderMatchList(game: state.games[1200]),
-                CalenderMatchList(game: state.games[1201]),
-                CalenderMatchList(game: state.games[1202]),
-                const SecondaryTitle(text: 'Aujourd\'hui'),
-                CalenderMatchList(game: state.games[821]),
-                const SecondaryTitle(text: 'Hier'),
-                CalenderMatchList(game: state.games[2]),
-              ],
-            )
+            Expanded(
+              child: ListView(
+                children: [
+                  const SecondaryTitle(text: 'Demain'),
+                  CalenderMatchList(game: state.games[1200]),
+                  CalenderMatchList(game: state.games[1201]),
+                  CalenderMatchList(game: state.games[1202]),
+                  const SecondaryTitle(text: 'Aujourd\'hui'),
+                  CalenderMatchList(game: state.games[821]),
+                  const SecondaryTitle(text: 'Hier'),
+                  CalenderMatchList(game: state.games[2]),
+                ],
+              ),
+            ),
           ],
         ),
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Header(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SecondaryTitle(text: 'Prochainement'),
-                HomeMatchList(finish: false, game: state.games[0]),
-                const SecondaryTitle(text: 'Résultat'),
-                HomeMatchList(finish: true, game: state.games[1]),
-              ],
-            )
+            Expanded(
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 5,
+                ),
+                itemCount: 20,
+                itemBuilder: (context, index) {
+                  return HomeMatchList(
+                    teams: state.teams,
+                    game: state.games[index],
+                    finish: state.games[index].status == 'Final' ? true : false,
+                  );
+                },
+              ),
+            ),
           ],
         ),
         const Text(
