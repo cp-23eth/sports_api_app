@@ -17,7 +17,6 @@ class CalenderMatchList extends StatelessWidget {
     final String formattedDate = DateFormat.yMd().format(gameDate);
     final String formattedHour = DateFormat.Hm().format(gameDate);
 
-    String dateLabel;
     Color containerColor;
 
     if (DateFormat.yMd().format(gameDate) == DateFormat.yMd().format(now)) {
@@ -60,21 +59,48 @@ class CalenderMatchList extends StatelessWidget {
                     fontFamily: GoogleFonts.poppins().fontFamily,
                   ),
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      formattedHour,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10.0,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
+                    ),
+                    Text(
+                      '${game.homeTeamScore} - ${game.awayTeamScore}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.0,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      formattedDate,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8.0,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
+                    ),
+                  ],
+                ),
                 Text(
-                  formattedDate,
+                  game.awayTeam,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 11.0,
                     fontFamily: GoogleFonts.poppins().fontFamily,
                   ),
                 ),
-                Text(
-                  formattedHour,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 11.0,
-                    fontFamily: GoogleFonts.poppins().fontFamily,
-                  ),
+                SvgPicture.network(
+                  'https://upload.wikimedia.org/wikipedia/en/8/8f/Boston_Celtics.svg',
+                  height: 25.0,
+                  width: 25.0,
                 ),
               ],
             ),

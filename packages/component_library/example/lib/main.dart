@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       finish = false;
     }
     return Storybook(
-      initialStory: 'Widget/Header',
+      initialStory: 'Widget/Element/Secondary Title',
       stories: [
         Story(
           name: 'Widget/List/Home',
@@ -52,7 +52,18 @@ class MyApp extends StatelessWidget {
           name: 'Widget/List/Team',
           builder: (context) => const TeamList(),
         ),
-        Story(name: 'Widget/Header', builder: (context) => const Header()),
+        Story(
+          name: 'Widget/Header',
+          builder: (context) => const Header(),
+        ),
+        Story(
+          name: 'Widget/Element/Secondary Title',
+          builder: (context) => const SecondaryTitle(text: 'Secondary Title'),
+        ),
+        Story(
+          name: 'Widget/Element/Primary Title',
+          builder: (context) => const PrimaryTitle(text: 'Primary Title'),
+        ),
       ],
     );
   }

@@ -1,6 +1,6 @@
 import 'package:component_library/component_library.dart';
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreenNba extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          // HomeMatchList(),
+          Header(),
         ],
       ),
     );
