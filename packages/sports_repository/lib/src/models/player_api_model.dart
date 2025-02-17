@@ -37,9 +37,7 @@ class PlayerApiModel {
     }
 
     var jersey = json['Jersey'];
-    if (jersey == null) {
-      jersey = 999;
-    }
+    jersey ??= 999;
 
     final position = json['Position'];
     if (position == null) {

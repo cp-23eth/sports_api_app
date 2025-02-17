@@ -68,24 +68,16 @@ class GameApiModel {
     }
 
     var awayTeamScore = json['AwayTeamScore'];
-    if (awayTeamScore == null) {
-      awayTeamScore = 0;
-    }
+    awayTeamScore ??= 0;
 
     var homeTeamScore = json['HomeTeamScore'];
-    if (homeTeamScore == null) {
-      homeTeamScore = 0;
-    }
+    homeTeamScore ??= 0;
 
     var stadiumId = json['StadiumID'];
-    if (stadiumId == null) {
-      stadiumId = 0;
-    }
+    stadiumId ??= 0;
 
     var refereeId = json['RefereeID'];
-    if (refereeId == null) {
-      refereeId = 0;
-    }
+    refereeId ??= 0;
 
     return GameApiModel(
       gameId: gameId,

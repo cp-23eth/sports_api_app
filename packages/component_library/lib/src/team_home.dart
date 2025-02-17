@@ -32,6 +32,5 @@ class TeamHome extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

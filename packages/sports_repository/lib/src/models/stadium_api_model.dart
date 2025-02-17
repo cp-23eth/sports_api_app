@@ -28,9 +28,7 @@ class StadiumApiModel {
     }
 
     var address = json['Address'];
-    if (address == null) {
-      address = "";
-    }
+    address ??= "";
 
     final city = json['City'];
     if (city == null) {
@@ -38,14 +36,10 @@ class StadiumApiModel {
     }
 
     var state = json['State'];
-    if (state == null) {
-      state = "";
-    }
+    state ??= "";
 
     var zip = json['Zip'];
-    if (zip == null) {
-      zip = "";
-    }
+    zip ??= "";
 
     final country = json['Country'];
     if (country == null) {
@@ -53,9 +47,7 @@ class StadiumApiModel {
     }
 
     var capacity = json['Capacity'];
-    if (capacity == null) {
-      capacity = 0;
-    }
+    capacity ??= 0;
 
     return StadiumApiModel(
       stadiumId: stadiumId,
