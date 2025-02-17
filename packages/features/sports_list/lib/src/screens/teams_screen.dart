@@ -16,6 +16,7 @@ class TeamsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final filteredPlayers = _filterPlayersByTeam(players, team);
     return Scaffold(
+      backgroundColor: const Color(0xFF0B132B),
       appBar: AppBar(
         title: const Text('Teams'),
         leading: IconButton(
@@ -29,7 +30,16 @@ class TeamsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          TeamHome(team: team),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TeamHome(team: team),
+              ],
+            ),
+          ),
+          const PrimaryTitle(text: 'Players'),
           Expanded(
             child: ListView.builder(
               itemCount: filteredPlayers.length,

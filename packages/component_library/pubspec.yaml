@@ -9,6 +9,8 @@ dependencies:
     sdk: flutter
   domain_entities:
     path: ../domain_entities
+  sports_list:
+    path: ../features/sports_list
   flutter_svg: ^2.0.17
   google_fonts: ^6.2.1
   intl: ^0.20.2

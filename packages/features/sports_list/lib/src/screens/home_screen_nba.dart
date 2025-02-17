@@ -1,33 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:component_library/component_library.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreenNba extends StatefulWidget {
   const HomeScreenNba({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenNbaState createState() => _HomeScreenNbaState();
 }
 
 class _HomeScreenNbaState extends State<HomeScreenNba> {
-  // Pour gérer l'état des sections ouvertes/fermées
-  Map<String, bool> sectionsVisibility = {
-    'EAST': false,
-    'WEST': false,
-    'Atlantic': false,
-    'Central': false,
-    'South East': false,
-    'North West': false,
-    'Pacific': false,
-    'South West': false,
-  };
-
-  void toggleSection(String section) {
-    setState(() {
-      sectionsVisibility[section] = !sectionsVisibility[section]!;
-    });
-  }
-
   int _selectedIndex = 1;
 
   @override
@@ -198,17 +182,15 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
           Expanded(
             child: ListView(
               children: [
-                const SizedBox(height: 10),
                 buildSection('EAST', [
-                  buildSubSection('Atlantic', 5, 9),
-                  buildSubSection('Central', 10, 14),
-                  buildSubSection('South East', 0, 4),
+                  buildSubSection('Atlantic', 5, 9, state),
+                  buildSubSection('Central', 10, 14, state),
+                  buildSubSection('South East', 0, 4, state),
                 ]),
-                const SizedBox(height: 40),
                 buildSection('WEST', [
-                  buildSubSection('North West', 15, 19),
-                  buildSubSection('Pacific', 25, 29),
-                  buildSubSection('South West', 20, 24),
+                  buildSubSection('North West', 15, 19, state),
+                  buildSubSection('Pacific', 25, 29, state),
+                  buildSubSection('South West', 20, 24, state),
                 ]),
               ],
             ),
@@ -219,50 +201,44 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
   }
 
   Widget buildSection(String title, List<Widget> subSections) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () => toggleSection(title),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
+    return ExpansionTile(
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+          fontFamily: GoogleFonts.poppins().fontFamily,
         ),
-        if (sectionsVisibility[title]!)
-          Column(
-            children: subSections,
-          ),
-      ],
+      ),
+      children: subSections,
     );
   }
 
-  Widget buildSubSection(String subTitle, int startIndex, int endIndex) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () => toggleSection(subTitle),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              subTitle,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+  Widget buildSubSection(
+      String subTitle, int startIndex, int endIndex, SportsListState state) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: ExpansionTile(
+        title: Text(
+          subTitle,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
-        if (sectionsVisibility[subTitle]!)
-          Column(
-            children: List.generate(endIndex - startIndex + 1, (index) {
-              return TeamList(
-                  team: context
-                      .read<SportsListProvider>()
-                      .state
-                      .teams[startIndex + index]);
-            }),
-          ),
-      ],
+        children: List.generate(endIndex - startIndex + 1, (index) {
+          return TeamList(
+            team: context
+                .read<SportsListProvider>()
+                .state
+                .teams[startIndex + index],
+            players: state.players,
+          );
+        }),
+      ),
     );
   }
 
