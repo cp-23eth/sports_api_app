@@ -8,14 +8,22 @@ class PrimaryTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: Colors.white,
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: GoogleFonts.poppins().fontFamily,
+              fontWeight: FontWeight.w700,
+              fontSize: 26,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

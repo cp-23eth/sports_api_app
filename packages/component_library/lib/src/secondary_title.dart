@@ -9,7 +9,7 @@ class SecondaryTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -18,7 +18,7 @@ class SecondaryTitle extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontFamily: GoogleFonts.poppins().fontFamily,
-              fontSize: 14.0,
+              fontSize: 18.0,
               fontWeight: FontWeight.w700,
             ),
           ),
