@@ -67,24 +67,24 @@ class GameApiModel {
       throw ArgumentError('homeTeamId is required');
     }
 
-    final awayTeamScore = json['AwayTeamScore'];
+    var awayTeamScore = json['AwayTeamScore'];
     if (awayTeamScore == null) {
-      throw ArgumentError('awayTeamScore is required');
+      awayTeamScore = 0;
     }
 
-    final homeTeamScore = json['HomeTeamScore'];
+    var homeTeamScore = json['HomeTeamScore'];
     if (homeTeamScore == null) {
-      throw ArgumentError('homeTeamScore is required');
+      homeTeamScore = 0;
     }
 
-    final stadiumId = json['StadiumID'];
+    var stadiumId = json['StadiumID'];
     if (stadiumId == null) {
-      throw ArgumentError('stadiumId is required');
+      stadiumId = 0;
     }
 
-    final refereeId = json['RefereeID'];
+    var refereeId = json['RefereeID'];
     if (refereeId == null) {
-      throw ArgumentError('refereeId is required');
+      refereeId = 0;
     }
 
     return GameApiModel(
@@ -98,10 +98,10 @@ class GameApiModel {
       awayTeamId: awayTeamId,
       homeTeam: homeTeam,
       homeTeamId: homeTeamId,
-      awayTeamScore: awayTeamScore == null ? 0 : awayTeamScore,
-      homeTeamScore: homeTeamScore == null ? 0 : homeTeamScore,
-      stadiumId: stadiumId == null ? 0 : stadiumId,
-      refereeId: refereeId == null ? 0 : refereeId,
+      awayTeamScore: awayTeamScore,
+      homeTeamScore: homeTeamScore,
+      stadiumId: stadiumId,
+      refereeId: refereeId,
     );
   }
 

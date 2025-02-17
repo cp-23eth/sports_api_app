@@ -26,7 +26,7 @@ class PlayerApiModel {
       throw ArgumentError('status is required');
     }
 
-    final teamId = json['TeamId'];
+    final teamId = json['TeamID'];
     if (teamId == null) {
       throw ArgumentError('teamId is required');
     }
@@ -36,9 +36,9 @@ class PlayerApiModel {
       throw ArgumentError('team is required');
     }
 
-    final jersey = json['Jersey'];
+    var jersey = json['Jersey'];
     if (jersey == null) {
-      throw ArgumentError('jersey is required');
+      jersey = 999;
     }
 
     final position = json['Position'];
@@ -99,7 +99,7 @@ class PlayerApiModel {
   }
 
   final int playerId;
-  final bool status;
+  final String status;
   final int teamId;
   final String team;
   final int jersey;
@@ -109,6 +109,6 @@ class PlayerApiModel {
   final String birthDate;
   final String birthCity;
   final String birthCountry;
-  final String height;
-  final String weight;
+  final int height;
+  final int weight;
 }

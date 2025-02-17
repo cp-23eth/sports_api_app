@@ -27,9 +27,9 @@ class StadiumApiModel {
       throw ArgumentError('name is required');
     }
 
-    final address = json['Address'];
+    var address = json['Address'];
     if (address == null) {
-      throw ArgumentError('address is required');
+      address = "";
     }
 
     final city = json['City'];
@@ -37,14 +37,14 @@ class StadiumApiModel {
       throw ArgumentError('city is required');
     }
 
-    final state = json['State'];
+    var state = json['State'];
     if (state == null) {
-      throw ArgumentError('state is required');
+      state = "";
     }
 
-    final zip = json['Zip'];
+    var zip = json['Zip'];
     if (zip == null) {
-      throw ArgumentError('zip is required');
+      zip = "";
     }
 
     final country = json['Country'];
@@ -52,9 +52,9 @@ class StadiumApiModel {
       throw ArgumentError('country is required');
     }
 
-    final capacity = json['Capacity'];
+    var capacity = json['Capacity'];
     if (capacity == null) {
-      throw ArgumentError('capacity is required');
+      capacity = 0;
     }
 
     return StadiumApiModel(
