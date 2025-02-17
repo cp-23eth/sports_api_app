@@ -265,7 +265,7 @@ void main() {
     ];
 
     test(
-        'SportsRepository getAllTeams retourne une liste de deux entités Team avec les bonnes valeurs',
+        'SportsRepository getAllTeams retoune une liste de deux entités Team avec les bonnes valeurs',
         () async {
       preparerMockPourRepondreAGetAvec200EtDeuxTeam();
       final result = await sportsRepository.getAllTeams();
