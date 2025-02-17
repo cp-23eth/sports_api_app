@@ -116,59 +116,55 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
                 CalenderMatchList(game: state.games[2]),
               ],
             ),
-          ),
+          )
         ],
       ),
       Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           const Header(),
           Expanded(
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 5,
-              ),
-              itemCount: 6,
-              itemBuilder: (context, index) {
-                final date = DateTime.now();
-                final comingGames = state.games
-                    .where(
-                        (game) => DateTime.parse(game.dateTime).isAfter(date))
-                    .toList();
-                final finishGames = state.games
-                    .where(
-                        (game) => DateTime.parse(game.dateTime).isBefore(date))
-                    .toList();
-                comingGames.sort((a, b) => DateTime.parse(a.dateTime)
-                    .compareTo(DateTime.parse(b.dateTime)));
-
-                if (index == 0) {
-                  return HomeMatchList(
-                    teams: state.teams,
-                    game: comingGames[2],
-                    finish: false,
-                  );
-                } else if (index == 1) {
-                  return HomeMatchList(
-                    teams: state.teams,
-                    game: comingGames[1],
-                    finish: false,
-                  );
-                } else if (index == 2) {
-                  return HomeMatchList(
-                    teams: state.teams,
-                    game: comingGames[0],
-                    finish: false,
-                  );
-                } else if (index > 2 && index < 6) {
-                  return HomeMatchList(
-                    teams: state.teams,
-                    game: finishGames[index - 3],
-                    finish: true,
-                  );
-                }
-              },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Prochainement',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 6),
+                HomeMatchList(
+                  teams: state.teams,
+                  game: state.games
+                      .where((game) =>
+                          DateTime.parse(game.dateTime).isAfter(DateTime.now()))
+                      .reduce((a, b) => DateTime.parse(a.dateTime)
+                              .isBefore(DateTime.parse(b.dateTime))
+                          ? a
+                          : b),
+                  finish: false,
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Résultat dernier match',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 6),
+                HomeMatchList(
+                  teams: state.teams,
+                  game: state.games
+                      .where((game) => DateTime.parse(game.dateTime)
+                          .isBefore(DateTime.now()))
+                      .first,
+                  finish: true,
+                ),
+              ],
             ),
           ),
         ],
