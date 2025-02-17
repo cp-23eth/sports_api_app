@@ -230,12 +230,15 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
           ),
         ),
         children: List.generate(endIndex - startIndex + 1, (index) {
-          return TeamList(
-            team: context
-                .read<SportsListProvider>()
-                .state
-                .teams[startIndex + index],
-            players: state.players,
+          return SizedBox(
+            height: 90,
+            child: TeamList(
+              team: context
+                  .read<SportsListProvider>()
+                  .state
+                  .teams[startIndex + index],
+              players: state.players,
+            ),
           );
         }),
       ),
