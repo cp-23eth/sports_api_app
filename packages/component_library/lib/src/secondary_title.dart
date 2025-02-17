@@ -8,14 +8,22 @@ class SecondaryTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: Colors.white,
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        fontSize: 14.0,
-        fontWeight: FontWeight.w700,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: GoogleFonts.poppins().fontFamily,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

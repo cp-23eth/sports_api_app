@@ -29,82 +29,85 @@ class CalenderMatchList extends StatelessWidget {
       containerColor = const Color(0xFFC8102E); // Default color
     }
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20.0),
+          ),
+          color: containerColor,
         ),
-        color: containerColor,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SvgPicture.network(
-                  'https://upload.wikimedia.org/wikipedia/en/6/67/Chicago_Bulls_logo.svg',
-                  height: 25.0,
-                  width: 25.0,
-                ),
-                Text(
-                  game.homeTeam,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 11.0,
-                    fontFamily: GoogleFonts.poppins().fontFamily,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SvgPicture.network(
+                    'https://upload.wikimedia.org/wikipedia/en/6/67/Chicago_Bulls_logo.svg',
+                    height: 25.0,
+                    width: 25.0,
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      formattedHour,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10.0,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                      ),
+                  Text(
+                    game.homeTeam,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 11.0,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
-                    Text(
-                      '${game.homeTeamScore} - ${game.awayTeamScore}',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.0,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      formattedDate,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8.0,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                      ),
-                    ),
-                  ],
-                ),
-                Text(
-                  game.awayTeam,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 11.0,
-                    fontFamily: GoogleFonts.poppins().fontFamily,
                   ),
-                ),
-                SvgPicture.network(
-                  'https://upload.wikimedia.org/wikipedia/en/8/8f/Boston_Celtics.svg',
-                  height: 25.0,
-                  width: 25.0,
-                ),
-              ],
-            ),
-          ],
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        formattedHour,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10.0,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
+                      Text(
+                        '${game.homeTeamScore} - ${game.awayTeamScore}',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.0,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        formattedDate,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 8.0,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    game.awayTeam,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 11.0,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                    ),
+                  ),
+                  SvgPicture.network(
+                    'https://upload.wikimedia.org/wikipedia/en/8/8f/Boston_Celtics.svg',
+                    height: 25.0,
+                    width: 25.0,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
