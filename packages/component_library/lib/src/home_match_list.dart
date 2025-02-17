@@ -41,7 +41,7 @@ class HomeMatchList extends StatelessWidget {
     final String formattedDate = DateFormat.yMd().format(dateTime);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(

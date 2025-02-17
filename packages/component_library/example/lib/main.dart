@@ -28,6 +28,30 @@ class MyApp extends StatelessWidget {
       homeTeamId: 2,
       dateTimeUtc: '2024-10-22T23:30:00',
     );
+
+    List<Team> teams = [
+      Team(
+        teamId: 1,
+        active: true,
+        key: 'WAS',
+        city: 'Washington',
+        name: 'Wizards',
+        headCoach: 'Brian Keefe',
+        wikipediaLogoUrl:
+            'https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg',
+      ),
+      Team(
+        teamId: 2,
+        active: true,
+        key: 'CHA',
+        city: 'Charlotte',
+        name: 'Hornets',
+        headCoach: 'Charles Lee',
+        wikipediaLogoUrl:
+            'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
+      ),
+    ];
+
     bool finish = false;
 
     if (game.status == 'Final') {
@@ -36,12 +60,16 @@ class MyApp extends StatelessWidget {
       finish = false;
     }
     return Storybook(
-      initialStory: 'Widget/Element/Secondary Title',
+      initialStory: 'Widget/List/Player',
       stories: [
-        // Story(
-        //   name: 'Widget/List/Home',
-        //   builder: (context) => HomeMatchList(game: game, finish: finish, ),
-        // ),
+        Story(
+          name: 'Widget/List/Home',
+          builder: (context) => HomeMatchList(
+            game: game,
+            finish: finish,
+            teams: teams,
+          ),
+        ),
         Story(
           name: 'Widget/List/Calender',
           builder: (context) => CalenderMatchList(
@@ -50,7 +78,18 @@ class MyApp extends StatelessWidget {
         ),
         Story(
           name: 'Widget/List/Team',
-          builder: (context) => const TeamList(),
+          builder: (context) => const TeamList(
+            team: Team(
+              teamId: 2,
+              active: true,
+              key: 'CHA',
+              city: 'Charlotte',
+              name: 'Hornets',
+              headCoach: 'Charles Lee',
+              wikipediaLogoUrl:
+                  'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
+            ),
+          ),
         ),
         Story(
           name: 'Widget/Header',
@@ -63,6 +102,25 @@ class MyApp extends StatelessWidget {
         Story(
           name: 'Widget/Element/Primary Title',
           builder: (context) => const PrimaryTitle(text: 'Primary Title'),
+        ),
+        Story(
+          name: 'Widget/List/Player',
+          builder: (context) => const PlayerList(
+              player: Player(
+            playerId: 1,
+            status: 'Active',
+            teamId: 1,
+            team: 'PHO',
+            jersey: 3,
+            position: 'SG',
+            firstName: 'Bradley',
+            lastName: 'Beal',
+            birthDate: '1993-06-28T00:00:00',
+            birthCity: 'St. Louis',
+            birthCountry: 'USA',
+            height: 76,
+            weight: 207,
+          )),
         ),
       ],
     );

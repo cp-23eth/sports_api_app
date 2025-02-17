@@ -1,10 +1,10 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TeamList extends StatelessWidget {
-  const TeamList({required this.team, super.key});
+class TeamHome extends StatelessWidget {
+  const TeamHome({required this.team, super.key});
 
   final Team team;
 
@@ -13,23 +13,25 @@ class TeamList extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.network(
-          team.wikipediaLogoUrl,
-          height: 84,
-          width: 84,
-        ),
-        const SizedBox(
-          width: 32,
-        ),
         Text(
           '${team.city} ${team.name}',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontFamily: GoogleFonts.poppins().fontFamily,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+        const SizedBox(
+          width: 32,
+        ),
+        SvgPicture.network(
+          team.wikipediaLogoUrl,
+          height: 90,
+          width: 90,
         ),
       ],
     );
+    ;
   }
 }
