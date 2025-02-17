@@ -8,3 +8,5 @@ export 'src/primary_title.dart';
 export 'src/secondary_title.dart';
 export 'src/team_list.dart';
 export 'src/team_home.dart';
+export 'src/player_info.dart';
+export 'src/player_title.dart';

@@ -35,6 +35,8 @@ dependencies:
     path: ..
   domain_entities:
     path: ../../domain_entities
+  sports_list:
+    path: ../../features/sports_list
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

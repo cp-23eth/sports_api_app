@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
       finish = false;
     }
     return Storybook(
-      initialStory: 'Widget/List/Player',
+      initialStory: 'Widget/Element/Player Information',
       stories: [
         Story(
           name: 'Widget/List/Home',
@@ -89,6 +89,23 @@ class MyApp extends StatelessWidget {
               wikipediaLogoUrl:
                   'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
             ),
+            players: [
+              Player(
+                playerId: 1,
+                status: 'Active',
+                teamId: 1,
+                team: 'PHO',
+                jersey: 3,
+                position: 'SG',
+                firstName: 'Bradley',
+                lastName: 'Beal',
+                birthDate: '1993-06-28T00:00:00',
+                birthCity: 'St. Louis',
+                birthCountry: 'USA',
+                height: 76,
+                weight: 207,
+              )
+            ],
           ),
         ),
         Story(
@@ -106,22 +123,44 @@ class MyApp extends StatelessWidget {
         Story(
           name: 'Widget/List/Player',
           builder: (context) => const PlayerList(
-              player: Player(
-            playerId: 1,
-            status: 'Active',
-            teamId: 1,
-            team: 'PHO',
-            jersey: 3,
-            position: 'SG',
-            firstName: 'Bradley',
-            lastName: 'Beal',
-            birthDate: '1993-06-28T00:00:00',
-            birthCity: 'St. Louis',
-            birthCountry: 'USA',
-            height: 76,
-            weight: 207,
-          )),
+            player: Player(
+              playerId: 1,
+              status: 'Active',
+              teamId: 1,
+              team: 'PHO',
+              jersey: 3,
+              position: 'SG',
+              firstName: 'Bradley',
+              lastName: 'Beal',
+              birthDate: '1993-06-28T00:00:00',
+              birthCity: 'St. Louis',
+              birthCountry: 'USA',
+              height: 76,
+              weight: 207,
+            ),
+          ),
         ),
+        Story(
+            name: 'Widget/Element/Player Information',
+            builder: (context) {
+              return PlayerInfo(
+                player: Player(
+                  playerId: 1,
+                  status: 'Active',
+                  teamId: 1,
+                  team: 'PHO',
+                  jersey: 3,
+                  position: 'SG',
+                  firstName: 'Bradley',
+                  lastName: 'Beal',
+                  birthDate: '1993-06-28T00:00:00',
+                  birthCity: 'St. Louis',
+                  birthCountry: 'USA',
+                  height: 76,
+                  weight: 207,
+                ),
+              );
+            }),
       ],
     );
   }

@@ -59,40 +59,45 @@ class HomeMatchList extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  FutureBuilder<String>(
-                    future: _fetchAndCleanSvg(
-                        teams[game.homeTeamId - 1].wikipediaLogoUrl),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
-                      }
-
-                      if (snapshot.hasError) {
-                        return const Text('Erreur de chargement SVG');
-                      }
-
-                      return SvgPicture.string(
-                        snapshot.data!,
-                        width: 58.0,
-                        fit: BoxFit.fitWidth,
-                      );
-                    },
-                  ),
                   Column(
                     children: [
-                      SizedBox(
-                        width: 100.0,
-                        child: Text(
-                          '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 13.0,
-                            fontFamily: GoogleFonts.poppins().fontFamily,
+                      FutureBuilder<String>(
+                        future: _fetchAndCleanSvg(
+                            teams[game.homeTeamId - 1].wikipediaLogoUrl),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const CircularProgressIndicator();
+                          }
+
+                          if (snapshot.hasError) {
+                            return const Text('Erreur de chargement SVG');
+                          }
+
+                          return SvgPicture.string(
+                            snapshot.data!,
+                            width: 58.0,
+                            fit: BoxFit.fitWidth,
+                          );
+                        },
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 100.0,
+                            child: Text(
+                              '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13.0,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                              ),
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        ],
                       ),
                     ],
                   ),
@@ -145,40 +150,45 @@ class HomeMatchList extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      SizedBox(
-                        width: 100.0,
-                        child: Text(
-                          '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 13.0,
-                            fontFamily: GoogleFonts.poppins().fontFamily,
+                      Column(
+                        children: [
+                          FutureBuilder<String>(
+                            future: _fetchAndCleanSvg(
+                                teams[game.awayTeamId - 1].wikipediaLogoUrl),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const CircularProgressIndicator();
+                              }
+
+                              if (snapshot.hasError) {
+                                return const Text('Erreur de chargement SVG');
+                              }
+
+                              return SvgPicture.string(
+                                snapshot.data!,
+                                width: 58.0,
+                                fit: BoxFit.fitWidth,
+                              );
+                            },
                           ),
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                          SizedBox(
+                            width: 100.0,
+                            child: Text(
+                              '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13.0,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                              ),
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
-                  FutureBuilder<String>(
-                    future: _fetchAndCleanSvg(
-                        teams[game.awayTeamId - 1].wikipediaLogoUrl),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
-                      }
-
-                      if (snapshot.hasError) {
-                        return const Text('Erreur de chargement SVG');
-                      }
-
-                      return SvgPicture.string(
-                        snapshot.data!,
-                        width: 58.0,
-                        fit: BoxFit.fitWidth,
-                      );
-                    },
                   ),
                 ],
               ),
