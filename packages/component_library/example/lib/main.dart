@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
       finish = false;
     }
     return Storybook(
-      initialStory: 'Widget/Element/Player Information',
+      initialStory: 'Widget/Element/Player Title',
       stories: [
         Story(
           name: 'Widget/List/Home',
@@ -141,26 +141,47 @@ class MyApp extends StatelessWidget {
           ),
         ),
         Story(
-            name: 'Widget/Element/Player Information',
-            builder: (context) {
-              return PlayerInfo(
-                player: Player(
-                  playerId: 1,
-                  status: 'Active',
-                  teamId: 1,
-                  team: 'PHO',
-                  jersey: 3,
-                  position: 'SG',
-                  firstName: 'Bradley',
-                  lastName: 'Beal',
-                  birthDate: '1993-06-28T00:00:00',
-                  birthCity: 'St. Louis',
-                  birthCountry: 'USA',
-                  height: 76,
-                  weight: 207,
-                ),
-              );
-            }),
+          name: 'Widget/Element/Player Information',
+          builder: (context) {
+            return PlayerInfo(
+              player: Player(
+                playerId: 1,
+                status: 'Active',
+                teamId: 1,
+                team: 'PHO',
+                jersey: 3,
+                position: 'SG',
+                firstName: 'Bradley',
+                lastName: 'Beal',
+                birthDate: '1993-06-28T00:00:00',
+                birthCity: 'St. Louis',
+                birthCountry: 'USA',
+                height: 76,
+                weight: 207,
+              ),
+            );
+          },
+        ),
+        Story(
+          name: 'Widget/Element/Player Title',
+          builder: (context) => const PlayerTitle(
+            player: Player(
+              playerId: 1,
+              status: 'Active',
+              teamId: 1,
+              team: 'PHO',
+              jersey: 3,
+              position: 'SG',
+              firstName: 'Bradley',
+              lastName: 'Beal',
+              birthDate: '1993-06-28T00:00:00',
+              birthCity: 'St. Louis',
+              birthCountry: 'USA',
+              height: 76,
+              weight: 207,
+            ),
+          ),
+        ),
       ],
     );
   }
