@@ -1,5 +1,6 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
@@ -10,6 +11,12 @@ class PlayerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String cleanFirstName(String firstName) {
+      firstName = firstName.replaceAll('-', '');
+      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: MouseRegion(
@@ -43,13 +50,22 @@ class PlayerList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ClipOval(
-                            child: Align(
-                              alignment: Alignment.topCenter,
+                            child: SizedBox(
+                              width: 60,
+                              height: 60,
                               child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${player.lastName}.jpg',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return SvgPicture.asset(
+                                    'packages/component_library/lib/src/assets/images/player_images/user.svg',
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  );
+                                },
                               ),
                             ),
                           ),

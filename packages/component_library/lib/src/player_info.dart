@@ -8,6 +8,8 @@ class PlayerInfo extends StatelessWidget {
 
   final Player player;
 
+  
+
   @override
   Widget build(BuildContext context) {
     final DateTime dateTime = DateTime.parse(player.birthDate);
