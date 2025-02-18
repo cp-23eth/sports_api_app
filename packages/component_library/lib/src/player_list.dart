@@ -47,12 +47,9 @@ class PlayerList extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: Image.asset(
                                 'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
-                                width:
-                                    60, // Taille de l'image, ajuste selon tes besoins
-                                height:
-                                    60, // Taille de l'image, ajuste selon tes besoins
-                                fit: BoxFit
-                                    .cover, // Couvre le cercle sans distorsion
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),

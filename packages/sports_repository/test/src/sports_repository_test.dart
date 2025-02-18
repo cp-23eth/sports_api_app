@@ -164,7 +164,7 @@ void main() {
   group('StadiumRemoteStorage', () {
     void preparerMockPourRepondreAGetAvec200EtDeuxStadium() {
       const response =
-          '[{"StadiumID":1,"Active":true,"Name":"Capital One Arena","Address":"601 F St. N.W.","City":"Washington","State":"DC","Zip":"20004","Country":"USA","Capacity":20290},{"StadiumID":2,"Active":true,"Name":"Spectrum Center","Address":"330 E. Trade St.","City":"Charlotte","State":"NC","Zip":"28202","Country":"USA","Capacity":19026}]';
+          '[{"StadiumID":1,"Active":true,"Name":"Capital One Arena","Address":"601 F St. N.W.","City":"Washington","State":"DC","Zip":"20004","Country":"USA","Capacity":20290,"GeoLat":38.898056,"GeoLong":-77.020833},{"StadiumID":2,"Active":true,"Name":"Spectrum Center","Address":"330 E. Trade St.","City":"Charlotte","State":"NC","Zip":"28202","Country":"USA","Capacity":19026,"GeoLat":35.225,"GeoLong":-80.839167}]';
 
       when(() => mockClient.get(Uri.parse(urlStadium)))
           .thenAnswer((_) async => http.Response(response, 200));
@@ -196,6 +196,8 @@ void main() {
         zip: '20004',
         country: 'USA',
         capacity: 20290,
+        latitude: 38.898056,
+        longitude: -77.020833,
       ),
       Stadium(
         stadiumId: 2,
@@ -207,6 +209,8 @@ void main() {
         zip: '28202',
         country: 'USA',
         capacity: 19026,
+        latitude: 35.225,
+        longitude: -80.839167,
       )
     ];
 
@@ -249,8 +253,7 @@ void main() {
         city: 'Washington',
         name: 'Wizards',
         headCoach: 'Brian Keefe',
-        logo:
-            'https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg',
+        logo: 'WAS.svg',
       ),
       Team(
         teamId: 2,
@@ -259,8 +262,7 @@ void main() {
         city: 'Charlotte',
         name: 'Hornets',
         headCoach: 'Charles Lee',
-        logo:
-            'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
+        logo: 'CHA.svg',
       )
     ];
 
