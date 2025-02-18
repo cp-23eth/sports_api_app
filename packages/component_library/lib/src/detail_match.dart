@@ -18,7 +18,9 @@ class DetailMatch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final gameDate = DateTime.parse(game.dateTimeUtc);
+    final gameDate = DateTime.parse(game.dateTimeUtc).add(
+      const Duration(hours: 1),
+    );
     final formattedDate = DateFormat('dd MMM yyyy').format(gameDate);
     final formattedHour = DateFormat('HH:mm').format(gameDate);
 
@@ -111,7 +113,7 @@ class DetailMatch extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Capacity ${stadiums[game.stadiumId - 1].capacity}',
+                      'Capacity : ${stadiums[game.stadiumId - 1].capacity}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,

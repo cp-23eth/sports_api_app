@@ -62,13 +62,21 @@ class MatchDetailScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1C5D99),
+                  ),
                   onPressed: () {
                     if (stadiums.isNotEmpty) {
                       final stadium = stadiums[game.stadiumId - 1];
                       openMap(stadium.latitude, stadium.longitude);
                     }
                   },
-                  child: const Text('View Stadium on Map'),
+                  child: const Text(
+                    'View Stadium on Map',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),

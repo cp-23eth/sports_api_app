@@ -19,9 +19,11 @@ class CalenderMatchList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DateTime now = DateTime.now();
-    final DateTime gameDate = DateTime.parse(game.dateTimeUtc);
+    final DateTime gameDate = DateTime.parse(game.dateTimeUtc).add(
+      const Duration(hours: 1),
+    );
 
-    final String formattedDate = DateFormat.yMd().format(gameDate);
+    final String formattedDate = DateFormat('dd MMM yyyy').format(gameDate);
     final String formattedHour = DateFormat.Hm().format(gameDate);
 
     Color containerColor;

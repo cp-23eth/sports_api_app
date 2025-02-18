@@ -20,9 +20,11 @@ class HomeMatchList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime dateTime = DateTime.parse(game.dateTime);
+    final DateTime dateTime = DateTime.parse(game.dateTimeUtc).add(
+      const Duration(hours: 1),
+    );
     final String formattedHour = DateFormat.Hm().format(dateTime);
-    final String formattedDate = DateFormat.yMd().format(dateTime);
+    final String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
