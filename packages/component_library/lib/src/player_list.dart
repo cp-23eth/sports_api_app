@@ -42,12 +42,21 @@ class PlayerList extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundImage: AssetImage(
-                              'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+                          ClipOval(
+                            child: Align(
+                              alignment: Alignment.topCenter,
+                              child: Image.asset(
+                                'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+                                width:
+                                    60, // Taille de l'image, ajuste selon tes besoins
+                                height:
+                                    60, // Taille de l'image, ajuste selon tes besoins
+                                fit: BoxFit
+                                    .cover, // Couvre le cercle sans distorsion
+                              ),
                             ),
                           ),
+                          const SizedBox(width: 10),
                           Text(
                             '${player.lastName} ',
                             style: TextStyle(

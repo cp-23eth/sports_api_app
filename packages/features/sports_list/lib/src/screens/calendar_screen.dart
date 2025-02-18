@@ -12,54 +12,49 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  late Future<void> _loadDataFuture;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadDataFuture = _loadData();
+    _loadData();
   }
 
   Future<void> _loadData() async {
-    // Simulate a delay for loading data
-    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<void>(
-      future: _loadDataFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return const Center(child: Text('Error loading data'));
-        } else {
-          final state = context.watch<SportsListProvider>().state;
-          final games = state.games.reversed.toList();
-          final today = DateTime.now();
+    final state = context.watch<SportsListProvider>().state;
+    final games = state.games.reversed.toList();
+    final today = DateTime.now();
 
-          final groupedGames = <String, List<Game>>{};
-          for (var game in games) {
-            final dateTime = DateTime.parse(game.dateTimeUtc);
-            final date = DateFormat('yyyy-MM-dd').format(dateTime);
-            if (!groupedGames.containsKey(date)) {
-              groupedGames[date] = [];
-            }
-            groupedGames[date]!.add(game);
-          }
+    // Group games by date
+    final groupedGames = <String, List<Game>>{};
+    for (var game in games) {
+      final dateTime = DateTime.parse(game.dateTimeUtc);
+      final date = DateFormat('yyyy-MM-dd').format(dateTime);
+      if (!groupedGames.containsKey(date)) {
+        groupedGames[date] = [];
+      }
+      groupedGames[date]!.add(game);
+    }
 
-          int initialScrollIndex = 0;
-          for (var i = 0; i < games.length; i++) {
-            final gameDateTime = DateTime.parse(games[i].dateTimeUtc);
-            if (gameDateTime.isAfter(today) ||
-                gameDateTime.isAtSameMomentAs(today)) {
-              initialScrollIndex = i;
-              break;
-            }
-          }
+    int initialScrollIndex = 0;
+    for (var i = 0; i < games.length; i++) {
+      final gameDateTime = DateTime.parse(games[i].dateTimeUtc);
+      if (gameDateTime.isAfter(today) || gameDateTime.isAtSameMomentAs(today)) {
+        initialScrollIndex = i;
+        break;
+      }
+    }
 
-          return Column(
+    return _isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Column(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -88,8 +83,5 @@ class _CalendarScreenState extends State<CalendarScreen> {
               )
             ],
           );
-        }
-      },
-    );
   }
 }
