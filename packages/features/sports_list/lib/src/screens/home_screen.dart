@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(
           child: ListView(
             children: [
+<<<<<<< HEAD
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -90,6 +91,46 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ],
+=======
+              const Text(
+                'Prochainement',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 6),
+              CarouselSlider(
+                items: nextGamesList,
+                options: CarouselOptions(
+                  height: 180,
+                  enableInfiniteScroll: false,
+                  viewportFraction: 0.8,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 6),
+                  enlargeCenterPage: true,
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Résultat dernier matchs',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 6),
+              CarouselSlider(
+                items: lastGamesList,
+                options: CarouselOptions(
+                  height: 180,
+                  enableInfiniteScroll: false,
+                  viewportFraction: 0.8,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 6),
+                  enlargeCenterPage: true,
+                ),
+>>>>>>> e9f17312849a6915ca9d7d024177949382de5f3c
               ),
             ],
           ),
