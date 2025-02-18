@@ -31,12 +31,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final List<Widget> nextGamesList = [
       for (var game in next8Games)
-        HomeMatchList(teams: state.teams, finish: false, game: game),
+        HomeMatchList(
+          teams: state.teams,
+          finish: false,
+          game: game,
+          stadiums: state.stadiums,
+        ),
     ];
 
     final List<Widget> lastGamesList = [
       for (var game in last8Games)
-        HomeMatchList(teams: state.teams, finish: true, game: game),
+        HomeMatchList(
+          teams: state.teams,
+          finish: true,
+          game: game,
+          stadiums: state.stadiums,
+        ),
     ];
 
     return Column(

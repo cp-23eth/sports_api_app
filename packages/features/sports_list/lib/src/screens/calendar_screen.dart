@@ -71,8 +71,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SecondaryTitle(text: formattedDate),
-                        ...gamesForDate.map((game) =>
-                            CalenderMatchList(teams: state.teams, game: game)),
+                        ...gamesForDate.map(
+                          (game) => CalenderMatchList(
+                            teams: state.teams,
+                            game: game,
+                            stadiums: state.stadiums,
+                          ),
+                        ),
                       ],
                     );
                   },
