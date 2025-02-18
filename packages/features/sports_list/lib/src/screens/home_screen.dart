@@ -14,19 +14,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<SportsListProvider>().state;
-   
-    final nextGames = state.games
-        .where((game) =>
-            game.status == "Scheduled")
-        .toList();
 
-    final lastGames = state.games
-        .where((game) =>
-            game.isClosed == true)
-        .toList();
+    final nextGames =
+        state.games.where((game) => game.status == "Scheduled").toList();
 
-    nextGames.sort((a, b) => DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime)));
-    lastGames.sort((a, b) => DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
+    final lastGames =
+        state.games.where((game) => game.isClosed == true).toList();
+
+    nextGames.sort((a, b) =>
+        DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime)));
+    lastGames.sort((a, b) =>
+        DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
 
     final next8Games = nextGames.take(8).toList();
     final last8Games = lastGames.take(8).toList();
@@ -47,44 +45,51 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         const Header(),
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
-              const Text(
-                'Prochainement',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 6),
-              CarouselSlider(items: nextGamesList, options: CarouselOptions(
-                  height: 180,
-                  enableInfiniteScroll: false,
-                  viewportFraction: 0.8,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 6),
-                  enlargeCenterPage: true,
-                ),),
-              const SizedBox(height: 20),
-              const Text(
-                'Résultat dernier match',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 6),
-              CarouselSlider(
-                items: lastGamesList,
-                options: CarouselOptions(
-                  height: 180,
-                  enableInfiniteScroll: false,
-                  viewportFraction: 0.8,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 6),
-                  enlargeCenterPage: true,
-                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Prochainement',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 6),
+                  CarouselSlider(
+                    items: nextGamesList,
+                    options: CarouselOptions(
+                      height: 180,
+                      enableInfiniteScroll: false,
+                      viewportFraction: 0.8,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 6),
+                      enlargeCenterPage: true,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Derniers matchs',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 6),
+                  CarouselSlider(
+                    items: lastGamesList,
+                    options: CarouselOptions(
+                      height: 180,
+                      enableInfiniteScroll: false,
+                      viewportFraction: 0.8,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 6),
+                      enlargeCenterPage: true,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

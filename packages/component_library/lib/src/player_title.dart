@@ -24,7 +24,7 @@ class PlayerTitle extends StatelessWidget {
         ),
         const SizedBox(width: 64),
         Text(
-          player.jersey.toString(),
+          _haveJersey(player) ? player.jersey.toString() : 'N/A',
           style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -33,5 +33,13 @@ class PlayerTitle extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  bool _haveJersey(Player player) {
+    if (player.jersey == 999) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

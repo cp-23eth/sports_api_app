@@ -96,9 +96,9 @@ class _MainNbaState extends State<MainNba> {
 
   List<Widget> _widgetOptions(SportsListState state) {
     return [
-      CalendarScreen(),
-      HomeScreen(),
-      HomeScreenTeams(),
+      const CalendarScreen(),
+      const HomeScreen(),
+      const HomeScreenTeams(),
     ];
   }
 
