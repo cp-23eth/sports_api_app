@@ -25,7 +25,7 @@ class TeamList extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 24.0),
+          padding: const EdgeInsets.only(left: 24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -38,7 +38,7 @@ class TeamList extends StatelessWidget {
                     fit: BoxFit.fitWidth,
                   ),
                   const SizedBox(
-                    width: 16,
+                    width: 20,
                   ),
                   Text(
                     '${team.city} ${team.name}',
