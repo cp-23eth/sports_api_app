@@ -10,7 +10,7 @@ extension TeamApiModelToDomain on TeamApiModel {
       city: city,
       name: name,
       headCoach: headCoach,
-      wikipediaLogoUrl: wikipediaLogoUrl,
+      logo: logo,
     );
   }
 }

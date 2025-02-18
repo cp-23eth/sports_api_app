@@ -8,7 +8,7 @@ class Team extends Equatable {
     required this.city,
     required this.name,
     required this.headCoach,
-    required this.wikipediaLogoUrl,
+    required this.logo,
   });
 
   final int teamId;
@@ -17,7 +17,7 @@ class Team extends Equatable {
   final String city;
   final String name;
   final String headCoach;
-  final String wikipediaLogoUrl;
+  final String logo;
 
   @override
   List<Object?> get props => [
@@ -27,7 +27,7 @@ class Team extends Equatable {
         city,
         name,
         headCoach,
-        wikipediaLogoUrl,
+        logo,
       ];
 
   @override

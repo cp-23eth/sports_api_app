@@ -249,7 +249,7 @@ void main() {
         city: 'Washington',
         name: 'Wizards',
         headCoach: 'Brian Keefe',
-        wikipediaLogoUrl:
+        logo:
             'https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg',
       ),
       Team(
@@ -259,7 +259,7 @@ void main() {
         city: 'Charlotte',
         name: 'Hornets',
         headCoach: 'Charles Lee',
-        wikipediaLogoUrl:
+        logo:
             'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
       )
     ];
