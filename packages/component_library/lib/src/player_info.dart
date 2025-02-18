@@ -15,17 +15,15 @@ class PlayerInfo extends StatelessWidget {
     final DateTime dateTime = DateTime.parse(player.birthDate);
     final String formattedDate = DateFormat.yMd().format(dateTime);
 
-    // Conversion du poids de lbs en kg
     final double weightInLbs = player.weight.toDouble();
     final double weightInKg = weightInLbs * 0.453592;
     final String convertedWeight =
-        weightInKg.toStringAsFixed(0); // Formater à 2 décimales
+        weightInKg.toStringAsFixed(0);
 
-    // Conversion de la taille de inches en cm
     final double heightInInches = player.height.toDouble();
     final double heightInCm = heightInInches * 2.54;
     final String convertedHeight =
-        heightInCm.toStringAsFixed(0); // Formater à 2 décimales
+        heightInCm.toStringAsFixed(0);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),

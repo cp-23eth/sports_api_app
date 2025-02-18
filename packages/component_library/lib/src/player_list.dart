@@ -11,9 +11,10 @@ class PlayerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     String cleanFirstName(String firstName) {
       firstName = firstName.replaceAll('-', '');
+      firstName = firstName.replaceAll(' ', '');
+      firstName = firstName.replaceAll('.', '');
       return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
     }
 
@@ -71,7 +72,7 @@ class PlayerList extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           Text(
-                            '${player.lastName} ',
+                            '${player.firstName} ',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -80,10 +81,11 @@ class PlayerList extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            player.firstName,
+                            player.lastName,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
+                              fontWeight: FontWeight.bold,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                             ),
                           ),

@@ -14,7 +14,7 @@ class PlayerTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         Text(
-          '${player.lastName} ${player.firstName}',
+          '${player.firstName} ${player.lastName}',
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
