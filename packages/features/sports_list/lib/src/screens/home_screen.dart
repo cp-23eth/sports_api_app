@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Header(),
+        const SizedBox(height: 20),
         Expanded(
           child: ListView(
             children: [
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Prochainement',
+                    'Shortly',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Derniers matchs',
+                    'Latest matches',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
