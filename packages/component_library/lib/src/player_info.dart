@@ -8,22 +8,18 @@ class PlayerInfo extends StatelessWidget {
 
   final Player player;
 
-  
-
   @override
   Widget build(BuildContext context) {
     final DateTime dateTime = DateTime.parse(player.birthDate);
-    final String formattedDate = DateFormat.yMd().format(dateTime);
+    final String formattedDate = DateFormat("dd MMM yyyy").format(dateTime);
 
     final double weightInLbs = player.weight.toDouble();
     final double weightInKg = weightInLbs * 0.453592;
-    final String convertedWeight =
-        weightInKg.toStringAsFixed(0);
+    final String convertedWeight = weightInKg.toStringAsFixed(0);
 
     final double heightInInches = player.height.toDouble();
     final double heightInCm = heightInInches * 2.54;
-    final String convertedHeight =
-        heightInCm.toStringAsFixed(0);
+    final String convertedHeight = heightInCm.toStringAsFixed(0);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
