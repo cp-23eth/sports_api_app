@@ -82,6 +82,7 @@ class MyApp extends StatelessWidget {
             game: game,
             finish: finish,
             teams: teams,
+            stadiums: stadiums,
           ),
         ),
         Story(
@@ -89,6 +90,7 @@ class MyApp extends StatelessWidget {
           builder: (context) => CalenderMatchList(
             game: game,
             teams: teams,
+            stadiums: stadiums,
           ),
         ),
         Story(
