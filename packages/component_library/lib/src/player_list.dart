@@ -42,6 +42,12 @@ class PlayerList extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage(
+                              'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+                            ),
+                          ),
                           Text(
                             '${player.lastName} ',
                             style: TextStyle(

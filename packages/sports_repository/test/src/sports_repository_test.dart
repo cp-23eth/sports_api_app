@@ -12,13 +12,13 @@ void main() {
   final mockClient = MockClient();
 
   const urlGame =
-      'https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=baec8b74561642bb974d3b5bc0091f65';
+      'https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=7c09cb2335c048bea967ed7b0e45f041';
   const urlPlayer =
-      'https://api.sportsdata.io/v3/nba/scores/json/PlayersActiveBasic?key=baec8b74561642bb974d3b5bc0091f65';
+      'https://api.sportsdata.io/v3/nba/scores/json/PlayersActiveBasic?key=7c09cb2335c048bea967ed7b0e45f041';
   const urlStadium =
-      'https://api.sportsdata.io/v3/nba/scores/json/Stadiums?key=baec8b74561642bb974d3b5bc0091f65';
+      'https://api.sportsdata.io/v3/nba/scores/json/Stadiums?key=7c09cb2335c048bea967ed7b0e45f041';
   const urlTeam =
-      'https://api.sportsdata.io/v3/nba/scores/json/teams/2025?key=baec8b74561642bb974d3b5bc0091f65';
+      'https://api.sportsdata.io/v3/nba/scores/json/teams/2025?key=7c09cb2335c048bea967ed7b0e45f041';
 
   setUp(() {
     sportsRepository = SportsRepository(

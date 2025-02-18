@@ -25,3 +25,4 @@ flutter:
 
   assets:
     - lib/src/assets/images/
+    - lib/src/assets/images/player_images/
