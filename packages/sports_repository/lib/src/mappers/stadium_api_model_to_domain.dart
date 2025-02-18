@@ -13,6 +13,8 @@ extension StadiumApiModelToDomain on StadiumApiModel {
       zip: zip,
       country: country,
       capacity: capacity,
+      latitude: latitude,
+      longitude: longitude,
     );
   }
 }
