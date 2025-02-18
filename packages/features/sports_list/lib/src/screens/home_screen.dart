@@ -1,8 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:component_library/component_library.dart';
-import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,15 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<SportsListProvider>().state;
-
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-    final yesterday = today.subtract(const Duration(days: 1));
-    final tomorrow = today.add(const Duration(days: 1));
    
     final nextGames = state.games
         .where((game) =>
-            game.isClosed == false)
+            game.status == "Scheduled")
         .toList();
 
     final lastGames = state.games
@@ -32,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
             game.isClosed == true)
         .toList();
 
-    nextGames.sort((a, b) => DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
+    nextGames.sort((a, b) => DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime)));
     lastGames.sort((a, b) => DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
 
     final next8Games = nextGames.take(8).toList();
