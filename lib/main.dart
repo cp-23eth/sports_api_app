@@ -42,7 +42,7 @@ class SportsApiApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SportsApiApp',
         routes: {
-          '/': (context) => const HomeScreenNba(),
+          '/': (context) => const MainNba(),
         },
       ),
     );

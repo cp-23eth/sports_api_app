@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:component_library/component_library.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/src/screens/home_screen.dart';
 
-class HomeScreenNba extends StatefulWidget {
-  const HomeScreenNba({super.key});
+class MainNba extends StatefulWidget {
+  const MainNba({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomeScreenNbaState createState() => _HomeScreenNbaState();
+  _MainNbaState createState() => _MainNbaState();
 }
 
-class _HomeScreenNbaState extends State<HomeScreenNba> {
+class _MainNbaState extends State<MainNba> {
   int _selectedIndex = 1;
 
-  @override
+  @override // Permet de charger du contenu
   void initState() {
     super.initState();
     if (context.read<SportsListProvider>().state.stadiums.isEmpty) {
@@ -98,101 +99,9 @@ class _HomeScreenNbaState extends State<HomeScreenNba> {
 
   List<Widget> _widgetOptions(SportsListState state) {
     return [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const Header(),
-          Expanded(
-            child: ListView(
-              children: [
-                const SecondaryTitle(text: 'Demain'),
-                CalenderMatchList(game: state.games[1200]),
-                CalenderMatchList(game: state.games[1201]),
-                CalenderMatchList(game: state.games[1202]),
-                const SecondaryTitle(text: 'Aujourd\'hui'),
-                CalenderMatchList(game: state.games[821]),
-                const SecondaryTitle(text: 'Hier'),
-                CalenderMatchList(game: state.games[2]),
-              ],
-            ),
-          )
-        ],
-      ),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Header(),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Prochainement',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 6),
-                HomeMatchList(
-                  teams: state.teams,
-                  game: state.games
-                      .where((game) =>
-                          DateTime.parse(game.dateTime).isAfter(DateTime.now()))
-                      .reduce((a, b) => DateTime.parse(a.dateTime)
-                              .isBefore(DateTime.parse(b.dateTime))
-                          ? a
-                          : b),
-                  finish: false,
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Résultat dernier match',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 6),
-                HomeMatchList(
-                  teams: state.teams,
-                  game: state.games
-                      .where((game) => DateTime.parse(game.dateTime)
-                          .isBefore(DateTime.now()))
-                      .first,
-                  finish: true,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const Header(),
-          Expanded(
-            child: ListView(
-              children: [
-                buildSection('EAST', [
-                  buildSubSection('Atlantic', 5, 9, state),
-                  buildSubSection('Central', 10, 14, state),
-                  buildSubSection('South East', 0, 4, state),
-                ]),
-                buildSection('WEST', [
-                  buildSubSection('North West', 15, 19, state),
-                  buildSubSection('Pacific', 25, 29, state),
-                  buildSubSection('South West', 20, 24, state),
-                ]),
-              ],
-            ),
-          ),
-        ],
-      ),
+      CalendarScreen(),
+      HomeScreen(),
+      HomeScreenTeams(),
     ];
   }
 
