@@ -8,6 +8,22 @@ class PlayerInfo extends StatelessWidget {
 
   final Player player;
 
+  // ClipOval(
+  //                           child: Container(
+  //                             width: 60,
+  //                             height: 60,
+  //                             decoration: BoxDecoration(
+  //                               image: DecorationImage(
+  //                                 alignment: Alignment.topCenter,
+  //                                 image: AssetImage(
+  //                                   'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+  //                                 ),
+  //                                 fit: BoxFit.cover,
+  //                               ),
+  //                             ),
+  //                           ),
+  //                         ),
+
   @override
   Widget build(BuildContext context) {
     final DateTime dateTime = DateTime.parse(player.birthDate);

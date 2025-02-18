@@ -37,8 +37,7 @@ class MyApp extends StatelessWidget {
         city: 'Washington',
         name: 'Wizards',
         headCoach: 'Brian Keefe',
-        logo:
-            'https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg',
+        logo: 'ATL.svg',
       ),
       Team(
         teamId: 2,
@@ -47,24 +46,24 @@ class MyApp extends StatelessWidget {
         city: 'Charlotte',
         name: 'Hornets',
         headCoach: 'Charles Lee',
-        logo:
-            'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
+        logo: 'BKN.svg',
       ),
     ];
 
     List<Stadium> stadiums = [
       Stadium(
-          stadiumId: 1,
-          active: true,
-          name: 'Capital One Arena',
-          address: '601 F St. N.W.',
-          city: 'Washington',
-          state: 'DC',
-          zip: '20004',
-          country: 'USA',
-          capacity: 20290, 
-          latitude: 25.0,
-          longitude: 25.0),
+        stadiumId: 1,
+        active: true,
+        name: 'Capital One Arena',
+        address: '601 F St. N.W.',
+        city: 'Washington',
+        state: 'DC',
+        zip: '20004',
+        country: 'USA',
+        capacity: 20290,
+        latitude: 38.898056,
+        longitude: -77.020833,
+      )
     ];
 
     bool finish = false;
@@ -75,7 +74,7 @@ class MyApp extends StatelessWidget {
       finish = false;
     }
     return Storybook(
-      initialStory: 'Widget/Element/Player Title',
+      initialStory: 'Widget/Element/Detail Match',
       stories: [
         Story(
           name: 'Widget/List/Home',
