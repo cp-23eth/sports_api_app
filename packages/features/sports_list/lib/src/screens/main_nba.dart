@@ -99,7 +99,6 @@ class _MainNbaState extends State<MainNba> {
       CalendarScreen(),
       HomeScreen(),
       HomeScreenTeams(),
-      // CarouselTest(),
     ];
   }
 

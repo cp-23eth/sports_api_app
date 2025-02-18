@@ -1,6 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:component_library/component_library.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +14,33 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<SportsListProvider>().state;
-    
+   
+    final nextGames = state.games
+        .where((game) =>
+            game.status == "Scheduled")
+        .toList();
+
+    final lastGames = state.games
+        .where((game) =>
+            game.isClosed == true)
+        .toList();
+
+    nextGames.sort((a, b) => DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime)));
+    lastGames.sort((a, b) => DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
+
+    final next8Games = nextGames.take(8).toList();
+    final last8Games = lastGames.take(8).toList();
+
+    final List<Widget> nextGamesList = [
+      for (var game in next8Games)
+        HomeMatchList(teams: state.teams, finish: false, game: game),
+    ];
+
+    final List<Widget> lastGamesList = [
+      for (var game in last8Games)
+        HomeMatchList(teams: state.teams, finish: true, game: game),
+    ];
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -32,17 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 6),
-              HomeMatchList(
-                teams: state.teams,
-                game: state.games
-                    .where((game) =>
-                        DateTime.parse(game.dateTime).isAfter(DateTime.now()))
-                    .reduce((a, b) => DateTime.parse(a.dateTime)
-                            .isBefore(DateTime.parse(b.dateTime))
-                        ? a
-                        : b),
-                finish: false,
-              ),
+              CarouselSlider(items: nextGamesList, options: CarouselOptions(
+                  height: 180,
+                  enableInfiniteScroll: false,
+                  viewportFraction: 0.8,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 6),
+                  enlargeCenterPage: true,
+                ),),
               const SizedBox(height: 20),
               const Text(
                 'Résultat dernier match',
@@ -52,13 +75,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 6),
-              HomeMatchList(
-                teams: state.teams,
-                game: state.games
-                    .where((game) =>
-                        DateTime.parse(game.dateTime).isBefore(DateTime.now()))
-                    .first,
-                finish: true,
+              CarouselSlider(
+                items: lastGamesList,
+                options: CarouselOptions(
+                  height: 180,
+                  enableInfiniteScroll: false,
+                  viewportFraction: 0.8,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 6),
+                  enlargeCenterPage: true,
+                ),
               ),
             ],
           ),
