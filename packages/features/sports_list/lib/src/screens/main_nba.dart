@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
-import 'package:component_library/component_library.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sports_list/src/screens/home_screen.dart';
 
 class MainNba extends StatefulWidget {
   const MainNba({super.key});
@@ -102,52 +99,8 @@ class _MainNbaState extends State<MainNba> {
       CalendarScreen(),
       HomeScreen(),
       HomeScreenTeams(),
+      // CarouselTest(),
     ];
-  }
-
-  Widget buildSection(String title, List<Widget> subSections) {
-    return ExpansionTile(
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-          fontFamily: GoogleFonts.poppins().fontFamily,
-        ),
-      ),
-      children: subSections,
-    );
-  }
-
-  Widget buildSubSection(
-      String subTitle, int startIndex, int endIndex, SportsListState state) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
-      child: ExpansionTile(
-        title: Text(
-          subTitle,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            fontFamily: GoogleFonts.poppins().fontFamily,
-          ),
-        ),
-        children: List.generate(endIndex - startIndex + 1, (index) {
-          return SizedBox(
-            height: 90,
-            child: TeamList(
-              team: context
-                  .read<SportsListProvider>()
-                  .state
-                  .teams[startIndex + index],
-              players: state.players,
-            ),
-          );
-        }),
-      ),
-    );
   }
 
   @override
