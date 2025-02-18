@@ -64,7 +64,9 @@ class PlayerList extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 16.0),
                         child: Text(
-                          '${player.jersey}',
+                          _haveJersey(player)
+                              ? player.jersey.toString()
+                              : 'N/A',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -82,5 +84,13 @@ class PlayerList extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool _haveJersey(Player player) {
+    if (player.jersey == 999) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
