@@ -62,7 +62,9 @@ class MyApp extends StatelessWidget {
           state: 'DC',
           zip: '20004',
           country: 'USA',
-          capacity: 20290)
+          capacity: 20290, 
+          latitude: 25.0,
+          longitude: 25.0),
     ];
 
     bool finish = false;
