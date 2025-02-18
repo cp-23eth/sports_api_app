@@ -9,6 +9,8 @@ class StadiumApiModel {
     required this.zip,
     required this.country,
     required this.capacity,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory StadiumApiModel.fromJson(Map<String, dynamic> json) {
@@ -49,6 +51,12 @@ class StadiumApiModel {
     var capacity = json['Capacity'];
     capacity ??= 0;
 
+    var latitude = json['GeoLat'];
+    latitude ??= 0.0;
+
+    var longitude = json['GeoLong'];
+    longitude ??= 0.0;
+
     return StadiumApiModel(
       stadiumId: stadiumId,
       active: active,
@@ -59,6 +67,8 @@ class StadiumApiModel {
       zip: zip,
       country: country,
       capacity: capacity,
+      latitude: latitude,
+      longitude: longitude,
     );
   }
 
@@ -71,4 +81,6 @@ class StadiumApiModel {
   final String zip;
   final String country;
   final int capacity;
+  final double latitude;
+  final double longitude;
 }

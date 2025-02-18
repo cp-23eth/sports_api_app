@@ -11,6 +11,8 @@ class Stadium extends Equatable {
     required this.zip,
     required this.country,
     required this.capacity,
+    required this.latitude,
+    required this.longitude,
   });
 
   final int stadiumId;
@@ -22,6 +24,8 @@ class Stadium extends Equatable {
   final String zip;
   final String country;
   final int capacity;
+  final double latitude;
+  final double longitude;
 
   @override
   List<Object?> get props => [
@@ -34,6 +38,8 @@ class Stadium extends Equatable {
         zip,
         country,
         capacity,
+        latitude,
+        longitude,
       ];
 
   @override
