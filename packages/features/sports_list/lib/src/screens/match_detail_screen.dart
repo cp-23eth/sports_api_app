@@ -1,7 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:sports_list/src/screens/google_map_screen.dart';
+import 'package:url_launcher/url_launcher.dart'; // Import nécessaire pour ouvrir les URL
 
 class MatchDetailScreen extends StatelessWidget {
   const MatchDetailScreen(
@@ -13,6 +13,18 @@ class MatchDetailScreen extends StatelessWidget {
   final Game game;
   final List<Team> teams;
   final List<Stadium> stadiums;
+
+  // Fonction pour ouvrir Google Maps avec les coordonnées du stade
+  void openMap(double latitude, double longitude) async {
+    final Uri googleMapsUrl =
+        Uri.parse('https://www.google.com/maps?q=$latitude,$longitude');
+
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchUrl(googleMapsUrl);
+    } else {
+      throw 'Could not launch $googleMapsUrl';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +63,10 @@ class MatchDetailScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GoogleMapScreen(
-                          stadium: stadiums[game.stadiumId - 1],
-                        ),
-                      ),
-                    );
+                    if (stadiums.isNotEmpty) {
+                      final stadium = stadiums[game.stadiumId - 1];
+                      openMap(stadium.latitude, stadium.longitude);
+                    }
                   },
                   child: const Text('View Stadium on Map'),
                 ),
