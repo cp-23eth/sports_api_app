@@ -52,6 +52,19 @@ class MyApp extends StatelessWidget {
       ),
     ];
 
+    List<Stadium> stadiums = [
+      Stadium(
+          stadiumId: 1,
+          active: true,
+          name: 'Capital One Arena',
+          address: '601 F St. N.W.',
+          city: 'Washington',
+          state: 'DC',
+          zip: '20004',
+          country: 'USA',
+          capacity: 20290)
+    ];
+
     bool finish = false;
 
     if (game.status == 'Final') {
@@ -183,6 +196,10 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        Story(
+            name: 'Widget/Element/Detail Match',
+            builder: (context) =>
+                DetailMatch(game: game, teams: teams, stadiums: stadiums))
       ],
     );
   }

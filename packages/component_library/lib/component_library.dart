@@ -10,3 +10,4 @@ export 'src/team_list.dart';
 export 'src/team_home.dart';
 export 'src/player_info.dart';
 export 'src/player_title.dart';
+export 'src/detail_match.dart';
