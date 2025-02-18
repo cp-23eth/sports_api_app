@@ -20,30 +20,26 @@ class PlayerTitle extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CircleAvatar(
-          child: ClipOval(
-            child: SizedBox(
-              width: 180,
-              height: 180,
-              child: Image.asset(
-                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${player.lastName}.jpg',
-                width: 180,
-                height: 180,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter,
-                errorBuilder: (context, error, stackTrace) {
-                  return SvgPicture.asset(
-                    'packages/component_library/lib/src/assets/images/player_images/user.svg',
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                  );
-                },
-              ),
+        ClipOval(
+          child: SizedBox(
+            width: 180,
+            height: 180,
+            child: Image.asset(
+              'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${player.lastName}.jpg',
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
+              errorBuilder: (context, error, stackTrace) {
+                return SvgPicture.asset(
+                  'packages/component_library/lib/src/assets/images/player_images/user.svg',
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                );
+              },
             ),
           ),
         ),
-        SizedBox(
-          height: 20,
+        const SizedBox(
+          height: 40,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,17 +49,17 @@ class PlayerTitle extends StatelessWidget {
               '${player.firstName} ${player.lastName}',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 30,
                 fontFamily: GoogleFonts.poppins().fontFamily,
                 fontWeight: FontWeight.w900,
               ),
             ),
-            const SizedBox(width: 64),
+            const SizedBox(width: 40),
             Text(
               _haveJersey(player) ? player.jersey.toString() : 'N/A',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 30,
                   fontFamily: GoogleFonts.poppins().fontFamily,
                   fontWeight: FontWeight.w900),
             ),
