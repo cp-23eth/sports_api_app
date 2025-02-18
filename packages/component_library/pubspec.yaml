@@ -23,4 +23,6 @@ flutter:
 #   used-material-design: true
 
   assets:
+    - lib/src/assets/images/png/
+    - lib/src/assets/images/svg/
     - lib/src/assets/images/

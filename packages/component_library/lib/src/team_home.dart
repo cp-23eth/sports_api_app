@@ -25,10 +25,10 @@ class TeamHome extends StatelessWidget {
         const SizedBox(
           width: 32,
         ),
-        SvgPicture.network(
-          team.wikipediaLogoUrl,
-          height: 90,
-          width: 90,
+        SvgPicture.asset(
+          'packages/component_library/lib/src/assets/images/svg/${team.logo}',
+          width: 58.0,
+          fit: BoxFit.fitWidth,
         ),
       ],
     );

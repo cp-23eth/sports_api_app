@@ -6,7 +6,7 @@ class TeamApiModel {
     required this.city,
     required this.name,
     required this.headCoach,
-    required this.wikipediaLogoUrl,
+    required this.logo,
   });
 
   factory TeamApiModel.fromJson(Map<String, dynamic> json) {
@@ -40,10 +40,12 @@ class TeamApiModel {
       throw ArgumentError('headCoach is required');
     }
 
-    final wikipediaLogoUrl = json['WikipediaLogoUrl'];
-    if (wikipediaLogoUrl == null) {
-      throw ArgumentError('wikipediaLogoUrl is required');
-    }
+    // final wikipediaLogoUrl = json['WikipediaLogoUrl'];
+    // if (wikipediaLogoUrl == null) {
+    //   throw ArgumentError('wikipediaLogoUrl is required');
+    // }
+
+    final logo = key + '.png';
 
     return TeamApiModel(
       teamId: teamId,
@@ -52,7 +54,7 @@ class TeamApiModel {
       city: city,
       name: name,
       headCoach: headCoach,
-      wikipediaLogoUrl: wikipediaLogoUrl,
+      logo: logo,
     );
   }
 
@@ -62,5 +64,5 @@ class TeamApiModel {
   final String city;
   final String name;
   final String headCoach;
-  final String wikipediaLogoUrl;
+  final String logo;
 }

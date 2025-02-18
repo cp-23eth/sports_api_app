@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         city: 'Washington',
         name: 'Wizards',
         headCoach: 'Brian Keefe',
-        wikipediaLogoUrl:
+        logo:
             'https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg',
       ),
       Team(
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         city: 'Charlotte',
         name: 'Hornets',
         headCoach: 'Charles Lee',
-        wikipediaLogoUrl:
+        logo:
             'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
       ),
     ];
@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
               city: 'Charlotte',
               name: 'Hornets',
               headCoach: 'Charles Lee',
-              wikipediaLogoUrl:
+              logo:
                   'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
             ),
             players: [
