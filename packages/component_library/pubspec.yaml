@@ -24,7 +24,6 @@ flutter:
 #   used-material-design: true
 
   assets:
-    - lib/src/assets/images/png/
     - lib/src/assets/images/svg/
     - lib/src/assets/images/
     - lib/src/assets/images/player_images/

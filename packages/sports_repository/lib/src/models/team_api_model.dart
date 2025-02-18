@@ -45,7 +45,7 @@ class TeamApiModel {
     //   throw ArgumentError('wikipediaLogoUrl is required');
     // }
 
-    final logo = key + '.png';
+    final logo = key + '.svg';
 
     return TeamApiModel(
       teamId: teamId,
