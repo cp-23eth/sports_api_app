@@ -43,13 +43,17 @@ class PlayerList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ClipOval(
-                            child: Align(
-                              alignment: Alignment.topCenter,
-                              child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
-                                width: 60,
-                                height: 60,
-                                fit: BoxFit.cover,
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  alignment: Alignment.topCenter,
+                                  image: AssetImage(
+                                    'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
