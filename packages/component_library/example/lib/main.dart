@@ -74,6 +74,7 @@ class MyApp extends StatelessWidget {
           name: 'Widget/List/Calender',
           builder: (context) => CalenderMatchList(
             game: game,
+            teams: teams,
           ),
         ),
         Story(
