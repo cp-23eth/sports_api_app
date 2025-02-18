@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import nécessaire pour ouvrir les URL
 
 class MatchDetailScreen extends StatelessWidget {
-  const MatchDetailScreen(
-      {required this.game,
-      required this.teams,
-      required this.stadiums,
-      super.key});
+  const MatchDetailScreen({
+    required this.game,
+    required this.teams,
+    required this.stadiums,
+    super.key,
+  });
 
   final Game game;
   final List<Team> teams;
