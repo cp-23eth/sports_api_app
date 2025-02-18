@@ -10,6 +10,12 @@ class PlayerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String cleanFirstName(String firstName) {
+      firstName = firstName.replaceAll('-', '');
+      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: MouseRegion(
@@ -46,7 +52,7 @@ class PlayerList extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.topCenter,
                               child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
+                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${player.lastName}.jpg',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
