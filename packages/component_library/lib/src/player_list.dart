@@ -50,6 +50,14 @@ class PlayerList extends StatelessWidget {
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.asset(
+                                    'packages/component_library/lib/src/assets/images/player_images/user.jpg',
+                                    width: 60,
+                                    height: 60,
+                                    fit: BoxFit.cover,
+                                  );
+                                },
                               ),
                             ),
                           ),
