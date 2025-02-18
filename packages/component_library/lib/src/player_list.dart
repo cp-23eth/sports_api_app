@@ -1,5 +1,6 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
@@ -43,19 +44,18 @@ class PlayerList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ClipOval(
-                            child: Align(
-                              alignment: Alignment.topCenter,
+                            child: SizedBox(
+                              width: 60,
+                              height: 60,
                               child: Image.asset(
                                 'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg',
-                                width: 60,
-                                height: 60,
                                 fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
                                 errorBuilder: (context, error, stackTrace) {
-                                  return Image.asset(
-                                    'packages/component_library/lib/src/assets/images/player_images/user.jpg',
-                                    width: 60,
-                                    height: 60,
+                                  return SvgPicture.asset(
+                                    'packages/component_library/lib/src/assets/images/player_images/user.svg',
                                     fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
                                   );
                                 },
                               ),
