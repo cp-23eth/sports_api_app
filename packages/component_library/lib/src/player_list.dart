@@ -18,6 +18,13 @@ class PlayerList extends StatelessWidget {
       return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
     }
 
+    String cleanLastName(String firstName) {
+      firstName = firstName.replaceAll('-', '');
+      firstName = firstName.replaceAll(' ', '');
+      firstName = firstName.replaceAll('.', '');
+      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: MouseRegion(
@@ -55,7 +62,7 @@ class PlayerList extends StatelessWidget {
                               width: 60,
                               height: 60,
                               child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${player.lastName}.jpg',
+                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${cleanLastName(player.lastName)}.jpg',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,

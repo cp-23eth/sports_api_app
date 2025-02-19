@@ -15,7 +15,7 @@ class _MainNbaState extends State<MainNba> {
   @override // Permet de charger du contenu
   void initState() {
     super.initState();
-    if (context.read<SportsListProvider>().state.stadiums.isEmpty) {
+    if (context.read<SportsListProvider>().state.teams.isEmpty || context.read<SportsListProvider>().state.games.isEmpty || context.read<SportsListProvider>().state.players.isEmpty || context.read<SportsListProvider>().state.stadiums.isEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         context.read<SportsListProvider>().fetchAndSetSports();
       });

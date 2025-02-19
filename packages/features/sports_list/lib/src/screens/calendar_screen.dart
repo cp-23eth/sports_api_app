@@ -12,7 +12,7 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  bool _isLoading = true;
+  // bool _isLoading = true;
 
   @override
   void initState() {
@@ -21,9 +21,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   Future<void> _loadData() async {
-    setState(() {
-      _isLoading = false;
-    });
+    if (context.read<SportsListProvider>().state.games.isEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) {
+          context.read<SportsListProvider>().fetchAndSetSports();
+        },
+      );
+    }
   }
 
   @override
@@ -52,7 +56,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       }
     }
 
-    return _isLoading
+    return state.status == SportsListStatus.loading
         ? const Center(child: CircularProgressIndicator())
         : Column(
             mainAxisAlignment: MainAxisAlignment.start,
