@@ -17,6 +17,13 @@ class PlayerTitle extends StatelessWidget {
       return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
     }
 
+    String cleanLastName(String firstName) {
+      firstName = firstName.replaceAll('-', '');
+      firstName = firstName.replaceAll(' ', '');
+      firstName = firstName.replaceAll('.', '');
+      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -25,7 +32,7 @@ class PlayerTitle extends StatelessWidget {
             width: 180,
             height: 180,
             child: Image.asset(
-              'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${player.lastName}.jpg',
+              'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${cleanLastName(player.lastName)}.jpg',
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               errorBuilder: (context, error, stackTrace) {
