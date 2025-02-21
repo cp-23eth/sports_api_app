@@ -35,10 +35,25 @@ class DetailMatch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
-                width: 87,
-                fit: BoxFit.fitWidth,
+              Column(
+                children: [
+                  SvgPicture.asset(
+                    'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
+                    height: 87,
+                    fit: BoxFit.fitHeight,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    teams[game.homeTeamId - 1].name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                    ),
+                  ),
+                ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +62,7 @@ class DetailMatch extends StatelessWidget {
                 children: [
                   const SizedBox(height: 30),
                   const PrimaryTitle(text: 'VS'),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 50),
                   SecondaryTitle(
                       text: '${game.homeTeamScore} - ${game.awayTeamScore}'),
                   const SizedBox(height: 20),
@@ -70,10 +85,25 @@ class DetailMatch extends StatelessWidget {
                   ),
                 ],
               ),
-              SvgPicture.asset(
-                'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
-                width: 87,
-                fit: BoxFit.fitWidth,
+              Column(
+                children: [
+                  SvgPicture.asset(
+                    'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
+                    height: 87,
+                    fit: BoxFit.fitHeight,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    teams[game.awayTeamId - 1].name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

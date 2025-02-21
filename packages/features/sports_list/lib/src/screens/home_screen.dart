@@ -54,12 +54,11 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Header(),
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
         Expanded(
           child: ListView(
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Coming matches',
