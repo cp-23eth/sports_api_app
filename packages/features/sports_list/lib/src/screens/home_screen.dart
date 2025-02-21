@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Shortly',
+                    'Coming matches',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,

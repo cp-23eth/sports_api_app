@@ -15,7 +15,10 @@ class _MainNbaState extends State<MainNba> {
   @override // Permet de charger du contenu
   void initState() {
     super.initState();
-    if (context.read<SportsListProvider>().state.teams.isEmpty || context.read<SportsListProvider>().state.games.isEmpty || context.read<SportsListProvider>().state.players.isEmpty || context.read<SportsListProvider>().state.stadiums.isEmpty) {
+    if (context.read<SportsListProvider>().state.teams.isEmpty ||
+        context.read<SportsListProvider>().state.games.isEmpty ||
+        context.read<SportsListProvider>().state.players.isEmpty ||
+        context.read<SportsListProvider>().state.stadiums.isEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         context.read<SportsListProvider>().fetchAndSetSports();
       });
@@ -96,7 +99,11 @@ class _MainNbaState extends State<MainNba> {
 
   List<Widget> _widgetOptions(SportsListState state) {
     return [
-      const CalendarScreen(),
+      CalendarScreen(
+        stateTeams: state.teams,
+        stateStadiums: state.stadiums,
+        stateGames: state.games,
+      ),
       const HomeScreen(),
       const HomeScreenTeams(),
     ];

@@ -62,11 +62,11 @@ class HomeMatchList extends StatelessWidget {
                         children: [
                           SvgPicture.asset(
                             'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
-                            width: 58.0,
-                            fit: BoxFit.fitWidth,
+                            width: 45.0,
+                            fit: BoxFit.fitHeight,
                           ),
                           SizedBox(
-                            width: 100.0,
+                            width: 85.0,
                             child: Text(
                               '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
                               style: TextStyle(
@@ -82,7 +82,7 @@ class HomeMatchList extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        width: 100.0,
+                        width: 75.0,
                         child: Column(
                           children: [
                             Text(
@@ -129,11 +129,11 @@ class HomeMatchList extends StatelessWidget {
                         children: [
                           SvgPicture.asset(
                             'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
-                            width: 58.0,
-                            fit: BoxFit.fitWidth,
+                            width: 45.0,
+                            fit: BoxFit.fitHeight,
                           ),
                           SizedBox(
-                            width: 100.0,
+                            width: 85.0,
                             child: Text(
                               '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
                               style: TextStyle(
