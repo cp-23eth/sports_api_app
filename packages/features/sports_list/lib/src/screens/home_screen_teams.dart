@@ -26,6 +26,7 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
+        initiallyExpanded: true,
         children: subSections,
       );
     }
