@@ -35,10 +35,19 @@ class DetailMatch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
-                width: 87,
-                fit: BoxFit.fitWidth,
+              Column(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
+                        width: 87,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ],
+                  ),
+                ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,10 +79,15 @@ class DetailMatch extends StatelessWidget {
                   ),
                 ],
               ),
-              SvgPicture.asset(
-                'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
-                width: 87,
-                fit: BoxFit.fitWidth,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
+                    width: 87,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ],
               ),
             ],
           ),
