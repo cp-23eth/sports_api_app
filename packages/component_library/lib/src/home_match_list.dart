@@ -61,7 +61,7 @@ class HomeMatchList extends StatelessWidget {
                       Column(
                         children: [
                           SvgPicture.asset(
-                            'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
+                            'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].city == 'Houston' && game.isClosed == false ? 'Hou-noir.svg' : teams[game.homeTeamId - 1].logo}',
                             width: 45.0,
                             fit: BoxFit.fitHeight,
                           ),
@@ -128,7 +128,7 @@ class HomeMatchList extends StatelessWidget {
                       Column(
                         children: [
                           SvgPicture.asset(
-                            'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
+                            'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].city == 'Houston' && game.isClosed == false ? 'Hou-noir.svg' : teams[game.awayTeamId - 1].logo}',
                             width: 45.0,
                             fit: BoxFit.fitHeight,
                           ),

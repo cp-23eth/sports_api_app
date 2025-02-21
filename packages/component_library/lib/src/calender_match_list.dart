@@ -71,7 +71,7 @@ class CalenderMatchList extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SvgPicture.asset(
-                        'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
+                        'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].city == 'Houston' && containerColor == Color(0xFFC8102E) ? 'Hou-noir.svg' : teams[game.homeTeamId - 1].logo}',
                         width: 30.0,
                         fit: BoxFit.fitWidth,
                       ),
@@ -132,7 +132,7 @@ class CalenderMatchList extends StatelessWidget {
                         ),
                       ),
                       SvgPicture.asset(
-                        'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
+                        'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].city == 'Houston' && containerColor == Color(0xFFC8102E) ? 'Hou-noir.svg' : teams[game.awayTeamId - 1].logo}',
                         width: 30.0,
                         fit: BoxFit.fitWidth,
                       ),
