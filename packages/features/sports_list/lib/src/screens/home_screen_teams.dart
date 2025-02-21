@@ -54,6 +54,8 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
                     .state
                     .teams[startIndex + index],
                 players: state.players,
+                stadium: state.stadiums,
+                statsTeam: state.statsTeam,
               ),
             );
           }),

@@ -21,6 +21,7 @@ class SportsListProvider with ChangeNotifier {
     final datasPlayers = await repository.getAllPlayers();
     final datasTeams = await repository.getAllTeams();
     final datasStadiums = await repository.getAllStadiums();
+    final datasStatsTeams = await repository.getAllStatsTeams();
 
     _state = _state.copyWith(
       status: SportsListStatus.loaded,
@@ -28,6 +29,7 @@ class SportsListProvider with ChangeNotifier {
       players: datasPlayers,
       teams: datasTeams,
       stadiums: datasStadiums,
+      statsTeam: datasStatsTeams,
     );
     notifyListeners();
   }

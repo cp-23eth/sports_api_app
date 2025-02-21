@@ -5,10 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class TeamList extends StatelessWidget {
-  const TeamList({required this.team, required this.players, super.key});
+  const TeamList({required this.team, required this.players, required this.stadium, required this.statsTeam, super.key});
 
   final Team team;
   final List<Player> players;
+  final List<Stadium> stadium;
+  final List<StatsTeam> statsTeam;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,8 @@ class TeamList extends StatelessWidget {
             builder: (context) => TeamsScreen(
               team: team,
               players: players,
+              stadium: stadium[team.teamId - 1],
+              statsTeam: statsTeam[team.teamId - 1],
             ),
           ),
         ),

@@ -11,6 +11,9 @@ extension TeamApiModelToDomain on TeamApiModel {
       name: name,
       headCoach: headCoach,
       logo: logo,
+      primaryColor: primaryColor,
+      secondaryColor: secondaryColor,
+      tertiaryColor: tertiaryColor,
     );
   }
 }
