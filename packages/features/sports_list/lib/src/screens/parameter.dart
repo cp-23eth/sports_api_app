@@ -94,7 +94,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Header / Footer :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Header / Footer :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: headerFooterColor,
@@ -107,7 +110,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Comings Matchs :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Comings Matchs :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: comingsMatchsColor,
@@ -120,7 +126,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Latests Matchs :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Latests Matchs :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: latestsMatchsColor,
@@ -133,7 +142,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Todays Matchs :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Todays Matchs :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: todaysMatchsColor,
@@ -146,7 +158,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Teams Headers :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Teams Headers :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: teamsHeaderColor,
@@ -159,7 +174,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Teams Players :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Teams Players :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: teamsPlayersColor,
@@ -172,7 +190,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Teams Stadiums :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Teams Stadiums :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: teamsStadiumColor,
@@ -185,7 +206,10 @@ class _ParameterState extends State<Parameter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SecondaryTitle(text: 'Backgrounds :'),
+                const SizedBox(
+                  width: 200,
+                  child: SecondaryTitle(text: 'Backgrounds :'),
+                ),
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: backgroundColor,
