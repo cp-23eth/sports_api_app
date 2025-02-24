@@ -9,14 +9,14 @@
             20000441,
             20000452
         ],
-        "headerFooterColor": "#1C5D99",
-        "comingsMatchsColor": "#C8102E",
-        "latestsMatchsColor": "#1D428A",
-        "todaysMatchsColor": "#9100B6",
-        "teamsHeaderColor": "#1C5D99",
-        "teamsStadiumColor": "#C8102E",
-        "teamsPlayersColor": "#9100B6",
-        "backgroundColor": "#0B132B"
+        "headerFooterColor": 4280364313,
+        "comingsMatchsColor": 4290010158,
+        "latestsMatchsColor": 4280151434,
+        "todaysMatchsColor": 4288328374,
+        "teamsHeaderColor": 4280364313,
+        "teamsStadiumColor": 4290010158,
+        "teamsPlayersColor": 4288328374,
+        "backgroundColor": 4279303467
     },
     {
         "username": "Quentin",
@@ -28,14 +28,14 @@
             20000455,
             20000456
         ],
-        "headerFooterColor": "#1C5D99",
-        "comingsMatchsColor": "#C8102E",
-        "latestsMatchsColor": "#1D428A",
-        "todaysMatchsColor": "#9100B6",
-        "teamsHeaderColor": "#1C5D99",
-        "teamsStadiumColor": "#C8102E",
-        "teamsPlayersColor": "#9100B6",
-        "backgroundColor": "#0B132B"
+        "headerFooterColor": 4280364313,
+        "comingsMatchsColor": 4290010158,
+        "latestsMatchsColor": 4280151434,
+        "todaysMatchsColor": 4288328374,
+        "teamsHeaderColor": 4280364313,
+        "teamsStadiumColor": 4290010158,
+        "teamsPlayersColor": 4288328374,
+        "backgroundColor": 4279303467
     },
     {
         "username": "Ethan",
@@ -47,13 +47,13 @@
             20000457,
             20000464
         ],
-        "headerFooterColor": "#1C5D99",
-        "comingsMatchsColor": "#C8102E",
-        "latestsMatchsColor": "#1D428A",
-        "todaysMatchsColor": "#9100B6",
-        "teamsHeaderColor": "#1C5D99",
-        "teamsStadiumColor": "#C8102E",
-        "teamsPlayersColor": "#9100B6",
-        "backgroundColor": "#0B132B"
+        "headerFooterColor": 4280364313,
+        "comingsMatchsColor": 4290010158,
+        "latestsMatchsColor": 4280151434,
+        "todaysMatchsColor": 4288328374,
+        "teamsHeaderColor": 4280364313,
+        "teamsStadiumColor": 4290010158,
+        "teamsPlayersColor": 4288328374,
+        "backgroundColor": 4279303467
     }
 ]

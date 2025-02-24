@@ -200,7 +200,7 @@ class _ParameterState extends State<Parameter> {
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor:
-                    WidgetStatePropertyAll(Parameter.header_footer_color),
+                    WidgetStatePropertyAll(Parameter.headerFooterColor),
               ),
               onPressed: () {
                 changeColorHeaderFooter(const Color(0xFF1C5D99));
@@ -216,7 +216,7 @@ class _ParameterState extends State<Parameter> {
                 'Reset',
                 style: TextStyle(
                   color: ThemeData.estimateBrightnessForColor(
-                              Parameter.background_color) ==
+                              Parameter.backgroundColor) ==
                           Brightness.light
                       ? Colors.black
                       : Colors.white,
