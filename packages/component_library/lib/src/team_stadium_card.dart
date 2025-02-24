@@ -7,16 +7,16 @@ class TeamStadiumCard extends StatelessWidget {
       {required this.team,
       required this.stadium,
       required this.statsTeam,
+      required this.secondaryColor,
       super.key});
 
   final Team team;
   final Stadium stadium;
   final StatsTeam statsTeam;
+  final Color secondaryColor;
 
   @override
   Widget build(BuildContext context) {
-    final Color secondaryColor = Color(int.parse('0xFF${team.secondaryColor}'));
-
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),

@@ -5,8 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class PlayerList extends StatelessWidget {
-  const PlayerList({required this.player, super.key});
+  const PlayerList({required this.color, required this.player, super.key});
 
+  final Color color;
   final Player player;
 
   @override
@@ -35,12 +36,13 @@ class PlayerList extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => PlayersScreen(
                 player: player,
+                color: color,
               ),
             ),
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: const Color(0xFF9100B6),
+              color: color,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -81,7 +83,11 @@ class PlayerList extends StatelessWidget {
                           Text(
                             '${player.firstName} ',
                             style: TextStyle(
-                              color: Colors.white,
+                              color:
+                                  ThemeData.estimateBrightnessForColor(color) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               fontFamily: GoogleFonts.poppins().fontFamily,
@@ -90,7 +96,11 @@ class PlayerList extends StatelessWidget {
                           Text(
                             player.lastName,
                             style: TextStyle(
-                              color: Colors.white,
+                              color:
+                                  ThemeData.estimateBrightnessForColor(color) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               fontFamily: GoogleFonts.poppins().fontFamily,
@@ -105,7 +115,11 @@ class PlayerList extends StatelessWidget {
                               ? player.jersey.toString()
                               : 'N/A',
                           style: TextStyle(
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 24,
                             fontFamily: GoogleFonts.poppins().fontFamily,
                             fontWeight: FontWeight.bold,
