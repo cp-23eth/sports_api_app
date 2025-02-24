@@ -1,6 +1,7 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class Header extends StatelessWidget {
   const Header({required this.user, super.key});
@@ -14,9 +15,9 @@ class Header extends StatelessWidget {
       children: [
         Container(
           height: 100,
-          decoration: const BoxDecoration(
-            color: Color(0xFF1C5D99),
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: Parameter.header_footer_color,
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
@@ -39,23 +40,44 @@ class Header extends StatelessWidget {
               Text(
                 'NBA',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.header_footer_color) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: GoogleFonts.poppins().fontFamily,
                 ),
               ),
-              SizedBox(
-                width: 100,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Text(
-                    user.username,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.poppins().fontFamily,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Parameter(
+                        user: user,
+                      ),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Text(
+                        user.username,
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.header_footer_color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
                     ),
                   ),
                 ),

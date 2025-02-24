@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class PrimaryTitle extends StatelessWidget {
   const PrimaryTitle({required this.text, super.key});
@@ -16,7 +17,11 @@ class PrimaryTitle extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: ThemeData.estimateBrightnessForColor(
+                          Parameter.background_color) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
               fontFamily: GoogleFonts.poppins().fontFamily,
               fontWeight: FontWeight.w700,
               fontSize: 26,

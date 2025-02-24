@@ -55,7 +55,11 @@ class TeamList extends StatelessWidget {
                   Text(
                     '${team.city} ${team.name}',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.background_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 16,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),

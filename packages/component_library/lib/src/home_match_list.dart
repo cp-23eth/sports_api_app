@@ -46,7 +46,9 @@ class HomeMatchList extends StatelessWidget {
               borderRadius: const BorderRadius.all(
                 Radius.circular(20.0),
               ),
-              color: finish ? const Color(0xFF1D428A) : const Color(0xFFC8102E),
+              color: finish
+                  ? Parameter.latests_matchs_color
+                  : Parameter.comings_matchs_color,
             ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -70,7 +72,14 @@ class HomeMatchList extends StatelessWidget {
                             child: Text(
                               '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: ThemeData.estimateBrightnessForColor(
+                                          finish
+                                              ? Parameter.latests_matchs_color
+                                              : Parameter.comings_matchs_color,
+                                        ) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                                 fontSize: 13.0,
                                 fontFamily: GoogleFonts.poppins().fontFamily,
                               ),
@@ -88,7 +97,14 @@ class HomeMatchList extends StatelessWidget {
                             Text(
                               '${game.homeTeamScore} - ${game.awayTeamScore}',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: ThemeData.estimateBrightnessForColor(
+                                          finish
+                                              ? Parameter.latests_matchs_color
+                                              : Parameter.comings_matchs_color,
+                                        ) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                                 fontSize: 14.0,
                                 fontFamily: GoogleFonts.poppins().fontFamily,
                                 fontWeight: FontWeight.bold,
@@ -103,7 +119,14 @@ class HomeMatchList extends StatelessWidget {
                             Text(
                               formattedHour,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: ThemeData.estimateBrightnessForColor(
+                                          finish
+                                              ? Parameter.latests_matchs_color
+                                              : Parameter.comings_matchs_color,
+                                        ) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                                 fontSize: 10.0,
                                 fontFamily: GoogleFonts.inter().fontFamily,
                               ),
@@ -114,7 +137,14 @@ class HomeMatchList extends StatelessWidget {
                             Text(
                               formattedDate,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: ThemeData.estimateBrightnessForColor(
+                                          finish
+                                              ? Parameter.latests_matchs_color
+                                              : Parameter.comings_matchs_color,
+                                        ) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                                 fontSize: 9.0,
                                 fontFamily: GoogleFonts.inter().fontFamily,
                               ),
@@ -137,7 +167,14 @@ class HomeMatchList extends StatelessWidget {
                             child: Text(
                               '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: ThemeData.estimateBrightnessForColor(
+                                          finish
+                                              ? Parameter.latests_matchs_color
+                                              : Parameter.comings_matchs_color,
+                                        ) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                                 fontSize: 13.0,
                                 fontFamily: GoogleFonts.poppins().fontFamily,
                               ),

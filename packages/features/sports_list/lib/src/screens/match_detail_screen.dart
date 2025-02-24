@@ -1,6 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_list/sports_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MatchDetailScreen extends StatelessWidget {
@@ -31,24 +32,32 @@ class MatchDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1C5D99),
-        title: const Text(
+        backgroundColor: Parameter.header_footer_color,
+        title: Text(
           'Match Detail',
           style: TextStyle(
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.header_footer_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
           ),
         ),
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.header_footer_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: Parameter.background_color,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -64,7 +73,7 @@ class MatchDetailScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1C5D99),
+                    backgroundColor: Parameter.header_footer_color,
                   ),
                   onPressed: () {
                     if (stadiums.isNotEmpty) {
@@ -72,10 +81,14 @@ class MatchDetailScreen extends StatelessWidget {
                       openMap(stadium.latitude, stadium.longitude);
                     }
                   },
-                  child: const Text(
+                  child: Text(
                     'View Stadium on Map',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.header_footer_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ),
                 ),

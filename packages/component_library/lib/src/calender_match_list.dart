@@ -29,13 +29,13 @@ class CalenderMatchList extends StatelessWidget {
     Color containerColor;
 
     if (DateFormat.yMd().format(gameDate) == DateFormat.yMd().format(now)) {
-      containerColor = const Color(0xFF9100B6);
+      containerColor = Parameter.todays_matchs_color;
     } else if (gameDate.isAfter(now)) {
-      containerColor = const Color(0xFFC8102E);
+      containerColor = Parameter.comings_matchs_color;
     } else if (gameDate.isBefore(now)) {
-      containerColor = const Color(0xFF1D428A);
+      containerColor = Parameter.latests_matchs_color;
     } else {
-      containerColor = const Color(0xFFC8102E); // Default color
+      containerColor = Parameter.comings_matchs_color; // Default color
     }
 
     return Padding(
@@ -80,7 +80,11 @@ class CalenderMatchList extends StatelessWidget {
                         child: Text(
                           '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        containerColor) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 11.0,
                             fontFamily: GoogleFonts.poppins().fontFamily,
                           ),
@@ -94,7 +98,11 @@ class CalenderMatchList extends StatelessWidget {
                           Text(
                             formattedHour,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          containerColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
                               fontSize: 10.0,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                             ),
@@ -102,7 +110,11 @@ class CalenderMatchList extends StatelessWidget {
                           Text(
                             '${game.homeTeamScore} - ${game.awayTeamScore}',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          containerColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
                               fontSize: 14.0,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                               fontWeight: FontWeight.bold,
@@ -111,7 +123,11 @@ class CalenderMatchList extends StatelessWidget {
                           Text(
                             formattedDate,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          containerColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
                               fontSize: 8.0,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                             ),
@@ -123,7 +139,11 @@ class CalenderMatchList extends StatelessWidget {
                         child: Text(
                           '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        containerColor) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 11.0,
                             fontFamily: GoogleFonts.poppins().fontFamily,
                           ),

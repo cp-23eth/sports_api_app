@@ -25,7 +25,11 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.background_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
@@ -44,7 +48,11 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: ThemeData.estimateBrightnessForColor(
+                          Parameter.background_color) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
               fontFamily: GoogleFonts.poppins().fontFamily,
             ),
           ),

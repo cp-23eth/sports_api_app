@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:sports_list/sports_list.dart';
 
 class DetailMatch extends StatelessWidget {
   const DetailMatch(
@@ -66,7 +67,11 @@ class DetailMatch extends StatelessWidget {
                   Text(
                     teams[game.homeTeamId - 1].name,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.background_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 20,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
@@ -87,7 +92,11 @@ class DetailMatch extends StatelessWidget {
                   Text(
                     formattedDate,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.background_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 13,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
@@ -96,7 +105,11 @@ class DetailMatch extends StatelessWidget {
                   Text(
                     formattedHour,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.background_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 13,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
@@ -116,7 +129,11 @@ class DetailMatch extends StatelessWidget {
                   Text(
                     teams[game.awayTeamId - 1].name,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.background_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 20,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
@@ -134,7 +151,11 @@ class DetailMatch extends StatelessWidget {
               Text(
                 'Stadium',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: ThemeData.estimateBrightnessForColor(
+                                Parameter.background_color) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                     fontFamily: GoogleFonts.poppins().fontFamily,
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0),
@@ -147,7 +168,11 @@ class DetailMatch extends StatelessWidget {
                     Text(
                       'Stadium : ${stadium.name}',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.background_color) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 13,
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
@@ -155,7 +180,11 @@ class DetailMatch extends StatelessWidget {
                     Text(
                       'City : ${stadium.city}',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.background_color) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 13,
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
@@ -163,7 +192,11 @@ class DetailMatch extends StatelessWidget {
                     Text(
                       'Capacity : ${stadium.capacity}',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.background_color) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 13,
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),

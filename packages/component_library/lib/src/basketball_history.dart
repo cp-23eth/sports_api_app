@@ -1,5 +1,6 @@
 import 'package:component_library/component_library.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_list/sports_list.dart';
 // ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,12 +40,16 @@ class BasketballHistory extends StatelessWidget {
         ElevatedButton(
           onPressed: _launchURL,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF1C5D99),
+            backgroundColor: Parameter.header_footer_color,
           ),
-          child: const Text(
+          child: Text(
             'Read more',
             style: TextStyle(
-              color: Colors.white,
+              color: ThemeData.estimateBrightnessForColor(
+                          Parameter.header_footer_color) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

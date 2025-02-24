@@ -2,6 +2,7 @@ import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class TeamTitle extends StatelessWidget {
   const TeamTitle(
@@ -25,7 +26,11 @@ class TeamTitle extends StatelessWidget {
         Text(
           '${team.city} ${team.name}',
           style: TextStyle(
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.background_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
             fontSize: 24,
             fontFamily: GoogleFonts.poppins().fontFamily,
             fontWeight: FontWeight.bold,

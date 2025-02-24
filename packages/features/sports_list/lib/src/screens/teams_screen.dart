@@ -34,7 +34,7 @@ class TeamsScreen extends StatelessWidget {
     final Color secondaryColor = Color(int.parse('0xFF${team.secondaryColor}'));
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: Parameter.background_color,
       appBar: AppBar(
         title: Text(
           'Teams',
@@ -61,6 +61,7 @@ class TeamsScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
+            onPressed: () => _addFavoriteTeam(context, team.teamId),
             icon: Icon(
               Icons.favorite_border,
               color: ThemeData.estimateBrightnessForColor(secondaryColor) ==
@@ -68,7 +69,6 @@ class TeamsScreen extends StatelessWidget {
                   ? Colors.black
                   : Colors.white,
             ),
-            onPressed: () => _addFavoriteTeam(context, team.teamId),
           ),
         ],
       ),
@@ -122,9 +122,16 @@ class TeamsScreen extends StatelessWidget {
               const SizedBox(
                 height: 24.0,
               ),
-              const Text(
+              Text(
                 'Players',
-                style: TextStyle(fontSize: 28, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 28,
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.background_color) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                ),
               ),
               const SizedBox(
                 height: 16.0,
