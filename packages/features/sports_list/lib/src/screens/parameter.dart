@@ -66,7 +66,7 @@ class _ParameterState extends State<Parameter> {
       Colors.white,
     ];
     return Scaffold(
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: Parameter.background_color,
       appBar: AppBar(
         title: Text('Parameter',
             style: TextStyle(
