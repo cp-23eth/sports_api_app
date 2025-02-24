@@ -16,7 +16,7 @@ class ButtonColorPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(keyColor),
+        backgroundColor: WidgetStateProperty.all(keyColor),
       ),
       onPressed: () {
         showDialog(
@@ -28,6 +28,7 @@ class ButtonColorPicker extends StatelessWidget {
                 child: ColorPicker(
                   pickerColor: pickerColor,
                   onColorChanged: changeColor,
+                  // ignore: deprecated_member_use
                   showLabel: true,
                   pickerAreaHeightPercent: 0.8,
                 ),
@@ -35,7 +36,7 @@ class ButtonColorPicker extends StatelessWidget {
               actions: <Widget>[
                 ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(keyColor),
+                    backgroundColor: WidgetStateProperty.all(keyColor),
                   ),
                   child: Text(
                     'Got it',
