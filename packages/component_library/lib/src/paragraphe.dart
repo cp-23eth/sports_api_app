@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class Paragraphe extends StatelessWidget {
+  const Paragraphe({required this.text, super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 14,
+          color: Colors.white,
+          fontFamily: GoogleFonts.poppins().fontFamily,
+        ),
+        textAlign: TextAlign.justify,
+      ),
+    );
+  }
+}

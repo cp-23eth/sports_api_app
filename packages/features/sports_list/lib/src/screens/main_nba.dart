@@ -10,7 +10,7 @@ class MainNba extends StatefulWidget {
 }
 
 class _MainNbaState extends State<MainNba> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 3; //TODO: Change to 1
 
   @override // Permet de charger du contenu
   void initState() {
@@ -83,6 +83,16 @@ class _MainNbaState extends State<MainNba> {
               label: '',
               backgroundColor: Color(0xFF1C5D99),
             ),
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                height: 15,
+                child: Center(
+                  child: Icon(Icons.sports_basketball),
+                ),
+              ),
+              label: '',
+              backgroundColor: Color(0xFF1C5D99),
+            ),
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.white,
@@ -106,6 +116,7 @@ class _MainNbaState extends State<MainNba> {
       ),
       const HomeScreen(),
       const HomeScreenTeams(),
+      const GeneralBasketScreen(),
     ];
   }
 

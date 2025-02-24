@@ -11,7 +11,7 @@ import 'package:sports_repository/sports_repository.dart';
 
 class StadiumRemoteStorage implements SportsSatdiumStorage {
   static const url =
-      "https://api.sportsdata.io/v3/nba/scores/json/Stadiums?key=7c09cb2335c048bea967ed7b0e45f041";
+      "https://api.sportsdata.io/v3/nba/scores/json/Stadiums?key=f4feab5250c84378afa7a68b738177bf";
 
   StadiumRemoteStorage({@visibleForTesting http.Client? client})
       : _client = client ?? http.Client();

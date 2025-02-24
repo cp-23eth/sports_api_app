@@ -8,7 +8,8 @@ import 'package:sports_repository/sports_repository.dart';
 import 'package:logger/logger.dart';
 
 class StatsTeamRemoteStorage implements SportsStatsTeamStorage {
-  static const url = 'https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2025?key=c311f43746a14ea383c92357db81dc97';
+  static const url =
+      'https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2025?key=f4feab5250c84378afa7a68b738177bf';
 
   StatsTeamRemoteStorage({@visibleForTesting http.Client? client})
       : _client = client ?? http.Client();
@@ -18,8 +19,7 @@ class StatsTeamRemoteStorage implements SportsStatsTeamStorage {
   final logger = Logger();
 
   @override
-  Future<List<StatsTeam>> getAllStatsTeams() async
-  {
+  Future<List<StatsTeam>> getAllStatsTeams() async {
     final statsTeams = <StatsTeam>[];
 
     try {
@@ -27,16 +27,17 @@ class StatsTeamRemoteStorage implements SportsStatsTeamStorage {
       final response = await _client.get(parsedUrl);
       final statusCode = response.statusCode;
 
-      if(statusCode != 200) {
+      if (statusCode != 200) {
         debugPrint('Failed to get stats team. Status code: $statusCode');
       }
 
       final json = response.body;
       final data = jsonDecode(json);
-      
-      if(data != null){
+
+      if (data != null) {
         data.forEach((statsTeamData) {
-          statsTeams.add(StatsTeamApiModel.fromJson(statsTeamData).toDomainEntity());
+          statsTeams
+              .add(StatsTeamApiModel.fromJson(statsTeamData).toDomainEntity());
         });
       }
 

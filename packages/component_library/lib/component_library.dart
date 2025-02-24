@@ -12,3 +12,4 @@ export 'src/player_info.dart';
 export 'src/player_title.dart';
 export 'src/detail_match.dart';
 export 'src/team_stadium_card.dart';
+export 'src/paragraphe.dart';
