@@ -19,3 +19,7 @@ abstract class SportsTeamStorage {
 abstract class SportsStatsTeamStorage {
   Future<List<StatsTeam>> getAllStatsTeams();
 }
+
+abstract class SportsUserStorage {
+  Future<void> addFavoriteTeam(String username, int teamId);
+}

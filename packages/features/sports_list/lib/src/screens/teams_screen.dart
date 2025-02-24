@@ -2,6 +2,7 @@ import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
+import 'package:sports_repository/sports_repository.dart';
 
 class TeamsScreen extends StatelessWidget {
   const TeamsScreen(
@@ -9,15 +10,22 @@ class TeamsScreen extends StatelessWidget {
       required this.players,
       required this.stadium,
       required this.statsTeam,
+      required this.user,
       super.key});
 
   final Team team;
   final List<Player> players;
   final Stadium stadium;
   final StatsTeam statsTeam;
+  final User user;
 
   List<Player> _filterPlayersByTeam(List<Player> players, Team team) {
     return players.where((player) => player.teamId == team.teamId).toList();
+  }
+
+  Future<void> _addFavoriteTeam(BuildContext context, int teamId) async {
+    final sportsRepository = context.read<SportsRepository>();
+    await sportsRepository.addFavoriteTeam(user.username, teamId);
   }
 
   @override
@@ -51,78 +59,88 @@ class TeamsScreen extends StatelessWidget {
         ),
         backgroundColor: secondaryColor,
         centerTitle: true,
-      ),
-      body: Expanded(
-        child: ListView(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: TeamTitle(
-                    team: team,
-                    stadium: stadium,
-                    statsTeam: statsTeam,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: TeamStadiumCard(
-                    team: team,
-                    stadium: stadium,
-                    statsTeam: statsTeam,
-                    secondaryColor: secondaryColor,
-                  ),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: secondaryColor,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            StatsTeamsScreen(statsTeam: statsTeam),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Open Stats',
-                    style: TextStyle(
-                      color: ThemeData.estimateBrightnessForColor(
-                                  secondaryColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 24.0,
-                ),
-                const Text(
-                  'Players',
-                  style: TextStyle(fontSize: 28, color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: filteredPlayers.length,
-                  itemBuilder: (context, index) => PlayerList(
-                    player: filteredPlayers[index],
-                    color: secondaryColor,
-                  ),
-                ),
-              ],
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.favorite_border,
+              color: ThemeData.estimateBrightnessForColor(secondaryColor) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
             ),
-          ],
-        ),
+            onPressed: () => _addFavoriteTeam(context, team.teamId),
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TeamTitle(
+                  team: team,
+                  stadium: stadium,
+                  statsTeam: statsTeam,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TeamStadiumCard(
+                  team: team,
+                  stadium: stadium,
+                  statsTeam: statsTeam,
+                  secondaryColor: secondaryColor,
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: secondaryColor,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          StatsTeamsScreen(statsTeam: statsTeam),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Open Stats',
+                  style: TextStyle(
+                    color:
+                        ThemeData.estimateBrightnessForColor(secondaryColor) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 24.0,
+              ),
+              const Text(
+                'Players',
+                style: TextStyle(fontSize: 28, color: Colors.white),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: filteredPlayers.length,
+                itemBuilder: (context, index) => PlayerList(
+                  player: filteredPlayers[index],
+                  color: secondaryColor,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

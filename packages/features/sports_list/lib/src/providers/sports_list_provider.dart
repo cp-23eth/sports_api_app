@@ -8,8 +8,9 @@ part 'sports_list_state.dart';
 class SportsListProvider with ChangeNotifier {
   SportsListState _state = SportsListState.initial();
 
-  SportsListProvider({required this.repository});
+  SportsListProvider({required this.user, required this.repository});
   final SportsRepository repository;
+  final User user;
 
   SportsListState get state => _state;
 
@@ -31,6 +32,12 @@ class SportsListProvider with ChangeNotifier {
       stadiums: datasStadiums,
       statsTeam: datasStatsTeams,
     );
+    notifyListeners();
+  }
+
+  Future<void> addFavoriteTeam(int teamId) async {
+    await repository.addFavoriteTeam(user.username, teamId);
+    user.favoriteTeams.add(teamId);
     notifyListeners();
   }
 }

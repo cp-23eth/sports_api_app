@@ -106,7 +106,13 @@ class _MainNbaState extends State<MainNba> {
           enableFeedback: false,
         ),
       ),
-      body: _widgetOptions(state)[_selectedIndex],
+      body: Column(
+        children: [
+          Expanded(
+            child: _widgetOptions(state)[_selectedIndex],
+          ),
+        ],
+      ),
     );
   }
 

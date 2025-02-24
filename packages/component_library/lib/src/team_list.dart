@@ -5,8 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class TeamList extends StatelessWidget {
-  const TeamList({required this.team, required this.players, required this.stadium, required this.statsTeam, super.key});
+  const TeamList(
+      {required this.user,
+      required this.team,
+      required this.players,
+      required this.stadium,
+      required this.statsTeam,
+      super.key});
 
+  final User user;
   final Team team;
   final List<Player> players;
   final List<Stadium> stadium;
@@ -21,6 +28,7 @@ class TeamList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => TeamsScreen(
+              user: user,
               team: team,
               players: players,
               stadium: stadium[team.teamId - 1],

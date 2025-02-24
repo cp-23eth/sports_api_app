@@ -32,6 +32,9 @@ class SportsApiApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        Provider<UserRemoteStorage>(
+          create: (context) => UserRemoteStorage(),
+        ),
         Provider<GameRemoteStorage>(
           create: (context) => GameRemoteStorage(),
         ),
@@ -49,6 +52,7 @@ class SportsApiApp extends StatelessWidget {
         ),
         Provider<SportsRepository>(
           create: (context) => SportsRepository(
+            userRemoteStorage: context.read<UserRemoteStorage>(),
             storageGame: context.read<GameRemoteStorage>(),
             storagePlayer: context.read<PlayerRemoteStorage>(),
             storageStadium: context.read<StadiumRemoteStorage>(),
@@ -57,8 +61,10 @@ class SportsApiApp extends StatelessWidget {
           ),
         ),
         ChangeNotifierProvider<SportsListProvider>(
-          create: (context) =>
-              SportsListProvider(repository: context.read<SportsRepository>()),
+          create: (context) => SportsListProvider(
+            user: user,
+            repository: context.read<SportsRepository>(),
+          ),
         ),
       ],
       child: MaterialApp(

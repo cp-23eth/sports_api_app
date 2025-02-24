@@ -52,6 +52,7 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
             return SizedBox(
               height: 90,
               child: TeamList(
+                user: widget.user,
                 team: context
                     .read<SportsListProvider>()
                     .state
