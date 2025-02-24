@@ -1,7 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // Import nécessaire pour ouvrir les URL
+import 'package:url_launcher/url_launcher.dart';
 
 class MatchDetailScreen extends StatelessWidget {
   const MatchDetailScreen({
