@@ -1,8 +1,11 @@
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+  const Header({required this.user, super.key});
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +27,36 @@ class Header extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
-                child: Image.asset(
-                  'packages/component_library/lib/src/assets/images/nba_logo.png',
-                  height: 80,
-                  filterQuality: FilterQuality.high,
+                child: SizedBox(
+                  width: 100,
+                  child: Image.asset(
+                    'packages/component_library/lib/src/assets/images/nba_logo.png',
+                    height: 80,
+                    filterQuality: FilterQuality.high,
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 32.0),
-                child: Text(
-                  'NBA',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.poppins().fontFamily,
+              Text(
+                'NBA',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.poppins().fontFamily,
+                ),
+              ),
+              SizedBox(
+                width: 100,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: Text(
+                    user.username,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                    ),
                   ),
                 ),
               ),

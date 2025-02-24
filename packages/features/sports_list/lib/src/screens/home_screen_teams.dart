@@ -1,10 +1,13 @@
 import 'package:component_library/component_library.dart';
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreenTeams extends StatefulWidget {
-  const HomeScreenTeams({super.key});
+  const HomeScreenTeams({required this.user, super.key});
+
+  final User user;
 
   @override
   State<HomeScreenTeams> createState() => _HomeScreenTeamsState();
@@ -68,7 +71,9 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: [
-        const Header(),
+        Header(
+          user: widget.user,
+        ),
         Expanded(
           child: ListView(
             children: [

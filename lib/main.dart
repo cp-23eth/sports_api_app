@@ -1,13 +1,32 @@
+import 'dart:convert';
+
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:sports_repository/sports_repository.dart';
 
-void main() {
-  runApp(const SportsApiApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final users = await loadUsers();
+  final user = users.firstWhere((u) => u.username == 'Quentin');
+  runApp(SportsApiApp(
+    user: user,
+  ));
+}
+
+Future<List<User>> loadUsers() async {
+  final String response = await rootBundle.loadString(
+    'packages/sports_repository/lib/src/assets/data/user.json',
+  );
+  final List<dynamic> data = json.decode(response);
+  return data.map((json) => UserModel.fromJson(json).toDomainEntity()).toList();
 }
 
 class SportsApiApp extends StatelessWidget {
-  const SportsApiApp({super.key});
+  const SportsApiApp({required this.user, super.key});
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +65,9 @@ class SportsApiApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SportsApiApp',
         routes: {
-          '/': (context) => const MainNba(),
+          '/': (context) => MainNba(
+                user: user,
+              ),
         },
       ),
     );

@@ -5,11 +5,13 @@ import 'package:intl/intl.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen(
-      {required this.stateTeams,
+      {required this.user,
+      required this.stateTeams,
       required this.stateStadiums,
       required this.stateGames,
       super.key});
 
+  final User user;
   final List<Team> stateTeams;
   final List<Stadium> stateStadiums;
   final List<Game> stateGames;
@@ -64,7 +66,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: [
-        const Header(),
+        Header(
+          user: widget.user,
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: groupedGames.length,

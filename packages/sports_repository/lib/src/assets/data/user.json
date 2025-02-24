@@ -1,0 +1,35 @@
+[
+    {
+        "username": "Simon",
+        "favoriteTeams": [
+            1,
+            2
+        ],
+        "favoritePlayers": [
+            20000441,
+            20000452
+        ]
+    },
+    {
+        "username": "Quentin",
+        "favoriteTeams": [
+            3,
+            4
+        ],
+        "favoritePlayers": [
+            20000455,
+            20000456
+        ]
+    },
+    {
+        "username": "Ethan",
+        "favoriteTeams": [
+            5,
+            6
+        ],
+        "favoritePlayers": [
+            20000457,
+            20000464
+        ]
+    }
+]

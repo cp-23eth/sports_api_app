@@ -113,7 +113,7 @@ packages:
     source: hosted
     version: "1.0.8"
   domain_entities:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/domain_entities"
       relative: true

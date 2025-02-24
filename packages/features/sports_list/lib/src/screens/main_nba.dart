@@ -1,8 +1,11 @@
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class MainNba extends StatefulWidget {
-  const MainNba({super.key});
+  const MainNba({required this.user, super.key});
+
+  final User user;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -110,13 +113,20 @@ class _MainNbaState extends State<MainNba> {
   List<Widget> _widgetOptions(SportsListState state) {
     return [
       CalendarScreen(
+        user: widget.user,
         stateTeams: state.teams,
         stateStadiums: state.stadiums,
         stateGames: state.games,
       ),
-      const HomeScreen(),
-      const HomeScreenTeams(),
-      const GeneralBasketScreen(),
+      HomeScreen(
+        user: widget.user,
+      ),
+      HomeScreenTeams(
+        user: widget.user,
+      ),
+      GeneralBasketScreen(
+        user: widget.user,
+      ),
     ];
   }
 
