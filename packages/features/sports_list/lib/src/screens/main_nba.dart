@@ -10,7 +10,7 @@ class MainNba extends StatefulWidget {
 }
 
 class _MainNbaState extends State<MainNba> {
-  int _selectedIndex = 3; //TODO: Change to 1
+  int _selectedIndex = 1;
 
   @override // Permet de charger du contenu
   void initState() {

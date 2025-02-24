@@ -17,11 +17,15 @@ class TeamStadiumCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color secondaryColor = Color(int.parse('0xFF${team.secondaryColor}'));
 
-    return Card(
-      color: secondaryColor,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: secondaryColor,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,17 +83,19 @@ class TeamStadiumCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              width: 50,
-            ),
             Column(
               children: [
-                SizedBox(
+                Container(
                   height: 200,
                   width: 200,
-                  child: Image.asset(
-                    'packages/component_library/lib/src/assets/images/image_stades/${team.city}.jpg',
-                    fit: BoxFit.cover,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'packages/component_library/lib/src/assets/images/image_stades/${team.city}.jpg',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
