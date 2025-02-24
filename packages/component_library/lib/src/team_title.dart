@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TeamHome extends StatelessWidget {
-  const TeamHome(
+class TeamTitle extends StatelessWidget {
+  const TeamTitle(
       {required this.team,
       required this.stadium,
       required this.statsTeam,
@@ -16,8 +16,6 @@ class TeamHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -28,7 +26,7 @@ class TeamHome extends StatelessWidget {
           '${team.city} ${team.name}',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 30,
+            fontSize: 24,
             fontFamily: GoogleFonts.poppins().fontFamily,
             fontWeight: FontWeight.bold,
           ),

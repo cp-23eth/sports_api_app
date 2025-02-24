@@ -4,9 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class PlayerInfo extends StatelessWidget {
-  const PlayerInfo({required this.player, super.key});
+  const PlayerInfo({required this.player, required this.color, super.key});
 
   final Player player;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class PlayerInfo extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: const Color(0xFF9100B6),
+          color: color,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 32.0),
@@ -40,16 +41,23 @@ class PlayerInfo extends StatelessWidget {
                     width: 150,
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.cake,
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           formattedDate,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -60,16 +68,23 @@ class PlayerInfo extends StatelessWidget {
                     width: 150,
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.fitness_center,
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           '$convertedWeight kg',
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -86,16 +101,23 @@ class PlayerInfo extends StatelessWidget {
                     width: 150,
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.height,
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           '$convertedHeight cm',
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -106,16 +128,23 @@ class PlayerInfo extends StatelessWidget {
                     width: 150,
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.sports_basketball,
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           player.position,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -132,16 +161,23 @@ class PlayerInfo extends StatelessWidget {
                     width: 150,
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.map_outlined,
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           player.birthCountry,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -152,16 +188,23 @@ class PlayerInfo extends StatelessWidget {
                     width: 150,
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.location_city,
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           player.birthCity,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: Colors.white,
+                            color:
+                                ThemeData.estimateBrightnessForColor(color) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
                             fontSize: 14,
                           ),
                         ),

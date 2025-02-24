@@ -40,7 +40,7 @@ class StatsTeamsScreen extends StatelessWidget {
                   'Games Played', statsTeam.games, Icons.sports_basketball),
               CardLineInfo(
                   'Time',
-                  '${statsTeam.minutes} min ${statsTeam.seconds} sec',
+                  '${(statsTeam.minutes ~/ 60)} h ${(statsTeam.minutes % 60)} min ${statsTeam.seconds} sec',
                   Icons.access_time),
               CardLineInfo('Field Goals Made', statsTeam.fieldGoalsMade.toInt(),
                   Icons.check_circle),

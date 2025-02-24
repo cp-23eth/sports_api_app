@@ -3,8 +3,9 @@ import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 
 class PlayersScreen extends StatelessWidget {
-  const PlayersScreen({required this.player, super.key});
+  const PlayersScreen({required this.color, required this.player, super.key});
 
+  final Color color;
   final Player player;
 
   @override
@@ -39,6 +40,7 @@ class PlayersScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: PlayerInfo(
               player: player,
+              color: color,
             ),
           ),
         ],
