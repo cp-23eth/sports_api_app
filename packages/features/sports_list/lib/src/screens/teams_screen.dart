@@ -39,7 +39,8 @@ class TeamsScreen extends StatelessWidget {
         title: Text(
           'Teams',
           style: TextStyle(
-            color: ThemeData.estimateBrightnessForColor(secondaryColor) ==
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.teams_header_color) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -48,7 +49,8 @@ class TeamsScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: ThemeData.estimateBrightnessForColor(secondaryColor) ==
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.teams_header_color) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -57,14 +59,15 @@ class TeamsScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: secondaryColor,
+        backgroundColor: Parameter.teams_header_color,
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: () => _addFavoriteTeam(context, team.teamId),
             icon: Icon(
               Icons.favorite_border,
-              color: ThemeData.estimateBrightnessForColor(secondaryColor) ==
+              color: ThemeData.estimateBrightnessForColor(
+                          Parameter.teams_header_color) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,
@@ -97,7 +100,7 @@ class TeamsScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: secondaryColor,
+                  backgroundColor: Parameter.teams_header_color,
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -111,11 +114,11 @@ class TeamsScreen extends StatelessWidget {
                 child: Text(
                   'Open Stats',
                   style: TextStyle(
-                    color:
-                        ThemeData.estimateBrightnessForColor(secondaryColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
+                    color: ThemeData.estimateBrightnessForColor(
+                                Parameter.teams_header_color) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                   ),
                 ),
               ),
