@@ -47,8 +47,8 @@ class HomeMatchList extends StatelessWidget {
                 Radius.circular(20.0),
               ),
               color: finish
-                  ? Parameter.latests_matchs_color
-                  : Parameter.comings_matchs_color,
+                  ? Parameter.latestsMatchsColor
+                  : Parameter.comingsMatchsColor,
             ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -74,8 +74,8 @@ class HomeMatchList extends StatelessWidget {
                               style: TextStyle(
                                 color: ThemeData.estimateBrightnessForColor(
                                           finish
-                                              ? Parameter.latests_matchs_color
-                                              : Parameter.comings_matchs_color,
+                                              ? Parameter.latestsMatchsColor
+                                              : Parameter.comingsMatchsColor,
                                         ) ==
                                         Brightness.light
                                     ? Colors.black
@@ -99,8 +99,8 @@ class HomeMatchList extends StatelessWidget {
                               style: TextStyle(
                                 color: ThemeData.estimateBrightnessForColor(
                                           finish
-                                              ? Parameter.latests_matchs_color
-                                              : Parameter.comings_matchs_color,
+                                              ? Parameter.latestsMatchsColor
+                                              : Parameter.comingsMatchsColor,
                                         ) ==
                                         Brightness.light
                                     ? Colors.black
@@ -121,8 +121,8 @@ class HomeMatchList extends StatelessWidget {
                               style: TextStyle(
                                 color: ThemeData.estimateBrightnessForColor(
                                           finish
-                                              ? Parameter.latests_matchs_color
-                                              : Parameter.comings_matchs_color,
+                                              ? Parameter.latestsMatchsColor
+                                              : Parameter.comingsMatchsColor,
                                         ) ==
                                         Brightness.light
                                     ? Colors.black
@@ -139,8 +139,8 @@ class HomeMatchList extends StatelessWidget {
                               style: TextStyle(
                                 color: ThemeData.estimateBrightnessForColor(
                                           finish
-                                              ? Parameter.latests_matchs_color
-                                              : Parameter.comings_matchs_color,
+                                              ? Parameter.latestsMatchsColor
+                                              : Parameter.comingsMatchsColor,
                                         ) ==
                                         Brightness.light
                                     ? Colors.black
@@ -169,8 +169,8 @@ class HomeMatchList extends StatelessWidget {
                               style: TextStyle(
                                 color: ThemeData.estimateBrightnessForColor(
                                           finish
-                                              ? Parameter.latests_matchs_color
-                                              : Parameter.comings_matchs_color,
+                                              ? Parameter.latestsMatchsColor
+                                              : Parameter.comingsMatchsColor,
                                         ) ==
                                         Brightness.light
                                     ? Colors.black

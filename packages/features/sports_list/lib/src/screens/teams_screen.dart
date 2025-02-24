@@ -34,13 +34,13 @@ class TeamsScreen extends StatelessWidget {
     final Color secondaryColor = Color(int.parse('0xFF${team.secondaryColor}'));
 
     return Scaffold(
-      backgroundColor: Parameter.background_color,
+      backgroundColor: Parameter.backgroundColor,
       appBar: AppBar(
         title: Text(
           'Teams',
           style: TextStyle(
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.teams_header_color) ==
+                        Parameter.teamsHeaderColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -50,7 +50,7 @@ class TeamsScreen extends StatelessWidget {
           icon: Icon(
             Icons.arrow_back,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.teams_header_color) ==
+                        Parameter.teamsHeaderColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -59,7 +59,7 @@ class TeamsScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Parameter.teams_header_color,
+        backgroundColor: Parameter.teamsHeaderColor,
         centerTitle: true,
         actions: [
           IconButton(
@@ -67,7 +67,7 @@ class TeamsScreen extends StatelessWidget {
             icon: Icon(
               Icons.favorite_border,
               color: ThemeData.estimateBrightnessForColor(
-                          Parameter.teams_header_color) ==
+                          Parameter.teamsHeaderColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,
@@ -100,7 +100,7 @@ class TeamsScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Parameter.teams_header_color,
+                  backgroundColor: Parameter.teamsHeaderColor,
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -115,7 +115,7 @@ class TeamsScreen extends StatelessWidget {
                   'Open Stats',
                   style: TextStyle(
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teams_header_color) ==
+                                Parameter.teamsHeaderColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -130,7 +130,7 @@ class TeamsScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 28,
                   color: ThemeData.estimateBrightnessForColor(
-                              Parameter.background_color) ==
+                              Parameter.backgroundColor) ==
                           Brightness.light
                       ? Colors.black
                       : Colors.white,

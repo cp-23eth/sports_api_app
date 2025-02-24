@@ -21,7 +21,7 @@ class TeamStadiumCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Parameter.teams_stadium_color,
+        color: Parameter.teamsStadiumColor,
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,7 +38,7 @@ class TeamStadiumCard extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teams_stadium_color) ==
+                                Parameter.teamsStadiumColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -50,7 +50,7 @@ class TeamStadiumCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teams_stadium_color) ==
+                                Parameter.teamsStadiumColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -64,7 +64,7 @@ class TeamStadiumCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teams_stadium_color) ==
+                                Parameter.teamsStadiumColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -76,7 +76,7 @@ class TeamStadiumCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teams_stadium_color) ==
+                                Parameter.teamsStadiumColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,

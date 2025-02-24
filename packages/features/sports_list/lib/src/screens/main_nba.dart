@@ -48,13 +48,13 @@ class _MainNbaState extends State<MainNba> {
     }
 
     return Scaffold(
-      backgroundColor: Parameter.background_color,
+      backgroundColor: Parameter.backgroundColor,
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           splashFactory: NoSplash.splashFactory,
         ),
         child: BottomNavigationBar(
-          backgroundColor: Parameter.header_footer_color,
+          backgroundColor: Parameter.headerFooterColor,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: const SizedBox(
@@ -64,7 +64,7 @@ class _MainNbaState extends State<MainNba> {
                 ),
               ),
               label: '',
-              backgroundColor: Parameter.header_footer_color,
+              backgroundColor: Parameter.headerFooterColor,
             ),
             BottomNavigationBarItem(
               icon: const SizedBox(
@@ -74,7 +74,7 @@ class _MainNbaState extends State<MainNba> {
                 ),
               ),
               label: '',
-              backgroundColor: Parameter.header_footer_color,
+              backgroundColor: Parameter.headerFooterColor,
             ),
             BottomNavigationBarItem(
               icon: const SizedBox(
@@ -84,7 +84,7 @@ class _MainNbaState extends State<MainNba> {
                 ),
               ),
               label: '',
-              backgroundColor: Parameter.header_footer_color,
+              backgroundColor: Parameter.headerFooterColor,
             ),
             BottomNavigationBarItem(
               icon: const SizedBox(
@@ -94,17 +94,17 @@ class _MainNbaState extends State<MainNba> {
                 ),
               ),
               label: '',
-              backgroundColor: Parameter.header_footer_color,
+              backgroundColor: Parameter.headerFooterColor,
             ),
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: ThemeData.estimateBrightnessForColor(
-                      Parameter.header_footer_color) ==
+                      Parameter.headerFooterColor) ==
                   Brightness.light
               ? Colors.black
               : Colors.white,
           unselectedItemColor: ThemeData.estimateBrightnessForColor(
-                      Parameter.header_footer_color) ==
+                      Parameter.headerFooterColor) ==
                   Brightness.light
               ? Colors.black
               : Colors.white,

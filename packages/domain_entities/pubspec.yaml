@@ -8,3 +8,5 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 dependencies:
   equatable: ^2.0.7
+  flutter:
+    sdk: flutter

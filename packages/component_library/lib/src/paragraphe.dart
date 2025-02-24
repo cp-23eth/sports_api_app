@@ -15,11 +15,11 @@ class Paragraphe extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: 14,
-          color: ThemeData.estimateBrightnessForColor(
-                      Parameter.background_color) ==
-                  Brightness.light
-              ? Colors.black
-              : Colors.white,
+          color:
+              ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
           fontFamily: GoogleFonts.poppins().fontFamily,
         ),
         textAlign: TextAlign.justify,

@@ -40,13 +40,13 @@ class BasketballHistory extends StatelessWidget {
         ElevatedButton(
           onPressed: _launchURL,
           style: ElevatedButton.styleFrom(
-            backgroundColor: Parameter.header_footer_color,
+            backgroundColor: Parameter.headerFooterColor,
           ),
           child: Text(
             'Read more',
             style: TextStyle(
               color: ThemeData.estimateBrightnessForColor(
-                          Parameter.header_footer_color) ==
+                          Parameter.headerFooterColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,

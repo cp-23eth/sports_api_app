@@ -32,12 +32,12 @@ class MatchDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Parameter.header_footer_color,
+        backgroundColor: Parameter.headerFooterColor,
         title: Text(
           'Match Detail',
           style: TextStyle(
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.header_footer_color) ==
+                        Parameter.headerFooterColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -47,7 +47,7 @@ class MatchDetailScreen extends StatelessWidget {
           icon: Icon(
             Icons.arrow_back,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.header_footer_color) ==
+                        Parameter.headerFooterColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -57,7 +57,7 @@ class MatchDetailScreen extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: Parameter.background_color,
+      backgroundColor: Parameter.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -73,7 +73,7 @@ class MatchDetailScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Parameter.header_footer_color,
+                    backgroundColor: Parameter.headerFooterColor,
                   ),
                   onPressed: () {
                     if (stadiums.isNotEmpty) {
@@ -85,7 +85,7 @@ class MatchDetailScreen extends StatelessWidget {
                     'View Stadium on Map',
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.header_footer_color) ==
+                                  Parameter.headerFooterColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,
