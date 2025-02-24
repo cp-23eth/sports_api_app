@@ -7,6 +7,9 @@ class TeamApiModel {
     required this.name,
     required this.headCoach,
     required this.logo,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.tertiaryColor,
   });
 
   factory TeamApiModel.fromJson(Map<String, dynamic> json) {
@@ -40,10 +43,20 @@ class TeamApiModel {
       throw ArgumentError('headCoach is required');
     }
 
-    // final wikipediaLogoUrl = json['WikipediaLogoUrl'];
-    // if (wikipediaLogoUrl == null) {
-    //   throw ArgumentError('wikipediaLogoUrl is required');
-    // }
+    String? primaryColor = json['PrimaryColor'];
+    if (primaryColor == null) {
+      primaryColor = '000000';
+      throw ArgumentError('primaryColor is required');
+    }
+
+    String? secondaryColor = json['SecondaryColor'];
+    if (secondaryColor == null) {
+      secondaryColor = '000000';
+      throw ArgumentError('secondaryColor is required');
+    }
+
+    String? tertiaryColor = json['TertiaryColor'];
+    tertiaryColor ??= '000000';
 
     final logo = key + '.svg';
 
@@ -55,6 +68,9 @@ class TeamApiModel {
       name: name,
       headCoach: headCoach,
       logo: logo,
+      primaryColor: primaryColor,
+      secondaryColor: secondaryColor,
+      tertiaryColor: tertiaryColor,
     );
   }
 
@@ -65,4 +81,7 @@ class TeamApiModel {
   final String name;
   final String headCoach;
   final String logo;
+  final String primaryColor;
+  final String secondaryColor;
+  final String tertiaryColor;
 }

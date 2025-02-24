@@ -6,3 +6,4 @@ export 'calendar_screen.dart';
 export 'home_screen_teams.dart';
 export 'home_screen.dart';
 export 'match_detail_screen.dart';
+export 'stats_teams_screen.dart';

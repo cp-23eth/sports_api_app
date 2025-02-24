@@ -9,6 +9,9 @@ class Team extends Equatable {
     required this.name,
     required this.headCoach,
     required this.logo,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.tertiaryColor,
   });
 
   final int teamId;
@@ -18,6 +21,9 @@ class Team extends Equatable {
   final String name;
   final String headCoach;
   final String logo;
+  final String primaryColor;
+  final String secondaryColor;
+  final String tertiaryColor;
 
   @override
   List<Object?> get props => [
@@ -28,6 +34,9 @@ class Team extends Equatable {
         name,
         headCoach,
         logo,
+        primaryColor,
+        secondaryColor,
+        tertiaryColor,
       ];
 
   @override

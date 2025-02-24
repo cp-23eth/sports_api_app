@@ -25,12 +25,16 @@ class SportsApiApp extends StatelessWidget {
         Provider<TeamRemoteStorage>(
           create: (context) => TeamRemoteStorage(),
         ),
+        Provider<StatsTeamRemoteStorage>(
+          create: (context) => StatsTeamRemoteStorage(),
+        ),
         Provider<SportsRepository>(
           create: (context) => SportsRepository(
             storageGame: context.read<GameRemoteStorage>(),
             storagePlayer: context.read<PlayerRemoteStorage>(),
             storageStadium: context.read<StadiumRemoteStorage>(),
             storageTeam: context.read<TeamRemoteStorage>(),
+            storageStatsTeam: context.read<StatsTeamRemoteStorage>(),
           ),
         ),
         ChangeNotifierProvider<SportsListProvider>(

@@ -1,12 +1,20 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_list/sports_list.dart';
 
 class TeamsScreen extends StatelessWidget {
-  const TeamsScreen({required this.team, required this.players, super.key});
+  const TeamsScreen(
+      {required this.team,
+      required this.players,
+      required this.stadium,
+      required this.statsTeam,
+      super.key});
 
   final Team team;
   final List<Player> players;
+  final Stadium stadium;
+  final StatsTeam statsTeam;
 
   List<Player> _filterPlayersByTeam(List<Player> players, Team team) {
     return players.where((player) => player.teamId == team.teamId).toList();
@@ -37,17 +45,51 @@ class TeamsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TeamHome(team: team),
-              ],
+            child: TeamHome(
+              team: team,
+              stadium: stadium,
+              statsTeam: statsTeam,
             ),
           ),
-          const PrimaryTitle(text: 'Players'),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TeamStadiumCard(
+                team: team, stadium: stadium, statsTeam: statsTeam),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF1C5D99),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StatsTeamsScreen(statsTeam: statsTeam),
+                ),
+              );
+            },
+            child: const Text(
+              'Open Stats',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 24.0,
+          ),
+          const Text(
+            'Players',
+            style: TextStyle(fontSize: 28, color: Colors.white),
+          ),
+          const SizedBox(
+            height: 16.0,
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: filteredPlayers.length,

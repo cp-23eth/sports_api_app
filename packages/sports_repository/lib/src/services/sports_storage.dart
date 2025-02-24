@@ -15,3 +15,7 @@ abstract class SportsSatdiumStorage {
 abstract class SportsTeamStorage {
   Future<List<Team>> getAllTeams();
 }
+
+abstract class SportsStatsTeamStorage {
+  Future<List<StatsTeam>> getAllStatsTeams();
+}
