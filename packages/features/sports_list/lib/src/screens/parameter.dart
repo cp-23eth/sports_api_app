@@ -44,27 +44,8 @@ class _ParameterState extends State<Parameter> {
   Color backgroundColor = Parameter.background_color;
 
   @override
+  @override
   Widget build(BuildContext context) {
-    final List<Color> availableColors = [
-      const Color(0xFF1C5D99),
-      const Color(0xFF0B132B),
-      const Color(0xFFC8102E),
-      const Color(0xFF9100B6),
-      const Color(0xFF1D428A),
-      Colors.green,
-      Colors.blue,
-      Colors.yellow,
-      Colors.orange,
-      Colors.pink,
-      Colors.cyan,
-      Colors.teal,
-      Colors.lime,
-      Colors.indigo,
-      Colors.brown,
-      Colors.grey,
-      Colors.black,
-      Colors.white,
-    ];
     return Scaffold(
       backgroundColor: Parameter.background_color,
       appBar: AppBar(
@@ -113,7 +94,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: headerFooterColor,
-                  availableColors: availableColors,
                   changeColor: changeColorHeaderFooter,
                   keyColor: Parameter.header_footer_color,
                 ),
@@ -129,7 +109,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: comingsMatchsColor,
-                  availableColors: availableColors,
                   changeColor: changeColorComingsMatchs,
                   keyColor: Parameter.comings_matchs_color,
                 ),
@@ -145,7 +124,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: latestsMatchsColor,
-                  availableColors: availableColors,
                   changeColor: changeColorLatestsMatchs,
                   keyColor: Parameter.latests_matchs_color,
                 ),
@@ -161,7 +139,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: todaysMatchsColor,
-                  availableColors: availableColors,
                   changeColor: changeColorTodaysMatchs,
                   keyColor: Parameter.todays_matchs_color,
                 ),
@@ -177,7 +154,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: teamsHeaderColor,
-                  availableColors: availableColors,
                   changeColor: changeColorTeamsHeader,
                   keyColor: Parameter.teams_header_color,
                 ),
@@ -193,7 +169,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: teamsPlayersColor,
-                  availableColors: availableColors,
                   changeColor: changeColorTeamsPlayers,
                   keyColor: Parameter.teams_players_color,
                 ),
@@ -209,7 +184,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: teamsStadiumColor,
-                  availableColors: availableColors,
                   changeColor: changeColorTeamsStadium,
                   keyColor: Parameter.teams_stadium_color,
                 ),
@@ -225,7 +199,6 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(width: 10),
                 ButtonColorPicker(
                   pickerColor: backgroundColor,
-                  availableColors: availableColors,
                   changeColor: changeBackgroundColor,
                   keyColor: Parameter.background_color,
                 ),

@@ -4,13 +4,11 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 class ButtonColorPicker extends StatelessWidget {
   const ButtonColorPicker(
       {required this.pickerColor,
-      required this.availableColors,
       required this.changeColor,
       required this.keyColor,
       super.key});
 
   final Color pickerColor;
-  final List<Color> availableColors;
   final void Function(Color) changeColor;
   final Color keyColor;
 
@@ -18,7 +16,7 @@ class ButtonColorPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.all(keyColor),
+        backgroundColor: MaterialStateProperty.all(keyColor),
       ),
       onPressed: () {
         showDialog(
@@ -27,16 +25,17 @@ class ButtonColorPicker extends StatelessWidget {
             return AlertDialog(
               title: const Text('Select a color'),
               content: SingleChildScrollView(
-                child: BlockPicker(
+                child: ColorPicker(
                   pickerColor: pickerColor,
                   onColorChanged: changeColor,
-                  availableColors: availableColors,
+                  showLabel: true,
+                  pickerAreaHeightPercent: 0.8,
                 ),
               ),
               actions: <Widget>[
                 ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(keyColor),
+                    backgroundColor: MaterialStateProperty.all(keyColor),
                   ),
                   child: Text(
                     'Got it',
