@@ -29,13 +29,13 @@ class CalenderMatchList extends StatelessWidget {
     Color containerColor;
 
     if (DateFormat.yMd().format(gameDate) == DateFormat.yMd().format(now)) {
-      containerColor = Parameter.todays_matchs_color;
+      containerColor = Parameter.todaysMatchsColor;
     } else if (gameDate.isAfter(now)) {
-      containerColor = Parameter.comings_matchs_color;
+      containerColor = Parameter.comingsMatchsColor;
     } else if (gameDate.isBefore(now)) {
-      containerColor = Parameter.latests_matchs_color;
+      containerColor = Parameter.latestsMatchsColor;
     } else {
-      containerColor = Parameter.comings_matchs_color; // Default color
+      containerColor = Parameter.comingsMatchsColor; // Default color
     }
 
     return Padding(

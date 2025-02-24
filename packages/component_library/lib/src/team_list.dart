@@ -56,7 +56,7 @@ class TeamList extends StatelessWidget {
                     '${team.city} ${team.name}',
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.background_color) ==
+                                  Parameter.backgroundColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,

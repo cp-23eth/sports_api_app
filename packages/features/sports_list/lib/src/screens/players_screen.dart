@@ -12,13 +12,13 @@ class PlayersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Parameter.background_color,
+      backgroundColor: Parameter.backgroundColor,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.background_color) ==
+                        Parameter.backgroundColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,

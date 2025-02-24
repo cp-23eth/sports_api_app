@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
         Container(
           height: 100,
           decoration: BoxDecoration(
-            color: Parameter.header_footer_color,
+            color: Parameter.headerFooterColor,
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
@@ -41,7 +41,7 @@ class Header extends StatelessWidget {
                 'NBA',
                 style: TextStyle(
                   color: ThemeData.estimateBrightnessForColor(
-                              Parameter.header_footer_color) ==
+                              Parameter.headerFooterColor) ==
                           Brightness.light
                       ? Colors.black
                       : Colors.white,
@@ -69,7 +69,7 @@ class Header extends StatelessWidget {
                         user.username,
                         style: TextStyle(
                           color: ThemeData.estimateBrightnessForColor(
-                                      Parameter.header_footer_color) ==
+                                      Parameter.headerFooterColor) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,

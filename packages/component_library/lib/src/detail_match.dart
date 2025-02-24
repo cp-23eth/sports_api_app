@@ -68,7 +68,7 @@ class DetailMatch extends StatelessWidget {
                     teams[game.homeTeamId - 1].name,
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.background_color) ==
+                                  Parameter.backgroundColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,
@@ -93,7 +93,7 @@ class DetailMatch extends StatelessWidget {
                     formattedDate,
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.background_color) ==
+                                  Parameter.backgroundColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,
@@ -106,7 +106,7 @@ class DetailMatch extends StatelessWidget {
                     formattedHour,
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.background_color) ==
+                                  Parameter.backgroundColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,
@@ -130,7 +130,7 @@ class DetailMatch extends StatelessWidget {
                     teams[game.awayTeamId - 1].name,
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.background_color) ==
+                                  Parameter.backgroundColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,
@@ -152,7 +152,7 @@ class DetailMatch extends StatelessWidget {
                 'Stadium',
                 style: TextStyle(
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.background_color) ==
+                                Parameter.backgroundColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -169,7 +169,7 @@ class DetailMatch extends StatelessWidget {
                       'Stadium : ${stadium.name}',
                       style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.background_color) ==
+                                    Parameter.backgroundColor) ==
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,
@@ -181,7 +181,7 @@ class DetailMatch extends StatelessWidget {
                       'City : ${stadium.city}',
                       style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.background_color) ==
+                                    Parameter.backgroundColor) ==
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,
@@ -193,7 +193,7 @@ class DetailMatch extends StatelessWidget {
                       'Capacity : ${stadium.capacity}',
                       style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.background_color) ==
+                                    Parameter.backgroundColor) ==
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,

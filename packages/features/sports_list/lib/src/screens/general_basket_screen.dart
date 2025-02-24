@@ -16,7 +16,7 @@ class GeneralBasketScreen extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          backgroundColor: Parameter.background_color,
+          backgroundColor: Parameter.backgroundColor,
           child: const SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -47,14 +47,14 @@ class GeneralBasketScreen extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Parameter.header_footer_color,
+                    backgroundColor: Parameter.headerFooterColor,
                   ),
                   onPressed: () => showRulesDialog(context),
                   child: Text(
                     'Show the rules',
                     style: TextStyle(
                       color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.header_footer_color) ==
+                                  Parameter.headerFooterColor) ==
                               Brightness.light
                           ? Colors.black
                           : Colors.white,

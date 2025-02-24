@@ -26,7 +26,7 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.background_color) ==
+                        Parameter.backgroundColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -49,7 +49,7 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: ThemeData.estimateBrightnessForColor(
-                          Parameter.background_color) ==
+                          Parameter.backgroundColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,

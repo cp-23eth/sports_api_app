@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     widget.user.favoriteTeams.toString(), //'Coming matches',
                     style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.background_color) ==
+                                    Parameter.backgroundColor) ==
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     'Latest matches',
                     style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.background_color) ==
+                                    Parameter.backgroundColor) ==
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,

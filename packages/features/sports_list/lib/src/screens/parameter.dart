@@ -8,51 +8,41 @@ class Parameter extends StatefulWidget {
 
   final User user;
 
-  // ignore: non_constant_identifier_names
-  static Color header_footer_color = const Color(0xFF1C5D99);
-  // ignore: non_constant_identifier_names
-  static Color comings_matchs_color = const Color(0xFFC8102E);
-  // ignore: non_constant_identifier_names
-  static Color latests_matchs_color = const Color(0xFF1D428A);
-  // ignore: non_constant_identifier_names
-  static Color todays_matchs_color = const Color(0xFF9100B6);
-
-  // ignore: non_constant_identifier_names
-  static Color teams_header_color = const Color(0xFF1C5D99);
-  // ignore: non_constant_identifier_names
-  static Color teams_stadium_color = const Color(0xFFC8102E);
-  // ignore: non_constant_identifier_names
-  static Color teams_players_color = const Color(0xFF9100B6);
-
-  // ignore: non_constant_identifier_names
-  static Color background_color = const Color(0xFF0B132B);
+  static Color headerFooterColor = const Color(0xFF1C5D99);
+  static Color comingsMatchsColor = const Color(0xFFC8102E);
+  static Color latestsMatchsColor = const Color(0xFF1D428A);
+  static Color todaysMatchsColor = const Color(0xFF9100B6);
+  static Color teamsHeaderColor = const Color(0xFF1C5D99);
+  static Color teamsStadiumColor = const Color(0xFFC8102E);
+  static Color teamsPlayersColor = const Color(0xFF9100B6);
+  static Color backgroundColor = const Color(0xFF0B132B);
 
   @override
   State<Parameter> createState() => _ParameterState();
 }
 
 class _ParameterState extends State<Parameter> {
-  Color headerFooterColor = Parameter.header_footer_color;
-  Color comingsMatchsColor = Parameter.comings_matchs_color;
-  Color latestsMatchsColor = Parameter.latests_matchs_color;
-  Color todaysMatchsColor = Parameter.todays_matchs_color;
+  Color headerFooterColor = Parameter.headerFooterColor;
+  Color comingsMatchsColor = Parameter.comingsMatchsColor;
+  Color latestsMatchsColor = Parameter.latestsMatchsColor;
+  Color todaysMatchsColor = Parameter.todaysMatchsColor;
 
-  Color teamsHeaderColor = Parameter.teams_header_color;
-  Color teamsStadiumColor = Parameter.teams_stadium_color;
-  Color teamsPlayersColor = Parameter.teams_players_color;
+  Color teamsHeaderColor = Parameter.teamsHeaderColor;
+  Color teamsStadiumColor = Parameter.teamsStadiumColor;
+  Color teamsPlayersColor = Parameter.teamsPlayersColor;
 
-  Color backgroundColor = Parameter.background_color;
+  Color backgroundColor = Parameter.backgroundColor;
 
   @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Parameter.background_color,
+      backgroundColor: Parameter.backgroundColor,
       appBar: AppBar(
         title: Text('Parameter',
             style: TextStyle(
               color: ThemeData.estimateBrightnessForColor(
-                          Parameter.header_footer_color) ==
+                          Parameter.headerFooterColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,
@@ -61,7 +51,7 @@ class _ParameterState extends State<Parameter> {
           icon: Icon(
             Icons.arrow_back,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.header_footer_color) ==
+                        Parameter.headerFooterColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -77,7 +67,7 @@ class _ParameterState extends State<Parameter> {
             );
           },
         ),
-        backgroundColor: Parameter.header_footer_color,
+        backgroundColor: Parameter.headerFooterColor,
       ),
       body: Center(
         child: Column(
@@ -95,7 +85,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: headerFooterColor,
                   changeColor: changeColorHeaderFooter,
-                  keyColor: Parameter.header_footer_color,
+                  keyColor: Parameter.headerFooterColor,
                 ),
               ],
             ),
@@ -110,7 +100,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: comingsMatchsColor,
                   changeColor: changeColorComingsMatchs,
-                  keyColor: Parameter.comings_matchs_color,
+                  keyColor: Parameter.comingsMatchsColor,
                 ),
               ],
             ),
@@ -125,7 +115,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: latestsMatchsColor,
                   changeColor: changeColorLatestsMatchs,
-                  keyColor: Parameter.latests_matchs_color,
+                  keyColor: Parameter.latestsMatchsColor,
                 ),
               ],
             ),
@@ -140,7 +130,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: todaysMatchsColor,
                   changeColor: changeColorTodaysMatchs,
-                  keyColor: Parameter.todays_matchs_color,
+                  keyColor: Parameter.todaysMatchsColor,
                 ),
               ],
             ),
@@ -155,7 +145,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: teamsHeaderColor,
                   changeColor: changeColorTeamsHeader,
-                  keyColor: Parameter.teams_header_color,
+                  keyColor: Parameter.teamsHeaderColor,
                 ),
               ],
             ),
@@ -170,7 +160,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: teamsPlayersColor,
                   changeColor: changeColorTeamsPlayers,
-                  keyColor: Parameter.teams_players_color,
+                  keyColor: Parameter.teamsPlayersColor,
                 ),
               ],
             ),
@@ -185,7 +175,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: teamsStadiumColor,
                   changeColor: changeColorTeamsStadium,
-                  keyColor: Parameter.teams_stadium_color,
+                  keyColor: Parameter.teamsStadiumColor,
                 ),
               ],
             ),
@@ -200,7 +190,7 @@ class _ParameterState extends State<Parameter> {
                 ButtonColorPicker(
                   pickerColor: backgroundColor,
                   changeColor: changeBackgroundColor,
-                  keyColor: Parameter.background_color,
+                  keyColor: Parameter.backgroundColor,
                 ),
               ],
             ),
@@ -213,56 +203,56 @@ class _ParameterState extends State<Parameter> {
   void changeColorHeaderFooter(Color color) {
     setState(() {
       headerFooterColor = color;
-      Parameter.header_footer_color = color;
+      Parameter.headerFooterColor = color;
     });
   }
 
   void changeColorComingsMatchs(Color color) {
     setState(() {
       comingsMatchsColor = color;
-      Parameter.comings_matchs_color = color;
+      Parameter.comingsMatchsColor = color;
     });
   }
 
   void changeColorLatestsMatchs(Color color) {
     setState(() {
       latestsMatchsColor = color;
-      Parameter.latests_matchs_color = color;
+      Parameter.latestsMatchsColor = color;
     });
   }
 
   void changeColorTodaysMatchs(Color color) {
     setState(() {
       todaysMatchsColor = color;
-      Parameter.todays_matchs_color = color;
+      Parameter.todaysMatchsColor = color;
     });
   }
 
   void changeColorTeamsHeader(Color color) {
     setState(() {
       teamsHeaderColor = color;
-      Parameter.teams_header_color = color;
+      Parameter.teamsHeaderColor = color;
     });
   }
 
   void changeColorTeamsStadium(Color color) {
     setState(() {
       teamsStadiumColor = color;
-      Parameter.teams_stadium_color = color;
+      Parameter.teamsStadiumColor = color;
     });
   }
 
   void changeColorTeamsPlayers(Color color) {
     setState(() {
       teamsPlayersColor = color;
-      Parameter.teams_players_color = color;
+      Parameter.teamsPlayersColor = color;
     });
   }
 
   void changeBackgroundColor(Color color) {
     setState(() {
       backgroundColor = color;
-      Parameter.background_color = color;
+      Parameter.backgroundColor = color;
     });
   }
 }

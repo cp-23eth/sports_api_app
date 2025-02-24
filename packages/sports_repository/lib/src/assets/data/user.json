@@ -8,7 +8,15 @@
         "favoritePlayers": [
             20000441,
             20000452
-        ]
+        ],
+        "headerFooterColor": "#1C5D99",
+        "comingsMatchsColor": "#C8102E",
+        "latestsMatchsColor": "#1D428A",
+        "todaysMatchsColor": "#9100B6",
+        "teamsHeaderColor": "#1C5D99",
+        "teamsStadiumColor": "#C8102E",
+        "teamsPlayersColor": "#9100B6",
+        "backgroundColor": "#0B132B"
     },
     {
         "username": "Quentin",
@@ -19,7 +27,15 @@
         "favoritePlayers": [
             20000455,
             20000456
-        ]
+        ],
+        "headerFooterColor": "#1C5D99",
+        "comingsMatchsColor": "#C8102E",
+        "latestsMatchsColor": "#1D428A",
+        "todaysMatchsColor": "#9100B6",
+        "teamsHeaderColor": "#1C5D99",
+        "teamsStadiumColor": "#C8102E",
+        "teamsPlayersColor": "#9100B6",
+        "backgroundColor": "#0B132B"
     },
     {
         "username": "Ethan",
@@ -30,6 +46,14 @@
         "favoritePlayers": [
             20000457,
             20000464
-        ]
+        ],
+        "headerFooterColor": "#1C5D99",
+        "comingsMatchsColor": "#C8102E",
+        "latestsMatchsColor": "#1D428A",
+        "todaysMatchsColor": "#9100B6",
+        "teamsHeaderColor": "#1C5D99",
+        "teamsStadiumColor": "#C8102E",
+        "teamsPlayersColor": "#9100B6",
+        "backgroundColor": "#0B132B"
     }
 ]

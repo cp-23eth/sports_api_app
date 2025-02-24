@@ -18,7 +18,7 @@ class PrimaryTitle extends StatelessWidget {
             text,
             style: TextStyle(
               color: ThemeData.estimateBrightnessForColor(
-                          Parameter.background_color) ==
+                          Parameter.backgroundColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,

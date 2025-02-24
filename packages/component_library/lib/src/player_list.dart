@@ -42,7 +42,7 @@ class PlayerList extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: Parameter.teams_players_color,
+              color: Parameter.teamsPlayersColor,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -84,7 +84,7 @@ class PlayerList extends StatelessWidget {
                             '${player.firstName} ',
                             style: TextStyle(
                               color: ThemeData.estimateBrightnessForColor(
-                                          Parameter.teams_players_color) ==
+                                          Parameter.teamsPlayersColor) ==
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
@@ -97,7 +97,7 @@ class PlayerList extends StatelessWidget {
                             player.lastName,
                             style: TextStyle(
                               color: ThemeData.estimateBrightnessForColor(
-                                          Parameter.teams_players_color) ==
+                                          Parameter.teamsPlayersColor) ==
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
@@ -116,7 +116,7 @@ class PlayerList extends StatelessWidget {
                               : 'N/A',
                           style: TextStyle(
                             color: ThemeData.estimateBrightnessForColor(
-                                        Parameter.teams_players_color) ==
+                                        Parameter.teamsPlayersColor) ==
                                     Brightness.light
                                 ? Colors.black
                                 : Colors.white,

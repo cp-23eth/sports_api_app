@@ -11,13 +11,13 @@ class StatsTeamsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Parameter.background_color,
+      backgroundColor: Parameter.backgroundColor,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.header_footer_color) ==
+                        Parameter.headerFooterColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -30,7 +30,7 @@ class StatsTeamsScreen extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.background_color) ==
+                        Parameter.backgroundColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -97,11 +97,11 @@ class StatsTeamsScreen extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           icon,
-          color: ThemeData.estimateBrightnessForColor(
-                      Parameter.background_color) ==
-                  Brightness.light
-              ? Colors.black
-              : Colors.white,
+          color:
+              ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
         ),
         title: Text(
           title,
@@ -109,7 +109,7 @@ class StatsTeamsScreen extends StatelessWidget {
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.background_color) ==
+                        Parameter.backgroundColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -120,7 +120,7 @@ class StatsTeamsScreen extends StatelessWidget {
           style: GoogleFonts.poppins(
               fontSize: 16,
               color: ThemeData.estimateBrightnessForColor(
-                          Parameter.background_color) ==
+                          Parameter.backgroundColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,
