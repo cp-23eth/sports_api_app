@@ -5,7 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class TeamList extends StatelessWidget {
-  const TeamList({required this.team, required this.players, required this.stadium, required this.statsTeam, super.key});
+  const TeamList(
+      {required this.team,
+      required this.players,
+      required this.stadium,
+      required this.statsTeam,
+      super.key});
 
   final Team team;
   final List<Player> players;
@@ -47,7 +52,11 @@ class TeamList extends StatelessWidget {
                   Text(
                     '${team.city} ${team.name}',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.background_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 16,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),

@@ -2,6 +2,7 @@ import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:sports_list/sports_list.dart';
 
 class PlayerInfo extends StatelessWidget {
   const PlayerInfo({required this.player, required this.color, super.key});
@@ -27,7 +28,7 @@ class PlayerInfo extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: color,
+          color: Parameter.teams_players_color,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 32.0),
@@ -43,7 +44,8 @@ class PlayerInfo extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.cake,
-                          color: ThemeData.estimateBrightnessForColor(color) ==
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.teams_players_color) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,
@@ -53,11 +55,11 @@ class PlayerInfo extends StatelessWidget {
                           formattedDate,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -70,7 +72,8 @@ class PlayerInfo extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.fitness_center,
-                          color: ThemeData.estimateBrightnessForColor(color) ==
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.teams_players_color) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,
@@ -80,11 +83,11 @@ class PlayerInfo extends StatelessWidget {
                           '$convertedWeight kg',
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -103,7 +106,8 @@ class PlayerInfo extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.height,
-                          color: ThemeData.estimateBrightnessForColor(color) ==
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.teams_players_color) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,
@@ -113,11 +117,11 @@ class PlayerInfo extends StatelessWidget {
                           '$convertedHeight cm',
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -130,7 +134,8 @@ class PlayerInfo extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.sports_basketball,
-                          color: ThemeData.estimateBrightnessForColor(color) ==
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.teams_players_color) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,
@@ -140,11 +145,11 @@ class PlayerInfo extends StatelessWidget {
                           player.position,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -163,7 +168,8 @@ class PlayerInfo extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.map_outlined,
-                          color: ThemeData.estimateBrightnessForColor(color) ==
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.teams_players_color) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,
@@ -173,11 +179,11 @@ class PlayerInfo extends StatelessWidget {
                           player.birthCountry,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 14,
                           ),
                         ),
@@ -190,7 +196,8 @@ class PlayerInfo extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.location_city,
-                          color: ThemeData.estimateBrightnessForColor(color) ==
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.teams_players_color) ==
                                   Brightness.light
                               ? Colors.black
                               : Colors.white,
@@ -200,11 +207,11 @@ class PlayerInfo extends StatelessWidget {
                           player.birthCity,
                           style: TextStyle(
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 14,
                           ),
                         ),

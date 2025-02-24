@@ -1,8 +1,13 @@
 import 'package:component_library/component_library.dart';
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_list/sports_list.dart';
 
 class Parameter extends StatefulWidget {
-  const Parameter({super.key});
+  const Parameter({required this.user, super.key});
+
+  final User user;
+
   // ignore: non_constant_identifier_names
   static Color header_footer_color = const Color(0xFF1C5D99);
   // ignore: non_constant_identifier_names
@@ -81,7 +86,14 @@ class _ParameterState extends State<Parameter> {
                 : Colors.white,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MainNba(
+                  user: widget.user,
+                ),
+              ),
+            );
           },
         ),
         backgroundColor: Parameter.header_footer_color,

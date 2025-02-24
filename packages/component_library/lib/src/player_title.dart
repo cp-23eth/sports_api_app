@@ -2,6 +2,7 @@ import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class PlayerTitle extends StatelessWidget {
   const PlayerTitle({required this.player, super.key});
@@ -55,7 +56,11 @@ class PlayerTitle extends StatelessWidget {
             Text(
               '${player.firstName} ${player.lastName}',
               style: TextStyle(
-                color: Colors.white,
+                color: ThemeData.estimateBrightnessForColor(
+                            Parameter.background_color) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
                 fontSize: 30,
                 fontFamily: GoogleFonts.poppins().fontFamily,
                 fontWeight: FontWeight.w900,
@@ -65,7 +70,11 @@ class PlayerTitle extends StatelessWidget {
             Text(
               _haveJersey(player) ? player.jersey.toString() : 'N/A',
               style: TextStyle(
-                  color: Colors.white,
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.teams_players_color) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 30,
                   fontFamily: GoogleFonts.poppins().fontFamily,
                   fontWeight: FontWeight.w900),

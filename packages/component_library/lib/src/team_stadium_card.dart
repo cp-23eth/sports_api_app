@@ -1,6 +1,7 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class TeamStadiumCard extends StatelessWidget {
   const TeamStadiumCard(
@@ -20,7 +21,7 @@ class TeamStadiumCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: secondaryColor,
+        color: Parameter.teams_stadium_color,
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -36,11 +37,11 @@ class TeamStadiumCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color:
-                        ThemeData.estimateBrightnessForColor(secondaryColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
+                    color: ThemeData.estimateBrightnessForColor(
+                                Parameter.teams_stadium_color) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -48,11 +49,11 @@ class TeamStadiumCard extends StatelessWidget {
                   stadium.name,
                   style: TextStyle(
                     fontSize: 16,
-                    color:
-                        ThemeData.estimateBrightnessForColor(secondaryColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
+                    color: ThemeData.estimateBrightnessForColor(
+                                Parameter.teams_stadium_color) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                     fontFamily: GoogleFonts.poppins().fontFamily,
                     fontWeight: FontWeight.w600,
                   ),
@@ -62,11 +63,11 @@ class TeamStadiumCard extends StatelessWidget {
                   '${stadium.address} \n${stadium.city} ${stadium.zip} ${stadium.state} ${stadium.country}',
                   style: GoogleFonts.poppins(
                     fontSize: 16,
-                    color:
-                        ThemeData.estimateBrightnessForColor(secondaryColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
+                    color: ThemeData.estimateBrightnessForColor(
+                                Parameter.teams_stadium_color) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -74,11 +75,11 @@ class TeamStadiumCard extends StatelessWidget {
                   'Capacity : ${stadium.capacity}',
                   style: GoogleFonts.poppins(
                     fontSize: 16,
-                    color:
-                        ThemeData.estimateBrightnessForColor(secondaryColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
+                    color: ThemeData.estimateBrightnessForColor(
+                                Parameter.teams_stadium_color) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                   ),
                 ),
               ],

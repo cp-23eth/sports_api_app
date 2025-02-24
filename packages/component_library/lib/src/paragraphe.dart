@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class Paragraphe extends StatelessWidget {
   const Paragraphe({required this.text, super.key});
@@ -14,7 +15,11 @@ class Paragraphe extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: 14,
-          color: Colors.white,
+          color: ThemeData.estimateBrightnessForColor(
+                      Parameter.background_color) ==
+                  Brightness.light
+              ? Colors.black
+              : Colors.white,
           fontFamily: GoogleFonts.poppins().fontFamily,
         ),
         textAlign: TextAlign.justify,

@@ -15,9 +15,9 @@ class Header extends StatelessWidget {
       children: [
         Container(
           height: 100,
-          decoration: const BoxDecoration(
-            color: Color(0xFF1C5D99),
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: Parameter.header_footer_color,
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
@@ -40,7 +40,11 @@ class Header extends StatelessWidget {
               Text(
                 'NBA',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.header_footer_color) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: GoogleFonts.poppins().fontFamily,
@@ -52,7 +56,9 @@ class Header extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Parameter(),
+                      builder: (context) => Parameter(
+                        user: user,
+                      ),
                     ),
                   ),
                   child: SizedBox(
@@ -62,7 +68,11 @@ class Header extends StatelessWidget {
                       child: Text(
                         user.username,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.header_footer_color) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                           fontFamily: GoogleFonts.poppins().fontFamily,

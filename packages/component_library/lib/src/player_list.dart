@@ -42,7 +42,7 @@ class PlayerList extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: color,
+              color: Parameter.teams_players_color,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -83,11 +83,11 @@ class PlayerList extends StatelessWidget {
                           Text(
                             '${player.firstName} ',
                             style: TextStyle(
-                              color:
-                                  ThemeData.estimateBrightnessForColor(color) ==
-                                          Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          Parameter.teams_players_color) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               fontFamily: GoogleFonts.poppins().fontFamily,
@@ -96,11 +96,11 @@ class PlayerList extends StatelessWidget {
                           Text(
                             player.lastName,
                             style: TextStyle(
-                              color:
-                                  ThemeData.estimateBrightnessForColor(color) ==
-                                          Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          Parameter.teams_players_color) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               fontFamily: GoogleFonts.poppins().fontFamily,
@@ -115,11 +115,11 @@ class PlayerList extends StatelessWidget {
                               ? player.jersey.toString()
                               : 'N/A',
                           style: TextStyle(
-                            color:
-                                ThemeData.estimateBrightnessForColor(color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.teams_players_color) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 24,
                             fontFamily: GoogleFonts.poppins().fontFamily,
                             fontWeight: FontWeight.bold,
