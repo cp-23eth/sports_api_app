@@ -1,6 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_list/sports_list.dart';
 
 class PlayersScreen extends StatelessWidget {
   const PlayersScreen({required this.color, required this.player, super.key});
@@ -11,12 +12,16 @@ class PlayersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: Parameter.background_color,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.background_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
           ),
           onPressed: () {
             Navigator.pop(context);

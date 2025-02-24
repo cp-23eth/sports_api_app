@@ -1,6 +1,7 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class StatsTeamsScreen extends StatelessWidget {
   const StatsTeamsScreen({required this.statsTeam, super.key});
@@ -10,10 +11,17 @@ class StatsTeamsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: Parameter.background_color,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(
+            Icons.arrow_back,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.header_footer_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -21,7 +29,11 @@ class StatsTeamsScreen extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.background_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -79,23 +91,40 @@ class StatsTeamsScreen extends StatelessWidget {
   // ignore: non_constant_identifier_names
   Widget CardLineInfo(String title, dynamic value, IconData icon) {
     return Card(
-      color: const Color(0xFF1C2541),
+      color: Colors.black12,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
-        leading: Icon(icon, color: Colors.white),
+        leading: Icon(
+          icon,
+          color: ThemeData.estimateBrightnessForColor(
+                      Parameter.background_color) ==
+                  Brightness.light
+              ? Colors.black
+              : Colors.white,
+        ),
         title: Text(
           title,
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.background_color) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
           ),
         ),
         trailing: Text(
           value.toString(),
           style: GoogleFonts.poppins(
-              fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 16,
+              color: ThemeData.estimateBrightnessForColor(
+                          Parameter.background_color) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
+              fontWeight: FontWeight.bold),
         ),
       ),
     );

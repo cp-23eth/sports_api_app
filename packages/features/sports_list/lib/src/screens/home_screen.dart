@@ -65,10 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Column(
                 children: [
-                  const Text(
+                  Text(
                     'Coming matches',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.background_color) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
@@ -85,10 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
+                  Text(
                     'Latest matches',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.background_color) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),

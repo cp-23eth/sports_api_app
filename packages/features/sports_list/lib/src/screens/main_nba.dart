@@ -48,58 +48,66 @@ class _MainNbaState extends State<MainNba> {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: Parameter.background_color,
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           splashFactory: NoSplash.splashFactory,
         ),
         child: BottomNavigationBar(
-          backgroundColor: const Color(0xFF1C5D99),
-          items: const <BottomNavigationBarItem>[
+          backgroundColor: Parameter.header_footer_color,
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: SizedBox(
+              icon: const SizedBox(
                 height: 15,
                 child: Center(
                   child: Icon(Icons.calendar_month),
                 ),
               ),
               label: '',
-              backgroundColor: Color(0xFF1C5D99),
+              backgroundColor: Parameter.header_footer_color,
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
+              icon: const SizedBox(
                 height: 15,
                 child: Center(
                   child: Icon(Icons.home),
                 ),
               ),
               label: '',
-              backgroundColor: Color(0xFF1C5D99),
+              backgroundColor: Parameter.header_footer_color,
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
+              icon: const SizedBox(
                 height: 15,
                 child: Center(
                   child: Icon(Icons.group),
                 ),
               ),
               label: '',
-              backgroundColor: Color(0xFF1C5D99),
+              backgroundColor: Parameter.header_footer_color,
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
+              icon: const SizedBox(
                 height: 15,
                 child: Center(
                   child: Icon(Icons.sports_basketball),
                 ),
               ),
               label: '',
-              backgroundColor: Color(0xFF1C5D99),
+              backgroundColor: Parameter.header_footer_color,
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
+          selectedItemColor: ThemeData.estimateBrightnessForColor(
+                      Parameter.header_footer_color) ==
+                  Brightness.light
+              ? Colors.black
+              : Colors.white,
+          unselectedItemColor: ThemeData.estimateBrightnessForColor(
+                      Parameter.header_footer_color) ==
+                  Brightness.light
+              ? Colors.black
+              : Colors.white,
           selectedIconTheme: const IconThemeData(size: 36),
           unselectedIconTheme: const IconThemeData(size: 24),
           onTap: _onItemTapped,

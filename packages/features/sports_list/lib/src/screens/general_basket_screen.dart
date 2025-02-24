@@ -1,6 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:sports_list/sports_list.dart';
 
 class GeneralBasketScreen extends StatelessWidget {
   const GeneralBasketScreen({required this.user, super.key});
@@ -15,7 +16,7 @@ class GeneralBasketScreen extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          backgroundColor: const Color(0xFF0B132B),
+          backgroundColor: Parameter.background_color,
           child: const SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -46,13 +47,17 @@ class GeneralBasketScreen extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1C5D99),
+                    backgroundColor: Parameter.header_footer_color,
                   ),
                   onPressed: () => showRulesDialog(context),
-                  child: const Text(
+                  child: Text(
                     'Show the rules',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.header_footer_color) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
