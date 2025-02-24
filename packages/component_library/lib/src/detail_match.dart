@@ -23,6 +23,24 @@ class DetailMatch extends StatelessWidget {
     );
     final formattedDate = DateFormat('dd MMM yyyy').format(gameDate);
     final formattedHour = DateFormat('HH:mm').format(gameDate);
+    Stadium stadium = const Stadium(
+      stadiumId: 0,
+      name: 'Unknown',
+      city: 'Unknown',
+      capacity: 0,
+      active: false,
+      address: 'Unknown',
+      state: 'Unknown',
+      zip: 'Unknown',
+      country: 'Unknown',
+      latitude: 0,
+      longitude: 0,
+    );
+
+    stadium = stadiums.firstWhere(
+      (s) => s.stadiumId == game.stadiumId,
+      orElse: () => stadium,
+    );
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -127,7 +145,7 @@ class DetailMatch extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Stadium : ${stadiums[game.stadiumId - 1].name}',
+                      'Stadium : ${stadium.name}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
@@ -135,7 +153,7 @@ class DetailMatch extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'City : ${stadiums[game.stadiumId - 1].city}',
+                      'City : ${stadium.city}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
@@ -143,7 +161,7 @@ class DetailMatch extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Capacity : ${stadiums[game.stadiumId - 1].capacity}',
+                      'Capacity : ${stadium.capacity}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,

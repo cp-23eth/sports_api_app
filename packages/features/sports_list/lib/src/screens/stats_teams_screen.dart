@@ -36,19 +36,39 @@ class StatsTeamsScreen extends StatelessWidget {
             children: [
               CardLineInfo('Wins', statsTeam.wins, Icons.emoji_events),
               CardLineInfo('Losses', statsTeam.losses, Icons.cancel),
-              CardLineInfo('Games Played', statsTeam.games, Icons.sports_basketball),
-              CardLineInfo('Time', '${statsTeam.minutes} min ${statsTeam.seconds} sec', Icons.access_time),
-              CardLineInfo('Field Goals Made', statsTeam.fieldGoalsMade.toInt(), Icons.check_circle),
-              CardLineInfo('Field Goals Attempted', statsTeam.fieldGoalsAttempted.toInt(), Icons.shutter_speed),
-              CardLineInfo('Field Goal %', '${statsTeam.fieldGoalsPercentage.toInt()}%', Icons.percent),
-              CardLineInfo('Two Pointers Made', statsTeam.twoPointersMade.toInt(), Icons.looks_two),
-              CardLineInfo('Two Pointers Attempted', statsTeam.twoPointersAttempted.toInt(), Icons.format_list_numbered),
-              CardLineInfo('Two Pointer %', '${statsTeam.twoPointersPercentage.toInt()}%', Icons.percent),
-              CardLineInfo('Three Pointers Made', statsTeam.threePointersMade.toInt(), Icons.looks_3),
-              CardLineInfo('Three Pointers Attempted', statsTeam.threePointersAttempted.toInt(), Icons.format_list_numbered),
-              CardLineInfo('Three Pointer %', '${statsTeam.threePointersPercentage.toInt()}%', Icons.percent),
+              CardLineInfo(
+                  'Games Played', statsTeam.games, Icons.sports_basketball),
+              CardLineInfo(
+                  'Time',
+                  '${statsTeam.minutes} min ${statsTeam.seconds} sec',
+                  Icons.access_time),
+              CardLineInfo('Field Goals Made', statsTeam.fieldGoalsMade.toInt(),
+                  Icons.check_circle),
+              CardLineInfo('Field Goals Attempted',
+                  statsTeam.fieldGoalsAttempted.toInt(), Icons.shutter_speed),
+              CardLineInfo('Field Goal %',
+                  '${statsTeam.fieldGoalsPercentage.toInt()}%', Icons.percent),
+              CardLineInfo('Two Pointers Made',
+                  statsTeam.twoPointersMade.toInt(), Icons.looks_two),
+              CardLineInfo(
+                  'Two Pointers Attempted',
+                  statsTeam.twoPointersAttempted.toInt(),
+                  Icons.format_list_numbered),
+              CardLineInfo('Two Pointer %',
+                  '${statsTeam.twoPointersPercentage.toInt()}%', Icons.percent),
+              CardLineInfo('Three Pointers Made',
+                  statsTeam.threePointersMade.toInt(), Icons.looks_3),
+              CardLineInfo(
+                  'Three Pointers Attempted',
+                  statsTeam.threePointersAttempted.toInt(),
+                  Icons.format_list_numbered),
+              CardLineInfo(
+                  'Three Pointer %',
+                  '${statsTeam.threePointersPercentage.toInt()}%',
+                  Icons.percent),
               CardLineInfo('Steals', statsTeam.steals.toInt(), Icons.security),
-              CardLineInfo('Blocked Shots', statsTeam.blockedShot.toInt(), Icons.block),
+              CardLineInfo(
+                  'Blocked Shots', statsTeam.blockedShot.toInt(), Icons.block),
             ],
           ),
         ),
@@ -56,6 +76,7 @@ class StatsTeamsScreen extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget CardLineInfo(String title, dynamic value, IconData icon) {
     return Card(
       color: const Color(0xFF1C2541),
@@ -73,7 +94,8 @@ class StatsTeamsScreen extends StatelessWidget {
         ),
         trailing: Text(
           value.toString(),
-          style: GoogleFonts.poppins(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+          style: GoogleFonts.poppins(
+              fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );
