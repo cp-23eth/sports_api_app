@@ -65,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Column(
                 children: [
-                  Text(
-                    widget.user.favoritePlayers.toString(), //'Coming matches',
-                    style: const TextStyle(
+                  const Text(
+                    'Coming matches',
+                    style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),

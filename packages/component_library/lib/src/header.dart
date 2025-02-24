@@ -1,6 +1,7 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sports_list/sports_list.dart';
 
 class Header extends StatelessWidget {
   const Header({required this.user, super.key});
@@ -45,17 +46,28 @@ class Header extends StatelessWidget {
                   fontFamily: GoogleFonts.poppins().fontFamily,
                 ),
               ),
-              SizedBox(
-                width: 100,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Text(
-                    user.username,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.poppins().fontFamily,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Parameter(),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Text(
+                        user.username,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
                     ),
                   ),
                 ),
