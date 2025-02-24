@@ -32,30 +32,38 @@ class GeneralBasketScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Header(),
-        const SizedBox(height: 10),
-        const PrimaryTitle(text: 'Information about basketball'),
-        const SizedBox(height: 10),
-        const SecondaryTitle(text: 'Not sure about the rules ?'),
-        const SizedBox(height: 10),
-        Center(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF1C5D99),
-            ),
-            onPressed: () => showRulesDialog(context),
-            child: const Text(
-              'Show the rules',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+        Expanded(
+          child: ListView(
+            children: [
+              const SizedBox(height: 10),
+              const PrimaryTitle(text: 'Not sure about the rules ?'),
+              const SizedBox(height: 10),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1C5D99),
+                  ),
+                  onPressed: () => showRulesDialog(context),
+                  child: const Text(
+                    'Show the rules',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(height: 20),
+              const PrimaryTitle(text: 'History of basketball'),
+              const SizedBox(height: 10),
+              const BasketballHistory(),
+              const SizedBox(height: 20),
+              const PrimaryTitle(text: 'Positions'),
+              const SizedBox(height: 10),
+              const PositionPlayer(),
+            ],
           ),
         ),
-        const SizedBox(height: 20),
-        const SecondaryTitle(text: 'History of basketball'),
-        const SizedBox(height: 10),
-        const BasketballHistory(),
       ],
     );
   }

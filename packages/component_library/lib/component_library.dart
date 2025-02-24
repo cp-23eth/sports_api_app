@@ -9,6 +9,7 @@ export 'src/paragraphe.dart';
 export 'src/player_info.dart';
 export 'src/player_list.dart';
 export 'src/player_title.dart';
+export 'src/position_player.dart';
 export 'src/primary_title.dart';
 export 'src/rules_basketball.dart';
 export 'src/secondary_title.dart';

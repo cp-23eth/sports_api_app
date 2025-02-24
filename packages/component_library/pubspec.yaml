@@ -29,3 +29,4 @@ flutter:
     - lib/src/assets/images/
     - lib/src/assets/images/player_images/
     - lib/src/assets/images/image_stades/
+    - lib/src/assets/images/positions_players.png
