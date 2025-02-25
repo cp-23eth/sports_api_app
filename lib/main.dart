@@ -7,12 +7,7 @@ import 'package:sports_list/sports_list.dart';
 import 'package:sports_repository/sports_repository.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final users = await loadUsers();
-  final user = users.firstWhere((u) => u.username == 'Quentin');
-  runApp(SportsApiApp(
-    user: user,
-  ));
+  runApp(const SportsApiApp());
 }
 
 Future<List<User>> loadUsers() async {
@@ -24,9 +19,7 @@ Future<List<User>> loadUsers() async {
 }
 
 class SportsApiApp extends StatelessWidget {
-  const SportsApiApp({required this.user, super.key});
-
-  final User user;
+  const SportsApiApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +55,6 @@ class SportsApiApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<SportsListProvider>(
           create: (context) => SportsListProvider(
-            user: user,
             repository: context.read<SportsRepository>(),
           ),
         ),
@@ -71,9 +63,7 @@ class SportsApiApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'SportsApiApp',
         routes: {
-          '/': (context) => MainNba(
-                user: user,
-              ),
+          '/': (context) => const MainNba(),
         },
       ),
     );

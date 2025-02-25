@@ -8,9 +8,8 @@ part 'sports_list_state.dart';
 class SportsListProvider with ChangeNotifier {
   SportsListState _state = SportsListState.initial();
 
-  SportsListProvider({required this.user, required this.repository});
+  SportsListProvider({required this.repository});
   final SportsRepository repository;
-  final User user;
 
   SportsListState get state => _state;
 
@@ -23,6 +22,7 @@ class SportsListProvider with ChangeNotifier {
     final datasTeams = await repository.getAllTeams();
     final datasStadiums = await repository.getAllStadiums();
     final datasStatsTeams = await repository.getAllStatsTeams();
+    final datasUser = await repository.getUser();
 
     _state = _state.copyWith(
       status: SportsListStatus.loaded,
@@ -31,13 +31,14 @@ class SportsListProvider with ChangeNotifier {
       teams: datasTeams,
       stadiums: datasStadiums,
       statsTeam: datasStatsTeams,
+      user: datasUser,
     );
     notifyListeners();
   }
 
-  Future<void> addFavoriteTeam(int teamId) async {
-    await repository.addFavoriteTeam(user.username, teamId);
-    user.favoriteTeams.add(teamId);
+  Future<void> addFavoriteTeam(String username, int teamId) async {
+    await repository.addFavoriteTeam(state.user.username, teamId);
+    state.user.favoriteTeams.add(teamId);
     notifyListeners();
   }
 }

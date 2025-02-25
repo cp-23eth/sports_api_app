@@ -60,9 +60,7 @@ class _ParameterState extends State<Parameter> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MainNba(
-                  user: widget.user,
-                ),
+                builder: (context) => const MainNba(),
               ),
             );
           },

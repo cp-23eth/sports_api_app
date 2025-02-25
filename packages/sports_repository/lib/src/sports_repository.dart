@@ -16,7 +16,7 @@ class SportsRepository {
   final SportsTeamStorage storageTeam;
   final SportsSatdiumStorage storageStadium;
   final SportsStatsTeamStorage storageStatsTeam;
-  final UserRemoteStorage userRemoteStorage;
+  final SportsUserStorage userRemoteStorage;
 
   Future<List<Game>> getAllGames() async {
     return storageGame.getAllGames();
@@ -36,6 +36,10 @@ class SportsRepository {
 
   Future<List<StatsTeam>> getAllStatsTeams() async {
     return storageStatsTeam.getAllStatsTeams();
+  }
+
+  Future<User> getUser() async {
+    return userRemoteStorage.getUser();
   }
 
   Future<void> addFavoriteTeam(String username, int teamId) async {

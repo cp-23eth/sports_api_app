@@ -2,9 +2,8 @@ import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
-import 'package:sports_repository/sports_repository.dart';
 
-class TeamsScreen extends StatelessWidget {
+class TeamsScreen extends StatefulWidget {
   const TeamsScreen(
       {required this.team,
       required this.players,
@@ -19,19 +18,37 @@ class TeamsScreen extends StatelessWidget {
   final StatsTeam statsTeam;
   final User user;
 
+  @override
+  State<TeamsScreen> createState() => _TeamsScreenState();
+}
+
+class _TeamsScreenState extends State<TeamsScreen> {
+  late bool _isFavorited;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavorited = widget.user.favoriteTeams.contains(widget.team.teamId);
+  }
+
   List<Player> _filterPlayersByTeam(List<Player> players, Team team) {
     return players.where((player) => player.teamId == team.teamId).toList();
   }
 
-  Future<void> _addFavoriteTeam(BuildContext context, int teamId) async {
-    final sportsRepository = context.read<SportsRepository>();
-    await sportsRepository.addFavoriteTeam(user.username, teamId);
+  void _favoriteTeam(BuildContext context, int teamId) {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+    context
+        .read<SportsListProvider>()
+        .addFavoriteTeam(widget.user.username, teamId);
   }
 
   @override
   Widget build(BuildContext context) {
-    final filteredPlayers = _filterPlayersByTeam(players, team);
-    final Color secondaryColor = Color(int.parse('0xFF${team.secondaryColor}'));
+    final filteredPlayers = _filterPlayersByTeam(widget.players, widget.team);
+    final Color secondaryColor =
+        Color(int.parse('0xFF${widget.team.secondaryColor}'));
 
     return Scaffold(
       backgroundColor: Parameter.backgroundColor,
@@ -63,9 +80,9 @@ class TeamsScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () => _addFavoriteTeam(context, team.teamId),
+            onPressed: () => _favoriteTeam(context, widget.team.teamId),
             icon: Icon(
-              Icons.favorite_border,
+              _isFavorited ? Icons.favorite : Icons.favorite_border,
               color: ThemeData.estimateBrightnessForColor(
                           Parameter.teamsHeaderColor) ==
                       Brightness.light
@@ -84,17 +101,17 @@ class TeamsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TeamTitle(
-                  team: team,
-                  stadium: stadium,
-                  statsTeam: statsTeam,
+                  team: widget.team,
+                  stadium: widget.stadium,
+                  statsTeam: widget.statsTeam,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TeamStadiumCard(
-                  team: team,
-                  stadium: stadium,
-                  statsTeam: statsTeam,
+                  team: widget.team,
+                  stadium: widget.stadium,
+                  statsTeam: widget.statsTeam,
                   secondaryColor: secondaryColor,
                 ),
               ),
@@ -107,7 +124,7 @@ class TeamsScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          StatsTeamsScreen(statsTeam: statsTeam),
+                          StatsTeamsScreen(statsTeam: widget.statsTeam),
                     ),
                   );
                 },

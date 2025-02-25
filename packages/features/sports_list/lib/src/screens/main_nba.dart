@@ -1,11 +1,8 @@
-import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class MainNba extends StatefulWidget {
-  const MainNba({required this.user, super.key});
-
-  final User user;
+  const MainNba({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -15,7 +12,7 @@ class MainNba extends StatefulWidget {
 class _MainNbaState extends State<MainNba> {
   int _selectedIndex = 1;
 
-  @override // Permet de charger du contenu
+  @override
   void initState() {
     super.initState();
     if (context.read<SportsListProvider>().state.teams.isEmpty ||
@@ -36,6 +33,7 @@ class _MainNbaState extends State<MainNba> {
 
   Widget _showSports() {
     final state = context.watch<SportsListProvider>().state;
+
     state.games.sort((a, b) =>
         DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
 
@@ -127,19 +125,17 @@ class _MainNbaState extends State<MainNba> {
   List<Widget> _widgetOptions(SportsListState state) {
     return [
       CalendarScreen(
-        user: widget.user,
+        user: state.user,
         stateTeams: state.teams,
         stateStadiums: state.stadiums,
         stateGames: state.games,
       ),
-      HomeScreen(
-        user: widget.user,
-      ),
+      const HomeScreen(),
       HomeScreenTeams(
-        user: widget.user,
+        user: state.user,
       ),
       GeneralBasketScreen(
-        user: widget.user,
+        user: state.user,
       ),
     ];
   }

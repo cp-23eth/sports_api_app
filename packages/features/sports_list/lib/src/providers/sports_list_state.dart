@@ -14,6 +14,7 @@ class SportsListState extends Equatable {
     required this.stadiums,
     required this.games,
     required this.statsTeam,
+    required this.user,
   });
 
   factory SportsListState.initial() {
@@ -24,6 +25,19 @@ class SportsListState extends Equatable {
       stadiums: List<Stadium>.empty(),
       games: List<Game>.empty(),
       statsTeam: List<StatsTeam>.empty(),
+      user: User(
+        username: '',
+        favoriteTeams: List<int>.empty(),
+        favoritePlayers: List<int>.empty(),
+        headerFooterColor: '',
+        comingsMatchsColor: '',
+        latestsMatchsColor: '',
+        todaysMatchsColor: '',
+        teamsHeaderColor: '',
+        teamsStadiumColor: '',
+        teamsPlayersColor: '',
+        backgroundColor: '',
+      ),
     );
   }
 
@@ -33,9 +47,11 @@ class SportsListState extends Equatable {
   final List<Stadium> stadiums;
   final List<Game> games;
   final List<StatsTeam> statsTeam;
+  final User user;
 
   @override
-  List<Object> get props => [status, teams, players, stadiums, games, statsTeam];
+  List<Object> get props =>
+      [status, teams, players, stadiums, games, statsTeam, user];
 
   @override
   bool get stringify => true;
@@ -47,6 +63,7 @@ class SportsListState extends Equatable {
     List<Stadium>? stadiums,
     List<Game>? games,
     List<StatsTeam>? statsTeam,
+    User? user,
   }) {
     return SportsListState(
       status: status ?? this.status,
@@ -55,6 +72,7 @@ class SportsListState extends Equatable {
       stadiums: stadiums ?? this.stadiums,
       games: games ?? this.games,
       statsTeam: statsTeam ?? this.statsTeam,
+      user: user ?? this.user,
     );
   }
 }
