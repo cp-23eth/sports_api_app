@@ -170,7 +170,7 @@ class _PlayerListState extends State<PlayerList> {
                                 ? Icons.favorite
                                 : Icons.favorite_border,
                             color: ThemeData.estimateBrightnessForColor(
-                                        Parameter.teamsHeaderColor) ==
+                                        Parameter.teamsPlayersColor) ==
                                     Brightness.light
                                 ? Colors.black
                                 : Colors.white,
