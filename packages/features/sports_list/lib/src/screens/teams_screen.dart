@@ -10,6 +10,7 @@ class TeamsScreen extends StatefulWidget {
       required this.stadium,
       required this.statsTeam,
       required this.user,
+      required this.favouriteTeam,
       super.key});
 
   final Team team;
@@ -17,6 +18,7 @@ class TeamsScreen extends StatefulWidget {
   final Stadium stadium;
   final StatsTeam statsTeam;
   final User user;
+  final Function favouriteTeam;
 
   @override
   State<TeamsScreen> createState() => _TeamsScreenState();
@@ -33,21 +35,6 @@ class _TeamsScreenState extends State<TeamsScreen> {
 
   List<Player> _filterPlayersByTeam(List<Player> players, Team team) {
     return players.where((player) => player.teamId == team.teamId).toList();
-  }
-
-  void _favoriteTeam(BuildContext context, int teamId) {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-    if (_isFavorited) {
-      context
-          .read<SportsListProvider>()
-          .addFavoriteTeam(widget.user.username, teamId);
-    } else {
-      context
-          .read<SportsListProvider>()
-          .removeFavoriteTeam(widget.user.username, teamId);
-    }
   }
 
   @override
@@ -86,7 +73,12 @@ class _TeamsScreenState extends State<TeamsScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () => _favoriteTeam(context, widget.team.teamId),
+            onPressed: () {
+              widget.favouriteTeam(context, widget.team.teamId);
+              setState(() {
+                _isFavorited = !_isFavorited;
+              });
+            },
             icon: Icon(
               _isFavorited ? Icons.favorite : Icons.favorite_border,
               color: ThemeData.estimateBrightnessForColor(primaryColor) ==

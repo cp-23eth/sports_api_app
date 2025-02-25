@@ -28,7 +28,7 @@ class _PlayerListState extends State<PlayerList> {
     _isFavorited = widget.user.favoritePlayers.contains(widget.player.playerId);
   }
 
-  void _favoritePlayer(BuildContext context, int teamId) {
+  void favoritePlayer(BuildContext context, int teamId) {
     setState(() {
       _isFavorited = !_isFavorited;
     });
@@ -71,6 +71,7 @@ class _PlayerListState extends State<PlayerList> {
                 user: context.read<SportsListProvider>().state.user,
                 player: widget.player,
                 color: widget.color,
+                favoritePlayer: favoritePlayer,
               ),
             ),
           ),
@@ -164,7 +165,7 @@ class _PlayerListState extends State<PlayerList> {
                         padding: const EdgeInsets.only(right: 16.0),
                         child: IconButton(
                           onPressed: () =>
-                              _favoritePlayer(context, widget.player.teamId),
+                              favoritePlayer(context, widget.player.teamId),
                           icon: Icon(
                             _isFavorited
                                 ? Icons.favorite
