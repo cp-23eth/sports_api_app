@@ -26,7 +26,7 @@ class BasketballHistory extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SecondaryTitle(
-          text: 'Origins and Early Development (1891)',
+          text: 'Origins and Early Development',
         ),
         const Paragraphe(
           text:

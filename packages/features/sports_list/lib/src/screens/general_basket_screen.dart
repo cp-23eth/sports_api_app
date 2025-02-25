@@ -93,12 +93,10 @@ class GeneralBasketScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              const SizedBox(height: 10.0),
               const PrimaryTitle(text: 'Positions'),
               const SizedBox(height: 10),
-            Center(
+              Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Parameter.headerFooterColor,
@@ -114,6 +112,24 @@ class GeneralBasketScreen extends StatelessWidget {
                           : Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              const PrimaryTitle(text: 'Terrain'),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(12.0),
+                  ),
+                  child: Image.asset(
+                    'packages/component_library/lib/src/assets/images/terrain_de_basket.jpg',
+                    height: 200,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

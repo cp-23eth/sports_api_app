@@ -77,7 +77,7 @@ class _PlayerListState extends State<PlayerList> {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: Parameter.teamsPlayersColor,
+              color: widget.color,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -119,7 +119,7 @@ class _PlayerListState extends State<PlayerList> {
                             '${widget.player.firstName} ',
                             style: TextStyle(
                               color: ThemeData.estimateBrightnessForColor(
-                                          Parameter.teamsPlayersColor) ==
+                                          widget.color) ==
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
@@ -132,7 +132,7 @@ class _PlayerListState extends State<PlayerList> {
                             widget.player.lastName,
                             style: TextStyle(
                               color: ThemeData.estimateBrightnessForColor(
-                                          Parameter.teamsPlayersColor) ==
+                                          widget.color) ==
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
@@ -149,7 +149,7 @@ class _PlayerListState extends State<PlayerList> {
                                   : 'N/A',
                               style: TextStyle(
                                 color: ThemeData.estimateBrightnessForColor(
-                                            Parameter.teamsPlayersColor) ==
+                                            widget.color) ==
                                         Brightness.light
                                     ? Colors.black
                                     : Colors.white,
@@ -171,7 +171,7 @@ class _PlayerListState extends State<PlayerList> {
                                 ? Icons.favorite
                                 : Icons.favorite_border,
                             color: ThemeData.estimateBrightnessForColor(
-                                        Parameter.teamsPlayersColor) ==
+                                        widget.color) ==
                                     Brightness.light
                                 ? Colors.black
                                 : Colors.white,
