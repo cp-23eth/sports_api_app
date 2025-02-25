@@ -64,8 +64,8 @@ class _MainNbaState extends State<MainNba> {
       return const Center(child: Text('No games available'));
     }
 
-    changeApplicationColor(state.teams
-        .where((team) => team.name == state.user.appColorTeam) as Team);
+    changeApplicationColor(
+        state.teams.firstWhere((team) => team.name == state.user.appColorTeam));
 
     return Scaffold(
       backgroundColor: Parameter.backgroundColor,
