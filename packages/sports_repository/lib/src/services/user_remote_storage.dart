@@ -18,81 +18,40 @@ class UserRemoteStorage implements SportsUserStorage {
 
   @override
   Future<void> addFavoriteTeam(String username, int teamId) async {
-    final dataString = await rootBundle.loadString(
-      'packages/sports_repository/lib/src/assets/data/user.json',
-    );
-    final List<dynamic> json = jsonDecode(dataString);
-
-    for (var user in json) {
-      if (user['username'] == username) {
-        user['favoriteTeams'].add(teamId);
-        break;
-      }
-    }
-
-    final String updatedJson = jsonEncode(json);
-    // final file =
-    //     File('packages/sports_repository/lib/src/assets/data/user.json');
-    // await file.writeAsString(updatedJson);
+    return;
   }
 
   @override
   Future<void> removeFavoriteTeam(String username, int teamId) async {
-    final dataString = await rootBundle.loadString(
-      'packages/sports_repository/lib/src/assets/data/user.json',
-    );
-    final List<dynamic> json = jsonDecode(dataString);
-
-    for (var user in json) {
-      if (user['username'] == username) {
-        user['favoriteTeams'].remove(teamId);
-        break;
-      }
-    }
-
-    final String updatedJson = jsonEncode(json);
-    // final file =
-    //     File('packages/sports_repository/lib/src/assets/data/user.json');
-    // await file.writeAsString(updatedJson);
+    return;
   }
 
   @override
   Future<void> addFavoritePlayer(String username, int playerId) async {
-    final dataString = await rootBundle.loadString(
-      'packages/sports_repository/lib/src/assets/data/user.json',
-    );
-    final List<dynamic> json = jsonDecode(dataString);
-
-    for (var user in json) {
-      if (user['username'] == username) {
-        user['favoritePlayers'].add(playerId);
-        break;
-      }
-    }
-
-    final String updatedJson = jsonEncode(json);
-    // final file =
-    //     File('packages/sports_repository/lib/src/assets/data/user.json');
-    // await file.writeAsString(updatedJson);
+    return;
   }
 
   @override
   Future<void> removeFavoritePlayer(String username, int playerId) async {
-    final dataString = await rootBundle.loadString(
-      'packages/sports_repository/lib/src/assets/data/user.json',
-    );
-    final List<dynamic> json = jsonDecode(dataString);
+    return;
+    // final dataString = await rootBundle.loadString(
+    //   'packages/sports_repository/lib/src/assets/data/user.json',
+    // );
+    // final List<dynamic> json = jsonDecode(dataString);
 
-    for (var user in json) {
-      if (user['username'] == username) {
-        user['favoritePlayers'].remove(playerId);
-        break;
-      }
-    }
+    // for (var user in json) {
+    //   if (user['username'] == username) {
+    //     user['favoritePlayers'].remove(playerId);
+    //     break;
+    //   }
+    // }
 
-    final String updatedJson = jsonEncode(json);
-    // final file =
-    //     File('packages/sports_repository/lib/src/assets/data/user.json');
-    // await file.writeAsString(updatedJson);
+    // final String updatedJson = jsonEncode(json);
+    // try {
+    //   final file = File('packages/sports_repository/lib/src/assets/data/user.json');
+    //   await file.writeAsString(updatedJson);
+    // } catch (e) {
+    //   print('Erreur lors de l\'écriture du fichier: $e');
+    // }
   }
 }

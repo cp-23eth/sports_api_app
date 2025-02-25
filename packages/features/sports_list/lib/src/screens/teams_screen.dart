@@ -167,6 +167,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: filteredPlayers.length,
                 itemBuilder: (context, index) => PlayerList(
+                  user: widget.user,
                   player: filteredPlayers[index],
                   color: secondaryColor,
                 ),
