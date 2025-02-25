@@ -39,9 +39,15 @@ class _TeamsScreenState extends State<TeamsScreen> {
     setState(() {
       _isFavorited = !_isFavorited;
     });
-    context
-        .read<SportsListProvider>()
-        .addFavoriteTeam(widget.user.username, teamId);
+    if (_isFavorited) {
+      context
+          .read<SportsListProvider>()
+          .addFavoriteTeam(widget.user.username, teamId);
+    } else {
+      context
+          .read<SportsListProvider>()
+          .removeFavoriteTeam(widget.user.username, teamId);
+    }
   }
 
   @override

@@ -45,4 +45,8 @@ class SportsRepository {
   Future<void> addFavoriteTeam(String username, int teamId) async {
     await userRemoteStorage.addFavoriteTeam(username, teamId);
   }
+
+  Future<void> removeFavoriteTeam(String username, int teamId) async {
+    await userRemoteStorage.removeFavoriteTeam(username, teamId);
+  }
 }

@@ -41,4 +41,10 @@ class SportsListProvider with ChangeNotifier {
     state.user.favoriteTeams.add(teamId);
     notifyListeners();
   }
+
+  Future<void> removeFavoriteTeam(String username, int teamId) async {
+    await repository.removeFavoriteTeam(state.user.username, teamId);
+    state.user.favoriteTeams.remove(teamId);
+    notifyListeners();
+  }
 }
