@@ -11,7 +11,7 @@ import 'package:sports_repository/sports_repository.dart';
 
 class PlayerRemoteStorage implements SportsPlayerStorage {
   static const url =
-      "https://api.sportsdata.io/v3/nba/scores/json/PlayersActiveBasic?key=f4feab5250c84378afa7a68b738177bf";
+      "https://api.sportsdata.io/v3/nba/scores/json/PlayersActiveBasic?key=2e0eb9242f374fc5a122ad5358469653";
 
   PlayerRemoteStorage({@visibleForTesting http.Client? client})
       : _client = client ?? http.Client();

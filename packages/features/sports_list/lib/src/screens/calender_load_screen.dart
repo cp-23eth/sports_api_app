@@ -61,9 +61,13 @@ class _CalenderLoadState extends State<CalenderLoad> {
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: LoadingIndicator(
-              indicatorType: Indicator.ballClipRotateMultiple,
-              colors: kDefaultRainbowColors,
+            child: SizedBox(
+              height: 300,
+              width: 300,
+              child: LoadingIndicator(
+                indicatorType: Indicator.ballClipRotateMultiple,
+                colors: kDefaultRainbowColors,
+              ),
             ),
           );
         } else if (snapshot.connectionState == ConnectionState.done) {

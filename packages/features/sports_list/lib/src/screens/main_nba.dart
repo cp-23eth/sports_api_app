@@ -49,9 +49,13 @@ class _MainNbaState extends State<MainNba> {
       return Scaffold(
         backgroundColor: Parameter.backgroundColor,
         body: Center(
-          child: LoadingIndicator(
-            indicatorType: Indicator.ballClipRotateMultiple,
-            colors: _kDefaultRainbowColors,
+          child: SizedBox(
+            height: 300,
+            width: 300,
+            child: LoadingIndicator(
+              indicatorType: Indicator.ballClipRotateMultiple,
+              colors: _kDefaultRainbowColors,
+            ),
           ),
         ),
       );
