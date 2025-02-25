@@ -24,7 +24,6 @@ class CalenderLoad extends StatefulWidget {
 
 class _CalenderLoadState extends State<CalenderLoad> {
   late Future<Map<String, List<Game>>> _loadDataFuture;
-  bool _isLoading = true; // Flag for managing loading state
 
   @override
   void initState() {
@@ -37,6 +36,7 @@ class _CalenderLoadState extends State<CalenderLoad> {
     await Future.delayed(const Duration(seconds: 1));
 
     final games = widget.stateGames.reversed.toList();
+
     // Group games by date
     final groupedGames = <String, List<Game>>{};
     for (var game in games) {
@@ -48,11 +48,6 @@ class _CalenderLoadState extends State<CalenderLoad> {
       groupedGames[date]!.add(game);
     }
 
-    // After data is loaded, set the loading state to false
-    setState(() {
-      _isLoading = false;
-    });
-
     return groupedGames;
   }
 
@@ -61,21 +56,17 @@ class _CalenderLoadState extends State<CalenderLoad> {
     final List<Color> kDefaultRainbowColors = [
       Parameter.headerFooterColor,
     ];
-
-    // If loading, show the loading indicator
-    if (_isLoading) {
-      return Center(
-        child: LoadingIndicator(
-          indicatorType: Indicator.ballClipRotateMultiple,
-          colors: kDefaultRainbowColors,
-        ),
-      );
-    }
-
     return FutureBuilder<Map<String, List<Game>>>(
       future: _loadDataFuture,
       builder: (ctx, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: LoadingIndicator(
+              indicatorType: Indicator.ballClipRotateMultiple,
+              colors: kDefaultRainbowColors,
+            ),
+          );
+        } else if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
             return const Center(
               child: Text('An error occurred!'),

@@ -27,14 +27,11 @@ class Header extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16.0),
-                child: SizedBox(
-                  width: 100,
-                  child: Image.asset(
-                    'packages/component_library/lib/src/assets/images/nba_logo.png',
-                    height: 80,
-                    filterQuality: FilterQuality.high,
-                  ),
+                padding: const EdgeInsets.only(left: 12.0, right: 50),
+                child: Image.asset(
+                  'packages/component_library/lib/src/assets/images/nba_logo.png',
+                  height: 80,
+                  filterQuality: FilterQuality.high,
                 ),
               ),
               Text(
