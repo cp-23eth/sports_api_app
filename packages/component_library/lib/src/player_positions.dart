@@ -38,7 +38,10 @@ class PlayerPositions extends StatelessWidget {
     } else if (player.position == 'SF') {
       playerPositionLeft = 363;
       playerPositionTop = 165;
-    }
+    } else if (player.position == 'SG') {
+      playerPositionLeft = 53;
+      playerPositionTop = 198;
+    } 
 
     return Stack(
       children: [
