@@ -247,6 +247,7 @@ class _ParameterState extends State<Parameter> {
     setState(() {
       headerFooterColor = color;
       Parameter.headerFooterColor = color;
+      widget.user.appColorTeam = 'userChoice';
     });
   }
 
@@ -254,6 +255,7 @@ class _ParameterState extends State<Parameter> {
     setState(() {
       comingsMatchsColor = color;
       Parameter.comingsMatchsColor = color;
+      widget.user.appColorTeam = 'userChoice';
     });
   }
 
@@ -261,6 +263,7 @@ class _ParameterState extends State<Parameter> {
     setState(() {
       latestsMatchsColor = color;
       Parameter.latestsMatchsColor = color;
+      widget.user.appColorTeam = 'userChoice';
     });
   }
 
@@ -268,6 +271,7 @@ class _ParameterState extends State<Parameter> {
     setState(() {
       todaysMatchsColor = color;
       Parameter.todaysMatchsColor = color;
+      widget.user.appColorTeam = 'userChoice';
     });
   }
 
