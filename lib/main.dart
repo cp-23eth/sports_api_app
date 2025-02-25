@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:sports_repository/sports_repository.dart';
 
