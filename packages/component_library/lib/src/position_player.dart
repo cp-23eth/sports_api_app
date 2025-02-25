@@ -12,7 +12,7 @@ class PositionPlayer extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         constraints: const BoxConstraints(
-          maxWidth: 200.0,
+          maxWidth: 400.0,
         ),
         child: Image.asset(
           'packages/component_library/lib/src/assets/images/positions_players.png',

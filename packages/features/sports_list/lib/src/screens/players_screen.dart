@@ -8,11 +8,13 @@ class PlayersScreen extends StatefulWidget {
       {required this.user,
       required this.color,
       required this.player,
+      required this.favoritePlayer,
       super.key});
 
   final Color color;
   final Player player;
   final User user;
+  final Function favoritePlayer;
 
   @override
   State<PlayersScreen> createState() => _PlayersScreenState();
@@ -25,21 +27,6 @@ class _PlayersScreenState extends State<PlayersScreen> {
   void initState() {
     super.initState();
     _isFavorited = widget.user.favoritePlayers.contains(widget.player.playerId);
-  }
-
-  void _favoritePlayer(BuildContext context, int teamId) {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-    if (_isFavorited) {
-      context
-          .read<SportsListProvider>()
-          .addFavoritePlayer(widget.user.username, widget.player.playerId);
-    } else {
-      context
-          .read<SportsListProvider>()
-          .removeFavoritePlayer(widget.user.username, widget.player.playerId);
-    }
   }
 
   @override
@@ -64,7 +51,12 @@ class _PlayersScreenState extends State<PlayersScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () => _favoritePlayer(context, widget.player.playerId),
+            onPressed: () {
+              widget.favoritePlayer(context, widget.player.playerId);
+              setState(() {
+                _isFavorited = !_isFavorited;
+              });
+            },
             icon: Icon(
               _isFavorited ? Icons.favorite : Icons.favorite_border,
               color: ThemeData.estimateBrightnessForColor(
