@@ -9,16 +9,16 @@ import 'package:sports_list/sports_list.dart';
 class DetailMatch extends StatelessWidget {
   const DetailMatch(
       {required this.game,
-      required this.teams,
-      required this.stadiums,
       super.key});
 
   final Game game;
-  final List<Team> teams;
-  final List<Stadium> stadiums;
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<SportsListProvider>().state;
+    Team awayTeam = state.teams[game.awayTeamId - 1];
+    Team homeTeam = state.teams[game.homeTeamId - 1];
+
     final gameDate = DateTime.parse(game.dateTimeUtc).add(
       const Duration(hours: 1),
     );
@@ -38,7 +38,7 @@ class DetailMatch extends StatelessWidget {
       longitude: 0,
     );
 
-    stadium = stadiums.firstWhere(
+    stadium = state.stadiums.firstWhere(
       (s) => s.stadiumId == game.stadiumId,
       orElse: () => stadium,
     );
@@ -54,29 +54,43 @@ class DetailMatch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  SvgPicture.asset(
-                    'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].logo}',
-                    height: 87,
-                    fit: BoxFit.fitHeight,
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    teams[game.homeTeamId - 1].name,
-                    style: TextStyle(
-                      color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.backgroundColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: 20,
-                      fontFamily: GoogleFonts.poppins().fontFamily,
+              TextButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TeamsScreen(
+                      user: state.user,
+                      team: homeTeam,
+                      players: state.players,
+                      stadium: stadium,
+                      statsTeam: state.statsTeam[homeTeam.teamId - 1],
                     ),
                   ),
-                ],
+                ),
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      'packages/component_library/lib/src/assets/images/svg/${state.teams[game.homeTeamId - 1].logo}',
+                      height: 87,
+                      fit: BoxFit.fitHeight,
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      state.teams[game.homeTeamId - 1].name,
+                      style: TextStyle(
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.backgroundColor) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                        fontSize: 20,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,29 +130,43 @@ class DetailMatch extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  SvgPicture.asset(
-                    'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].logo}',
-                    height: 87,
-                    fit: BoxFit.fitHeight,
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    teams[game.awayTeamId - 1].name,
-                    style: TextStyle(
-                      color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.backgroundColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: 20,
-                      fontFamily: GoogleFonts.poppins().fontFamily,
+              TextButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TeamsScreen(
+                      user: state.user,
+                      team: awayTeam,
+                      players: state.players,
+                      stadium: stadium,
+                      statsTeam: state.statsTeam[awayTeam.teamId - 1],
                     ),
                   ),
-                ],
+                ),
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      'packages/component_library/lib/src/assets/images/svg/${state.teams[game.awayTeamId - 1].logo}',
+                      height: 87,
+                      fit: BoxFit.fitHeight,
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      state.teams[game.awayTeamId - 1].name,
+                      style: TextStyle(
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.backgroundColor) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                        fontSize: 20,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

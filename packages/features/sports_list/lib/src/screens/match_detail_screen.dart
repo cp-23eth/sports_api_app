@@ -65,8 +65,6 @@ class MatchDetailScreen extends StatelessWidget {
           children: [
             DetailMatch(
               game: game,
-              teams: teams,
-              stadiums: stadiums,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
