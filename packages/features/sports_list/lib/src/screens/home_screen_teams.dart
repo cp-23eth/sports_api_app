@@ -5,9 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreenTeams extends StatefulWidget {
-  const HomeScreenTeams({required this.user, super.key});
+  const HomeScreenTeams({required this.user, required this.teams, super.key});
 
   final User user;
+  final List<Team> teams;
 
   @override
   State<HomeScreenTeams> createState() => _HomeScreenTeamsState();
@@ -82,6 +83,7 @@ class _HomeScreenTeamsState extends State<HomeScreenTeams> {
       children: [
         Header(
           user: widget.user,
+          teams: widget.teams,
         ),
         Expanded(
           child: ListView(

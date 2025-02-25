@@ -127,6 +127,7 @@ class CalendarScreenLoaded extends StatelessWidget {
       children: [
         Header(
           user: user,
+          teams: stateTeams,
         ),
         Expanded(
           child: ListView.builder(

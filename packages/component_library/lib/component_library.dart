@@ -17,3 +17,4 @@ export 'src/team_list.dart';
 export 'src/team_stadium_card.dart';
 export 'src/team_title.dart';
 export 'src/button_color_picker.dart';
+export 'src/favorite_team_list_settings.dart';

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class Parameter extends StatefulWidget {
-  const Parameter({required this.user, super.key});
+  const Parameter({required this.teams, required this.user, super.key});
 
+  final List<Team> teams;
   final User user;
 
   static Color headerFooterColor = const Color(0xFF1C5D99);
@@ -34,8 +35,13 @@ class _ParameterState extends State<Parameter> {
   Color backgroundColor = Parameter.backgroundColor;
 
   @override
-  @override
   Widget build(BuildContext context) {
+    final state = context.watch<SportsListProvider>().state;
+
+    List<Team> teamList = widget.teams
+        .where((team) => state.user.favoriteTeams.contains(team.teamId))
+        .toList();
+
     return Scaffold(
       backgroundColor: Parameter.backgroundColor,
       appBar: AppBar(
@@ -71,6 +77,7 @@ class _ParameterState extends State<Parameter> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            FavoriteTeamListSettings(teamList: teamList),
             const PrimaryTitle(text: 'Change application colors'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
