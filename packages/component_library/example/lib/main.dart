@@ -228,15 +228,15 @@ class MyApp extends StatelessWidget {
         //       builder: (context) =>
         //           DetailMatch(game: game, teams: teams, stadiums: stadiums))
         // ],
-        Story(
-          name: 'Widget/favorite_team_list_setting',
-          builder: (context) => FavoriteTeamListSettings(
-            teamList: [
-              Team(teamId: 1, active: true, key: 'WAS', city: 'Washington', name: 'Wizards', headCoach: 'Brian Keefe', logo: "WAS.svg", primaryColor: "002B5C", secondaryColor: 	"E31837", tertiaryColor: 	"C4CED4"),
-              Team(teamId: 2, active: true, key: 'CHA', city: 'Charlotte', name: 'Hornets', headCoach: 'Charles Lee', logo: "CHA.svg", primaryColor: 	"00788C", secondaryColor: 	"1D1160", tertiaryColor: 	"A1A1A4")
-            ],
-          ),
-        ),
+        // Story(
+        //   name: 'Widget/favorite_team_list_setting',
+        //   builder: (context) => FavoriteTeamListSettings(
+        //     teamList: [
+        //       Team(teamId: 1, active: true, key: 'WAS', city: 'Washington', name: 'Wizards', headCoach: 'Brian Keefe', logo: "WAS.svg", primaryColor: "002B5C", secondaryColor: 	"E31837", tertiaryColor: 	"C4CED4"),
+        //       Team(teamId: 2, active: true, key: 'CHA', city: 'Charlotte', name: 'Hornets', headCoach: 'Charles Lee', logo: "CHA.svg", primaryColor: 	"00788C", secondaryColor: 	"1D1160", tertiaryColor: 	"A1A1A4")
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }
