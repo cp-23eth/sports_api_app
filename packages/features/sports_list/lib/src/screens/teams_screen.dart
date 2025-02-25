@@ -53,6 +53,8 @@ class _TeamsScreenState extends State<TeamsScreen> {
   @override
   Widget build(BuildContext context) {
     final filteredPlayers = _filterPlayersByTeam(widget.players, widget.team);
+    final Color primaryColor =
+        Color(int.parse('0xFF${widget.team.primaryColor}'));
     final Color secondaryColor =
         Color(int.parse('0xFF${widget.team.secondaryColor}'));
 
@@ -82,7 +84,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Parameter.teamsHeaderColor,
+        backgroundColor: primaryColor,
         centerTitle: true,
         actions: [
           IconButton(
@@ -123,7 +125,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Parameter.teamsHeaderColor,
+                  backgroundColor: primaryColor,
                 ),
                 onPressed: () {
                   Navigator.push(

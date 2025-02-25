@@ -1,7 +1,6 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sports_list/sports_list.dart';
 
 class TeamStadiumCard extends StatelessWidget {
   const TeamStadiumCard(
@@ -21,7 +20,7 @@ class TeamStadiumCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Parameter.teamsStadiumColor,
+        color: secondaryColor,
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,7 +37,7 @@ class TeamStadiumCard extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teamsStadiumColor) ==
+                                secondaryColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -50,7 +49,7 @@ class TeamStadiumCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teamsStadiumColor) ==
+                                secondaryColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -64,7 +63,7 @@ class TeamStadiumCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teamsStadiumColor) ==
+                                secondaryColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
@@ -76,7 +75,7 @@ class TeamStadiumCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teamsStadiumColor) ==
+                                secondaryColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,

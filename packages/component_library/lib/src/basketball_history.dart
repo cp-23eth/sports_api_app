@@ -34,7 +34,7 @@ class BasketballHistory extends StatelessWidget {
         ),
         const Paragraphe(
           text:
-              '- First Game: The first game of basketball was played with nine players per team. The objective was to throw the soccer ball into the peach basket to score points, and since there was no hole in the basket, a stick was used to retrieve the ball after every point.',
+              'First Game: The first game of basketball was played with nine players per team. The objective was to throw the soccer ball into the peach basket to score points, and since there was no hole in the basket, a stick was used to retrieve the ball after every point.',
         ),
         const SecondaryTitle(text: 'More informations'),
         ElevatedButton(

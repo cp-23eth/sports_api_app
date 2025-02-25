@@ -60,27 +60,15 @@ class Header extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: SizedBox(
+                  child: const SizedBox(
                     width: 100,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Text(
-                        user.username,
-                        style: TextStyle(
-                          color: ThemeData.estimateBrightnessForColor(
-                                      Parameter.headerFooterColor) ==
-                                  Brightness.light
-                              ? Colors.black
-                              : Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: GoogleFonts.poppins().fontFamily,
-                        ),
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: Icon(Icons.settings,color: Colors.white, size: 32.0,),
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class Parameter extends StatefulWidget {
@@ -75,8 +76,21 @@ class _ParameterState extends State<Parameter> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(
+              height: 24.0,
+            ),
+            Text(
+              'Bonjour ${state.user.username}',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40.0,
+                  fontFamily: GoogleFonts.poppins().fontFamily),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
             FavoriteTeamListSettings(teamList: teamList),
             const PrimaryTitle(text: 'Change application colors'),
             Row(
