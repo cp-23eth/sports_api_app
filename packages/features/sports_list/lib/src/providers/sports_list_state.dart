@@ -37,6 +37,7 @@ class SportsListState extends Equatable {
         teamsStadiumColor: const Color(0xFF000000),
         teamsPlayersColor: const Color(0xFF000000),
         backgroundColor: const Color(0xFF000000),
+        appColorTeam: '',
       ),
     );
   }

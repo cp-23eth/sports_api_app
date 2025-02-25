@@ -15,6 +15,7 @@ extension UserModelToDomain on UserModel {
       teamsStadiumColor: teamsStadiumColor,
       teamsPlayersColor: teamsPlayersColor,
       backgroundColor: backgroundColor,
+      appColorTeam: appColorTeam,
     );
   }
 }

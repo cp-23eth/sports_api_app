@@ -13,6 +13,7 @@ class UserModel {
     required this.teamsStadiumColor,
     required this.teamsPlayersColor,
     required this.backgroundColor,
+    required this.appColorTeam,
   });
 
   final String username;
@@ -26,6 +27,7 @@ class UserModel {
   final Color teamsStadiumColor;
   final Color teamsPlayersColor;
   final Color backgroundColor;
+  final String appColorTeam;
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -40,30 +42,7 @@ class UserModel {
       teamsStadiumColor: Color(json['teamsStadiumColor']),
       teamsPlayersColor: Color(json['teamsPlayersColor']),
       backgroundColor: Color(json['backgroundColor']),
+      appColorTeam: json['appColorTeam'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'username': username,
-      'favoriteTeams': favoriteTeams,
-      'favoritePlayers': favoritePlayers,
-      // ignore: deprecated_member_use
-      'headerFooterColor': headerFooterColor.value,
-      // ignore: deprecated_member_use
-      'comingsMatchsColor': comingsMatchsColor.value,
-      // ignore: deprecated_member_use
-      'latestsMatchsColor': latestsMatchsColor.value,
-      // ignore: deprecated_member_use
-      'todaysMatchsColor': todaysMatchsColor.value,
-      // ignore: deprecated_member_use
-      'teamsHeaderColor': teamsHeaderColor.value,
-      // ignore: deprecated_member_use
-      'teamsStadiumColor': teamsStadiumColor.value,
-      // ignore: deprecated_member_use
-      'teamsPlayersColor': teamsPlayersColor.value,
-      // ignore: deprecated_member_use
-      'backgroundColor': backgroundColor.value,
-    };
   }
 }
