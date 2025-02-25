@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
-class TeamList extends StatelessWidget {
+class TeamList extends StatefulWidget {
   const TeamList(
       {required this.user,
       required this.team,
@@ -20,6 +20,34 @@ class TeamList extends StatelessWidget {
   final List<StatsTeam> statsTeam;
 
   @override
+  State<TeamList> createState() => _TeamListState();
+}
+
+class _TeamListState extends State<TeamList> {
+  late bool _isFavorited;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavorited = widget.user.favoriteTeams.contains(widget.team.teamId);
+  }
+
+  void _favoriteTeam(BuildContext context, int teamId) {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+    if (_isFavorited) {
+      context
+          .read<SportsListProvider>()
+          .addFavoriteTeam(widget.user.username, teamId);
+    } else {
+      context
+          .read<SportsListProvider>()
+          .removeFavoriteTeam(widget.user.username, teamId);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -28,11 +56,11 @@ class TeamList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => TeamsScreen(
-              user: user,
-              team: team,
-              players: players,
-              stadium: stadium[team.teamId - 1],
-              statsTeam: statsTeam[team.teamId - 1],
+              user: widget.user,
+              team: widget.team,
+              players: widget.players,
+              stadium: widget.stadium[widget.team.teamId - 1],
+              statsTeam: widget.statsTeam[widget.team.teamId - 1],
             ),
           ),
         ),
@@ -42,26 +70,46 @@ class TeamList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset(
-                    'packages/component_library/lib/src/assets/images/svg/${team.logo}',
-                    width: 58.0,
-                    fit: BoxFit.fitWidth,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'packages/component_library/lib/src/assets/images/svg/${widget.team.logo}',
+                        width: 58.0,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        '${widget.team.city} ${widget.team.name}',
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 16,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    '${team.city} ${team.name}',
-                    style: TextStyle(
-                      color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.backgroundColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: 16,
-                      fontFamily: GoogleFonts.poppins().fontFamily,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: IconButton(
+                      onPressed: () =>
+                          _favoriteTeam(context, widget.team.teamId),
+                      icon: Icon(
+                        _isFavorited ? Icons.favorite : Icons.favorite_border,
+                        color: ThemeData.estimateBrightnessForColor(
+                                    Parameter.teamsHeaderColor) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                      ),
                     ),
                   ),
                 ],
