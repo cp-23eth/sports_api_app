@@ -105,7 +105,7 @@ class _TeamListState extends State<TeamList> {
                       icon: Icon(
                         _isFavorited ? Icons.favorite : Icons.favorite_border,
                         color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.teamsHeaderColor) ==
+                                    Parameter.backgroundColor) ==
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,

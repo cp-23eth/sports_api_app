@@ -64,8 +64,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
         title: Text(
           'Teams',
           style: TextStyle(
-            color: ThemeData.estimateBrightnessForColor(
-                        Parameter.teamsHeaderColor) ==
+            color: ThemeData.estimateBrightnessForColor(primaryColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -74,8 +73,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: ThemeData.estimateBrightnessForColor(
-                        Parameter.teamsHeaderColor) ==
+            color: ThemeData.estimateBrightnessForColor(primaryColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -91,8 +89,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
             onPressed: () => _favoriteTeam(context, widget.team.teamId),
             icon: Icon(
               _isFavorited ? Icons.favorite : Icons.favorite_border,
-              color: ThemeData.estimateBrightnessForColor(
-                          Parameter.teamsHeaderColor) ==
+              color: ThemeData.estimateBrightnessForColor(primaryColor) ==
                       Brightness.light
                   ? Colors.black
                   : Colors.white,
@@ -139,8 +136,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
                 child: Text(
                   'Open Stats',
                   style: TextStyle(
-                    color: ThemeData.estimateBrightnessForColor(
-                                Parameter.teamsHeaderColor) ==
+                    color: ThemeData.estimateBrightnessForColor(primaryColor) ==
                             Brightness.light
                         ? Colors.black
                         : Colors.white,
