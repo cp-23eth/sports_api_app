@@ -342,6 +342,7 @@ class _ParameterState extends State<Parameter> {
         Parameter.comingsMatchsColor = Color(colors[1]);
         Parameter.latestsMatchsColor = Color(colors[2]);
         Parameter.todaysMatchsColor = Color(colors[3]);
+        widget.user.appColorTeam = team.name;
       });
     }
   }
