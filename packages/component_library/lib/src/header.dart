@@ -4,9 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
 class Header extends StatelessWidget {
-  const Header({required this.user, super.key});
+  const Header({required this.user, required this.teams, super.key});
 
   final User user;
+  final List<Team> teams;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,7 @@ class Header extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => Parameter(
+                        teams: teams,
                         user: user,
                       ),
                     ),

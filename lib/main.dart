@@ -6,21 +6,6 @@ void main() async {
   runApp(const SportsApiApp());
 }
 
-// Future<List<User>> loadUsers() async {
-//   try {
-//     final String response = await rootBundle.loadString(
-//       'packages/sports_repository/lib/src/assets/data/user.json',
-//     );
-//     final List<dynamic> data = json.decode(response);
-//     return data
-//         .map((json) => UserModel.fromJson(json).toDomainEntity())
-//         .toList();
-//   } catch (e) {
-//     print('Error reading JSON file: $e');
-//     rethrow;
-//   }
-// }
-
 class SportsApiApp extends StatelessWidget {
   const SportsApiApp({super.key});
 

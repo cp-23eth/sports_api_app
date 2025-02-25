@@ -3,11 +3,44 @@ import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
-class PlayersScreen extends StatelessWidget {
-  const PlayersScreen({required this.color, required this.player, super.key});
+class PlayersScreen extends StatefulWidget {
+  const PlayersScreen(
+      {required this.user,
+      required this.color,
+      required this.player,
+      super.key});
 
   final Color color;
   final Player player;
+  final User user;
+
+  @override
+  State<PlayersScreen> createState() => _PlayersScreenState();
+}
+
+class _PlayersScreenState extends State<PlayersScreen> {
+  late bool _isFavorited;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavorited = widget.user.favoritePlayers.contains(widget.player.playerId);
+  }
+
+  void _favoritePlayer(BuildContext context, int teamId) {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+    if (_isFavorited) {
+      context
+          .read<SportsListProvider>()
+          .addFavoritePlayer(widget.user.username, widget.player.playerId);
+    } else {
+      context
+          .read<SportsListProvider>()
+          .removeFavoritePlayer(widget.user.username, widget.player.playerId);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +62,19 @@ class PlayersScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => _favoritePlayer(context, widget.player.playerId),
+            icon: Icon(
+              _isFavorited ? Icons.favorite : Icons.favorite_border,
+              color: ThemeData.estimateBrightnessForColor(
+                          Parameter.teamsHeaderColor) ==
+                      Brightness.light
+                  ? Colors.black
+                  : Colors.white,
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -37,15 +83,15 @@ class PlayersScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                PlayerTitle(player: player),
+                PlayerTitle(player: widget.player),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: PlayerInfo(
-              player: player,
-              color: color,
+              player: widget.player,
+              color: widget.color,
             ),
           ),
         ],

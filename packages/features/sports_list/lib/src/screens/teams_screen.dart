@@ -39,9 +39,15 @@ class _TeamsScreenState extends State<TeamsScreen> {
     setState(() {
       _isFavorited = !_isFavorited;
     });
-    context
-        .read<SportsListProvider>()
-        .addFavoriteTeam(widget.user.username, teamId);
+    if (_isFavorited) {
+      context
+          .read<SportsListProvider>()
+          .addFavoriteTeam(widget.user.username, teamId);
+    } else {
+      context
+          .read<SportsListProvider>()
+          .removeFavoriteTeam(widget.user.username, teamId);
+    }
   }
 
   @override
@@ -161,6 +167,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: filteredPlayers.length,
                 itemBuilder: (context, index) => PlayerList(
+                  user: widget.user,
                   player: filteredPlayers[index],
                   color: secondaryColor,
                 ),

@@ -148,12 +148,14 @@ class _MainNbaState extends State<MainNba> {
         stateStadiums: state.stadiums,
         stateGames: state.games,
       ),
-      const HomeScreen(),
+      HomeScreen(teams: state.teams,),
       HomeScreenTeams(
         user: state.user,
+        teams: state.teams,
       ),
       GeneralBasketScreen(
         user: state.user,
+        teams: state.teams,
       ),
     ];
   }

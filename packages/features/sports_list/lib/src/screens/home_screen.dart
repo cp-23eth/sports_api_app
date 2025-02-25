@@ -1,10 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:component_library/component_library.dart';
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({required this.teams, super.key});
+
+  final List<Team> teams;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -56,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Header(
           user: user,
+          teams: widget.teams,
         ),
         const SizedBox(height: 40),
         Expanded(
@@ -64,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 children: [
                   Text(
-                    user.favoriteTeams.toString(), //'Coming matches',
+                    'Coming matches',
                     style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
                                     Parameter.backgroundColor) ==

@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class GeneralBasketScreen extends StatelessWidget {
-  const GeneralBasketScreen({required this.user, super.key});
+  const GeneralBasketScreen({required this.user, required this.teams, super.key});
 
   final User user;
+  final List<Team> teams;
 
   void showRulesDialog(BuildContext context) {
     showDialog(
@@ -37,6 +38,7 @@ class GeneralBasketScreen extends StatelessWidget {
       children: [
         Header(
           user: user,
+          teams: teams,
         ),
         Expanded(
           child: ListView(
