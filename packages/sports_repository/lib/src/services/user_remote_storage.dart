@@ -35,4 +35,64 @@ class UserRemoteStorage implements SportsUserStorage {
     //     File('packages/sports_repository/lib/src/assets/data/user.json');
     // await file.writeAsString(updatedJson);
   }
+
+  @override
+  Future<void> removeFavoriteTeam(String username, int teamId) async {
+    final dataString = await rootBundle.loadString(
+      'packages/sports_repository/lib/src/assets/data/user.json',
+    );
+    final List<dynamic> json = jsonDecode(dataString);
+
+    for (var user in json) {
+      if (user['username'] == username) {
+        user['favoriteTeams'].remove(teamId);
+        break;
+      }
+    }
+
+    final String updatedJson = jsonEncode(json);
+    // final file =
+    //     File('packages/sports_repository/lib/src/assets/data/user.json');
+    // await file.writeAsString(updatedJson);
+  }
+
+  @override
+  Future<void> addFavoritePlayer(String username, int playerId) async {
+    final dataString = await rootBundle.loadString(
+      'packages/sports_repository/lib/src/assets/data/user.json',
+    );
+    final List<dynamic> json = jsonDecode(dataString);
+
+    for (var user in json) {
+      if (user['username'] == username) {
+        user['favoritePlayers'].add(playerId);
+        break;
+      }
+    }
+
+    final String updatedJson = jsonEncode(json);
+    // final file =
+    //     File('packages/sports_repository/lib/src/assets/data/user.json');
+    // await file.writeAsString(updatedJson);
+  }
+
+  @override
+  Future<void> removeFavoritePlayer(String username, int playerId) async {
+    final dataString = await rootBundle.loadString(
+      'packages/sports_repository/lib/src/assets/data/user.json',
+    );
+    final List<dynamic> json = jsonDecode(dataString);
+
+    for (var user in json) {
+      if (user['username'] == username) {
+        user['favoritePlayers'].remove(playerId);
+        break;
+      }
+    }
+
+    final String updatedJson = jsonEncode(json);
+    // final file =
+    //     File('packages/sports_repository/lib/src/assets/data/user.json');
+    // await file.writeAsString(updatedJson);
+  }
 }

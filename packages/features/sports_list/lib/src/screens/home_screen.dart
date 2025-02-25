@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 children: [
                   Text(
-                    user.favoriteTeams.toString(), //'Coming matches',
+                    'Coming matches',
                     style: TextStyle(
                         color: ThemeData.estimateBrightnessForColor(
                                     Parameter.backgroundColor) ==

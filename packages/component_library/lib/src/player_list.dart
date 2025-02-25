@@ -35,6 +35,7 @@ class PlayerList extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => PlayersScreen(
+                user: context.read<SportsListProvider>().state.user,
                 player: player,
                 color: color,
               ),
