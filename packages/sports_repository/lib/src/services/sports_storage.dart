@@ -22,6 +22,10 @@ abstract class SportsStatsTeamStorage {
 
 abstract class SportsUserStorage {
   Future<User> getUser();
+
   Future<void> addFavoriteTeam(String username, int teamId);
   Future<void> removeFavoriteTeam(String username, int teamId);
+
+  Future<void> addFavoritePlayer(String username, int playerId);
+  Future<void> removeFavoritePlayer(String username, int playerId);
 }
