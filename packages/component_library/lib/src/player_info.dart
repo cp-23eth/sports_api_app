@@ -214,6 +214,7 @@ class PlayerInfo extends StatelessWidget {
                                 : Colors.white,
                             fontSize: 14,
                           ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),

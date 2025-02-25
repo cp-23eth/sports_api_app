@@ -30,8 +30,8 @@ class PlayerTitle extends StatelessWidget {
       children: [
         ClipOval(
           child: SizedBox(
-            width: 180,
-            height: 180,
+            width: 150,
+            height: 150,
             child: Image.asset(
               'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${cleanLastName(player.lastName)}.jpg',
               fit: BoxFit.cover,
@@ -47,7 +47,7 @@ class PlayerTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 40,
+          height: 30,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +66,7 @@ class PlayerTitle extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
             ),
-            const SizedBox(width: 40),
+            const SizedBox(width: 30),
             Text(
               _haveJersey(player) ? player.jersey.toString() : 'N/A',
               style: TextStyle(

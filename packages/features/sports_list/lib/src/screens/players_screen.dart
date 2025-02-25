@@ -76,25 +76,28 @@ class _PlayersScreenState extends State<PlayersScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PlayerTitle(player: widget.player),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PlayerTitle(player: widget.player),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: PlayerInfo(
-              player: widget.player,
-              color: widget.color,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: PlayerInfo(
+                player: widget.player,
+                color: widget.color,
+              ),
             ),
-          ),
-        ],
+            PlayerPositions(player: widget.player)
+          ],
+        ),
       ),
     );
   }
