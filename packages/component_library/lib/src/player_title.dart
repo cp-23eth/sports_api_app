@@ -71,7 +71,7 @@ class PlayerTitle extends StatelessWidget {
               _haveJersey(player) ? player.jersey.toString() : 'N/A',
               style: TextStyle(
                   color: ThemeData.estimateBrightnessForColor(
-                              Parameter.teamsPlayersColor) ==
+                              Parameter.backgroundColor) ==
                           Brightness.light
                       ? Colors.black
                       : Colors.white,

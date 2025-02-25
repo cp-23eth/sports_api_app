@@ -13,7 +13,6 @@ class Parameter extends StatefulWidget {
   static Color comingsMatchsColor = const Color(0xFFC8102E);
   static Color latestsMatchsColor = const Color(0xFF1D428A);
   static Color todaysMatchsColor = const Color(0xFF9100B6);
-  static Color teamsPlayersColor = const Color.fromARGB(255, 20, 58, 163);
   static Color backgroundColor = const Color(0xFF0B132B);
 
   @override
@@ -25,8 +24,6 @@ class _ParameterState extends State<Parameter> {
   Color comingsMatchsColor = Parameter.comingsMatchsColor;
   Color latestsMatchsColor = Parameter.latestsMatchsColor;
   Color todaysMatchsColor = Parameter.todaysMatchsColor;
-
-  Color teamsPlayersColor = Parameter.teamsPlayersColor;
 
   Color backgroundColor = Parameter.backgroundColor;
 
@@ -156,21 +153,6 @@ class _ParameterState extends State<Parameter> {
                   children: [
                     const SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'Teams Players :'),
-                    ),
-                    const SizedBox(width: 10),
-                    ButtonColorPicker(
-                      pickerColor: teamsPlayersColor,
-                      changeColor: changeColorTeamsPlayers,
-                      keyColor: Parameter.teamsPlayersColor,
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      width: 200,
                       child: SecondaryTitle(text: 'Backgrounds :'),
                     ),
                     const SizedBox(width: 10),
@@ -194,7 +176,6 @@ class _ParameterState extends State<Parameter> {
                     changeColorComingsMatchs(const Color(0xFFC8102E));
                     changeColorLatestsMatchs(const Color(0xFF1D428A));
                     changeColorTodaysMatchs(const Color(0xFF9100B6));
-                    changeColorTeamsPlayers(const Color(0xFF9100B6));
                     changeBackgroundColor(const Color(0xFF0B132B));
                   },
                   child: Text(
@@ -247,13 +228,6 @@ class _ParameterState extends State<Parameter> {
       todaysMatchsColor = color;
       Parameter.todaysMatchsColor = color;
       widget.user.appColorTeam = 'userChoice';
-    });
-  }
-
-  void changeColorTeamsPlayers(Color color) {
-    setState(() {
-      teamsPlayersColor = color;
-      Parameter.teamsPlayersColor = color;
     });
   }
 
