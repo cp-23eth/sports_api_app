@@ -203,18 +203,22 @@ class PlayerInfo extends StatelessWidget {
                               : Colors.white,
                         ),
                         const SizedBox(width: 8),
-                        Text(
-                          player.birthCity,
-                          style: TextStyle(
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                            color: ThemeData.estimateBrightnessForColor(
-                                        Parameter.teamsPlayersColor) ==
-                                    Brightness.light
-                                ? Colors.black
-                                : Colors.white,
-                            fontSize: 14,
+                        SizedBox(
+                          width: 100.0,
+                          child: Text(
+                            player.birthCity,
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.poppins().fontFamily,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          Parameter.teamsPlayersColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
+                              fontSize: 14,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
