@@ -14,13 +14,9 @@ class StatsTeamsScreen extends StatelessWidget {
       backgroundColor: Parameter.backgroundColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
-            color: ThemeData.estimateBrightnessForColor(
-                        Parameter.headerFooterColor) ==
-                    Brightness.light
-                ? Colors.black
-                : Colors.white,
+            color: Colors.white,
           ),
           onPressed: () => Navigator.pop(context),
         ),
@@ -29,11 +25,7 @@ class StatsTeamsScreen extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: ThemeData.estimateBrightnessForColor(
-                        Parameter.backgroundColor) ==
-                    Brightness.light
-                ? Colors.black
-                : Colors.white,
+            color: Colors.white,
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -91,39 +83,24 @@ class StatsTeamsScreen extends StatelessWidget {
   // ignore: non_constant_identifier_names
   Widget CardLineInfo(String title, dynamic value, IconData icon) {
     return Card(
-      color: Colors.black12,
+      color: Colors.grey[300],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
-        leading: Icon(
-          icon,
-          color:
-              ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
-                      Brightness.light
-                  ? Colors.black
-                  : Colors.white,
-        ),
+        leading: Icon(icon, color: Colors.black),
         title: Text(
           title,
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: ThemeData.estimateBrightnessForColor(
-                        Parameter.backgroundColor) ==
-                    Brightness.light
-                ? Colors.black
-                : Colors.white,
+            color: Colors.black,
           ),
         ),
         trailing: Text(
           value.toString(),
           style: GoogleFonts.poppins(
               fontSize: 16,
-              color: ThemeData.estimateBrightnessForColor(
-                          Parameter.backgroundColor) ==
-                      Brightness.light
-                  ? Colors.black
-                  : Colors.white,
+              color: Colors.black,
               fontWeight: FontWeight.bold),
         ),
       ),
