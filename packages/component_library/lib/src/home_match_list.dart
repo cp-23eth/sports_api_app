@@ -60,35 +60,37 @@ class HomeMatchList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
-                        children: [
-                          SvgPicture.asset(
-                            'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].city == 'Houston' && game.isClosed == false ? 'Hou-noir.svg' : teams[game.homeTeamId - 1].logo}',
-                            width: 45.0,
-                            fit: BoxFit.fitHeight,
-                          ),
-                          SizedBox(
-                            width: 85.0,
-                            child: Text(
-                              '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
-                              style: TextStyle(
-                                color: ThemeData.estimateBrightnessForColor(
-                                          finish
-                                              ? Parameter.latestsMatchsColor
-                                              : Parameter.comingsMatchsColor,
-                                        ) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
-                                fontSize: 13.0,
-                                fontFamily: GoogleFonts.poppins().fontFamily,
-                              ),
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                      Flexible(
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].city == 'Houston' && game.isClosed == false ? 'Hou-noir.svg' : teams[game.homeTeamId - 1].logo}',
+                              width: 45.0,
+                              fit: BoxFit.fitHeight,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 85.0,
+                              child: Text(
+                                '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
+                                style: TextStyle(
+                                  color: ThemeData.estimateBrightnessForColor(
+                                            finish
+                                                ? Parameter.latestsMatchsColor
+                                                : Parameter.comingsMatchsColor,
+                                          ) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
+                                  fontSize: 13.0,
+                                  fontFamily: GoogleFonts.poppins().fontFamily,
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         width: 75.0,
@@ -155,35 +157,37 @@ class HomeMatchList extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Column(
-                        children: [
-                          SvgPicture.asset(
-                            'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].city == 'Houston' && game.isClosed == false ? 'Hou-noir.svg' : teams[game.awayTeamId - 1].logo}',
-                            width: 45.0,
-                            fit: BoxFit.fitHeight,
-                          ),
-                          SizedBox(
-                            width: 85.0,
-                            child: Text(
-                              '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
-                              style: TextStyle(
-                                color: ThemeData.estimateBrightnessForColor(
-                                          finish
-                                              ? Parameter.latestsMatchsColor
-                                              : Parameter.comingsMatchsColor,
-                                        ) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
-                                fontSize: 13.0,
-                                fontFamily: GoogleFonts.poppins().fontFamily,
-                              ),
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                      Flexible(
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].city == 'Houston' && game.isClosed == false ? 'Hou-noir.svg' : teams[game.awayTeamId - 1].logo}',
+                              width: 45.0,
+                              fit: BoxFit.fitHeight,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 85.0,
+                              child: Text(
+                                '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
+                                style: TextStyle(
+                                  color: ThemeData.estimateBrightnessForColor(
+                                            finish
+                                                ? Parameter.latestsMatchsColor
+                                                : Parameter.comingsMatchsColor,
+                                          ) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
+                                  fontSize: 13.0,
+                                  fontFamily: GoogleFonts.poppins().fontFamily,
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

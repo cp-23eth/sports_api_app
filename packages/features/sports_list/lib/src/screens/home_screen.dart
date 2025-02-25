@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   CarouselSlider(
                     items: nextGamesList,
                     options: CarouselOptions(
-                      height: 180,
+                      height: 181,
                       enableInfiniteScroll: false,
                       viewportFraction: 0.8,
                       autoPlay: true,
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   CarouselSlider(
                     items: lastGamesList,
                     options: CarouselOptions(
-                      height: 180,
+                      height: 181,
                       enableInfiniteScroll: false,
                       viewportFraction: 0.8,
                       autoPlay: true,
