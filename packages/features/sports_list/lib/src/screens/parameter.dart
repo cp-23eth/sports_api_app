@@ -342,6 +342,7 @@ class _ParameterState extends State<Parameter> {
         Parameter.comingsMatchsColor = Color(colors[1]);
         Parameter.latestsMatchsColor = Color(colors[2]);
         Parameter.todaysMatchsColor = Color(colors[3]);
+        _changeAppColorTeam(team);
       });
     }
   }
@@ -354,5 +355,9 @@ class _ParameterState extends State<Parameter> {
       Parameter.todaysMatchsColor = const Color(0xFF9100B6);
       Parameter.backgroundColor = const Color(0xFF0B132B);
     });
+  }
+
+  void _changeAppColorTeam(Team team) {
+    context.read<SportsListProvider>().changeAppColorTeam(team);
   }
 }

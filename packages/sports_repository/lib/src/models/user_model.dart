@@ -27,7 +27,7 @@ class UserModel {
   final Color teamsStadiumColor;
   final Color teamsPlayersColor;
   final Color backgroundColor;
-  final String appColorTeam;
+  String appColorTeam;
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

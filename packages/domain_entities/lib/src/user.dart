@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class User extends Equatable {
-  const User({
+  User({
     required this.username,
     required this.favoriteTeams,
     required this.favoritePlayers,
@@ -28,7 +29,7 @@ class User extends Equatable {
   final Color teamsStadiumColor;
   final Color teamsPlayersColor;
   final Color backgroundColor;
-  final String appColorTeam;
+  String appColorTeam;
 
   @override
   List<Object?> get props => [
