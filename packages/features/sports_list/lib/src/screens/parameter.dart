@@ -192,6 +192,37 @@ class _ParameterState extends State<Parameter> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    WidgetStatePropertyAll(Parameter.headerFooterColor),
+              ),
+              onPressed: () {
+                changeColorHeaderFooter(const Color(0xFF1C5D99));
+                changeColorComingsMatchs(const Color(0xFFC8102E));
+                changeColorLatestsMatchs(const Color(0xFF1D428A));
+                changeColorTodaysMatchs(const Color(0xFF9100B6));
+                changeColorTeamsHeader(const Color(0xFF1C5D99));
+                changeColorTeamsStadium(const Color(0xFFC8102E));
+                changeColorTeamsPlayers(const Color(0xFF9100B6));
+                changeBackgroundColor(const Color(0xFF0B132B));
+              },
+              child: Text(
+                'Reset',
+                style: TextStyle(
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.backgroundColor) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         ),
       ),

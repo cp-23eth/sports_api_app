@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:sports_list/sports_list.dart';
+import 'package:sports_list/src/screens/calender_load_screen.dart';
 
 class MainNba extends StatefulWidget {
   const MainNba({super.key});
@@ -10,6 +12,10 @@ class MainNba extends StatefulWidget {
 }
 
 class _MainNbaState extends State<MainNba> {
+  final List<Color> _kDefaultRainbowColors = [
+    Parameter.headerFooterColor,
+  ];
+
   int _selectedIndex = 1;
 
   @override
@@ -38,7 +44,19 @@ class _MainNbaState extends State<MainNba> {
         DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
 
     if (state.status == SportsListStatus.loading) {
-      return const Center(child: CircularProgressIndicator());
+      return Scaffold(
+        backgroundColor: Parameter.backgroundColor,
+        body: Center(
+          child: SizedBox(
+            height: 300,
+            width: 300,
+            child: LoadingIndicator(
+              indicatorType: Indicator.ballClipRotateMultiple,
+              colors: _kDefaultRainbowColors,
+            ),
+          ),
+        ),
+      );
     }
 
     if (state.games.isEmpty) {
@@ -124,7 +142,7 @@ class _MainNbaState extends State<MainNba> {
 
   List<Widget> _widgetOptions(SportsListState state) {
     return [
-      CalendarScreen(
+      CalenderLoad(
         user: state.user,
         stateTeams: state.teams,
         stateStadiums: state.stadiums,

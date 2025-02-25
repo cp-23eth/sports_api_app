@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class UserModel {
   UserModel({
     required this.username,
@@ -16,28 +18,28 @@ class UserModel {
   final String username;
   final List<int> favoriteTeams;
   final List<int> favoritePlayers;
-  final String headerFooterColor;
-  final String comingsMatchsColor;
-  final String latestsMatchsColor;
-  final String todaysMatchsColor;
-  final String teamsHeaderColor;
-  final String teamsStadiumColor;
-  final String teamsPlayersColor;
-  final String backgroundColor;
+  final Color headerFooterColor;
+  final Color comingsMatchsColor;
+  final Color latestsMatchsColor;
+  final Color todaysMatchsColor;
+  final Color teamsHeaderColor;
+  final Color teamsStadiumColor;
+  final Color teamsPlayersColor;
+  final Color backgroundColor;
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       username: json['username'],
       favoriteTeams: List<int>.from(json['favoriteTeams']),
       favoritePlayers: List<int>.from(json['favoritePlayers']),
-      headerFooterColor: json['headerFooterColor'],
-      comingsMatchsColor: json['comingsMatchsColor'],
-      latestsMatchsColor: json['latestsMatchsColor'],
-      todaysMatchsColor: json['todaysMatchsColor'],
-      teamsHeaderColor: json['teamsHeaderColor'],
-      teamsStadiumColor: json['teamsStadiumColor'],
-      teamsPlayersColor: json['teamsPlayersColor'],
-      backgroundColor: json['backgroundColor'],
+      headerFooterColor: Color(json['headerFooterColor']),
+      comingsMatchsColor: Color(json['comingsMatchsColor']),
+      latestsMatchsColor: Color(json['latestsMatchsColor']),
+      todaysMatchsColor: Color(json['todaysMatchsColor']),
+      teamsHeaderColor: Color(json['teamsHeaderColor']),
+      teamsStadiumColor: Color(json['teamsStadiumColor']),
+      teamsPlayersColor: Color(json['teamsPlayersColor']),
+      backgroundColor: Color(json['backgroundColor']),
     );
   }
 
@@ -46,6 +48,22 @@ class UserModel {
       'username': username,
       'favoriteTeams': favoriteTeams,
       'favoritePlayers': favoritePlayers,
+      // ignore: deprecated_member_use
+      'headerFooterColor': headerFooterColor.value,
+      // ignore: deprecated_member_use
+      'comingsMatchsColor': comingsMatchsColor.value,
+      // ignore: deprecated_member_use
+      'latestsMatchsColor': latestsMatchsColor.value,
+      // ignore: deprecated_member_use
+      'todaysMatchsColor': todaysMatchsColor.value,
+      // ignore: deprecated_member_use
+      'teamsHeaderColor': teamsHeaderColor.value,
+      // ignore: deprecated_member_use
+      'teamsStadiumColor': teamsStadiumColor.value,
+      // ignore: deprecated_member_use
+      'teamsPlayersColor': teamsPlayersColor.value,
+      // ignore: deprecated_member_use
+      'backgroundColor': backgroundColor.value,
     };
   }
 }
