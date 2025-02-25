@@ -14,6 +14,7 @@ class User extends Equatable {
     required this.teamsStadiumColor,
     required this.teamsPlayersColor,
     required this.backgroundColor,
+    required this.appColorTeam,
   });
 
   final String username;
@@ -27,6 +28,7 @@ class User extends Equatable {
   final Color teamsStadiumColor;
   final Color teamsPlayersColor;
   final Color backgroundColor;
+  final String appColorTeam;
 
   @override
   List<Object?> get props => [
@@ -41,6 +43,7 @@ class User extends Equatable {
         teamsStadiumColor,
         teamsPlayersColor,
         backgroundColor,
+        appColorTeam,
       ];
 
   @override
