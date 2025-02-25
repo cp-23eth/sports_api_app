@@ -79,11 +79,22 @@ class _ParameterState extends State<Parameter> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const PrimaryTitle(text: 'Change application colors'),
+                Text(
+                  'Bonjour ${state.user.username}',
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w900),
+                ),
+                const SizedBox(
+                  height: 24.0,
+                ),
+                const PrimaryTitle(text: 'Choose your color preset'),
                 FavoriteTeamListSettings(
                     teamList: teamList,
                     removeApplicationColor: removeApplicationColor,
                     changeApplicationColor: changeApplicationColor),
+                const PrimaryTitle(text: 'Change application colors'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
