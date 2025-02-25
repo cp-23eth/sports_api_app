@@ -7,14 +7,7 @@ extension UserModelToDomain on UserModel {
       username: username,
       favoriteTeams: favoriteTeams,
       favoritePlayers: favoritePlayers,
-      headerFooterColor: headerFooterColor,
-      comingsMatchsColor: comingsMatchsColor,
-      latestsMatchsColor: latestsMatchsColor,
-      todaysMatchsColor: todaysMatchsColor,
-      teamsHeaderColor: teamsHeaderColor,
-      teamsStadiumColor: teamsStadiumColor,
-      teamsPlayersColor: teamsPlayersColor,
-      backgroundColor: backgroundColor,
+      appColorTeam: appColorTeam,
     );
   }
 }

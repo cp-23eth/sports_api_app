@@ -2,25 +2,20 @@
     {
         "username": "Simon",
         "favoriteTeams": [
+            29,
             1,
-            2
+            9
         ],
         "favoritePlayers": [
             20000441,
             20000452
         ],
-        "headerFooterColor": 4280364313,
-        "comingsMatchsColor": 4290010158,
-        "latestsMatchsColor": 4280151434,
-        "todaysMatchsColor": 4288328374,
-        "teamsHeaderColor": 4280364313,
-        "teamsStadiumColor": 4290010158,
-        "teamsPlayersColor": 4288328374,
-        "backgroundColor": 4279303467
+        "appColorTeam": "Suns"
     },
     {
         "username": "Quentin",
         "favoriteTeams": [
+            20,
             3,
             4
         ],
@@ -28,18 +23,12 @@
             20000455,
             20000456
         ],
-        "headerFooterColor": 4280364313,
-        "comingsMatchsColor": 4290010158,
-        "latestsMatchsColor": 4280151434,
-        "todaysMatchsColor": 4288328374,
-        "teamsHeaderColor": 4280364313,
-        "teamsStadiumColor": 4290010158,
-        "teamsPlayersColor": 4288328374,
-        "backgroundColor": 4279303467
+        "appColorTeam": "Nuggets"
     },
     {
         "username": "Ethan",
         "favoriteTeams": [
+            2,
             5,
             6
         ],
@@ -47,13 +36,6 @@
             20000457,
             20000464
         ],
-        "headerFooterColor": 4280364313,
-        "comingsMatchsColor": 4290010158,
-        "latestsMatchsColor": 4280151434,
-        "todaysMatchsColor": 4288328374,
-        "teamsHeaderColor": 4280364313,
-        "teamsStadiumColor": 4290010158,
-        "teamsPlayersColor": 4288328374,
-        "backgroundColor": 4279303467
+        "appColorTeam": "Hornets"
     }
 ]
