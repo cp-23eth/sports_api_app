@@ -157,7 +157,7 @@ class _MainNbaState extends State<MainNba> {
       ),
       HomeScreen(
         teams: state.teams,
-        design: 'List',
+        design: state.user.homeScreenDesign,
       ),
       HomeScreenTeams(
         user: state.user,

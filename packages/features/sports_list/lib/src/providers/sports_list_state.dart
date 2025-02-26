@@ -30,6 +30,7 @@ class SportsListState extends Equatable {
         favoriteTeams: List<int>.empty(),
         favoritePlayers: List<int>.empty(),
         appColorTeam: '',
+        homeScreenDesign: '',
       ),
     );
   }

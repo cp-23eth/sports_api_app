@@ -7,12 +7,14 @@ class User extends Equatable {
     required this.favoriteTeams,
     required this.favoritePlayers,
     required this.appColorTeam,
+    required this.homeScreenDesign,
   });
 
   final String username;
   final List<int> favoriteTeams;
   final List<int> favoritePlayers;
   String appColorTeam;
+  final String homeScreenDesign;
 
   @override
   List<Object?> get props => [
@@ -20,6 +22,7 @@ class User extends Equatable {
         favoriteTeams,
         favoritePlayers,
         appColorTeam,
+        homeScreenDesign,
       ];
 
   @override
