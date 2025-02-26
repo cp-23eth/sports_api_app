@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -155,6 +157,7 @@ class _MainNbaState extends State<MainNba> {
       ),
       HomeScreen(
         teams: state.teams,
+        design: 'List',
       ),
       HomeScreenTeams(
         user: state.user,

@@ -25,9 +25,6 @@ class BasketballHistory extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SecondaryTitle(
-          text: 'Origins and Early Development',
-        ),
         const Paragraphe(
           text:
               'Basketball was invented by Dr. James Naismith, a physical education instructor in Springfield, Massachusetts. In December 1891, Naismith was tasked with creating a new indoor game to keep his students active during the winter. He wrote down 13 basic rules, nailed a peach basket onto the elevated track, and used a soccer ball to create the game.',
@@ -35,6 +32,9 @@ class BasketballHistory extends StatelessWidget {
         const Paragraphe(
           text:
               'First Game: The first game of basketball was played with nine players per team. The objective was to throw the soccer ball into the peach basket to score points, and since there was no hole in the basket, a stick was used to retrieve the ball after every point.',
+        ),
+        const SizedBox(
+          height: 8.0,
         ),
         const SecondaryTitle(text: 'More informations'),
         ElevatedButton(

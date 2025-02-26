@@ -55,18 +55,18 @@ class DetailMatch extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TeamsScreen(
-                      user: state.user,
-                      team: homeTeam,
-                      players: state.players,
-                      stadium: stadium,
-                      statsTeam: state.statsTeam[homeTeam.teamId - 1],
-                    ),
-                  ),
-                ),
+                onPressed: () {},//=> Navigator.push(
+                  // context,
+                  // MaterialPageRoute(
+                  //   builder: (context) => TeamsScreen(
+                  //     user: state.user,
+                  //     team: homeTeam,
+                  //     players: state.players,
+                  //     stadium: stadium,
+                  //     statsTeam: state.statsTeam[homeTeam.teamId - 1],
+                  //   ),
+                  // ),
+                // ),
                 child: Column(
                   children: [
                     SvgPicture.asset(
@@ -131,18 +131,18 @@ class DetailMatch extends StatelessWidget {
                 ],
               ),
               TextButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TeamsScreen(
-                      user: state.user,
-                      team: awayTeam,
-                      players: state.players,
-                      stadium: stadium,
-                      statsTeam: state.statsTeam[awayTeam.teamId - 1],
-                    ),
-                  ),
-                ),
+                onPressed: () {}, // => Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => TeamsScreen(
+                //       user: state.user,
+                //       team: awayTeam,
+                //       players: state.players,
+                //       stadium: stadium,
+                //       statsTeam: state.statsTeam[awayTeam.teamId - 1],
+                //     ),
+                //   ),
+                // ),
                 child: Column(
                   children: [
                     SvgPicture.asset(

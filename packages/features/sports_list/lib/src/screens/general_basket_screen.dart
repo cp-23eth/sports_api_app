@@ -119,9 +119,8 @@ class GeneralBasketScreen extends StatelessWidget {
                 height: 10.0,
               ),
               const PrimaryTitle(text: 'Terrain'),
-              const SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.all(32.0),
+                padding: const EdgeInsets.only(right: 32.0, left: 32.0, top: 10.0, bottom: 24.0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),

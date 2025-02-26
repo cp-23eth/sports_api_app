@@ -72,6 +72,7 @@ class _ParameterState extends State<Parameter> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: 10.0,),
                 Text(
                   'Bonjour ${state.user.username}',
                   style: const TextStyle(

@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({required this.teams, super.key});
+  const HomeScreen({required this.teams, required this.design, super.key});
 
   final List<Team> teams;
+  final String design;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -53,73 +54,84 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
     ];
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Header(
-          user: user,
-          teams: widget.teams,
-        ),
-        const SizedBox(height: 40),
-        Expanded(
-          child: ListView(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  Text(
-                    'Coming matches',
-                    style: TextStyle(
-                        color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.backgroundColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 6),
-                  CarouselSlider(
-                    items: nextGamesList,
-                    options: CarouselOptions(
-                      height: 181,
-                      enableInfiniteScroll: false,
-                      viewportFraction: 0.8,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 6),
-                      enlargeCenterPage: true,
+              Header(
+                user: user,
+                teams: widget.teams,
+              ),
+              if (widget.design == 'Carrousel')
+                const SizedBox(
+                  height: 85.0,
+                ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Coming matches',
+                      style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Latest matches',
-                    style: TextStyle(
-                        color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.backgroundColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 6),
-                  CarouselSlider(
-                    items: lastGamesList,
-                    options: CarouselOptions(
-                      height: 181,
-                      enableInfiniteScroll: false,
-                      viewportFraction: 0.8,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 6),
-                      enlargeCenterPage: true,
+                    const SizedBox(height: 6),
+                    if (widget.design == 'List')
+                      for (var gameWidget in nextGamesList) gameWidget,
+                    if (widget.design == 'Carrousel')
+                      CarouselSlider(
+                        items: nextGamesList,
+                        options: CarouselOptions(
+                          height: 181,
+                          enableInfiniteScroll: false,
+                          viewportFraction: 0.8,
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 6),
+                          enlargeCenterPage: true,
+                        ),
+                      ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Latest matches',
+                      style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 6),
+                    if (widget.design == 'List')
+                      for (var gameWidget in lastGamesList) gameWidget,
+                    if (widget.design == 'Carrousel') CarouselSlider(
+                      items: lastGamesList,
+                      options: CarouselOptions(
+                        height: 181,
+                        enableInfiniteScroll: false,
+                        viewportFraction: 0.8,
+                        autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 6),
+                        enlargeCenterPage: true,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -28,7 +28,6 @@ class _HomeMatchListState extends State<HomeMatchList> {
   Widget build(BuildContext context) {
     final state = context.watch<SportsListProvider>().state;
 
-    // Liste des équipes suivies par l'utilisateur.
     List<Team> teamList = widget.teams
         .where((team) => state.user.favoriteTeams.contains(team.teamId))
         .toList();
@@ -38,10 +37,44 @@ class _HomeMatchListState extends State<HomeMatchList> {
     final DateTime dateTime = DateTime.parse(widget.game.dateTimeUtc).add(
       const Duration(hours: 1),
     );
+
+    String hadHomeTeamWin(int scoreHomeTeam, int scoreAwayTeam) {
+      if (scoreHomeTeam > scoreAwayTeam) {
+        return 'win';
+      } else if (scoreHomeTeam == scoreAwayTeam) {
+        return 'equal';
+      } else {
+        return 'lose';
+      }
+    }
+
+    double chooseFontSizeMatchResult(String result){
+      double fontSize = 14;
+      if (result == 'win'){
+        fontSize = 19;
+      } else if (result == 'equal'){
+        fontSize = 16;
+      } else {
+        fontSize = 14;
+      }
+      return fontSize;
+    }
+
+    FontWeight chooseFontWeightMatchResult(String result) {
+      FontWeight fontSize = FontWeight.w400;
+      if (result == 'win'){
+        fontSize = FontWeight.w900;
+      } else if (result == 'equal'){
+        fontSize = FontWeight.bold;
+      } else {
+        fontSize = FontWeight.w400;
+      }
+      return fontSize;
+    }
+
     final String formattedHour = DateFormat.Hm().format(dateTime);
     final String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
 
-    // Récupération des équipes domicile et extérieur pour simplifier le code.
     final homeTeam = widget.teams[widget.game.homeTeamId - 1];
     final awayTeam = widget.teams[widget.game.awayTeamId - 1];
 
@@ -71,7 +104,6 @@ class _HomeMatchListState extends State<HomeMatchList> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Équipe domicile
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Stack(
@@ -96,7 +128,7 @@ class _HomeMatchListState extends State<HomeMatchList> {
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
-                              fontSize: 13.0,
+                              fontSize: isTeamFollowed(homeTeam) ? 16.0 : 13.0,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                               fontWeight: isTeamFollowed(homeTeam)
                                   ? FontWeight.w900
@@ -124,25 +156,63 @@ class _HomeMatchListState extends State<HomeMatchList> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${widget.game.homeTeamScore} - ${widget.game.awayTeamScore}',
-                      style: TextStyle(
-                        color: ThemeData.estimateBrightnessForColor(
-                                    widget.finish
-                                        ? Parameter.latestsMatchsColor
-                                        : Parameter.comingsMatchsColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 14.0,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    Row(
+                      children: [
+                        Text(
+                          '${widget.game.homeTeamScore}  ',
+                          style: TextStyle(
+                            color: ThemeData.estimateBrightnessForColor(
+                                        widget.finish
+                                            ? Parameter.latestsMatchsColor
+                                            : Parameter.comingsMatchsColor) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
+                            fontSize: chooseFontSizeMatchResult(hadHomeTeamWin(widget.game.homeTeamScore, widget.game.awayTeamScore)),
+                            fontFamily: GoogleFonts.poppins().fontFamily,
+                            fontWeight: chooseFontWeightMatchResult(hadHomeTeamWin(widget.game.homeTeamScore, widget.game.awayTeamScore))
+                          ),
+                          textAlign: TextAlign.left,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          '-',
+                          style: TextStyle(
+                            color: ThemeData.estimateBrightnessForColor(
+                                        widget.finish
+                                            ? Parameter.latestsMatchsColor
+                                            : Parameter.comingsMatchsColor) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          '  ${widget.game.awayTeamScore}',
+                          style: TextStyle(
+                            color: ThemeData.estimateBrightnessForColor(
+                                        widget.finish
+                                            ? Parameter.latestsMatchsColor
+                                            : Parameter.comingsMatchsColor) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
+                            fontSize: chooseFontSizeMatchResult(hadHomeTeamWin(widget.game.awayTeamScore, widget.game.homeTeamScore)),
+                            fontFamily: GoogleFonts.poppins().fontFamily,
+                            fontWeight: chooseFontWeightMatchResult(hadHomeTeamWin(widget.game.awayTeamScore, widget.game.homeTeamScore)),
+                          ),
+                          textAlign: TextAlign.right,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 16.0),
                     Text(
                       formattedHour,
                       style: TextStyle(
@@ -153,7 +223,7 @@ class _HomeMatchListState extends State<HomeMatchList> {
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,
-                        fontSize: 10.0,
+                        fontSize: 12.0,
                         fontFamily: GoogleFonts.inter().fontFamily,
                       ),
                       textAlign: TextAlign.center,
@@ -170,7 +240,7 @@ class _HomeMatchListState extends State<HomeMatchList> {
                                 Brightness.light
                             ? Colors.black
                             : Colors.white,
-                        fontSize: 9.0,
+                        fontSize: 10.0,
                         fontFamily: GoogleFonts.inter().fontFamily,
                       ),
                       textAlign: TextAlign.center,
@@ -203,7 +273,7 @@ class _HomeMatchListState extends State<HomeMatchList> {
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
-                              fontSize: 13.0,
+                              fontSize: isTeamFollowed(awayTeam) ? 16.0 : 13.0,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                               fontWeight: isTeamFollowed(awayTeam)
                                   ? FontWeight.w900

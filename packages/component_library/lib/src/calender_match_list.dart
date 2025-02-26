@@ -35,7 +35,41 @@ class CalenderMatchList extends StatelessWidget {
     } else if (gameDate.isBefore(now)) {
       containerColor = Parameter.latestsMatchsColor;
     } else {
-      containerColor = Parameter.comingsMatchsColor; // Default color
+      containerColor = Parameter.comingsMatchsColor;
+    }
+
+    String hadHomeTeamWin(int scoreHomeTeam, int scoreAwayTeam) {
+      if (scoreHomeTeam > scoreAwayTeam) {
+        return 'win';
+      } else if (scoreHomeTeam == scoreAwayTeam) {
+        return 'equal';
+      } else {
+        return 'lose';
+      }
+    }
+
+    double chooseFontSize(String result){
+      double fontSize = 14;
+      if (result == 'win'){
+        fontSize = 19;
+      } else if (result == 'equal'){
+        fontSize = 16;
+      } else {
+        fontSize = 14;
+      }
+      return fontSize;
+    }
+
+    FontWeight chooseFontWeight(String result) {
+      FontWeight fontSize = FontWeight.w400;
+      if (result == 'win'){
+        fontSize = FontWeight.w900;
+      } else if (result == 'equal'){
+        fontSize = FontWeight.bold;
+      } else {
+        fontSize = FontWeight.w400;
+      }
+      return fontSize;
     }
 
     return Padding(
@@ -107,18 +141,48 @@ class CalenderMatchList extends StatelessWidget {
                               fontFamily: GoogleFonts.poppins().fontFamily,
                             ),
                           ),
-                          Text(
-                            '${game.homeTeamScore} - ${game.awayTeamScore}',
-                            style: TextStyle(
-                              color: ThemeData.estimateBrightnessForColor(
-                                          containerColor) ==
-                                      Brightness.light
-                                  ? Colors.black
-                                  : Colors.white,
-                              fontSize: 14.0,
-                              fontFamily: GoogleFonts.poppins().fontFamily,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                '${game.homeTeamScore} ',
+                                style: TextStyle(
+                                  color: ThemeData.estimateBrightnessForColor(
+                                              containerColor) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
+                                  fontSize: chooseFontSize(hadHomeTeamWin(game.homeTeamScore, game.awayTeamScore)),
+                                  fontFamily: GoogleFonts.poppins().fontFamily,
+                                  fontWeight: chooseFontWeight(hadHomeTeamWin(game.homeTeamScore, game.awayTeamScore)),
+                                ),
+                              ),
+                              Text(
+                                '-',
+                                style: TextStyle(
+                                  color: ThemeData.estimateBrightnessForColor(
+                                              containerColor) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
+                                  fontSize: 14.0,
+                                  fontFamily: GoogleFonts.poppins().fontFamily,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                ' ${game.awayTeamScore}',
+                                style: TextStyle(
+                                  color: ThemeData.estimateBrightnessForColor(
+                                              containerColor) ==
+                                          Brightness.light
+                                      ? Colors.black
+                                      : Colors.white,
+                                  fontSize: chooseFontSize(hadHomeTeamWin(game.awayTeamScore, game.homeTeamScore)),
+                                  fontFamily: GoogleFonts.poppins().fontFamily,
+                                  fontWeight: chooseFontWeight(hadHomeTeamWin(game.awayTeamScore, game.homeTeamScore)),
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
                             formattedDate,

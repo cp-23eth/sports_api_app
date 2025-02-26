@@ -112,7 +112,9 @@ class CalendarScreenLoaded extends StatelessWidget {
     final today = DateTime.now();
 
     int initialScrollIndex = 0;
+
     final games = groupedGames.values.expand((games) => games).toList();
+
     for (var i = 0; i < games.length; i++) {
       final gameDateTime = DateTime.parse(games[i].dateTimeUtc);
       if (gameDateTime.isAfter(today) || gameDateTime.isAtSameMomentAs(today)) {
@@ -120,6 +122,7 @@ class CalendarScreenLoaded extends StatelessWidget {
         break;
       }
     }
+    initialScrollIndex += 75;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
