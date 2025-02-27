@@ -7,17 +7,13 @@ import 'package:intl/intl.dart';
 import 'package:sports_list/sports_list.dart';
 
 class DetailMatch extends StatelessWidget {
-  const DetailMatch(
-      {required this.game,
-      super.key});
+  const DetailMatch({required this.game, super.key});
 
   final Game game;
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<SportsListProvider>().state;
-    Team awayTeam = state.teams[game.awayTeamId - 1];
-    Team homeTeam = state.teams[game.homeTeamId - 1];
 
     final gameDate = DateTime.parse(game.dateTimeUtc).add(
       const Duration(hours: 1),
@@ -55,17 +51,17 @@ class DetailMatch extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextButton(
-                onPressed: () {},//=> Navigator.push(
-                  // context,
-                  // MaterialPageRoute(
-                  //   builder: (context) => TeamsScreen(
-                  //     user: state.user,
-                  //     team: homeTeam,
-                  //     players: state.players,
-                  //     stadium: stadium,
-                  //     statsTeam: state.statsTeam[homeTeam.teamId - 1],
-                  //   ),
-                  // ),
+                onPressed: () {}, //=> Navigator.push(
+                // context,
+                // MaterialPageRoute(
+                //   builder: (context) => TeamsScreen(
+                //     user: state.user,
+                //     team: homeTeam,
+                //     players: state.players,
+                //     stadium: stadium,
+                //     statsTeam: state.statsTeam[homeTeam.teamId - 1],
+                //   ),
+                // ),
                 // ),
                 child: Column(
                   children: [

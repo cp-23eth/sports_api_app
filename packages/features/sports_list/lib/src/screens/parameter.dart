@@ -213,7 +213,7 @@ class _ParameterState extends State<Parameter> {
                       totalSwitches: 2,
                       minWidth: 100,
                       inactiveFgColor: Colors.white,
-                      labels: ['Carrousel', 'List'],
+                      labels: const ['Carrousel', 'List'],
                       onToggle: (index) {
                         setState(() {
                           if (index == 0) {

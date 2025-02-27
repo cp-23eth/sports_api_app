@@ -3,13 +3,11 @@ import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
-import 'package:logger/logger.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({required this.teams, required this.design, super.key});
+  const HomeScreen({required this.teams, super.key});
 
   final List<Team> teams;
-  final String design;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final state = context.watch<SportsListProvider>().state;
     final user = state.user;
 
-    final logger = Logger();
+    String design = state.user.homeScreenDesign;
 
     final nextGames =
         state.games.where((game) => game.status == "Scheduled").toList();
@@ -91,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 user: user,
                 teams: widget.teams,
               ),
-              if (widget.design == 'Carrousel')
+              if (design == 'Carrousel')
                 const SizedBox(
                   height: 85.0,
                 ),
@@ -112,9 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 6),
-                    if (widget.design == 'List')
+                    if (design == 'List')
                       for (var gameWidget in nextGamesList) gameWidget,
-                    if (widget.design == 'Carrousel')
+                    if (design == 'Carrousel')
                       CarouselSlider(
                         items: nextGamesList,
                         options: CarouselOptions(
@@ -139,9 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 6),
-                    if (widget.design == 'List')
+                    if (design == 'List')
                       for (var gameWidget in lastGamesList) gameWidget,
-                    if (widget.design == 'Carrousel')
+                    if (design == 'Carrousel')
                       CarouselSlider(
                         items: lastGamesList,
                         options: CarouselOptions(
