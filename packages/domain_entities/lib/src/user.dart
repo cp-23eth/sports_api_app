@@ -14,7 +14,7 @@ class User extends Equatable {
   final List<int> favoriteTeams;
   final List<int> favoritePlayers;
   String appColorTeam;
-  final String homeScreenDesign;
+  String homeScreenDesign;
 
   @override
   List<Object?> get props => [

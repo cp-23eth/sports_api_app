@@ -9,7 +9,7 @@ import 'package:logger/logger.dart';
 
 class StatsTeamRemoteStorage implements SportsStatsTeamStorage {
   static const url =
-      'https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2025?key=2e0eb9242f374fc5a122ad5358469653';
+      'https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2025?key=e0cc9fd0e6e64ec6934939efa4abd788';
 
   StatsTeamRemoteStorage({@visibleForTesting http.Client? client})
       : _client = client ?? http.Client();

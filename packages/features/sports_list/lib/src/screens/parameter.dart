@@ -2,6 +2,7 @@ import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class Parameter extends StatefulWidget {
   const Parameter({required this.teams, required this.user, super.key});
@@ -72,7 +73,9 @@ class _ParameterState extends State<Parameter> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 10.0,),
+                const SizedBox(
+                  height: 10.0,
+                ),
                 Text(
                   'Bonjour ${state.user.username}',
                   style: const TextStyle(
@@ -191,6 +194,37 @@ class _ParameterState extends State<Parameter> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                const PrimaryTitle(text: 'Choose your design preset'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      width: 200,
+                      child: SecondaryTitle(text: 'HomeScreen :'),
+                    ),
+                    const SizedBox(width: 10),
+                    ToggleSwitch(
+                      initialLabelIndex:
+                          state.user.homeScreenDesign == 'List' ? 1 : 0,
+                      totalSwitches: 2,
+                      minWidth: 100,
+                      inactiveFgColor: Colors.white,
+                      labels: ['Carrousel', 'List'],
+                      onToggle: (index) {
+                        setState(() {
+                          if (index == 0) {
+                            state.user.homeScreenDesign = 'Carrousel';
+                          } else {
+                            state.user.homeScreenDesign = 'List';
+                          }
+                        });
+                      },
+                    )
+                  ],
                 ),
               ],
             ),
