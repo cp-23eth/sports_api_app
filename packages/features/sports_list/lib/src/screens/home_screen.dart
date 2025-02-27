@@ -3,6 +3,7 @@ import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
+import 'package:logger/logger.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({required this.teams, required this.design, super.key});
@@ -20,6 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final state = context.watch<SportsListProvider>().state;
     final user = state.user;
 
+    final logger = Logger();
+
     final nextGames =
         state.games.where((game) => game.status == "Scheduled").toList();
 
@@ -31,8 +34,32 @@ class _HomeScreenState extends State<HomeScreen> {
     lastGames.sort((a, b) =>
         DateTime.parse(b.dateTime).compareTo(DateTime.parse(a.dateTime)));
 
-    final next8Games = nextGames.take(8).toList();
-    final last8Games = lastGames.take(8).toList();
+    List<Game> next8Games = nextGames.take(8).toList();
+    List<Game> last8Games = lastGames.take(8).toList();
+
+    List<Team> teamList = widget.teams
+        .where((team) => state.user.favoriteTeams.contains(team.teamId))
+        .toList();
+
+    for (Game game in next8Games) {
+      for (Team favoriteTeam in teamList) {
+        if (game.homeTeam == favoriteTeam.key ||
+            game.awayTeam == favoriteTeam.key) {
+          next8Games.remove(game);
+          next8Games.insert(0, game);
+        }
+      }
+    }
+
+    for (Game game in last8Games) {
+      for (Team favoriteTeam in teamList) {
+        if (game.homeTeam == favoriteTeam.key ||
+            game.awayTeam == favoriteTeam.key) {
+          last8Games.remove(game);
+          last8Games.insert(0, game);
+        }
+      }
+    }
 
     final List<Widget> nextGamesList = [
       for (var game in next8Games)
@@ -114,17 +141,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 6),
                     if (widget.design == 'List')
                       for (var gameWidget in lastGamesList) gameWidget,
-                    if (widget.design == 'Carrousel') CarouselSlider(
-                      items: lastGamesList,
-                      options: CarouselOptions(
-                        height: 181,
-                        enableInfiniteScroll: false,
-                        viewportFraction: 0.8,
-                        autoPlay: true,
-                        autoPlayInterval: const Duration(seconds: 6),
-                        enlargeCenterPage: true,
+                    if (widget.design == 'Carrousel')
+                      CarouselSlider(
+                        items: lastGamesList,
+                        options: CarouselOptions(
+                          height: 181,
+                          enableInfiniteScroll: false,
+                          viewportFraction: 0.8,
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 6),
+                          enlargeCenterPage: true,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
