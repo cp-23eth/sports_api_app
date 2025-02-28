@@ -1,6 +1,7 @@
 import 'package:component_library/component_library.dart';
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -19,6 +20,8 @@ class Parameter extends StatefulWidget {
   @override
   State<Parameter> createState() => _ParameterState();
 }
+
+bool themeMode = false;
 
 class _ParameterState extends State<Parameter> {
   Color headerFooterColor = Parameter.headerFooterColor;
@@ -78,26 +81,92 @@ class _ParameterState extends State<Parameter> {
                 ),
                 Text(
                   'Bonjour ${state.user.username}',
-                  style: const TextStyle(
-                      color: Colors.white,
+                  style: TextStyle(
+                      color: ThemeData.estimateBrightnessForColor(
+                                  Parameter.backgroundColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 30,
                       fontWeight: FontWeight.w900),
                 ),
                 const SizedBox(
                   height: 24.0,
                 ),
-                const PrimaryTitle(text: 'Choose your color preset'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4.0, vertical: 8.0),
+                      child: Text(
+                        'Choose your color preset',
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 26,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 FavoriteTeamListSettings(
                     teamList: teamList,
                     removeApplicationColor: removeApplicationColor,
                     changeApplicationColor: changeApplicationColor),
-                const PrimaryTitle(text: 'Change application colors'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4.0, vertical: 8.0),
+                      child: Text(
+                        'Change application colors',
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 26,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'Header / Footer :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Header / Footer :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ButtonColorPicker(
@@ -110,9 +179,29 @@ class _ParameterState extends State<Parameter> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'Comings Matchs :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Comings Matchs :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ButtonColorPicker(
@@ -125,9 +214,29 @@ class _ParameterState extends State<Parameter> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'Latests Matchs :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Latests Matchs :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ButtonColorPicker(
@@ -140,9 +249,29 @@ class _ParameterState extends State<Parameter> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'Todays Matchs :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Todays Matchs :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ButtonColorPicker(
@@ -155,9 +284,29 @@ class _ParameterState extends State<Parameter> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'Backgrounds :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Backgrounds :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ButtonColorPicker(
@@ -170,41 +319,118 @@ class _ParameterState extends State<Parameter> {
                 const SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(Parameter.headerFooterColor),
-                  ),
-                  onPressed: () {
-                    changeColorHeaderFooter(const Color(0xFF1C5D99));
-                    changeColorComingsMatchs(const Color(0xFFC8102E));
-                    changeColorLatestsMatchs(const Color(0xFF1D428A));
-                    changeColorTodaysMatchs(const Color(0xFF9100B6));
-                    changeBackgroundColor(const Color(0xFF0B132B));
-                  },
-                  child: Text(
-                    'Reset',
-                    style: TextStyle(
-                      color: ThemeData.estimateBrightnessForColor(
-                                  Parameter.backgroundColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                const PrimaryTitle(text: 'Choose your design preset'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    themeMode
+                        ? IconButton(
+                            icon: Icon(
+                              Icons.light_mode,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          Parameter.backgroundColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                  Parameter.headerFooterColor),
+                            ),
+                            onPressed: () {
+                              changeColorHeaderFooter(const Color(0xFF1C5D99));
+                              changeColorComingsMatchs(const Color(0xFFC8102E));
+                              changeColorLatestsMatchs(const Color(0xFF1D428A));
+                              changeColorTodaysMatchs(const Color(0xFF9100B6));
+                              changeBackgroundColor(const Color(0xFF0B132B));
+
+                              setState(() {
+                                themeMode = !themeMode;
+                              });
+                            },
+                          )
+                        : IconButton(
+                            icon: Icon(
+                              Icons.dark_mode,
+                              color: ThemeData.estimateBrightnessForColor(
+                                          Parameter.backgroundColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                  Parameter.headerFooterColor),
+                            ),
+                            onPressed: () {
+                              changeColorHeaderFooter(
+                                  const Color.fromARGB(255, 255, 225, 240));
+                              changeColorComingsMatchs(
+                                  const Color.fromARGB(255, 255, 190, 235));
+                              changeColorLatestsMatchs(
+                                  const Color.fromARGB(255, 173, 200, 255));
+                              changeColorTodaysMatchs(
+                                  const Color.fromARGB(255, 219, 176, 255));
+                              changeBackgroundColor(
+                                  const Color.fromARGB(255, 255, 246, 253));
+
+                              setState(() {
+                                themeMode = !themeMode;
+                              });
+                            },
+                          ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 40.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4.0, vertical: 8.0),
+                      child: Text(
+                        'Choose your design preset',
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 26,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'HomeScreen :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Home Screen :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ToggleSwitch(
@@ -243,9 +469,29 @@ class _ParameterState extends State<Parameter> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 200,
-                      child: SecondaryTitle(text: 'TeamScreen :'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Team Screen :',
+                              style: TextStyle(
+                                color: ThemeData.estimateBrightnessForColor(
+                                            Parameter.backgroundColor) ==
+                                        Brightness.light
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontFamily: GoogleFonts.poppins().fontFamily,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 10),
                     ToggleSwitch(
@@ -366,6 +612,7 @@ class _ParameterState extends State<Parameter> {
         Parameter.comingsMatchsColor = Color(colors[1]);
         Parameter.latestsMatchsColor = Color(colors[2]);
         Parameter.todaysMatchsColor = Color(colors[3]);
+        Parameter.backgroundColor = const Color(0xFF0B132B);
         _changeAppColorTeam(team);
       });
     }
