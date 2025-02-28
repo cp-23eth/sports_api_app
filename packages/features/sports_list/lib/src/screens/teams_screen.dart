@@ -33,29 +33,14 @@ class _TeamsScreenState extends State<TeamsScreen> {
     _isFavorited = widget.user.favoriteTeams.contains(widget.team.teamId);
   }
 
-  List<Player> _filterPlayersByTeamAndSorted(List<Player> players, Team team) {
-    List<Player> sortedPlayers = [];
-    List<Player> favoritePlayers = [];
-    List<Player> otherPlayers = [];
-
-    for (var player in players) {
-      if (player.teamId == team.teamId) {
-        if (widget.user.favoritePlayers.contains(player.playerId)) {
-          favoritePlayers.add(player);
-        } else {
-          otherPlayers.add(player);
-        }
-      }
-    }
-
-    sortedPlayers = favoritePlayers + otherPlayers;
-    return sortedPlayers;
+  List<Player> _filterPlayersByTeam(List<Player> players, Team team) {
+    return players.where((player) => player.teamId == team.teamId).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     List<Player> filteredPlayers =
-        _filterPlayersByTeamAndSorted(widget.players, widget.team);
+        _filterPlayersByTeam(widget.players, widget.team);
     final Color primaryColor =
         Color(int.parse('0xFF${widget.team.primaryColor}'));
     final Color secondaryColor =
@@ -179,7 +164,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
                         color: secondaryColor,
                         onFavoriteToggle: () {
                           setState(() {
-                            filteredPlayers = _filterPlayersByTeamAndSorted(
+                            filteredPlayers = _filterPlayersByTeam(
                                 widget.players, widget.team);
                           });
                         },

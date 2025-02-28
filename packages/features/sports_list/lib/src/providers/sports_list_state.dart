@@ -28,7 +28,6 @@ class SportsListState extends Equatable {
       user: User(
         username: '',
         favoriteTeams: List<int>.empty(),
-        favoritePlayers: List<int>.empty(),
         appColorTeam: '',
         homeScreenDesign: '',
         teamScreenDesign: '',

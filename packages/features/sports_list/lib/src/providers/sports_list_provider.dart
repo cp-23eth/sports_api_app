@@ -46,16 +46,6 @@ class SportsListProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addFavoritePlayer(String username, int playerId) async {
-    state.user.favoritePlayers.add(playerId);
-    notifyListeners();
-  }
-
-  Future<void> removeFavoritePlayer(String username, int playerId) async {
-    state.user.favoritePlayers.remove(playerId);
-    notifyListeners();
-  }
-
   Future<void> changeAppColorTeam(Team team) async {
     state.user.appColorTeam = team.name;
     notifyListeners();

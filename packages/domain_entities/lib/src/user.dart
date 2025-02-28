@@ -5,7 +5,6 @@ class User extends Equatable {
   User({
     required this.username,
     required this.favoriteTeams,
-    required this.favoritePlayers,
     required this.appColorTeam,
     required this.homeScreenDesign,
     required this.teamScreenDesign,
@@ -13,7 +12,6 @@ class User extends Equatable {
 
   final String username;
   final List<int> favoriteTeams;
-  final List<int> favoritePlayers;
   String appColorTeam;
   String homeScreenDesign;
   String teamScreenDesign;
@@ -22,7 +20,6 @@ class User extends Equatable {
   List<Object?> get props => [
         username,
         favoriteTeams,
-        favoritePlayers,
         appColorTeam,
         homeScreenDesign,
         teamScreenDesign,
