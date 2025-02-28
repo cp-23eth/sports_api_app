@@ -8,25 +8,20 @@ class PlayersScreen extends StatefulWidget {
       {required this.user,
       required this.color,
       required this.player,
-      required this.favoritePlayer,
       super.key});
 
   final Color color;
   final Player player;
   final User user;
-  final Function favoritePlayer;
 
   @override
   State<PlayersScreen> createState() => _PlayersScreenState();
 }
 
 class _PlayersScreenState extends State<PlayersScreen> {
-  late bool _isFavorited;
-
   @override
   void initState() {
     super.initState();
-    _isFavorited = widget.user.favoritePlayers.contains(widget.player.playerId);
   }
 
   @override
@@ -49,24 +44,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              widget.favoritePlayer(context, widget.player.playerId);
-              setState(() {
-                _isFavorited = !_isFavorited;
-              });
-            },
-            icon: Icon(
-              _isFavorited ? Icons.favorite : Icons.favorite_border,
-              color: ThemeData.estimateBrightnessForColor(
-                          Parameter.backgroundColor) ==
-                      Brightness.light
-                  ? Colors.black
-                  : Colors.white,
-            ),
-          ),
-        ],
+        actions: const [],
       ),
       body: SingleChildScrollView(
         child: Column(

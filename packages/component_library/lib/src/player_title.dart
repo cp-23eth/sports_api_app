@@ -9,6 +9,14 @@ class PlayerTitle extends StatelessWidget {
 
   final Player player;
 
+  bool _haveJersey(Player player) {
+    if (player.jersey == 999) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String cleanFirstName(String firstName) {
@@ -83,13 +91,5 @@ class PlayerTitle extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  bool _haveJersey(Player player) {
-    if (player.jersey == 999) {
-      return false;
-    } else {
-      return true;
-    }
   }
 }

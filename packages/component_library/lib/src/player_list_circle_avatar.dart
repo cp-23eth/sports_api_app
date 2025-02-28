@@ -68,7 +68,6 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
             builder: (context) => PlayersScreen(
               player: widget.player,
               user: widget.user,
-              favoritePlayer: favoritePlayer,
               color: widget.color,
             ),
           ),
@@ -77,25 +76,25 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
           child: Column(
             children: [
               ClipOval(
-                            child: SizedBox(
-                              width: 60,
-                              height: 60,
-                              child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg',
-                                width: 60,
-                                height: 60,
-                                fit: BoxFit.cover,
-                                alignment: Alignment.topCenter,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return SvgPicture.asset(
-                                    'packages/component_library/lib/src/assets/images/player_images/user.svg',
-                                    fit: BoxFit.cover,
-                                    alignment: Alignment.topCenter,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
+                child: SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: Image.asset(
+                    'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg',
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
+                    errorBuilder: (context, error, stackTrace) {
+                      return SvgPicture.asset(
+                        'packages/component_library/lib/src/assets/images/player_images/user.svg',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      );
+                    },
+                  ),
+                ),
+              ),
               const SizedBox(height: 10),
               Text(
                 textAlign: TextAlign.center,
