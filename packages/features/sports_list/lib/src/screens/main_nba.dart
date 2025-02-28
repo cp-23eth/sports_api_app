@@ -15,10 +15,6 @@ class MainNba extends StatefulWidget {
 }
 
 class _MainNbaState extends State<MainNba> {
-  final List<Color> _kDefaultRainbowColors = [
-    Parameter.headerFooterColor,
-  ];
-
   int _selectedIndex = 1;
 
   @override
@@ -55,7 +51,7 @@ class _MainNbaState extends State<MainNba> {
             width: 300,
             child: LoadingIndicator(
               indicatorType: Indicator.ballClipRotateMultiple,
-              colors: _kDefaultRainbowColors,
+              colors: [Parameter.headerFooterColor],
             ),
           ),
         ),

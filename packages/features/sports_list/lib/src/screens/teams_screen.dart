@@ -10,6 +10,7 @@ class TeamsScreen extends StatefulWidget {
       required this.stadium,
       required this.statsTeam,
       required this.user,
+      required this.favouriteTeam,
       super.key});
 
   final Team team;
@@ -17,6 +18,7 @@ class TeamsScreen extends StatefulWidget {
   final Stadium stadium;
   final StatsTeam statsTeam;
   final User user;
+  final Function favouriteTeam;
 
   @override
   State<TeamsScreen> createState() => _TeamsScreenState();
@@ -88,6 +90,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
         actions: [
           IconButton(
             onPressed: () {
+              widget.favouriteTeam(context, widget.team.teamId);
               setState(() {
                 _isFavorited = !_isFavorited;
               });
@@ -165,22 +168,41 @@ class _TeamsScreenState extends State<TeamsScreen> {
               const SizedBox(
                 height: 16.0,
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: filteredPlayers.length,
-                itemBuilder: (context, index) => PlayerList(
-                  user: widget.user,
-                  player: filteredPlayers[index],
-                  color: secondaryColor,
-                  onFavoriteToggle: () {
-                    setState(() {
-                      // _filterPlayersByTeamAndSorted(
-                      //     widget.players, widget.team);
-                    });
-                  },
-                ),
-              ),
+              widget.user.teamScreenDesign == 'List'
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: filteredPlayers.length,
+                      itemBuilder: (context, index) => PlayerList(
+                        user: widget.user,
+                        player: filteredPlayers[index],
+                        color: secondaryColor,
+                        onFavoriteToggle: () {
+                          setState(() {
+                            // _filterPlayersByTeamAndSorted(
+                            //     widget.players, widget.team);
+                          });
+                        },
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 8.0),
+                      child: GridView.builder(
+                        shrinkWrap: true, // Ajouté
+                        physics: const NeverScrollableScrollPhysics(), // Ajouté
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                        ),
+                        itemCount: filteredPlayers.length,
+                        itemBuilder: (context, index) => PlayerListCircleAvatar(
+                          user: widget.user,
+                          player: filteredPlayers[index],
+                          color: secondaryColor,
+                        ),
+                      ),
+                    ),
             ],
           ),
         ],

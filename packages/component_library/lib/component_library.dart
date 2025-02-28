@@ -20,3 +20,4 @@ export 'src/button_color_picker.dart';
 export 'src/favorite_team_list_settings.dart';
 export 'src/positions_basketball.dart';
 export 'src/player_positions.dart';
+export 'src/player_list_circle_avatar.dart';
