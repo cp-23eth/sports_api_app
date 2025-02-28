@@ -208,11 +208,21 @@ class _ParameterState extends State<Parameter> {
                     ),
                     const SizedBox(width: 10),
                     ToggleSwitch(
+                      radiusStyle: true,
                       initialLabelIndex:
                           state.user.homeScreenDesign == 'List' ? 1 : 0,
                       totalSwitches: 2,
                       minWidth: 100,
-                      inactiveFgColor: Colors.white,
+                      inactiveFgColor: ThemeData.estimateBrightnessForColor(
+                                  Parameter.backgroundColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                      activeFgColor: ThemeData.estimateBrightnessForColor(
+                                  Parameter.headerFooterColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       labels: const ['Carrousel', 'List'],
                       onToggle: (index) {
                         setState(() {
@@ -223,6 +233,8 @@ class _ParameterState extends State<Parameter> {
                           }
                         });
                       },
+                      activeBgColor: [Parameter.headerFooterColor],
+                      inactiveBgColor: Parameter.backgroundColor,
                     )
                   ],
                 ),

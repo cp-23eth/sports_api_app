@@ -39,6 +39,9 @@ class DetailMatch extends StatelessWidget {
       orElse: () => stadium,
     );
 
+    Team homeTeam = state.teams[game.homeTeamId - 1];
+    Team awayTeam = state.teams[game.awayTeamId - 1];
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -51,18 +54,18 @@ class DetailMatch extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextButton(
-                onPressed: () {}, //=> Navigator.push(
-                // context,
-                // MaterialPageRoute(
-                //   builder: (context) => TeamsScreen(
-                //     user: state.user,
-                //     team: homeTeam,
-                //     players: state.players,
-                //     stadium: stadium,
-                //     statsTeam: state.statsTeam[homeTeam.teamId - 1],
-                //   ),
-                // ),
-                // ),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TeamsScreen(
+                      user: state.user,
+                      team: homeTeam,
+                      players: state.players,
+                      stadium: stadium,
+                      statsTeam: state.statsTeam[homeTeam.teamId - 1],
+                    ),
+                  ),
+                ),
                 child: Column(
                   children: [
                     SvgPicture.asset(
@@ -127,18 +130,18 @@ class DetailMatch extends StatelessWidget {
                 ],
               ),
               TextButton(
-                onPressed: () {}, // => Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => TeamsScreen(
-                //       user: state.user,
-                //       team: awayTeam,
-                //       players: state.players,
-                //       stadium: stadium,
-                //       statsTeam: state.statsTeam[awayTeam.teamId - 1],
-                //     ),
-                //   ),
-                // ),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TeamsScreen(
+                      user: state.user,
+                      team: awayTeam,
+                      players: state.players,
+                      stadium: stadium,
+                      statsTeam: state.statsTeam[awayTeam.teamId - 1],
+                    ),
+                  ),
+                ),
                 child: Column(
                   children: [
                     SvgPicture.asset(

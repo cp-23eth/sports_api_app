@@ -61,7 +61,6 @@ class _TeamListState extends State<TeamList> {
               players: widget.players,
               stadium: widget.stadium[widget.team.teamId - 1],
               statsTeam: widget.statsTeam[widget.team.teamId - 1],
-              favouriteTeam: _favoriteTeam,
             ),
           ),
         ),
