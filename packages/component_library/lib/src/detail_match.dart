@@ -6,16 +6,29 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sports_list/sports_list.dart';
 
-class DetailMatch extends StatelessWidget {
+class DetailMatch extends StatefulWidget {
   const DetailMatch({required this.game, super.key});
 
   final Game game;
 
   @override
+  State<DetailMatch> createState() => _DetailMatchState();
+}
+
+class _DetailMatchState extends State<DetailMatch> {
+  @override
   Widget build(BuildContext context) {
+    late bool isFavorited;
+
     final state = context.watch<SportsListProvider>().state;
 
-    final gameDate = DateTime.parse(game.dateTimeUtc).add(
+    @override
+    void initState() {
+      super.initState();
+      isFavorited = state.user.favoriteTeams.contains(widget.game.homeTeamId);
+    }
+
+    final gameDate = DateTime.parse(widget.game.dateTimeUtc).add(
       const Duration(hours: 1),
     );
     final formattedDate = DateFormat('dd MMM yyyy').format(gameDate);
@@ -34,13 +47,28 @@ class DetailMatch extends StatelessWidget {
       longitude: 0,
     );
 
+    void favoriteTeam(BuildContext context, int teamId) {
+      setState(() {
+        isFavorited = !isFavorited;
+      });
+      if (isFavorited) {
+        context
+            .read<SportsListProvider>()
+            .addFavoriteTeam(state.user.username, teamId);
+      } else {
+        context
+            .read<SportsListProvider>()
+            .removeFavoriteTeam(state.user.username, teamId);
+      }
+    }
+
     stadium = state.stadiums.firstWhere(
-      (s) => s.stadiumId == game.stadiumId,
+      (s) => s.stadiumId == widget.game.stadiumId,
       orElse: () => stadium,
     );
 
-    Team homeTeam = state.teams[game.homeTeamId - 1];
-    Team awayTeam = state.teams[game.awayTeamId - 1];
+    Team homeTeam = state.teams[widget.game.homeTeamId - 1];
+    Team awayTeam = state.teams[widget.game.awayTeamId - 1];
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -53,42 +81,46 @@ class DetailMatch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TeamsScreen(
-                      user: state.user,
-                      team: homeTeam,
-                      players: state.players,
-                      stadium: stadium,
-                      statsTeam: state.statsTeam[homeTeam.teamId - 1],
-                    ),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'packages/component_library/lib/src/assets/images/svg/${state.teams[game.homeTeamId - 1].logo}',
-                      height: 87,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Text(
-                      state.teams[game.homeTeamId - 1].name,
-                      style: TextStyle(
-                        color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.backgroundColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 20,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TeamsScreen(
+                        user: state.user,
+                        team: homeTeam,
+                        players: state.players,
+                        stadium: stadium,
+                        statsTeam: state.statsTeam[homeTeam.teamId - 1],
+                        favouriteTeam: favoriteTeam,
                       ),
                     ),
-                  ],
+                  ),
+                  child: Column(
+                    children: [
+                      SvgPicture.asset(
+                        'packages/component_library/lib/src/assets/images/svg/${state.teams[widget.game.homeTeamId - 1].logo}',
+                        height: 87,
+                        fit: BoxFit.fitHeight,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        state.teams[widget.game.homeTeamId - 1].name,
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 20,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Column(
@@ -100,7 +132,8 @@ class DetailMatch extends StatelessWidget {
                   const PrimaryTitle(text: 'VS'),
                   const SizedBox(height: 50),
                   SecondaryTitle(
-                      text: '${game.homeTeamScore} - ${game.awayTeamScore}'),
+                      text:
+                          '${widget.game.homeTeamScore} - ${widget.game.awayTeamScore}'),
                   const SizedBox(height: 20),
                   Text(
                     formattedDate,
@@ -129,42 +162,46 @@ class DetailMatch extends StatelessWidget {
                   ),
                 ],
               ),
-              TextButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TeamsScreen(
-                      user: state.user,
-                      team: awayTeam,
-                      players: state.players,
-                      stadium: stadium,
-                      statsTeam: state.statsTeam[awayTeam.teamId - 1],
-                    ),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'packages/component_library/lib/src/assets/images/svg/${state.teams[game.awayTeamId - 1].logo}',
-                      height: 87,
-                      fit: BoxFit.fitHeight,
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Text(
-                      state.teams[game.awayTeamId - 1].name,
-                      style: TextStyle(
-                        color: ThemeData.estimateBrightnessForColor(
-                                    Parameter.backgroundColor) ==
-                                Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 20,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TeamsScreen(
+                        user: state.user,
+                        team: awayTeam,
+                        players: state.players,
+                        stadium: stadium,
+                        statsTeam: state.statsTeam[awayTeam.teamId - 1],
+                        favouriteTeam: favoriteTeam,
                       ),
                     ),
-                  ],
+                  ),
+                  child: Column(
+                    children: [
+                      SvgPicture.asset(
+                        'packages/component_library/lib/src/assets/images/svg/${state.teams[widget.game.awayTeamId - 1].logo}',
+                        height: 87,
+                        fit: BoxFit.fitHeight,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        state.teams[widget.game.awayTeamId - 1].name,
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      Parameter.backgroundColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 20,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

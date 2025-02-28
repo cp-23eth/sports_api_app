@@ -10,6 +10,7 @@ class TeamsScreen extends StatefulWidget {
       required this.stadium,
       required this.statsTeam,
       required this.user,
+      required this.favouriteTeam,
       super.key});
 
   final Team team;
@@ -17,6 +18,7 @@ class TeamsScreen extends StatefulWidget {
   final Stadium stadium;
   final StatsTeam statsTeam;
   final User user;
+  final Function favouriteTeam;
 
   @override
   State<TeamsScreen> createState() => _TeamsScreenState();
@@ -72,7 +74,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              _favoriteTeam(context, widget.team.teamId);
+              widget.favouriteTeam(context, widget.team.teamId);
               setState(() {
                 _isFavorited = !_isFavorited;
               });
