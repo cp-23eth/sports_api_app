@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sports_list/sports_list.dart';
 
-class HomeMatchList extends StatefulWidget {
-  const HomeMatchList({
+class HomeMatchCarrousel extends StatefulWidget {
+  const HomeMatchCarrousel({
     required this.teams,
     required this.finish,
     required this.game,
@@ -20,10 +20,10 @@ class HomeMatchList extends StatefulWidget {
   final List<Stadium> stadiums;
 
   @override
-  State<HomeMatchList> createState() => _HomeMatchListState();
+  State<HomeMatchCarrousel> createState() => _HomeMatchCarrouselState();
 }
 
-class _HomeMatchListState extends State<HomeMatchList> {
+class _HomeMatchCarrouselState extends State<HomeMatchCarrousel> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<SportsListProvider>().state;
@@ -48,26 +48,26 @@ class _HomeMatchListState extends State<HomeMatchList> {
       }
     }
 
-    double chooseFontSizeMatchResult(String result){
-      double fontSize = 0;
-      if (result == 'win'){
-        fontSize = 15;
-      } else if (result == 'equal'){
-        fontSize = 14;
+    double chooseFontSizeMatchResult(String result) {
+      double fontSize = 14;
+      if (result == 'win') {
+        fontSize = 19;
+      } else if (result == 'equal') {
+        fontSize = 16;
       } else {
-        fontSize = 13;
+        fontSize = 14;
       }
       return fontSize;
     }
 
     FontWeight chooseFontWeightMatchResult(String result) {
       FontWeight fontSize = FontWeight.w400;
-      if (result == 'win'){
-        fontSize = FontWeight.w500;
-      } else if (result == 'equal'){
-        fontSize = FontWeight.w400;
+      if (result == 'win') {
+        fontSize = FontWeight.w900;
+      } else if (result == 'equal') {
+        fontSize = FontWeight.bold;
       } else {
-        fontSize = FontWeight.w300;
+        fontSize = FontWeight.w400;
       }
       return fontSize;
     }
@@ -94,7 +94,6 @@ class _HomeMatchListState extends State<HomeMatchList> {
             ),
           ),
           child: Container(
-            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               color: widget.finish
@@ -115,7 +114,7 @@ class _HomeMatchListState extends State<HomeMatchList> {
                         children: [
                           SvgPicture.asset(
                             'packages/component_library/lib/src/assets/images/svg/${homeTeam.city == 'Houston' && widget.game.isClosed == false ? 'Hou-noir.svg' : homeTeam.logo}',
-                            width: 45.0,
+                            width: isTeamFollowed(homeTeam) ? 55.0 : 45.0,
                             fit: BoxFit.fitHeight,
                           ),
                           const SizedBox(height: 12.0),
@@ -162,17 +161,20 @@ class _HomeMatchListState extends State<HomeMatchList> {
                         Text(
                           '${widget.game.homeTeamScore}  ',
                           style: TextStyle(
-                            color: ThemeData.estimateBrightnessForColor(
-                                        widget.finish
-                                            ? Parameter.latestsMatchsColor
-                                            : Parameter.comingsMatchsColor) ==
-                                    Brightness.light
-                                ? Colors.black
-                                : Colors.white,
-                            fontSize: chooseFontSizeMatchResult(hadHomeTeamWin(widget.game.homeTeamScore, widget.game.awayTeamScore)),
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                            fontWeight: chooseFontWeightMatchResult(hadHomeTeamWin(widget.game.homeTeamScore, widget.game.awayTeamScore))
-                          ),
+                              color: ThemeData.estimateBrightnessForColor(
+                                          widget.finish
+                                              ? Parameter.latestsMatchsColor
+                                              : Parameter.comingsMatchsColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
+                              fontSize: chooseFontSizeMatchResult(
+                                  hadHomeTeamWin(widget.game.homeTeamScore,
+                                      widget.game.awayTeamScore)),
+                              fontFamily: GoogleFonts.poppins().fontFamily,
+                              fontWeight: chooseFontWeightMatchResult(
+                                  hadHomeTeamWin(widget.game.homeTeamScore,
+                                      widget.game.awayTeamScore))),
                           textAlign: TextAlign.left,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -203,9 +205,13 @@ class _HomeMatchListState extends State<HomeMatchList> {
                                     Brightness.light
                                 ? Colors.black
                                 : Colors.white,
-                            fontSize: chooseFontSizeMatchResult(hadHomeTeamWin(widget.game.awayTeamScore, widget.game.homeTeamScore)),
+                            fontSize: chooseFontSizeMatchResult(hadHomeTeamWin(
+                                widget.game.awayTeamScore,
+                                widget.game.homeTeamScore)),
                             fontFamily: GoogleFonts.poppins().fontFamily,
-                            fontWeight: chooseFontWeightMatchResult(hadHomeTeamWin(widget.game.awayTeamScore, widget.game.homeTeamScore)),
+                            fontWeight: chooseFontWeightMatchResult(
+                                hadHomeTeamWin(widget.game.awayTeamScore,
+                                    widget.game.homeTeamScore)),
                           ),
                           textAlign: TextAlign.right,
                           maxLines: 1,
@@ -260,7 +266,7 @@ class _HomeMatchListState extends State<HomeMatchList> {
                         children: [
                           SvgPicture.asset(
                             'packages/component_library/lib/src/assets/images/svg/${awayTeam.city == 'Houston' && widget.game.isClosed == false ? 'Hou-noir.svg' : awayTeam.logo}',
-                            width: 45.0,
+                            width: isTeamFollowed(awayTeam) ? 55.0 : 45.0,
                             fit: BoxFit.fitHeight,
                           ),
                           const SizedBox(height: 12.0),

@@ -122,7 +122,7 @@ class CalendarScreenLoaded extends StatelessWidget {
         break;
       }
     }
-    initialScrollIndex += 75;
+    initialScrollIndex += 37;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
