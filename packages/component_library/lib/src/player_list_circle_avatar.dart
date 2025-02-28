@@ -78,12 +78,10 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
             children: [
               ClipOval(
                             child: SizedBox(
-                              width: 60,
-                              height: 60,
+                              width: 85,
+                              height: 85,
                               child: Image.asset(
                                 'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg',
-                                width: 60,
-                                height: 60,
                                 fit: BoxFit.cover,
                                 alignment: Alignment.topCenter,
                                 errorBuilder: (context, error, stackTrace) {
@@ -106,7 +104,7 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
                           Brightness.light
                       ? Colors.black
                       : Colors.white,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   fontFamily: GoogleFonts.poppins().fontFamily,
                 ),
@@ -120,7 +118,7 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
                           Brightness.light
                       ? Colors.black
                       : Colors.white,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   fontFamily: GoogleFonts.poppins().fontFamily,
                 ),
