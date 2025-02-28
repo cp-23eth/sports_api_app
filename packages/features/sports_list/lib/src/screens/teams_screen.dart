@@ -175,8 +175,8 @@ class _TeamsScreenState extends State<TeamsScreen> {
                   color: secondaryColor,
                   onFavoriteToggle: () {
                     setState(() {
-                      _filterPlayersByTeamAndSorted(
-                          widget.players, widget.team);
+                      // _filterPlayersByTeamAndSorted(
+                      //     widget.players, widget.team);
                     });
                   },
                 ),
