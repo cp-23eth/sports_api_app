@@ -179,6 +179,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
+                          mainAxisSpacing: 18
                         ),
                         itemCount: filteredPlayers.length,
                         itemBuilder: (context, index) => PlayerListCircleAvatar(

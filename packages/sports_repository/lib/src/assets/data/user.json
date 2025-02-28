@@ -18,8 +18,8 @@
             4
         ],
         "appColorTeam": "Celtics",
-        "homeScreenDesign": "List",
-        "teamScreenDesign": "List"
+        "homeScreenDesign": "Carrousel",
+        "teamScreenDesign": "CircleAvatar"
     },
     {
         "username": "Ethan",
