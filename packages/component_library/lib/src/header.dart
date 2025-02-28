@@ -33,7 +33,7 @@ class Header extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const GithubScreen(),
+                      builder: (context) => const NbaImageScreen(),
                     ),
                   ),
                   child: Image.asset(
