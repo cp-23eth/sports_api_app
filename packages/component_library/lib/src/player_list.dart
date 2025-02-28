@@ -38,13 +38,23 @@ class _PlayerListState extends State<PlayerList> {
       context
           .read<SportsListProvider>()
           .addFavoritePlayer(widget.user.username, widget.player.playerId);
+      widget.onFavoriteToggle!();
     } else {
       context
           .read<SportsListProvider>()
           .removeFavoritePlayer(widget.user.username, widget.player.playerId);
-    }
-    if (widget.onFavoriteToggle != null) {
       widget.onFavoriteToggle!();
+    }
+    // if (widget.onFavoriteToggle != null) {
+    //   widget.onFavoriteToggle!();
+    // }
+  }
+
+  bool _haveJersey(Player player) {
+    if (player.jersey == 999) {
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -76,7 +86,6 @@ class _PlayerListState extends State<PlayerList> {
                 user: context.read<SportsListProvider>().state.user,
                 player: widget.player,
                 color: widget.color,
-                favoritePlayer: favoritePlayer,
               ),
             ),
           ),
@@ -146,40 +155,23 @@ class _PlayerListState extends State<PlayerList> {
                               fontFamily: GoogleFonts.poppins().fontFamily,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
-                            child: Text(
-                              _haveJersey(widget.player)
-                                  ? widget.player.jersey.toString()
-                                  : 'N/A',
-                              style: TextStyle(
-                                color: ThemeData.estimateBrightnessForColor(
-                                            widget.color) ==
-                                        Brightness.light
-                                    ? Colors.black
-                                    : Colors.white,
-                                fontSize: 24,
-                                fontFamily: GoogleFonts.poppins().fontFamily,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 16.0),
-                        child: IconButton(
-                          onPressed: () =>
-                              favoritePlayer(context, widget.player.teamId),
-                          icon: Icon(
-                            _isFavorited
-                                ? Icons.favorite
-                                : Icons.favorite_border,
+                        child: Text(
+                          _haveJersey(widget.player)
+                              ? widget.player.jersey.toString()
+                              : 'N/A',
+                          style: TextStyle(
                             color: ThemeData.estimateBrightnessForColor(
                                         widget.color) ==
                                     Brightness.light
                                 ? Colors.black
                                 : Colors.white,
+                            fontSize: 24,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -192,13 +184,5 @@ class _PlayerListState extends State<PlayerList> {
         ),
       ),
     );
-  }
-
-  bool _haveJersey(Player player) {
-    if (player.jersey == 999) {
-      return false;
-    } else {
-      return true;
-    }
   }
 }

@@ -68,7 +68,6 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
             builder: (context) => PlayersScreen(
               player: widget.player,
               user: widget.user,
-              favoritePlayer: favoritePlayer,
               color: widget.color,
             ),
           ),

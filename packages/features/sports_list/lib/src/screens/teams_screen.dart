@@ -54,7 +54,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final filteredPlayers =
+    List<Player> filteredPlayers =
         _filterPlayersByTeamAndSorted(widget.players, widget.team);
     final Color primaryColor =
         Color(int.parse('0xFF${widget.team.primaryColor}'));
@@ -179,8 +179,8 @@ class _TeamsScreenState extends State<TeamsScreen> {
                         color: secondaryColor,
                         onFavoriteToggle: () {
                           setState(() {
-                            // _filterPlayersByTeamAndSorted(
-                            //     widget.players, widget.team);
+                            filteredPlayers = _filterPlayersByTeamAndSorted(
+                                widget.players, widget.team);
                           });
                         },
                       ),
