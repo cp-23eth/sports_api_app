@@ -31,13 +31,29 @@ class _TeamsScreenState extends State<TeamsScreen> {
     _isFavorited = widget.user.favoriteTeams.contains(widget.team.teamId);
   }
 
-  List<Player> _filterPlayersByTeam(List<Player> players, Team team) {
-    return players.where((player) => player.teamId == team.teamId).toList();
+  List<Player> _filterPlayersByTeamAndSorted(List<Player> players, Team team) {
+    List<Player> sortedPlayers = [];
+    List<Player> favoritePlayers = [];
+    List<Player> otherPlayers = [];
+
+    for (var player in players) {
+      if (player.teamId == team.teamId) {
+        if (widget.user.favoritePlayers.contains(player.playerId)) {
+          favoritePlayers.add(player);
+        } else {
+          otherPlayers.add(player);
+        }
+      }
+    }
+
+    sortedPlayers = favoritePlayers + otherPlayers;
+    return sortedPlayers;
   }
 
   @override
   Widget build(BuildContext context) {
-    final filteredPlayers = _filterPlayersByTeam(widget.players, widget.team);
+    final filteredPlayers =
+        _filterPlayersByTeamAndSorted(widget.players, widget.team);
     final Color primaryColor =
         Color(int.parse('0xFF${widget.team.primaryColor}'));
     final Color secondaryColor =
@@ -72,7 +88,6 @@ class _TeamsScreenState extends State<TeamsScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              _favoriteTeam(context, widget.team.teamId);
               setState(() {
                 _isFavorited = !_isFavorited;
               });
@@ -158,6 +173,12 @@ class _TeamsScreenState extends State<TeamsScreen> {
                   user: widget.user,
                   player: filteredPlayers[index],
                   color: secondaryColor,
+                  onFavoriteToggle: () {
+                    setState(() {
+                      _filterPlayersByTeamAndSorted(
+                          widget.players, widget.team);
+                    });
+                  },
                 ),
               ),
             ],
@@ -165,20 +186,5 @@ class _TeamsScreenState extends State<TeamsScreen> {
         ],
       ),
     );
-  }
-
-  void _favoriteTeam(BuildContext context, int teamId) {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-    if (_isFavorited) {
-      context
-          .read<SportsListProvider>()
-          .addFavoriteTeam(widget.user.username, teamId);
-    } else {
-      context
-          .read<SportsListProvider>()
-          .removeFavoriteTeam(widget.user.username, teamId);
-    }
   }
 }
