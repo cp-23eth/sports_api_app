@@ -238,6 +238,9 @@ class _ParameterState extends State<Parameter> {
                     )
                   ],
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
