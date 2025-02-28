@@ -29,10 +29,18 @@ class Header extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 12.0, right: 50),
-                child: Image.asset(
-                  'packages/component_library/lib/src/assets/images/nba_logo.png',
-                  height: 80,
-                  filterQuality: FilterQuality.high,
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GithubScreen(),
+                    ),
+                  ),
+                  child: Image.asset(
+                    'packages/component_library/lib/src/assets/images/nba_logo.png',
+                    height: 80,
+                    filterQuality: FilterQuality.high,
+                  ),
                 ),
               ),
               Text(
@@ -64,11 +72,15 @@ class Header extends StatelessWidget {
                     width: 100,
                     child: Padding(
                       padding: EdgeInsets.only(right: 16.0),
-                      child: Icon(Icons.settings,color: Colors.white, size: 32.0,),
+                      child: Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                        size: 32.0,
                       ),
                     ),
                   ),
                 ),
+              ),
             ],
           ),
         ),

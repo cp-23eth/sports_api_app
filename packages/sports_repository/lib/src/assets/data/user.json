@@ -6,13 +6,9 @@
             1,
             9
         ],
-        "favoritePlayers": [
-            20000441,
-            20000452
-        ],
         "appColorTeam": "Suns",
-        "homeScreenDesign" : "Carrousel",
-        "teamScreenDesign" : "List"
+        "homeScreenDesign": "Carrousel",
+        "teamScreenDesign": "List"
     },
     {
         "username": "Quentin",
@@ -21,13 +17,9 @@
             3,
             4
         ],
-        "favoritePlayers": [
-            20000455,
-            20000456
-        ],
         "appColorTeam": "Celtics",
-        "homeScreenDesign" : "Carrousel",
-        "teamScreenDesign" : "CircleAvatar"
+        "homeScreenDesign": "Carrousel",
+        "teamScreenDesign": "CircleAvatar"
     },
     {
         "username": "Ethan",
@@ -36,12 +28,8 @@
             5,
             6
         ],
-        "favoritePlayers": [
-            20000457,
-            20000464
-        ],
         "appColorTeam": "Hornets",
-        "homeScreenDesign" : "Carrousel",
-        "teamScreenDesign" : "List"
+        "homeScreenDesign": "Carrousel",
+        "teamScreenDesign": "List"
     }
 ]

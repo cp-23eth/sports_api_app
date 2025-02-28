@@ -6,7 +6,6 @@ extension UserModelToDomain on UserModel {
     return User(
       username: username,
       favoriteTeams: favoriteTeams,
-      favoritePlayers: favoritePlayers,
       appColorTeam: appColorTeam,
       homeScreenDesign: homeScreenDesign,
       teamScreenDesign: teamScreenDesign,

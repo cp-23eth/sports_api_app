@@ -8,3 +8,4 @@ export 'match_detail_screen.dart';
 export 'stats_teams_screen.dart';
 export 'general_basket_screen.dart';
 export 'parameter.dart';
+export 'github_screen.dart';

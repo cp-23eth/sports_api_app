@@ -20,27 +20,9 @@ class PlayerListCircleAvatar extends StatefulWidget {
 }
 
 class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
-  late bool _isFavorited;
-
   @override
   void initState() {
     super.initState();
-    _isFavorited = widget.user.favoritePlayers.contains(widget.player.playerId);
-  }
-
-  void favoritePlayer(BuildContext context, int teamId) {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-    if (_isFavorited) {
-      context
-          .read<SportsListProvider>()
-          .addFavoritePlayer(widget.user.username, widget.player.playerId);
-    } else {
-      context
-          .read<SportsListProvider>()
-          .removeFavoritePlayer(widget.user.username, widget.player.playerId);
-    }
   }
 
   @override
