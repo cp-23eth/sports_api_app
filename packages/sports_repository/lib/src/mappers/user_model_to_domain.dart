@@ -8,7 +8,8 @@ extension UserModelToDomain on UserModel {
       favoriteTeams: favoriteTeams,
       favoritePlayers: favoritePlayers,
       appColorTeam: appColorTeam,
-      homeScreenDesign: homeScreenDesign
+      homeScreenDesign: homeScreenDesign,
+      teamScreenDesign: teamScreenDesign,
     );
   }
 }

@@ -5,6 +5,7 @@ class UserModel {
     required this.favoritePlayers,
     required this.appColorTeam,
     required this.homeScreenDesign,
+    required this.teamScreenDesign,
   });
 
   final String username;
@@ -12,6 +13,7 @@ class UserModel {
   final List<int> favoritePlayers;
   String appColorTeam;
   final String homeScreenDesign;
+  String teamScreenDesign;
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -20,6 +22,7 @@ class UserModel {
       favoritePlayers: List<int>.from(json['favoritePlayers']),
       appColorTeam: json['appColorTeam'],
       homeScreenDesign: json['homeScreenDesign'],
+      teamScreenDesign: json['teamScreenDesign'],
     );
   }
 }

@@ -11,7 +11,8 @@
             20000452
         ],
         "appColorTeam": "Suns",
-        "homeScreenDesign" : "Carrousel"
+        "homeScreenDesign" : "Carrousel",
+        "teamScreenDesign" : "List"
     },
     {
         "username": "Quentin",
@@ -25,7 +26,8 @@
             20000456
         ],
         "appColorTeam": "Celtics",
-        "homeScreenDesign" : "List"
+        "homeScreenDesign" : "List",
+        "teamScreenDesign" : "List"
     },
     {
         "username": "Ethan",
@@ -39,6 +41,7 @@
             20000464
         ],
         "appColorTeam": "Hornets",
-        "homeScreenDesign" : "Carrousel"
+        "homeScreenDesign" : "Carrousel",
+        "teamScreenDesign" : "List"
     }
 ]
