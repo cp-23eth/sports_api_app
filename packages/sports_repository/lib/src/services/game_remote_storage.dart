@@ -13,6 +13,12 @@ class GameRemoteStorage implements SportsGameStorage {
   static const url =
       "https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=e0cc9fd0e6e64ec6934939efa4abd788";
 
+  static const urlPre =
+      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025PRE?key=e0cc9fd0e6e64ec6934939efa4abd788";
+
+  static const urlPost =
+      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025POST?key=e0cc9fd0e6e64ec6934939efa4abd788";
+
   GameRemoteStorage({@visibleForTesting http.Client? client})
       : _client = client ?? http.Client();
 
@@ -26,19 +32,53 @@ class GameRemoteStorage implements SportsGameStorage {
 
     try {
       final parsedUrl = Uri.parse(url);
+      final parsedPreUrl = Uri.parse(urlPre);
+      final parsedPostUrl = Uri.parse(urlPost);
 
       final response = await _client.get(parsedUrl);
       final statusCode = response.statusCode;
+
+      final responsePre = await _client.get(parsedPreUrl);
+      final statusCodePre = responsePre.statusCode;
+
+      final responsePost = await _client.get(parsedPostUrl);
+      final statusCodePost = responsePost.statusCode;
 
       if (statusCode != 200) {
         logger.e("Failed to get games. Status code: $statusCode");
       }
 
+      if (statusCodePre != 200) {
+        logger.e("Failed to get games. Status code: $statusCodePre");
+      }
+
+      if (statusCodePost != 200) {
+        logger.e("Failed to get games. Status code: $statusCodePost");
+      }
+
       final json = response.body;
       final data = jsonDecode(json);
 
+      final jsonPre = responsePre.body;
+      final dataPre = jsonDecode(jsonPre);
+
+      final jsonPost = responsePost.body;
+      final dataPost = jsonDecode(jsonPost);
+
       if (data != null) {
         data.forEach((gameData) {
+          games.add(GameApiModel.fromJson(gameData).toDomainEntity());
+        });
+      }
+
+      if (dataPre != null) {
+        dataPre.forEach((gameData) {
+          games.add(GameApiModel.fromJson(gameData).toDomainEntity());
+        });
+      }
+
+      if (dataPost != null) {
+        dataPost.forEach((gameData) {
           games.add(GameApiModel.fromJson(gameData).toDomainEntity());
         });
       }

@@ -37,15 +37,11 @@ class GameApiModel {
       throw ArgumentError('isClosed is required');
     }
 
-    final dateTime = json['DateTime'];
-    if (dateTime == null) {
-      throw ArgumentError('dateTime is required');
-    }
+    var dateTime = json['DateTime'];
+    dateTime ??= '0000-00-00';
 
-    final dateTimeUtc = json['DateTimeUTC'];
-    if (dateTimeUtc == null) {
-      throw ArgumentError('dateTimeUtc is required');
-    }
+    var dateTimeUtc = json['DateTimeUTC'];
+    dateTimeUtc ??= '0000-00-00';
 
     final awayTeam = json['AwayTeam'];
     if (awayTeam == null) {

@@ -24,6 +24,7 @@ class CalenderLoad extends StatefulWidget {
 
 class _CalenderLoadState extends State<CalenderLoad> {
   late Future<Map<String, List<Game>>> _loadDataFuture;
+  Map<String, List<Game>>? _cachedGroupedGames;
 
   @override
   void initState() {
@@ -32,24 +33,50 @@ class _CalenderLoadState extends State<CalenderLoad> {
   }
 
   Future<Map<String, List<Game>>> _loadData() async {
-    // Simulate a network call or data fetching
-    await Future.delayed(const Duration(seconds: 1));
+    if (_cachedGroupedGames != null) {
+      return _cachedGroupedGames!;
+    }
 
-    final games = widget.stateGames.reversed.toList();
+    final allGames = widget.stateGames.reversed.toList();
+    final games =
+        allGames.where((game) => game.dateTime != '0000-00-00').toList();
 
-    // Group games by date
     final groupedGames = <String, List<Game>>{};
     for (var game in games) {
-      final dateTime = DateTime.parse(game.dateTimeUtc);
-      final date = DateFormat('yyyy-MM-dd').format(dateTime);
-      if (!groupedGames.containsKey(date)) {
-        groupedGames[date] = [];
-      }
-      groupedGames[date]!.add(game);
+      final date =
+          DateFormat('yyyy-MM-dd').format(DateTime.parse(game.dateTimeUtc));
+      groupedGames.putIfAbsent(date, () => []).add(game);
     }
+
+    _cachedGroupedGames = groupedGames;
 
     return groupedGames;
   }
+
+  // Future<Map<String, List<Game>>> _loadData() async {
+  //   await Future.delayed(const Duration(seconds: 1));
+
+  //   final allGames = widget.stateGames.reversed.toList();
+  //   final games = <Game>[];
+
+  //   for (Game game in allGames) {
+  //     if (game.dateTime != '0000-00-00') {
+  //       games.add(game);
+  //     }
+  //   }
+
+  //   final groupedGames = <String, List<Game>>{};
+  //   for (var game in games) {
+  //     final dateTime = DateTime.parse(game.dateTimeUtc);
+  //     final date = DateFormat('yyyy-MM-dd').format(dateTime);
+  //     if (!groupedGames.containsKey(date)) {
+  //       groupedGames[date] = [];
+  //     }
+  //     groupedGames[date]!.add(game);
+  //   }
+
+  //   return groupedGames;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +121,7 @@ class _CalenderLoadState extends State<CalenderLoad> {
   }
 }
 
-class CalendarScreenLoaded extends StatelessWidget {
+class CalendarScreenLoaded extends StatefulWidget {
   const CalendarScreenLoaded(
       {required this.user,
       required this.stateTeams,
@@ -108,57 +135,122 @@ class CalendarScreenLoaded extends StatelessWidget {
   final Map<String, List<Game>> groupedGames;
 
   @override
-  Widget build(BuildContext context) {
-    final today = DateTime.now();
+  State<CalendarScreenLoaded> createState() => _CalendarScreenLoadedState();
+}
 
-    int initialScrollIndex = 0;
+class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
+  late String _currentState;
+  late List<Game> _filteredGames;
+  late ScrollController _scrollController;
+  late List<Game> _allGames;
 
-    final games = groupedGames.values.expand((games) => games).toList();
+  @override
+  void initState() {
+    super.initState();
+    _currentState = '';
+    _allGames = widget.groupedGames.values.expand((games) => games).toList();
+    _allGames.sort((a, b) => a.dateTimeUtc.compareTo(b.dateTimeUtc));
+    _filteredGames =
+        widget.groupedGames.values.expand((games) => games).toList();
+    _scrollController =
+        ScrollController(initialScrollOffset: _calculateInitialScrollOffset());
+  }
 
-    for (var i = 0; i < games.length; i++) {
-      final gameDateTime = DateTime.parse(games[i].dateTimeUtc);
-      if (gameDateTime.isAfter(today) || gameDateTime.isAtSameMomentAs(today)) {
-        initialScrollIndex = i;
-        break;
-      }
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _updateState(String state) {
+  setState(() {
+    _currentState = state;
+    _filteredGames = _filterGames(state);
+  });
+
+    if (_filteredGames.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollController.jumpTo(_calculateInitialScrollOffset());
+      });
     }
-    initialScrollIndex += 83;
+  }
 
+  double _calculateInitialScrollOffset() {
+    final today = DateTime.now();
+    int initialScrollIndex = _filteredGames.indexWhere((game) =>
+        DateTime.parse(game.dateTimeUtc).isAfter(today) ||
+        DateTime.parse(game.dateTimeUtc).isAtSameMomentAs(today));
+
+    _currentState == '' ? initialScrollIndex += 95 : initialScrollIndex = 0;
+    return (initialScrollIndex > 0 ? initialScrollIndex : 0) * 75.0;
+  }
+
+  List<Game> _filterGames(String state) {
+    if (state.isEmpty) return _allGames;
+
+    final beginRegu = DateTime.parse('2024-10-22');
+    final endRegu = DateTime.parse('2025-04-14');
+
+    return _allGames.where((game) {
+      final date = DateTime.parse(game.dateTimeUtc);
+      switch (state) {
+        case 'Pre':
+          return date.isBefore(beginRegu);
+        case 'Regu':
+          return date.isAfter(beginRegu) && date.isBefore(endRegu);
+        case 'Post':
+          return date.isAfter(endRegu);
+        default:
+          return true;
+      }
+    }).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: [
         Header(
-          user: user,
-          teams: stateTeams,
+          user: widget.user,
+          teams: widget.stateTeams,
+        ),
+        CalendarButtonSort(
+          state: (state) => _updateState(state),
         ),
         Expanded(
-          child: ListView.builder(
-            itemCount: groupedGames.length,
-            itemBuilder: (context, index) {
-              final date = groupedGames.keys.elementAt(index);
-              final formattedDate =
-                  DateFormat('dd MMM yyyy').format(DateTime.parse(date));
-              final gamesForDate = groupedGames[date]!;
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SecondaryTitle(text: formattedDate),
-                  ...gamesForDate.map(
-                    (game) => CalenderMatchList(
-                      teams: stateTeams,
-                      game: game,
-                      stadiums: stateStadiums,
-                    ),
-                  ),
-                ],
-              );
-            },
-            controller: ScrollController(
-                initialScrollOffset:
-                    initialScrollIndex * 75.0), // Adjust the offset as needed
-          ),
-        )
+          child: _filteredGames.isEmpty
+              ? const Center(child: Text('No games found'))
+              : ListView.builder(
+                  controller: _scrollController,
+                  itemCount: _filteredGames.length,
+                  itemBuilder: (context, index) {
+                    final game = _filteredGames[index];
+                    final gameDate = DateTime.parse(game.dateTimeUtc);
+                    final formattedDate =
+                        DateFormat('dd MMM yyyy').format(gameDate);
+
+                    final bool isFirstGameOfDate = index == 0 ||
+                        DateTime.parse(_filteredGames[index - 1].dateTimeUtc)
+                                .day !=
+                            gameDate.day;
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (isFirstGameOfDate)
+                          SecondaryTitle(text: formattedDate),
+                        CalenderMatchList(
+                          teams: widget.stateTeams,
+                          game: game,
+                          stadiums: widget.stateStadiums,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+        ),
       ],
     );
   }

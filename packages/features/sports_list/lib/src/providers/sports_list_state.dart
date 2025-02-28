@@ -13,6 +13,9 @@ class SportsListState extends Equatable {
     required this.players,
     required this.stadiums,
     required this.games,
+    required this.preGames,
+    required this.regularGames,
+    required this.postGames,
     required this.statsTeam,
     required this.user,
   });
@@ -24,6 +27,9 @@ class SportsListState extends Equatable {
       players: List<Player>.empty(),
       stadiums: List<Stadium>.empty(),
       games: List<Game>.empty(),
+      preGames: List<Game>.empty(),
+      regularGames: List<Game>.empty(),
+      postGames: List<Game>.empty(),
       statsTeam: List<StatsTeam>.empty(),
       user: User(
         username: '',
@@ -40,12 +46,15 @@ class SportsListState extends Equatable {
   final List<Player> players;
   final List<Stadium> stadiums;
   final List<Game> games;
+  final List<Game> preGames;
+  final List<Game> regularGames;
+  final List<Game> postGames;
   final List<StatsTeam> statsTeam;
   final User user;
 
   @override
   List<Object> get props =>
-      [status, teams, players, stadiums, games, statsTeam, user];
+      [status, teams, players, stadiums, games, preGames, regularGames, postGames, statsTeam, user];
 
   @override
   bool get stringify => true;
@@ -56,6 +65,9 @@ class SportsListState extends Equatable {
     List<Player>? players,
     List<Stadium>? stadiums,
     List<Game>? games,
+    List<Game>? preGames,
+    List<Game>? regularGames,
+    List<Game>? postGames,
     List<StatsTeam>? statsTeam,
     User? user,
   }) {
@@ -65,6 +77,9 @@ class SportsListState extends Equatable {
       players: players ?? this.players,
       stadiums: stadiums ?? this.stadiums,
       games: games ?? this.games,
+      preGames: preGames ?? this.preGames,
+      regularGames: regularGames ?? this.regularGames,
+      postGames: postGames ?? this.postGames,
       statsTeam: statsTeam ?? this.statsTeam,
       user: user ?? this.user,
     );
