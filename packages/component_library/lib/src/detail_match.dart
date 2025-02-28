@@ -94,6 +94,12 @@ class _DetailMatchState extends State<DetailMatch> {
 
   Widget _buildTeamColumn(BuildContext context, SportsListState state,
       Team team, Stadium stadium, Function(BuildContext, int) favoriteTeam) {
+    List<Team> teamList = state.teams
+        .where((team) => state.user.favoriteTeams.contains(team.teamId))
+        .toList();
+
+    bool isTeamFollowed(Team team) => teamList.contains(team);
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -110,33 +116,91 @@ class _DetailMatchState extends State<DetailMatch> {
             ),
           ),
         ),
-        child: Column(
-          children: [
-            SvgPicture.asset(
-              'packages/component_library/lib/src/assets/images/svg/${team.logo}',
-              height: 87,
-              fit: BoxFit.fitHeight,
-            ),
-            const SizedBox(height: 50),
-            Text(
-              team.name,
-              style: TextStyle(
-                color: ThemeData.estimateBrightnessForColor(
-                            Parameter.backgroundColor) ==
-                        Brightness.light
-                    ? Colors.black
-                    : Colors.white,
-                fontSize: 20,
-                fontFamily: GoogleFonts.poppins().fontFamily,
+        child: SizedBox(
+          width: 120,
+          child: Column(
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  SvgPicture.asset(
+                    'packages/component_library/lib/src/assets/images/svg/${team.logo}',
+                    height: 90,
+                    fit: BoxFit.fitHeight,
+                  ),
+                  isTeamFollowed(team)
+                      ? Positioned(
+                          top: -15,
+                          right: -15,
+                          child: Icon(
+                            Icons.star,
+                            size: 24,
+                            color: ThemeData.estimateBrightnessForColor(
+                                        Parameter.backgroundColor) ==
+                                    Brightness.light
+                                ? Colors.black
+                                : Colors.white,
+                          ),
+                        )
+                      : const SizedBox(),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 50),
+              Text(
+                team.name,
+                style: TextStyle(
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.backgroundColor) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.poppins().fontFamily,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildScoreColumn(String formattedDate, String formattedHour) {
+    String hadHomeTeamWin(int scoreHomeTeam, int scoreAwayTeam) {
+      if (scoreHomeTeam > scoreAwayTeam) {
+        return 'win';
+      } else if (scoreHomeTeam == scoreAwayTeam) {
+        return 'equal';
+      } else {
+        return 'lose';
+      }
+    }
+
+    double chooseFontSize(String result) {
+      double fontSize = 0;
+      if (result == 'win') {
+        fontSize = 30;
+      } else if (result == 'equal') {
+        fontSize = 27;
+      } else {
+        fontSize = 24;
+      }
+      return fontSize;
+    }
+
+    FontWeight chooseFontWeight(String result) {
+      FontWeight fontSize = FontWeight.w400;
+      if (result == 'win') {
+        fontSize = FontWeight.w800;
+      } else if (result == 'equal') {
+        fontSize = FontWeight.w600;
+      } else {
+        fontSize = FontWeight.w400;
+      }
+      return fontSize;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -144,10 +208,50 @@ class _DetailMatchState extends State<DetailMatch> {
       children: [
         const SizedBox(height: 30),
         const PrimaryTitle(text: 'VS'),
-        const SizedBox(height: 50),
-        SecondaryTitle(
-            text:
-                '${widget.game.homeTeamScore} - ${widget.game.awayTeamScore}'),
+        const SizedBox(height: 110),
+        Row(
+          children: [
+            Text(
+              '${widget.game.homeTeamScore} ',
+              style: TextStyle(
+                color: ThemeData.estimateBrightnessForColor(
+                            Parameter.backgroundColor) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+                fontSize: chooseFontSize(hadHomeTeamWin(
+                    widget.game.homeTeamScore, widget.game.awayTeamScore)),
+                fontWeight: chooseFontWeight(hadHomeTeamWin(
+                    widget.game.homeTeamScore, widget.game.awayTeamScore)),
+              ),
+            ),
+            Text(
+              '-',
+              style: TextStyle(
+                color: ThemeData.estimateBrightnessForColor(
+                            Parameter.backgroundColor) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+                fontSize: 27,
+              ),
+            ),
+            Text(
+              ' ${widget.game.awayTeamScore}',
+              style: TextStyle(
+                color: ThemeData.estimateBrightnessForColor(
+                            Parameter.backgroundColor) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+                fontSize: chooseFontSize(hadHomeTeamWin(
+                    widget.game.awayTeamScore, widget.game.homeTeamScore)),
+                fontWeight: chooseFontWeight(hadHomeTeamWin(
+                    widget.game.awayTeamScore, widget.game.homeTeamScore)),
+              ),
+            ),
+          ],
+        ),
         const SizedBox(height: 20),
         Text(
           formattedDate,
@@ -157,7 +261,7 @@ class _DetailMatchState extends State<DetailMatch> {
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
-            fontSize: 13,
+            fontSize: 16,
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
@@ -170,7 +274,7 @@ class _DetailMatchState extends State<DetailMatch> {
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
-            fontSize: 13,
+            fontSize: 16,
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
