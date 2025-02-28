@@ -17,16 +17,18 @@ class DetailMatch extends StatefulWidget {
 
 class _DetailMatchState extends State<DetailMatch> {
   @override
+  late bool isFavorited;
+
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<SportsListProvider>().state;
+    isFavorited = state.user.favoriteTeams.contains(widget.game.homeTeamId);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    late bool isFavorited;
-
     final state = context.watch<SportsListProvider>().state;
-
-    @override
-    void initState() {
-      super.initState();
-      isFavorited = state.user.favoriteTeams.contains(widget.game.homeTeamId);
-    }
 
     final gameDate = DateTime.parse(widget.game.dateTimeUtc).add(
       const Duration(hours: 1),
