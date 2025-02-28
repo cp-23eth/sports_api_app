@@ -16,7 +16,6 @@ class DetailMatch extends StatefulWidget {
 }
 
 class _DetailMatchState extends State<DetailMatch> {
-  @override
   late bool isFavorited;
 
   @override
