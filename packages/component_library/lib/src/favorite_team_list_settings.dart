@@ -35,8 +35,8 @@ class _FavoriteTeamListSettingsState extends State<FavoriteTeamListSettings> {
       ),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(Parameter.backgroundColor),
-        ),
+            backgroundColor: WidgetStateProperty.all(Parameter.backgroundColor),
+            shadowColor: const WidgetStatePropertyAll(Colors.transparent)),
         onPressed: () {
           setState(() {
             if (isSelected) {

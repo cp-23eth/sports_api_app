@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sports_list/sports_list.dart';
 
-class CalenderMatchList extends StatelessWidget {
+class CalenderMatchList extends StatefulWidget {
   const CalenderMatchList(
       {required this.stadiums,
       required this.teams,
@@ -17,9 +17,16 @@ class CalenderMatchList extends StatelessWidget {
   final Game game;
 
   @override
+  State<CalenderMatchList> createState() => _CalenderMatchListState();
+}
+
+class _CalenderMatchListState extends State<CalenderMatchList> {
+  @override
   Widget build(BuildContext context) {
+    final state = context.watch<SportsListProvider>().state;
+
     final DateTime now = DateTime.now();
-    final DateTime gameDate = DateTime.parse(game.dateTimeUtc).add(
+    final DateTime gameDate = DateTime.parse(widget.game.dateTimeUtc).add(
       const Duration(hours: 1),
     );
 
@@ -27,6 +34,12 @@ class CalenderMatchList extends StatelessWidget {
     final String formattedHour = DateFormat.Hm().format(gameDate);
 
     Color containerColor;
+
+    List<Team> teamList = widget.teams
+        .where((team) => state.user.favoriteTeams.contains(team.teamId))
+        .toList();
+
+    bool isTeamFollowed(Team team) => teamList.contains(team);
 
     if (DateFormat.yMd().format(gameDate) == DateFormat.yMd().format(now)) {
       containerColor = Parameter.todaysMatchsColor;
@@ -48,11 +61,11 @@ class CalenderMatchList extends StatelessWidget {
       }
     }
 
-    double chooseFontSize(String result){
+    double chooseFontSize(String result) {
       double fontSize = 0;
-      if (result == 'win'){
+      if (result == 'win') {
         fontSize = 17;
-      } else if (result == 'equal'){
+      } else if (result == 'equal') {
         fontSize = 15;
       } else {
         fontSize = 13;
@@ -62,9 +75,9 @@ class CalenderMatchList extends StatelessWidget {
 
     FontWeight chooseFontWeight(String result) {
       FontWeight fontSize = FontWeight.w400;
-      if (result == 'win'){
+      if (result == 'win') {
         fontSize = FontWeight.w700;
-      } else if (result == 'equal'){
+      } else if (result == 'equal') {
         fontSize = FontWeight.w500;
       } else {
         fontSize = FontWeight.w300;
@@ -72,8 +85,121 @@ class CalenderMatchList extends StatelessWidget {
       return fontSize;
     }
 
+    Widget imageTextTeamLeft() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(width: 10.0),
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              SvgPicture.asset(
+                'packages/component_library/lib/src/assets/images/svg/${widget.teams[widget.game.homeTeamId - 1].city == 'Houston' && containerColor == const Color(0xFFC8102E) ? 'Hou-noir.svg' : widget.teams[widget.game.homeTeamId - 1].logo}',
+                width: 28.0,
+                fit: BoxFit.fitWidth,
+              ),
+            ],
+          ),
+          isTeamFollowed(widget.teams[widget.game.homeTeamId - 1])
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 2.0, bottom: 28.0),
+                  child: Icon(
+                    Icons.star,
+                    color:
+                        ThemeData.estimateBrightnessForColor(containerColor) ==
+                                Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                    size: 9.0,
+                  ),
+                )
+              : const SizedBox(width: 9.0),
+          const SizedBox(
+            width: 10.0,
+          ),
+          SizedBox(
+            width: 100.0,
+            child: Text(
+              '${widget.teams[widget.game.homeTeamId - 1].city} ${widget.teams[widget.game.homeTeamId - 1].name}',
+              style: TextStyle(
+                color: ThemeData.estimateBrightnessForColor(containerColor) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+                fontSize:
+                    isTeamFollowed(widget.teams[widget.game.homeTeamId - 1])
+                        ? 14.0
+                        : 12.0,
+                fontWeight:
+                    isTeamFollowed(widget.teams[widget.game.homeTeamId - 1])
+                        ? FontWeight.w600
+                        : FontWeight.w300,
+                fontFamily: GoogleFonts.poppins().fontFamily,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget imageTextTeamRight() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          SizedBox(
+            width: 100.0,
+            child: Text(
+              '${widget.teams[widget.game.awayTeamId - 1].city} ${widget.teams[widget.game.awayTeamId - 1].name}',
+              style: TextStyle(
+                color: ThemeData.estimateBrightnessForColor(containerColor) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+                fontSize:
+                    isTeamFollowed(widget.teams[widget.game.awayTeamId - 1])
+                        ? 14.0
+                        : 12.0,
+                fontWeight:
+                    isTeamFollowed(widget.teams[widget.game.awayTeamId - 1])
+                        ? FontWeight.w600
+                        : FontWeight.w300,
+                fontFamily: GoogleFonts.poppins().fontFamily,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+          ),
+          const SizedBox(width: 10.0),
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              SvgPicture.asset(
+                'packages/component_library/lib/src/assets/images/svg/${widget.teams[widget.game.awayTeamId - 1].city == 'Houston' && containerColor == const Color(0xFFC8102E) ? 'Hou-noir.svg' : widget.teams[widget.game.awayTeamId - 1].logo}',
+                width: 28.0,
+                fit: BoxFit.fitWidth,
+              ),
+            ],
+          ),
+          isTeamFollowed(widget.teams[widget.game.awayTeamId - 1]) ?
+            Padding(
+              padding: const EdgeInsets.only(left: 2.0, bottom: 28.0),
+              child: Icon(
+                Icons.star,
+                color: ThemeData.estimateBrightnessForColor(containerColor) ==
+                        Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+                size: 9.0,
+              ),
+            ) : const SizedBox(width: 10.0),
+        ],
+      );
+    }
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
@@ -81,9 +207,9 @@ class CalenderMatchList extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => MatchDetailScreen(
-                game: game,
-                teams: teams,
-                stadiums: stadiums,
+                game: widget.game,
+                teams: widget.teams,
+                stadiums: widget.stadiums,
               ),
             ),
           ),
@@ -95,133 +221,92 @@ class CalenderMatchList extends StatelessWidget {
               color: containerColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Row(
+                  imageTextTeamLeft(),
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SvgPicture.asset(
-                        'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].city == 'Houston' && containerColor == const Color(0xFFC8102E) ? 'Hou-noir.svg' : teams[game.homeTeamId - 1].logo}',
-                        width: 28.0,
-                        fit: BoxFit.fitWidth,
-                      ),
-                      SizedBox(
-                        width: 70.0,
-                        child: Text(
-                          '${teams[game.homeTeamId - 1].city} ${teams[game.homeTeamId - 1].name}',
-                          style: TextStyle(
-                            color: ThemeData.estimateBrightnessForColor(
-                                        containerColor) ==
-                                    Brightness.light
-                                ? Colors.black
-                                : Colors.white,
-                            fontSize: 11.0,
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 3,
+                      Text(
+                        formattedHour,
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      containerColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 10.0,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
                         ),
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      Row(
                         children: [
                           Text(
-                            formattedHour,
+                            '${widget.game.homeTeamScore} ',
                             style: TextStyle(
                               color: ThemeData.estimateBrightnessForColor(
                                           containerColor) ==
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
-                              fontSize: 10.0,
+                              fontSize: chooseFontSize(hadHomeTeamWin(
+                                  widget.game.homeTeamScore,
+                                  widget.game.awayTeamScore)),
                               fontFamily: GoogleFonts.poppins().fontFamily,
+                              fontWeight: chooseFontWeight(hadHomeTeamWin(
+                                  widget.game.homeTeamScore,
+                                  widget.game.awayTeamScore)),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                '${game.homeTeamScore} ',
-                                style: TextStyle(
-                                  color: ThemeData.estimateBrightnessForColor(
-                                              containerColor) ==
-                                          Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
-                                  fontSize: chooseFontSize(hadHomeTeamWin(game.homeTeamScore, game.awayTeamScore)),
-                                  fontFamily: GoogleFonts.poppins().fontFamily,
-                                  fontWeight: chooseFontWeight(hadHomeTeamWin(game.homeTeamScore, game.awayTeamScore)),
-                                ),
-                              ),
-                              Text(
-                                '-',
-                                style: TextStyle(
-                                  color: ThemeData.estimateBrightnessForColor(
-                                              containerColor) ==
-                                          Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
-                                  fontSize: 14.0,
-                                  fontFamily: GoogleFonts.poppins().fontFamily,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                ' ${game.awayTeamScore}',
-                                style: TextStyle(
-                                  color: ThemeData.estimateBrightnessForColor(
-                                              containerColor) ==
-                                          Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
-                                  fontSize: chooseFontSize(hadHomeTeamWin(game.awayTeamScore, game.homeTeamScore)),
-                                  fontFamily: GoogleFonts.poppins().fontFamily,
-                                  fontWeight: chooseFontWeight(hadHomeTeamWin(game.awayTeamScore, game.homeTeamScore)),
-                                ),
-                              ),
-                            ],
-                          ),
                           Text(
-                            formattedDate,
+                            '-',
                             style: TextStyle(
                               color: ThemeData.estimateBrightnessForColor(
                                           containerColor) ==
                                       Brightness.light
                                   ? Colors.black
                                   : Colors.white,
-                              fontSize: 8.0,
+                              fontSize: 14.0,
                               fontFamily: GoogleFonts.poppins().fontFamily,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ' ${widget.game.awayTeamScore}',
+                            style: TextStyle(
+                              color: ThemeData.estimateBrightnessForColor(
+                                          containerColor) ==
+                                      Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
+                              fontSize: chooseFontSize(hadHomeTeamWin(
+                                  widget.game.awayTeamScore,
+                                  widget.game.homeTeamScore)),
+                              fontFamily: GoogleFonts.poppins().fontFamily,
+                              fontWeight: chooseFontWeight(hadHomeTeamWin(
+                                  widget.game.awayTeamScore,
+                                  widget.game.homeTeamScore)),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 70.0,
-                        child: Text(
-                          '${teams[game.awayTeamId - 1].city} ${teams[game.awayTeamId - 1].name}',
-                          style: TextStyle(
-                            color: ThemeData.estimateBrightnessForColor(
-                                        containerColor) ==
-                                    Brightness.light
-                                ? Colors.black
-                                : Colors.white,
-                            fontSize: 11.0,
-                            fontFamily: GoogleFonts.poppins().fontFamily,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
+                      Text(
+                        formattedDate,
+                        style: TextStyle(
+                          color: ThemeData.estimateBrightnessForColor(
+                                      containerColor) ==
+                                  Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                          fontSize: 8.0,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
                         ),
-                      ),
-                      SvgPicture.asset(
-                        'packages/component_library/lib/src/assets/images/svg/${teams[game.awayTeamId - 1].city == 'Houston' && containerColor == const Color(0xFFC8102E) ? 'Hou-noir.svg' : teams[game.awayTeamId - 1].logo}',
-                        width: 30.0,
-                        fit: BoxFit.fitWidth,
                       ),
                     ],
                   ),
+                  imageTextTeamRight(),
                 ],
               ),
             ),
