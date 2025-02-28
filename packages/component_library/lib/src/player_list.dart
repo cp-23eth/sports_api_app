@@ -22,32 +22,9 @@ class PlayerList extends StatefulWidget {
 }
 
 class _PlayerListState extends State<PlayerList> {
-  late bool _isFavorited;
-
   @override
   void initState() {
     super.initState();
-    _isFavorited = widget.user.favoritePlayers.contains(widget.player.playerId);
-  }
-
-  void favoritePlayer(BuildContext context, int teamId) {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-    if (_isFavorited) {
-      context
-          .read<SportsListProvider>()
-          .addFavoritePlayer(widget.user.username, widget.player.playerId);
-      widget.onFavoriteToggle!();
-    } else {
-      context
-          .read<SportsListProvider>()
-          .removeFavoritePlayer(widget.user.username, widget.player.playerId);
-      widget.onFavoriteToggle!();
-    }
-    // if (widget.onFavoriteToggle != null) {
-    //   widget.onFavoriteToggle!();
-    // }
   }
 
   bool _haveJersey(Player player) {
@@ -60,14 +37,7 @@ class _PlayerListState extends State<PlayerList> {
 
   @override
   Widget build(BuildContext context) {
-    String cleanFirstName(String firstName) {
-      firstName = firstName.replaceAll('-', '');
-      firstName = firstName.replaceAll(' ', '');
-      firstName = firstName.replaceAll('.', '');
-      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
-    }
-
-    String cleanLastName(String firstName) {
+    String cleanName(String firstName) {
       firstName = firstName.replaceAll('-', '');
       firstName = firstName.replaceAll(' ', '');
       firstName = firstName.replaceAll('.', '');
@@ -113,7 +83,7 @@ class _PlayerListState extends State<PlayerList> {
                               width: 60,
                               height: 60,
                               child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg',
+                                'packages/component_library/lib/src/assets/images/player_images/${cleanName(widget.player.firstName)}-${cleanName(widget.player.lastName)}.jpg',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
