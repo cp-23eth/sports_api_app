@@ -1,5 +1,6 @@
 import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sports_list/sports_list.dart';
 
@@ -75,15 +76,44 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
         child: Center(
           child: Column(
             children: [
-              CircleAvatar(
-                radius: 45,
-                backgroundImage: AssetImage(
-                    'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg'),
-              ),
+              ClipOval(
+                            child: SizedBox(
+                              width: 60,
+                              height: 60,
+                              child: Image.asset(
+                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg',
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return SvgPicture.asset(
+                                    'packages/component_library/lib/src/assets/images/player_images/user.svg',
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
               const SizedBox(height: 10),
               Text(
                 textAlign: TextAlign.center,
-                '${cleanFirstName(widget.player.firstName)} ${cleanLastName(widget.player.lastName)}',
+                cleanFirstName(widget.player.firstName),
+                style: TextStyle(
+                  color: ThemeData.estimateBrightnessForColor(
+                              Parameter.backgroundColor) ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.poppins().fontFamily,
+                ),
+              ),
+              Text(
+                textAlign: TextAlign.center,
+                cleanLastName(widget.player.lastName),
                 style: TextStyle(
                   color: ThemeData.estimateBrightnessForColor(
                               Parameter.backgroundColor) ==

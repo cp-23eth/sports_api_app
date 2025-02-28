@@ -9,11 +9,13 @@ class PlayerList extends StatefulWidget {
       {required this.user,
       required this.color,
       required this.player,
+      this.onFavoriteToggle,
       super.key});
 
   final Color color;
   final Player player;
   final User user;
+  final Function? onFavoriteToggle;
 
   @override
   State<PlayerList> createState() => _PlayerListState();
@@ -40,6 +42,9 @@ class _PlayerListState extends State<PlayerList> {
       context
           .read<SportsListProvider>()
           .removeFavoritePlayer(widget.user.username, widget.player.playerId);
+    }
+    if (widget.onFavoriteToggle != null) {
+      widget.onFavoriteToggle!();
     }
   }
 

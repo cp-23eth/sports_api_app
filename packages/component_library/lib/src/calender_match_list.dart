@@ -49,13 +49,13 @@ class CalenderMatchList extends StatelessWidget {
     }
 
     double chooseFontSize(String result){
-      double fontSize = 14;
+      double fontSize = 0;
       if (result == 'win'){
-        fontSize = 19;
+        fontSize = 17;
       } else if (result == 'equal'){
-        fontSize = 16;
+        fontSize = 15;
       } else {
-        fontSize = 14;
+        fontSize = 13;
       }
       return fontSize;
     }
@@ -63,11 +63,11 @@ class CalenderMatchList extends StatelessWidget {
     FontWeight chooseFontWeight(String result) {
       FontWeight fontSize = FontWeight.w400;
       if (result == 'win'){
-        fontSize = FontWeight.w900;
+        fontSize = FontWeight.w700;
       } else if (result == 'equal'){
-        fontSize = FontWeight.bold;
+        fontSize = FontWeight.w500;
       } else {
-        fontSize = FontWeight.w400;
+        fontSize = FontWeight.w300;
       }
       return fontSize;
     }
@@ -106,7 +106,7 @@ class CalenderMatchList extends StatelessWidget {
                     children: [
                       SvgPicture.asset(
                         'packages/component_library/lib/src/assets/images/svg/${teams[game.homeTeamId - 1].city == 'Houston' && containerColor == const Color(0xFFC8102E) ? 'Hou-noir.svg' : teams[game.homeTeamId - 1].logo}',
-                        width: 30.0,
+                        width: 28.0,
                         fit: BoxFit.fitWidth,
                       ),
                       SizedBox(
