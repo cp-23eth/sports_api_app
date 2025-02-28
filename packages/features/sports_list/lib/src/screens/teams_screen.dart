@@ -152,35 +152,56 @@ class _TeamsScreenState extends State<TeamsScreen> {
               const SizedBox(
                 height: 16.0,
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: filteredPlayers.length,
-                itemBuilder: (context, index) => PlayerList(
-                  user: widget.user,
-                  player: filteredPlayers[index],
-                  color: secondaryColor,
-                ),
-              ),
+              widget.user.teamScreenDesign == 'List'
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: filteredPlayers.length,
+                      itemBuilder: (context, index) => PlayerList(
+                        user: widget.user,
+                        player: filteredPlayers[index],
+                        color: secondaryColor,
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 8.0),
+                      child: GridView.builder(
+                        shrinkWrap: true, // Ajouté
+                        physics: const NeverScrollableScrollPhysics(), // Ajouté
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 50,
+                          mainAxisSpacing: 50,
+                        ),
+                        itemCount: filteredPlayers.length,
+                        itemBuilder: (context, index) {
+                          final player = filteredPlayers[index];
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              CircleAvatar(
+                                minRadius: 50,
+                                backgroundImage: AssetImage(
+                                    'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg'),
+                              ),
+                              Text(
+                                '${player.firstName} ${player.lastName}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
             ],
           ),
         ],
       ),
     );
-  }
-
-  void _favoriteTeam(BuildContext context, int teamId) {
-    setState(() {
-      _isFavorited = !_isFavorited;
-    });
-    if (_isFavorited) {
-      context
-          .read<SportsListProvider>()
-          .addFavoriteTeam(widget.user.username, teamId);
-    } else {
-      context
-          .read<SportsListProvider>()
-          .removeFavoriteTeam(widget.user.username, teamId);
-    }
   }
 }

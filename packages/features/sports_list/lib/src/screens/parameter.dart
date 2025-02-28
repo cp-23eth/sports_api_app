@@ -208,21 +208,11 @@ class _ParameterState extends State<Parameter> {
                     ),
                     const SizedBox(width: 10),
                     ToggleSwitch(
-                      radiusStyle: true,
                       initialLabelIndex:
                           state.user.homeScreenDesign == 'List' ? 1 : 0,
                       totalSwitches: 2,
                       minWidth: 100,
-                      inactiveFgColor: ThemeData.estimateBrightnessForColor(
-                                  Parameter.backgroundColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
-                      activeFgColor: ThemeData.estimateBrightnessForColor(
-                                  Parameter.headerFooterColor) ==
-                              Brightness.light
-                          ? Colors.black
-                          : Colors.white,
+                      inactiveFgColor: Colors.white,
                       labels: const ['Carrousel', 'List'],
                       onToggle: (index) {
                         setState(() {
@@ -233,13 +223,36 @@ class _ParameterState extends State<Parameter> {
                           }
                         });
                       },
-                      activeBgColor: [Parameter.headerFooterColor],
-                      inactiveBgColor: Parameter.backgroundColor,
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                const SizedBox(height: 20.0,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      width: 200,
+                      child: SecondaryTitle(text: 'TeamScreen :'),
+                    ),
+                    const SizedBox(width: 10),
+                    ToggleSwitch(
+                      initialLabelIndex:
+                          state.user.teamScreenDesign == 'List' ? 1 : 0,
+                      totalSwitches: 2,
+                      minWidth: 100,
+                      inactiveFgColor: Colors.white,
+                      labels: const ['CircleAvatar', 'List'],
+                      onToggle: (index) {
+                        setState(() {
+                          if (index == 0) {
+                            state.user.teamScreenDesign = 'CircleAvatar';
+                          } else {
+                            state.user.teamScreenDesign = 'List';
+                          }
+                        });
+                      },
+                    )
+                  ],
                 ),
               ],
             ),
