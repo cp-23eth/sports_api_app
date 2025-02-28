@@ -212,7 +212,18 @@ class _ParameterState extends State<Parameter> {
                           state.user.homeScreenDesign == 'List' ? 1 : 0,
                       totalSwitches: 2,
                       minWidth: 100,
-                      inactiveFgColor: Colors.white,
+                      inactiveFgColor: ThemeData.estimateBrightnessForColor(
+                                  Parameter.backgroundColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                      activeFgColor: ThemeData.estimateBrightnessForColor(
+                                  Parameter.headerFooterColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                      activeBgColor: [Parameter.headerFooterColor],
+                      inactiveBgColor: Parameter.backgroundColor,
                       labels: const ['Carrousel', 'List'],
                       onToggle: (index) {
                         setState(() {
@@ -226,7 +237,9 @@ class _ParameterState extends State<Parameter> {
                     )
                   ],
                 ),
-                const SizedBox(height: 20.0,),
+                const SizedBox(
+                  height: 20.0,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -240,7 +253,18 @@ class _ParameterState extends State<Parameter> {
                           state.user.teamScreenDesign == 'List' ? 1 : 0,
                       totalSwitches: 2,
                       minWidth: 100,
-                      inactiveFgColor: Colors.white,
+                      inactiveFgColor: ThemeData.estimateBrightnessForColor(
+                                  Parameter.backgroundColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                      activeFgColor: ThemeData.estimateBrightnessForColor(
+                                  Parameter.headerFooterColor) ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                      activeBgColor: [Parameter.headerFooterColor],
+                      inactiveBgColor: Parameter.backgroundColor,
                       labels: const ['CircleAvatar', 'List'],
                       onToggle: (index) {
                         setState(() {
