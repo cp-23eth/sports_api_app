@@ -172,30 +172,13 @@ class _TeamsScreenState extends State<TeamsScreen> {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
-                          crossAxisSpacing: 50,
-                          mainAxisSpacing: 50,
                         ),
                         itemCount: filteredPlayers.length,
-                        itemBuilder: (context, index) {
-                          final player = filteredPlayers[index];
-                          return Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              CircleAvatar(
-                                minRadius: 50,
-                                backgroundImage: AssetImage(
-                                    'packages/component_library/lib/src/assets/images/player_images/${player.firstName}-${player.lastName}.jpg'),
-                              ),
-                              Text(
-                                '${player.firstName} ${player.lastName}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          );
-                        },
+                        itemBuilder: (context, index) => PlayerListCircleAvatar(
+                          user: widget.user,
+                          player: filteredPlayers[index],
+                          color: secondaryColor,
+                        ),
                       ),
                     ),
             ],
