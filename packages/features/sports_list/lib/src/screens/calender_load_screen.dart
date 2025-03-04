@@ -123,9 +123,12 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
   late bool searchBool;
   late String word;
 
+  late SportsListState state;
+
   @override
   void initState() {
     super.initState();
+    state = context.read<SportsListProvider>().state;
     _currentState = '';
     searchBool = false;
     word = '';
@@ -165,16 +168,33 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
   }
 
   void _updateWord(String word) {
-    if (word != '') {
+    if (word.isNotEmpty) {
       setState(() {
-        _filteredGames = _allGames
-            .where((game) =>
-                game.homeTeam.contains(word) || game.awayTeam.contains(word))
-            .toList();
+        _filteredGames = _allGames.where((game) {
+          final homeTeam = state.teams.firstWhere(
+            (team) => team.teamId == game.homeTeamId,
+          );
+          final awayTeam = state.teams.firstWhere(
+            (team) => team.teamId == game.awayTeamId,
+          );
+
+          bool matchesTeam = (homeTeam.city.toLowerCase().contains(word)) ||
+              (awayTeam.city.toLowerCase().contains(word)) ||
+              (homeTeam.name.toLowerCase().contains(word)) ||
+              (awayTeam.name.toLowerCase().contains(word));
+
+          bool matchesGame = game.awayTeam.contains(word) ||
+              game.status.toLowerCase().contains(word) ||
+              game.dateTime.toLowerCase().contains(word) ||
+              game.dateTimeUtc.toLowerCase().contains(word);
+
+          return matchesTeam || matchesGame;
+        }).toList();
       });
     } else {
       setState(() {
         _filteredGames = _allGames;
+        _scrollController.jumpTo(_calculateInitialScrollOffset());
       });
     }
   }
