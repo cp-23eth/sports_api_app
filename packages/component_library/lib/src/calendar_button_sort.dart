@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class CalendarButtonSort extends StatefulWidget {
-  const CalendarButtonSort({required this.state, required this.search, super.key});
+  const CalendarButtonSort(
+      {required this.state, required this.search, super.key});
 
   final Function(String) state;
   final Function(String) search;
@@ -36,9 +37,9 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildButton('Pre-Season', 'Pre'),
-          _buildButton('Regular Season', 'Regu'),
-          _buildButton('Playoff', 'Post'),
+          _buildButton('Pre-Season', 'Pre', false),
+          _buildButton('Regular Season', 'Regu', false),
+          _buildButton('Playoff', 'Post', false),
           IconButton(
             onPressed: () => _updateSearch('Search'),
             icon: const Icon(Icons.search),
@@ -54,23 +55,25 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
     );
   }
 
-  Widget _buildButton(String text, String stateValue) {
+  Widget _buildButton(String text, String stateValue, bool status) {
     return ElevatedButton(
-      onPressed: () => _updateState(stateValue),
+      onPressed: () {
+        _updateState(stateValue);
+        setState(() {
+          status = !status;
+        });
+      },
       style: ElevatedButton.styleFrom(
-        backgroundColor: _selectedState == stateValue
-            ? Parameter.headerFooterColor
-            : Colors.transparent,
-        foregroundColor:
-            ThemeData.estimateBrightnessForColor(Parameter.headerFooterColor) ==
+        backgroundColor:
+            status ?Parameter.backgroundColor : ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
-        disabledForegroundColor:
+        foregroundColor:
             ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
                     Brightness.light
-                ? Colors.black
-                : Colors.white,
+                ? Colors.white
+                : Colors.black,
       ),
       child: Text(text),
     );

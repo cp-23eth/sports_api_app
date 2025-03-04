@@ -152,9 +152,13 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
       _filteredGames = _filterGames(state);
     });
 
-    if (_filteredGames.isNotEmpty) {
+    if (_filteredGames.isNotEmpty && state == '') {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _scrollController.jumpTo(_calculateInitialScrollOffset());
+      });
+    } else if (_filteredGames.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollController.jumpTo(0);
       });
     }
   }
@@ -190,11 +194,12 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
 
           return matchesTeam || matchesGame;
         }).toList();
+        _scrollController.jumpTo(0);
       });
     } else {
       setState(() {
         _filteredGames = _allGames;
-        _scrollController.jumpTo(_calculateInitialScrollOffset());
+        _scrollController.jumpTo(0);
       });
     }
   }
@@ -239,8 +244,11 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
           teams: widget.stateTeams,
         ),
         if (searchBool == true)
-          SearchBarCalendar(
-            word: (word) => _updateWord(word),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SearchBarCalendar(
+              word: (word) => _updateWord(word),
+            ),
           ),
         CalendarButtonSort(
           state: (state) => _updateState(state),
