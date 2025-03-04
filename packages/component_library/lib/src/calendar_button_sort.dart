@@ -30,6 +30,16 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
           _buildButton('Pre-Season', 'Pre'),
           _buildButton('Regular Season', 'Regu'),
           _buildButton('Playoff', 'Post'),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+            iconSize: 16,
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.backgroundColor) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
+          )
         ],
       ),
     );
