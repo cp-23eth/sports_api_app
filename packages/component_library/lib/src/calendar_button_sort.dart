@@ -43,6 +43,11 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
         backgroundColor: _selectedState == stateValue
             ? Parameter.todaysMatchsColor
             : Colors.transparent,
+        foregroundColor: ThemeData.estimateBrightnessForColor(
+                                Parameter.backgroundColor) ==
+                            Brightness.light
+                        ? Colors.black
+                        : Colors.white,
       ),
       child: Text(text),
     );

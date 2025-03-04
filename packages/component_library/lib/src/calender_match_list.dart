@@ -169,9 +169,10 @@ class _CalenderMatchListState extends State<CalenderMatchList> {
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
+              textAlign: TextAlign.end,
             ),
           ),
-          const SizedBox(width: 10.0),
+          const SizedBox(width: 15.0),
           Stack(
             clipBehavior: Clip.none,
             children: [
