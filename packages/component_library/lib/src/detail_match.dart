@@ -278,6 +278,21 @@ class _DetailMatchState extends State<DetailMatch> {
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        Text(
+          widget.game.status,
+          style: TextStyle(
+            color: ThemeData.estimateBrightnessForColor(
+                        Parameter.backgroundColor) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
+            fontSize: 16,
+            fontFamily: GoogleFonts.poppins().fontFamily,
+          ),
+        ),
       ],
     );
   }
