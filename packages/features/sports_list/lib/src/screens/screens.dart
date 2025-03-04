@@ -1,11 +1,10 @@
-export 'main_nba.dart';
-export 'teams_screen.dart';
-export 'players_screen.dart';
-
-export 'home_screen_teams.dart';
-export 'home_screen.dart';
-export 'match_detail_screen.dart';
-export 'stats_teams_screen.dart';
+export 'developpers_screen.dart';
 export 'general_basket_screen.dart';
+export 'home_screen.dart';
+export 'home_screen_teams.dart';
+export 'main_nba.dart';
+export 'match_detail_screen.dart';
 export 'parameter.dart';
-export 'nba_image_screen.dart';
+export 'players_screen.dart';
+export 'stats_teams_screen.dart';
+export 'teams_screen.dart';

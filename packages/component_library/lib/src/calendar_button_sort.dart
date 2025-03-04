@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sports_list/sports_list.dart';
 
 class CalendarButtonSort extends StatefulWidget {
-  const CalendarButtonSort({required this.state, super.key});
+  const CalendarButtonSort({required this.state, required this.search, super.key});
 
   final Function(String) state;
+  final Function(String) search;
 
   @override
   State<CalendarButtonSort> createState() => _CalendarButtonSortState();
@@ -12,12 +13,20 @@ class CalendarButtonSort extends StatefulWidget {
 
 class _CalendarButtonSortState extends State<CalendarButtonSort> {
   String _selectedState = '';
+  String search = '';
 
   void _updateState(String newState) {
     setState(() {
       _selectedState = (_selectedState == newState) ? '' : newState;
     });
     widget.state(_selectedState);
+  }
+
+  void _updateSearch(String search) {
+    setState(() {
+      search = search;
+    });
+    widget.search(search);
   }
 
   @override
@@ -31,7 +40,7 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
           _buildButton('Regular Season', 'Regu'),
           _buildButton('Playoff', 'Post'),
           IconButton(
-            onPressed: () {},
+            onPressed: () => _updateSearch('Search'),
             icon: const Icon(Icons.search),
             iconSize: 16,
             color: ThemeData.estimateBrightnessForColor(

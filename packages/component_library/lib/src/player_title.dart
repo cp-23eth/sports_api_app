@@ -19,14 +19,7 @@ class PlayerTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String cleanFirstName(String firstName) {
-      firstName = firstName.replaceAll('-', '');
-      firstName = firstName.replaceAll(' ', '');
-      firstName = firstName.replaceAll('.', '');
-      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
-    }
-
-    String cleanLastName(String firstName) {
+    String cleanName(String firstName) {
       firstName = firstName.replaceAll('-', '');
       firstName = firstName.replaceAll(' ', '');
       firstName = firstName.replaceAll('.', '');
@@ -41,7 +34,7 @@ class PlayerTitle extends StatelessWidget {
             width: 150,
             height: 150,
             child: Image.asset(
-              'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${cleanLastName(player.lastName)}.jpg',
+              'packages/component_library/lib/src/assets/images/player_images/${cleanName(player.firstName)}-${cleanName(player.lastName)}.jpg',
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               errorBuilder: (context, error, stackTrace) {

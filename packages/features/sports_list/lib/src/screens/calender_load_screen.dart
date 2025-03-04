@@ -8,15 +8,15 @@ import 'package:sports_list/sports_list.dart';
 class CalenderLoad extends StatefulWidget {
   const CalenderLoad(
       {required this.user,
-      required this.stateTeams,
-      required this.stateStadiums,
-      required this.stateGames,
+      required this.teams,
+      required this.stadiums,
+      required this.games,
       super.key});
 
   final User user;
-  final List<Team> stateTeams;
-  final List<Stadium> stateStadiums;
-  final List<Game> stateGames;
+  final List<Team> teams;
+  final List<Stadium> stadiums;
+  final List<Game> games;
 
   @override
   State<CalenderLoad> createState() => _CalenderLoadState();
@@ -39,7 +39,7 @@ class _CalenderLoadState extends State<CalenderLoad> {
       return _cachedGroupedGames!;
     }
 
-    final allGames = widget.stateGames.reversed.toList();
+    final allGames = widget.games.reversed.toList();
     final games =
         allGames.where((game) => game.dateTime != '0000-00-00').toList();
 
@@ -54,30 +54,6 @@ class _CalenderLoadState extends State<CalenderLoad> {
 
     return groupedGames;
   }
-
-  // Future<Map<String, List<Game>>> _loadData() async {
-
-  //   final allGames = widget.stateGames.reversed.toList();
-  //   final games = <Game>[];
-
-  //   for (Game game in allGames) {
-  //     if (game.dateTime != '0000-00-00') {
-  //       games.add(game);
-  //     }
-  //   }
-
-  //   final groupedGames = <String, List<Game>>{};
-  //   for (var game in games) {
-  //     final dateTime = DateTime.parse(game.dateTimeUtc);
-  //     final date = DateFormat('yyyy-MM-dd').format(dateTime);
-  //     if (!groupedGames.containsKey(date)) {
-  //       groupedGames[date] = [];
-  //     }
-  //     groupedGames[date]!.add(game);
-  //   }
-
-  //   return groupedGames;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -108,8 +84,8 @@ class _CalenderLoadState extends State<CalenderLoad> {
           final groupedGames = snapshot.data!;
           return CalendarScreenLoaded(
             user: widget.user,
-            stateTeams: widget.stateTeams,
-            stateStadiums: widget.stateStadiums,
+            stateTeams: widget.teams,
+            stateStadiums: widget.stadiums,
             groupedGames: groupedGames,
           );
         } else {
@@ -144,11 +120,15 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
   late List<Game> _filteredGames;
   late ScrollController _scrollController;
   late List<Game> _allGames;
+  late bool searchBool;
+  late String word;
 
   @override
   void initState() {
     super.initState();
     _currentState = '';
+    searchBool = false;
+    word = '';
     _allGames = widget.groupedGames.values.expand((games) => games).toList();
     _allGames.sort((a, b) => a.dateTimeUtc.compareTo(b.dateTimeUtc));
     _filteredGames =
@@ -176,14 +156,35 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
     }
   }
 
-  double _calculateInitialScrollOffset() {
-    final today = DateTime.now();
-    int initialScrollIndex = _filteredGames.indexWhere((game) =>
-        DateTime.parse(game.dateTimeUtc).isAfter(today) ||
-        DateTime.parse(game.dateTimeUtc).isAtSameMomentAs(today));
+  void _updateSearch(String search) {
+    if (search == 'Search') {
+      setState(() {
+        searchBool = !searchBool;
+      });
+    }
+  }
 
-    _currentState == '' ? initialScrollIndex += 95 : initialScrollIndex = 0;
-    return (initialScrollIndex > 0 ? initialScrollIndex : 0) * 75.0;
+  void _updateWord(String word) {
+    if (word != '') {
+      setState(() {
+        _filteredGames = _allGames
+            .where((game) =>
+                game.homeTeam.contains(word) || game.awayTeam.contains(word))
+            .toList();
+      });
+    } else {
+      setState(() {
+        _filteredGames = _allGames;
+      });
+    }
+  }
+
+  double _calculateInitialScrollOffset() {
+    double initialIndex = 0;
+    for (Game game in _filteredGames) {
+      initialIndex += 62.3;
+    }
+    return initialIndex;
   }
 
   List<Game> _filterGames(String state) {
@@ -217,8 +218,13 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
           user: widget.user,
           teams: widget.stateTeams,
         ),
+        if (searchBool == true)
+          SearchBarCalendar(
+            word: (word) => _updateWord(word),
+          ),
         CalendarButtonSort(
           state: (state) => _updateState(state),
+          search: (search) => _updateSearch(search),
         ),
         Expanded(
           child: _filteredGames.isEmpty
@@ -234,6 +240,7 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
 
                     final bool isFirstGameOfDate = index == 0 ||
                         DateTime.parse(_filteredGames[index - 1].dateTimeUtc)
+                                .add(const Duration(hours: 1))
                                 .day !=
                             gameDate.day;
 

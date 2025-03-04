@@ -11,13 +11,13 @@ import 'package:sports_repository/sports_repository.dart';
 
 class GameRemoteStorage implements SportsGameStorage {
   static const url =
-      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=e0cc9fd0e6e64ec6934939efa4abd788";
+      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025?key=0febfae05c3d44d5acb4e53e2b022b39";
 
   static const urlPre =
-      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025PRE?key=e0cc9fd0e6e64ec6934939efa4abd788";
+      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025PRE?key=0febfae05c3d44d5acb4e53e2b022b39";
 
   static const urlPost =
-      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025POST?key=e0cc9fd0e6e64ec6934939efa4abd788";
+      "https://api.sportsdata.io/v3/nba/scores/json/Games/2025POST?key=0febfae05c3d44d5acb4e53e2b022b39";
 
   GameRemoteStorage({@visibleForTesting http.Client? client})
       : _client = client ?? http.Client();

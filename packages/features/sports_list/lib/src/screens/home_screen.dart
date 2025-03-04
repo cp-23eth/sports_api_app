@@ -59,21 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
 
-    List<Game> next5Games = next8Games.take(5).toList();
-    List<Game> last5Games = last8Games.take(5).toList();
-
-    final List<Widget> nextGamesListCarrousel = [
-      for (var game in next8Games)
-        HomeMatchCarrousel(
-          teams: state.teams,
-          finish: false,
-          game: game,
-          stadiums: state.stadiums,
-        ),
-    ];
-
     final List<Widget> nextGamesList = [
-      for (var game in next5Games)
+      for (var game in next8Games)
         HomeMatchList(
           teams: state.teams,
           finish: false,
@@ -82,18 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
     ];
 
-    final List<Widget> lastGamesListCarrousel = [
-      for (var game in last8Games)
-        HomeMatchCarrousel(
-          teams: state.teams,
-          finish: true,
-          game: game,
-          stadiums: state.stadiums,
-        ),
-    ];
-
     final List<Widget> lastGamesList = [
-      for (var game in last5Games)
+      for (var game in last8Games)
         HomeMatchList(
           teams: state.teams,
           finish: true,
@@ -137,9 +114,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       for (var gameWidget in nextGamesList) gameWidget,
                     if (design == 'Carrousel')
                       CarouselSlider(
-                        items: nextGamesListCarrousel,
+                        items: nextGamesList,
                         options: CarouselOptions(
-                          height: 181,
+                          height: 165,
                           enableInfiniteScroll: false,
                           viewportFraction: 0.8,
                           autoPlay: true,
@@ -164,9 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       for (var gameWidget in lastGamesList) gameWidget,
                     if (design == 'Carrousel')
                       CarouselSlider(
-                        items: lastGamesListCarrousel,
+                        items: lastGamesList,
                         options: CarouselOptions(
-                          height: 181,
+                          height: 165,
                           enableInfiniteScroll: false,
                           viewportFraction: 0.8,
                           autoPlay: true,

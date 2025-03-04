@@ -9,20 +9,13 @@ class PlayerPositions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String cleanFirstName(String firstName) {
+    String cleanName(String firstName) {
       firstName = firstName.replaceAll('-', '');
       firstName = firstName.replaceAll(' ', '');
       firstName = firstName.replaceAll('.', '');
       return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
     }
-
-    String cleanLastName(String firstName) {
-      firstName = firstName.replaceAll('-', '');
-      firstName = firstName.replaceAll(' ', '');
-      firstName = firstName.replaceAll('.', '');
-      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
-    }
-
+    
     double playerPositionTop = 0;
     double playerPositionLeft = 0;
 
@@ -57,7 +50,7 @@ class PlayerPositions extends StatelessWidget {
               width: 36,
               height: 36,
               child: Image.asset(
-                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(player.firstName)}-${cleanLastName(player.lastName)}.jpg',
+                'packages/component_library/lib/src/assets/images/player_images/${cleanName(player.firstName)}-${cleanName(player.lastName)}.jpg',
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
                 errorBuilder: (context, error, stackTrace) {

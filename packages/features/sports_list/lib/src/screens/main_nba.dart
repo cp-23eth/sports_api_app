@@ -147,9 +147,9 @@ class _MainNbaState extends State<MainNba> {
     return [
       CalenderLoad(
         user: state.user,
-        stateTeams: state.teams,
-        stateStadiums: state.stadiums,
-        stateGames: state.games,
+        teams: state.teams,
+        stadiums: state.stadiums,
+        games: state.games,
       ),
       HomeScreen(
         teams: state.teams,

@@ -9,7 +9,7 @@ class BasketballHistory extends StatelessWidget {
 
   Future<void> _launchURL() async {
     const url =
-        'https://en.wikipedia.org/wiki/Basketball'; // Remplacez par l'URL souhaitée
+        'https://en.wikipedia.org/wiki/Basketball'; 
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use

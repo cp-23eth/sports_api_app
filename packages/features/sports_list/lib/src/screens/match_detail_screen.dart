@@ -16,7 +16,6 @@ class MatchDetailScreen extends StatelessWidget {
   final List<Team> teams;
   final List<Stadium> stadiums;
 
-  // Fonction pour ouvrir Google Maps avec les coordonnées du stade
   void openMap(double latitude, double longitude) async {
     final Uri googleMapsUrl =
         Uri.parse('https://www.google.com/maps?q=$latitude,$longitude');

@@ -27,14 +27,7 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
 
   @override
   Widget build(BuildContext context) {
-    String cleanFirstName(String firstName) {
-      firstName = firstName.replaceAll('-', '');
-      firstName = firstName.replaceAll(' ', '');
-      firstName = firstName.replaceAll('.', '');
-      return firstName[0].toUpperCase() + firstName.substring(1).toLowerCase();
-    }
-
-    String cleanLastName(String firstName) {
+    String cleanName(String firstName) {
       firstName = firstName.replaceAll('-', '');
       firstName = firstName.replaceAll(' ', '');
       firstName = firstName.replaceAll('.', '');
@@ -58,27 +51,27 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
           child: Column(
             children: [
               ClipOval(
-                            child: SizedBox(
-                              width: 85,
-                              height: 85,
-                              child: Image.asset(
-                                'packages/component_library/lib/src/assets/images/player_images/${cleanFirstName(widget.player.firstName)}-${cleanLastName(widget.player.lastName)}.jpg',
-                                fit: BoxFit.cover,
-                                alignment: Alignment.topCenter,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return SvgPicture.asset(
-                                    'packages/component_library/lib/src/assets/images/player_images/user.svg',
-                                    fit: BoxFit.cover,
-                                    alignment: Alignment.topCenter,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
+                child: SizedBox(
+                  width: 85,
+                  height: 85,
+                  child: Image.asset(
+                    'packages/component_library/lib/src/assets/images/player_images/${cleanName(widget.player.firstName)}-${cleanName(widget.player.lastName)}.jpg',
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
+                    errorBuilder: (context, error, stackTrace) {
+                      return SvgPicture.asset(
+                        'packages/component_library/lib/src/assets/images/player_images/user.svg',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      );
+                    },
+                  ),
+                ),
+              ),
               const SizedBox(height: 10),
               Text(
                 textAlign: TextAlign.center,
-                cleanFirstName(widget.player.firstName),
+                cleanName(widget.player.firstName),
                 style: TextStyle(
                   color: ThemeData.estimateBrightnessForColor(
                               Parameter.backgroundColor) ==
@@ -92,7 +85,7 @@ class _PlayerListCircleAvatarState extends State<PlayerListCircleAvatar> {
               ),
               Text(
                 textAlign: TextAlign.center,
-                cleanLastName(widget.player.lastName),
+                cleanName(widget.player.lastName),
                 style: TextStyle(
                   color: ThemeData.estimateBrightnessForColor(
                               Parameter.backgroundColor) ==
