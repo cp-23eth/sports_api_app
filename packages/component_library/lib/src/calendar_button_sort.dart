@@ -22,15 +22,14 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
-      color: Parameter.headerFooterColor.withAlpha(200),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildButton('Pre-Saison', 'Pre'),
-          _buildButton('Regular Saison', 'Regu'),
-          _buildButton('Post-Saison', 'Post'),
+          _buildButton('Pre-Season', 'Pre'),
+          _buildButton('Regular Season', 'Regu'),
+          _buildButton('Playoff', 'Post'),
         ],
       ),
     );
@@ -41,13 +40,18 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
       onPressed: () => _updateState(stateValue),
       style: ElevatedButton.styleFrom(
         backgroundColor: _selectedState == stateValue
-            ? Parameter.todaysMatchsColor
+            ? Parameter.headerFooterColor
             : Colors.transparent,
-        foregroundColor: ThemeData.estimateBrightnessForColor(
-                                Parameter.backgroundColor) ==
-                            Brightness.light
-                        ? Colors.black
-                        : Colors.white,
+        foregroundColor:
+            ThemeData.estimateBrightnessForColor(Parameter.headerFooterColor) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
+        disabledForegroundColor:
+            ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
+                    Brightness.light
+                ? Colors.black
+                : Colors.white,
       ),
       child: Text(text),
     );

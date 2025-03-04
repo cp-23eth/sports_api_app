@@ -33,6 +33,8 @@ class _CalenderLoadState extends State<CalenderLoad> {
   }
 
   Future<Map<String, List<Game>>> _loadData() async {
+    await Future.delayed(const Duration(seconds: 1));
+
     if (_cachedGroupedGames != null) {
       return _cachedGroupedGames!;
     }
@@ -54,7 +56,6 @@ class _CalenderLoadState extends State<CalenderLoad> {
   }
 
   // Future<Map<String, List<Game>>> _loadData() async {
-  //   await Future.delayed(const Duration(seconds: 1));
 
   //   final allGames = widget.stateGames.reversed.toList();
   //   final games = <Game>[];
@@ -163,10 +164,10 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
   }
 
   void _updateState(String state) {
-  setState(() {
-    _currentState = state;
-    _filteredGames = _filterGames(state);
-  });
+    setState(() {
+      _currentState = state;
+      _filteredGames = _filterGames(state);
+    });
 
     if (_filteredGames.isNotEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
