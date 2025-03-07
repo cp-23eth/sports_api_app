@@ -116,6 +116,7 @@ class CalendarScreenLoaded extends StatefulWidget {
 }
 
 class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
+  // ignore: unused_field
   late String _currentState;
   late List<Game> _filteredGames;
   late ScrollController _scrollController;
@@ -206,6 +207,7 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
 
   double _calculateInitialScrollOffset() {
     double initialIndex = 0;
+    // ignore: unused_local_variable
     for (Game game in _filteredGames) {
       initialIndex += 62.3;
     }
