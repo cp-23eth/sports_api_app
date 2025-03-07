@@ -45,7 +45,7 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
             icon: const Icon(Icons.search),
             iconSize: 16,
             color: ThemeData.estimateBrightnessForColor(
-                        Parameter.backgroundColor) ==
+                        Parameter.headerFooterColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
@@ -64,18 +64,29 @@ class _CalendarButtonSortState extends State<CalendarButtonSort> {
         });
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            status ?Parameter.backgroundColor : ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
+        disabledForegroundColor:
+            ThemeData.estimateBrightnessForColor(Parameter.headerFooterColor) ==
                     Brightness.light
                 ? Colors.black
                 : Colors.white,
+        backgroundColor:
+            status ? Parameter.backgroundColor : Parameter.headerFooterColor,
         foregroundColor:
-            ThemeData.estimateBrightnessForColor(Parameter.backgroundColor) ==
+            ThemeData.estimateBrightnessForColor(Parameter.headerFooterColor) ==
                     Brightness.light
-                ? Colors.white
-                : Colors.black,
+                ? Colors.black
+                : Colors.white,
       ),
-      child: Text(text),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: ThemeData.estimateBrightnessForColor(
+                      Parameter.headerFooterColor) ==
+                  Brightness.light
+              ? Colors.black
+              : Colors.white,
+        ),
+      ),
     );
   }
 }
