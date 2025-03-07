@@ -1,3 +1,5 @@
+import 'package:component_library/component_library.dart';
+import 'package:domain_entities/domain_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -8,233 +10,175 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // Game game = Game(
-    //   dateTime: '2024-10-22T19:30:00',
-    //   homeTeam: 'BOS',
-    //   awayTeam: 'NY',
-    //   homeTeamScore: 156,
-    //   awayTeamScore: 129,
-    //   season: 2025,
-    //   stadiumId: 1,
-    //   status: 'Final',
-    //   refereeId: 1,
-    //   gameId: 1,
-    //   isClosed: true,
-    //   awayTeamId: 1,
-    //   homeTeamId: 2,
-    //   dateTimeUtc: '2024-10-22T23:30:00',
-    // );
+    final teams = [
+      Team(
+          teamId: 1,
+          name: 'Celtics',
+          logo: 'logo1',
+          active: true,
+          city: 'Boston',
+          headCoach: 'Stephan Curry',
+          primaryColor: '0xFFFFFFFF',
+          secondaryColor: '0xFF564567',
+          tertiaryColor: '0xFF123456',
+          key: 'BOS'),
+      Team(
+          teamId: 2,
+          name: 'Lakers',
+          logo: 'logo2',
+          active: true,
+          city: 'Los Angeles',
+          headCoach: 'Lebron James',
+          primaryColor: '0xFFFFFFFF',
+          secondaryColor: '0xFF564567',
+          tertiaryColor: '0xFF123456',
+          key: 'LAL'),
+    ];
 
-    // List<Team> teams = [
-    //   Team(
-    //     teamId: 1,
-    //     active: true,
-    //     key: 'WAS',
-    //     city: 'Washington',
-    //     name: 'Wizards',
-    //     headCoach: 'Brian Keefe',
-    //     logo: 'ATL.svg',
-    //     primaryColor: 'E03A3E',
-    //     secondaryColor: '002B5C',
-    //     tertiaryColor: 'C4CED4',
-    //   ),
-    //   Team(
-    //     teamId: 2,
-    //     active: true,
-    //     key: 'CHA',
-    //     city: 'Charlotte',
-    //     name: 'Hornets',
-    //     headCoach: 'Charles Lee',
-    //     logo: 'BKN.svg',
-    //     primaryColor: '00788C',
-    //     secondaryColor: '1D1160',
-    //     tertiaryColor: 'A1A1A4',
-    //   ),
-    // ];
+    // final game = Game(
+    //     gameId: 1,
+    //     season: 2025,
+    //     status: 'finished',
+    //     isClosed: true,
+    //     dateTime: DateTime.now().toString(),
+    //     dateTimeUtc: DateTime.now().toString(),
+    //     awayTeam: 'BOS',
+    //     awayTeamId: 3,
+    //     homeTeam: 'CHI',
+    //     homeTeamId: 5,
+    //     awayTeamScore: 145,
+    //     homeTeamScore: 120,
+    //     stadiumId: 23,
+    //     refereeId: 1);
 
-    // List<Stadium> stadiums = [
+    // final stadiums = [
     //   Stadium(
-    //     stadiumId: 1,
-    //     active: true,
-    //     name: 'Capital One Arena',
-    //     address: '601 F St. N.W.',
-    //     city: 'Washington',
-    //     state: 'DC',
-    //     zip: '20004',
-    //     country: 'USA',
-    //     capacity: 20290,
-    //     latitude: 38.898056,
-    //     longitude: -77.020833,
-    //   )
+    //       stadiumId: 1,
+    //       name: 'Staples Center',
+    //       city: 'Los Angeles',
+    //       capacity: 20000,
+    //       active: true,
+    //       address: 'rue des oliviers 5',
+    //       country: 'USA',
+    //       latitude: 45.25,
+    //       longitude: 45.26,
+    //       state: 'Maine',
+    //       zip: '25632'),
+    //   Stadium(
+    //       stadiumId: 2,
+    //       name: 'TD Garden',
+    //       city: 'Boston',
+    //       capacity: 20000,
+    //       active: true,
+    //       address: 'rue des oliviers 5',
+    //       country: 'USA',
+    //       latitude: 45.25,
+    //       longitude: 45.26,
+    //       state: 'Maine',
+    //       zip: '25632'),
     // ];
 
-    // bool finish = false;
+    User user = User(
+        username: 'niry',
+        favoriteTeams: [15, 12],
+        appColorTeam: '0xFF454534',
+        homeScreenDesign: 'Carrousel',
+        teamScreenDesign: 'List');
 
-    // if (game.status == 'Final') {
-    //   finish = true;
-    // } else {
-    //   finish = false;
-    // }
+    Player player = Player(
+        playerId: 1,
+        status: 'active',
+        teamId: 1,
+        team: 'BOS',
+        jersey: 45,
+        position: 'PG',
+        firstName: 'COR',
+        lastName: 'RIN',
+        birthDate: '2000-10-02',
+        birthCity: 'St-Louis',
+        birthCountry: 'USA',
+        height: 180,
+        weight: 85);
+
     return Storybook(
-      initialStory: 'Widget/favorite_team_list_setting',
       stories: [
-        //   Story(
-        //     name: 'Widget/List/Home',
-        //     builder: (context) => HomeMatchList(
-        //       game: game,
-        //       finish: finish,
-        //       teams: teams,
-        //       stadiums: stadiums,
-        //     ),
-        //   ),
-        //   Story(
-        //     name: 'Widget/List/Calender',
-        //     builder: (context) => CalenderMatchList(
-        //       game: game,
-        //       teams: teams,
-        //       stadiums: stadiums,
-        //     ),
-        //   ),
-        //   Story(
-        //     name: 'Widget/List/Team',
-        //     builder: (context) => const TeamList(
-        //       team: Team(
-        //         teamId: 2,
-        //         active: true,
-        //         key: 'CHA',
-        //         city: 'Charlotte',
-        //         name: 'Hornets',
-        //         headCoach: 'Charles Lee',
-        //         logo:
-        //             'https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg',
-        //         primaryColor: '00788C',
-        //         secondaryColor: '1D1160',
-        //         tertiaryColor: 'A1A1A4',
-        //       ),
-        //       stadium: [
-        //         Stadium(
-        //           stadiumId: 1,
-        //           active: true,
-        //           name: 'Capital One Arena',
-        //           address: '601 F St. N.W.',
-        //           city: 'Washington',
-        //           state: 'DC',
-        //           zip: '20004',
-        //           country: 'USA',
-        //           capacity: 20290,
-        //           latitude: 38.898056,
-        //           longitude: -77.020833,
-        //         )
-        //       ],
-        //       players: [
-        //         Player(
-        //           playerId: 1,
-        //           status: 'Active',
-        //           teamId: 1,
-        //           team: 'PHO',
-        //           jersey: 3,
-        //           position: 'SG',
-        //           firstName: 'Bradley',
-        //           lastName: 'Beal',
-        //           birthDate: '1993-06-28T00:00:00',
-        //           birthCity: 'St. Louis',
-        //           birthCountry: 'USA',
-        //           height: 76,
-        //           weight: 207,
-        //         )
-        //       ],
-        //     ),
-        //   ),
-        //   Story(
-        //     name: 'Widget/Header',
-        //     builder: (context) => const Header(),
-        //   ),
-        //   Story(
-        //     name: 'Widget/Element/Secondary Title',
-        //     builder: (context) => const SecondaryTitle(text: 'Secondary Title'),
-        //   ),
-        //   Story(
-        //     name: 'Widget/Element/Primary Title',
-        //     builder: (context) => const PrimaryTitle(text: 'Primary Title'),
-        //   ),
-        //   Story(
-        //     name: 'Widget/List/Player',
-        //     builder: (context) => const PlayerList(
-        //       player: Player(
-        //         playerId: 1,
-        //         status: 'Active',
-        //         teamId: 1,
-        //         team: 'PHO',
-        //         jersey: 3,
-        //         position: 'SG',
-        //         firstName: 'Bradley',
-        //         lastName: 'Beal',
-        //         birthDate: '1993-06-28T00:00:00',
-        //         birthCity: 'St. Louis',
-        //         birthCountry: 'USA',
-        //         height: 76,
-        //         weight: 207,
-        //       ),
-        //     ),
-        //   ),
-        //   Story(
-        //     name: 'Widget/Element/Player Information',
-        //     builder: (context) {
-        //       return PlayerInfo(
-        //         player: Player(
-        //           playerId: 1,
-        //           status: 'Active',
-        //           teamId: 1,
-        //           team: 'PHO',
-        //           jersey: 3,
-        //           position: 'SG',
-        //           firstName: 'Bradley',
-        //           lastName: 'Beal',
-        //           birthDate: '1993-06-28T00:00:00',
-        //           birthCity: 'St. Louis',
-        //           birthCountry: 'USA',
-        //           height: 76,
-        //           weight: 207,
-        //         ),
-        //       );
-        //     },
-        //   ),
-        //   Story(
-        //     name: 'Widget/Element/Player Title',
-        //     builder: (context) => const PlayerTitle(
-        //       player: Player(
-        //         playerId: 1,
-        //         status: 'Active',
-        //         teamId: 1,
-        //         team: 'PHO',
-        //         jersey: 3,
-        //         position: 'SG',
-        //         firstName: 'Bradley',
-        //         lastName: 'Beal',
-        //         birthDate: '1993-06-28T00:00:00',
-        //         birthCity: 'St. Louis',
-        //         birthCountry: 'USA',
-        //         height: 76,
-        //         weight: 207,
-        //       ),
-        //     ),
-        //   ),
-        //   Story(
-        //       name: 'Widget/Element/Detail Match',
-        //       builder: (context) =>
-        //           DetailMatch(game: game, teams: teams, stadiums: stadiums))
-        // ],
-        // Story(
-        //   name: 'Widget/favorite_team_list_setting',
-        //   builder: (context) => FavoriteTeamListSettings(
-        //     teamList: [
-        //       Team(teamId: 1, active: true, key: 'WAS', city: 'Washington', name: 'Wizards', headCoach: 'Brian Keefe', logo: "WAS.svg", primaryColor: "002B5C", secondaryColor: 	"E31837", tertiaryColor: 	"C4CED4"),
-        //       Team(teamId: 2, active: true, key: 'CHA', city: 'Charlotte', name: 'Hornets', headCoach: 'Charles Lee', logo: "CHA.svg", primaryColor: 	"00788C", secondaryColor: 	"1D1160", tertiaryColor: 	"A1A1A4")
-        //     ],
-        //   ),
-        // ),
+        Story(
+          name: 'Widget/BasketBallHistory',
+          description:
+              'Affiche l\'histoire du basket-ball avec le bouton vers wikipédia',
+          builder: (context) => BasketballHistory(),
+        ),
+        Story(
+          name: 'Widget/ButtonColorPicker',
+          description: 'Button qui permet de choisir une couleur',
+          builder: (context) => ButtonColorPicker(
+            changeColor: (Color color) {},
+            keyColor: Colors.blue,
+            pickerColor: Colors.red,
+          ),
+        ),
+        Story(
+          name: 'Widget/CalendartButtonSort',
+          description:
+              'Affiche les boutons qui permet de trier les matchs dans le calendrier',
+          builder: (context) => CalendarButtonSort(
+            search: (String text) {},
+            state: (String text) {},
+          ),
+        ),
+        Story(
+          name: 'Widget/FavoriteTeamListSettings',
+          description: 'Affiche les équipes favorties',
+          builder: (context) => FavoriteTeamListSettings(
+            changeApplicationColor: (Team team) {},
+            removeApplicationColor: () {},
+            teamList: teams,
+          ),
+        ),
+        Story(
+          name: 'Widget/header',
+          description: 'Affiche l\'header',
+          builder: (context) => Header(
+            teams: teams,
+            user: user,
+          ),
+        ),
+        Story(
+          name: 'Widget/Paragraphe',
+          description: 'Affiche un paragraphe',
+          builder: (context) => Paragraphe(
+            text: 'Salut',
+          ),
+        ),
+        Story(
+          name: 'Widget/PlayerInfo',
+          description: 'Affiche les infos du joueur',
+          builder: (context) => PlayerInfo(color: Colors.white, player: player),
+        ),
+        Story(
+          name: 'Widget/PlayerListCircleAvatar',
+          description:
+              'Affiche l\'image du joueur',
+          builder: (context) => PlayerListCircleAvatar(
+            color: Colors.white,
+            player: player,
+            user: user,
+          ),
+        ),
+        Story(
+          name: 'Widget/playerList',
+          description:
+              'Affiche un élément de la liste de joueur',
+          builder: (context) => PlayerList(
+            color: Colors.white,
+            player: player,
+            user: user,
+            onFavoriteToggle: () {},
+          ),
+        ),
       ],
     );
   }

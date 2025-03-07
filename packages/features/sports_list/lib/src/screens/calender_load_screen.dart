@@ -172,7 +172,8 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
     }
   }
 
-  void _updateWord(String word) {
+  void _search(String word) {
+    word = word.replaceAll('.', '-');
     if (word.isNotEmpty) {
       setState(() {
         _filteredGames = _allGames.where((game) {
@@ -193,9 +194,12 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
               game.dateTime.toLowerCase().contains(word) ||
               game.dateTimeUtc.toLowerCase().contains(word);
 
-          return matchesTeam || matchesGame;
+          if (matchesTeam || matchesGame) {
+            return true;
+          } else {
+            return false;
+          }
         }).toList();
-        _scrollController.jumpTo(0);
       });
     } else {
       setState(() {
@@ -249,7 +253,7 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: SearchBarCalendar(
-              word: (word) => _updateWord(word),
+              word: (word) => _search(word),
             ),
           ),
         CalendarButtonSort(
