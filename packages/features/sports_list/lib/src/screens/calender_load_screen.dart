@@ -209,7 +209,7 @@ class _CalendarScreenLoadedState extends State<CalendarScreenLoaded> {
     double initialIndex = 0;
     // ignore: unused_local_variable
     for (Game game in _filteredGames) {
-      initialIndex += 62.3;
+      initialIndex += 63.8;
     }
     return initialIndex;
   }
